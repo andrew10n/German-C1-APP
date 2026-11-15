@@ -487,14 +487,14 @@ fun HomeScreen(
                                 }
                                 Column {
                                     Text(
-                                        text = "$activeErrorsCount wiederkehrende Fehler fällig",
+                                        text = "$activeErrorsCount Beispiel-Drills bereit",
                                         fontFamily = BarlowCondensedFontFamily,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 16.sp,
                                         color = tokens.coral
                                     )
                                     Text(
-                                        text = "Fehler-Recycling vor der nächsten freien Produktion",
+                                        text = "Optionales Formulierungs- und Transfertraining",
                                         fontFamily = BarlowFontFamily,
                                         fontSize = 12.sp,
                                         color = tokens.ink2
@@ -725,8 +725,8 @@ fun HomeScreen(
                 ) {
                     BerlinEngineCard(
                         title = "Fehler-Intelligenz",
-                        subtitle = "$activeErrorsCount aktive Fehler im Recycling",
-                        tagLabel = if (activeErrorsCount > 0) "$activeErrorsCount FÄLLIG" else "STABIL",
+                        subtitle = "$activeErrorsCount Beispiel-Drills zur Auswahl",
+                        tagLabel = if (activeErrorsCount > 0) "$activeErrorsCount DRILLS" else "BEREIT",
                         icon = Icons.Default.Autorenew,
                         tag = "error_intelligence",
                         badgeCount = activeErrorsCount,

@@ -81,6 +81,19 @@ class C1LearningRepository {
 
     // 10. Intelligent Training Priority Recommendation
     fun getTopTrainingPriority(): TrainingPriorityRecommendation {
+        if (!_diagnosticReport.value.isCompleted) {
+            return TrainingPriorityRecommendation(
+                category = SkillCategory.GRAMMATIK,
+                calculatedPriority = 0,
+                priorityRank = 0,
+                reasonHeadline = "Wähle deinen ersten Übungsfokus",
+                detailedRationale = "Noch liegt keine persönliche Einstufung vor. Die Beispiel-Drills sind Lernmaterial, keine gespeicherten Fehler von dir.",
+                recommendedTaskTitle = "Starte mit einer Kernfertigkeit",
+                sessionDurationMin = 18,
+                targetEnvironment = "Freie Auswahl",
+                weightBreakdown = PriorityWeights(0, 0, 0, 0, 0)
+            )
+        }
         val scores = _skillScores.value.values.toList()
         val errors = _errorDatabase.value
 

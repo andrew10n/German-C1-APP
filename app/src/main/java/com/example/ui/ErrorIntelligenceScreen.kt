@@ -61,14 +61,14 @@ fun ErrorIntelligenceScreen(
                 title = {
                     Column {
                         Text(
-                            text = "Fehler- & Wortschatz-Intelligenz",
+                            text = "Ausdrucks- & Wortschatzwerkstatt",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = BarlowCondensedFontFamily,
                             color = BerlinTheme.ink
                         )
                         Text(
-                            text = "Spaced Repetition & Transfer-Recycling",
+                            text = "Beispiel-Drills und persönliche Wiederholung",
                             fontSize = 12.sp,
                             color = BerlinTheme.ink2
                         )
@@ -113,7 +113,7 @@ fun ErrorIntelligenceScreen(
                             onClick = { selectedTab = 0 },
                             text = {
                                 Text(
-                                    "Fehler-Recycling (${errors.size})",
+                                    "Beispiel-Drills (${errors.size})",
                                     fontWeight = FontWeight.Bold,
                                     color = if (selectedTab == 0) BerlinTheme.accentInk else BerlinTheme.ink2
                                 )
@@ -156,6 +156,22 @@ fun ErrorIntelligenceScreen(
             }
 
             if (selectedTab == 0) {
+                item {
+                    Surface(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(16.dp),
+                        color = BerlinTheme.surface2,
+                        border = BorderStroke(1.dp, BerlinTheme.line)
+                    ) {
+                        Text(
+                            text = "Diese Beispiele sind Trainingsmaterial, keine Analyse deiner persönlichen Fehler. Persönliche Hinweise entstehen nur aus gespeicherten Antworten im Programm.",
+                            modifier = Modifier.padding(14.dp),
+                            fontSize = 12.sp,
+                            color = BerlinTheme.ink2,
+                            lineHeight = 17.sp
+                        )
+                    }
+                }
                 // Section 1: Active Error Transfer Drill (if selected)
                 if (activeDrill != null) {
                     item {
@@ -269,17 +285,15 @@ fun ErrorIntelligenceScreen(
                                 }
                             }
 
-                            // Typical Error (.alert coral)
                             Text(
-                                text = "❌ Typisch: ${item.userMistake}",
+                                text = "Übungsbeispiel: ${item.userMistake}",
                                 color = BerlinTheme.coral,
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.SemiBold
                             )
 
-                            // Native reformulation (Ok green)
                             Text(
-                                text = "✅ C1 Native: ${item.nativeReformulation}",
+                                text = "Natürlichere Formulierung: ${item.nativeReformulation}",
                                 color = BerlinTheme.ok,
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold

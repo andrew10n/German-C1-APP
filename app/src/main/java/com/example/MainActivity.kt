@@ -215,7 +215,8 @@ fun MainAppShell(viewModel: C1ViewModel, programmeViewModel: ProgrammeViewModel)
                     onLegacyPractice = { viewModel.navigateTo(Screen.LegacyHome) },
                     onOpenListeningLab = { viewModel.navigateTo(Screen.ListeningLab) },
                     onOpenSpeakingLab = { viewModel.navigateTo(Screen.SpeakingLab) },
-                    onOpenConversation = { viewModel.navigateTo(Screen.ConversationSimulator) }
+                    onOpenConversation = { viewModel.navigateTo(Screen.ConversationSimulator) },
+                    onOpenMediation = { viewModel.navigateTo(Screen.Mediation) }
                 )
                 is Screen.LegacyHome -> {
                     BackHandler { viewModel.navigateBack() }

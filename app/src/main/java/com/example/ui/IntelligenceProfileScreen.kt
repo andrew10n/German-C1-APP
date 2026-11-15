@@ -50,14 +50,14 @@ fun IntelligenceProfileScreen(
                 title = {
                     Column {
                         Text(
-                            text = "C1 Intelligenz-Profil",
+                            text = "C1-Übungsprofil",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = BarlowCondensedFontFamily,
                             color = BerlinTheme.ink
                         )
                         Text(
-                            text = "9 Dimensionen & Dual-Benchmark",
+                            text = "Lernhinweise, keine Zertifikatsprognose",
                             fontSize = 12.sp,
                             color = BerlinTheme.ink2
                         )
@@ -106,7 +106,7 @@ fun IntelligenceProfileScreen(
                         verticalArrangement = Arrangement.spacedBy(14.dp)
                     ) {
                         Text(
-                            text = "DUAL-BENCHMARK: FUNKTIONAL VS. ZERTIFIKAT",
+                            text = "DEIN ÜBUNGSSTAND",
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = BarlowCondensedFontFamily,
@@ -114,7 +114,7 @@ fun IntelligenceProfileScreen(
                         )
 
                         Text(
-                            text = "Echtes C1 bedeutet souveräne Handlungsfähigkeit in fordernden Lebens- und Arbeitssituationen – nicht bloßes Beherrschen von Prüfungsmechaniken.",
+                            text = "Dieses Profil ordnet deine Übungen. Es kombiniert die lokale Einstufung mit Lernaktivität, kann aber weder Hörverstehen mit authentischem Material noch Aussprache, Interaktion oder Prüfungsleistung verlässlich bewerten.",
                             fontSize = 12.sp,
                             color = BerlinTheme.ink2,
                             lineHeight = 17.sp
@@ -125,22 +125,21 @@ fun IntelligenceProfileScreen(
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
                             BenchmarkScoreBox(
-                                title = "Funktionales C1",
+                                title = "Übungs-Einstufung",
                                 score = "${dualBenchmark.functionalC1Score}/100",
-                                subtitle = "Reale Praxis-Tauglichkeit",
+                                subtitle = "heuristisch · keine Kompetenznote",
                                 color = BerlinTheme.accent,
                                 modifier = Modifier.weight(1f)
                             )
                             BenchmarkScoreBox(
-                                title = "Prüfungs-C1",
-                                score = "${dualBenchmark.examC1Score}%",
-                                subtitle = "Goethe / TestDaF / telc",
+                                title = "Objektive Quizübung",
+                                score = "${dualBenchmark.examC1Score}/100",
+                                subtitle = "keine Prüfungsprognose",
                                 color = BerlinTheme.sky,
                                 modifier = Modifier.weight(1f)
                             )
                         }
 
-                        // Exam Specific Breakdown
                         Surface(
                             shape = RoundedCornerShape(16.dp),
                             color = BerlinTheme.surface2,
@@ -149,15 +148,18 @@ fun IntelligenceProfileScreen(
                         ) {
                             Column(modifier = Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                 Text(
-                                    text = "ZERTIFIKATS-REIFE IM DETAIL:",
+                                    text = "FÜR EINE C1-PRÜFUNG FEHLT NOCH:",
                                     fontSize = 11.sp,
                                     fontWeight = FontWeight.Bold,
                                     fontFamily = BarlowCondensedFontFamily,
                                     color = BerlinTheme.ink2
                                 )
-                                ExamBar(name = "Goethe-Zertifikat C1", percent = dualBenchmark.goetheC1Readiness)
-                                ExamBar(name = "TestDaF (TDN 5 Niveau)", percent = dualBenchmark.testDafReadiness)
-                                ExamBar(name = "telc Deutsch C1 Hochschule", percent = dualBenchmark.telcC1Readiness)
+                                Text(
+                                    text = "Wiederholte Aufgaben mit authentischem Audio, eine fachkundige Bewertung von Schreiben und Sprechen sowie eine offizielle Prüfung oder gleichwertige externe Beurteilung.",
+                                    fontSize = 12.sp,
+                                    color = BerlinTheme.ink2,
+                                    lineHeight = 17.sp
+                                )
                             }
                         }
                     }

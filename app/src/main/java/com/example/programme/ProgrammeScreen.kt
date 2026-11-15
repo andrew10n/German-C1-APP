@@ -111,7 +111,8 @@ fun ProgrammeScreen(
     onLegacyPractice: () -> Unit,
     onOpenListeningLab: () -> Unit = {},
     onOpenSpeakingLab: () -> Unit = {},
-    onOpenConversation: () -> Unit = {}
+    onOpenConversation: () -> Unit = {},
+    onOpenMediation: () -> Unit = {}
 ) {
     val preferences by viewModel.preferences.collectAsStateWithLifecycle()
     val attempts by viewModel.attempts.collectAsStateWithLifecycle()
@@ -235,7 +236,11 @@ fun ProgrammeScreen(
                         onResolveChallenge = viewModel::resolveFeedbackChallenge,
                         onRecordAssessment = viewModel::recordAssessmentResponse,
                         bookmarkedUnitIds = bookmarkedUnitIds,
-                        onToggleBookmark = viewModel::toggleBookmark
+                        onToggleBookmark = viewModel::toggleBookmark,
+                        onOpenListeningLab = onOpenListeningLab,
+                        onOpenSpeakingLab = onOpenSpeakingLab,
+                        onOpenConversation = onOpenConversation,
+                        onOpenMediation = onOpenMediation
                     )
                 } else {
                     UnitDetail(
@@ -441,7 +446,11 @@ private fun ProgrammeDashboard(
         onResolveChallenge: (String, FeedbackChallengeStatus, String?) -> Unit,
         onRecordAssessment: (DeliveredAssessmentTask, String) -> Unit,
         bookmarkedUnitIds: Set<String>,
-        onToggleBookmark: (String) -> Unit
+        onToggleBookmark: (String) -> Unit,
+        onOpenListeningLab: () -> Unit,
+        onOpenSpeakingLab: () -> Unit,
+        onOpenConversation: () -> Unit,
+        onOpenMediation: () -> Unit
 ) {
     val next = if (historyAvailable) AdaptiveDiagnosticRoute.nextUnit(attempts, now) else null
     val authored = CurriculumCatalogue.coreUnits
@@ -548,6 +557,39 @@ private fun ProgrammeDashboard(
                         }
                     }
                 }
+            }
+        }
+        item {
+            ProgrammeSection("C1-Kernfertigkeiten", preferences.compact) {
+                Text(
+                    "Trainiere jede Fertigkeit praktisch. Aufnahmen, Notizen und Texte bleiben auf diesem Gerät; die App vergibt dabei keine C1- oder Prüfungsnote.",
+                    style = MaterialTheme.typography.bodySmall
+                )
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    OutlinedButton(
+                        onClick = onOpenListeningLab,
+                        modifier = Modifier.testTag("dashboard_skill_listening")
+                    ) { Text("Hören") }
+                    OutlinedButton(
+                        onClick = onOpenSpeakingLab,
+                        modifier = Modifier.testTag("dashboard_skill_speaking")
+                    ) { Text("Sprechen") }
+                    OutlinedButton(
+                        onClick = onOpenMediation,
+                        modifier = Modifier.testTag("dashboard_skill_mediation")
+                    ) { Text("Sprachmittlung") }
+                    OutlinedButton(
+                        onClick = onOpenConversation,
+                        modifier = Modifier.testTag("dashboard_skill_interaction")
+                    ) { Text("Interaktion") }
+                }
+                Text(
+                    "Für Schreiben wähle im Tagesplan eine Schreibaufgabe oder starte unten eine zeitgebundene Textübung.",
+                    style = MaterialTheme.typography.bodySmall
+                )
             }
         }
         item {
