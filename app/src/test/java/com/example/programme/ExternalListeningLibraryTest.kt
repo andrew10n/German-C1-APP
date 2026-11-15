@@ -7,7 +7,7 @@ import org.junit.Test
 class ExternalListeningLibraryTest {
     @Test
     fun publicSourcesAreHttpsLinkOnlyAndHaveActionableListeningTasks() {
-        assertEquals(4, ExternalListeningLibrary.sources.size)
+        assertEquals(6, ExternalListeningLibrary.sources.size)
         assertEquals(
             ExternalListeningLibrary.sources.size,
             ExternalListeningLibrary.sources.map { it.id }.toSet().size

@@ -13,6 +13,18 @@ data class ExternalListeningSource(
 object ExternalListeningLibrary {
     val sources = listOf(
         ExternalListeningSource(
+            id = "easy-german-youtube",
+            title = "Easy German · YouTube-Straßeninterviews",
+            url = "https://www.youtube.com/@EasyGerman",
+            formats = "Straßeninterviews und Gespräche mit deutschen und englischen Untertiteln",
+            focus = "Alltagssprache, spontane Sprecherwechsel, unterschiedliche Stimmen und regionale Alltagsthemen; wähle ausdrücklich die fortgeschrittenen Videos.",
+            transcriptNote = "Untertitel und verfügbare Transkripte gehören zum Anbieter. Nicht herunterladen oder in die App kopieren.",
+            practiceTasks = listOf(
+                "Wähle ein fortgeschrittenes Straßeninterview und höre zuerst 90 Sekunden ohne Untertitel. Notiere Thema, zwei Haltungen und eine offene Stelle.",
+                "Sieh denselben Abschnitt erneut mit deutschen Untertiteln. Korrigiere nur das, was der Beitrag tatsächlich zeigt oder sagt, und notiere zwei Gesprächsmarker."
+            )
+        ),
+        ExternalListeningSource(
             id = "easy-german",
             title = "Easy German · Podcast-Folgen",
             url = "https://www.easygerman.org/podcast/episodes",
@@ -46,6 +58,18 @@ object ExternalListeningLibrary {
             practiceTasks = listOf(
                 "Fassen Sie die Positionen von zwei Sprechenden getrennt zusammen.",
                 "Halten Sie eine offene Frage, eine Einschränkung und eine implizite Schlussfolgerung fest."
+            )
+        ),
+        ExternalListeningSource(
+            id = "tagesschau-youtube",
+            title = "tagesschau · YouTube",
+            url = "https://www.youtube.com/@tagesschau",
+            formats = "Nachrichten, Reportagen und Interviews des öffentlich-rechtlichen Nachrichtenangebots",
+            focus = "Formelles Standarddeutsch, Nachrichtensprache, Tempo und verdichtete Sachinformationen.",
+            transcriptNote = "Verfügbarkeit einzelner Videos und Rechte liegen beim Anbieter; die App speichert keine Medien oder Untertitel.",
+            practiceTasks = listOf(
+                "Wähle einen Beitrag von zwei bis fünf Minuten und notiere die Hauptaussage, zwei belegte Fakten und eine im Beitrag genannte Einschränkung.",
+                "Höre oder sieh den Abschnitt erneut. Trenne klar zwischen Bericht, Zitat einer Quelle und deiner eigenen Schlussfolgerung."
             )
         ),
         ExternalListeningSource(

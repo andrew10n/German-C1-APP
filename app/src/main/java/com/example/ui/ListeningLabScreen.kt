@@ -62,14 +62,14 @@ fun ListeningLabScreen(
                 title = {
                     Column {
                         Text(
-                            text = "Hör-Intelligenz Labor",
+                            text = "Hörpraxis-Labor",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = BarlowCondensedFontFamily,
                             color = BerlinTheme.ink
                         )
                         Text(
-                            text = "Schnellsprech & regionale Reduktionen",
+                            text = "Originalquellen, eigene Aufnahmen & Übungsdialoge",
                             fontSize = 12.sp,
                             color = BerlinTheme.ink2
                         )
@@ -124,14 +124,14 @@ fun ListeningLabScreen(
                                 .padding(18.dp)
                         ) {
                             Text(
-                                text = "AUTHENTISCHES DEUTSCH LABOR",
+                                text = "DEUTSCHE HÖRPRAXIS",
                                 color = BerlinTheme.onHero,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = BarlowCondensedFontFamily,
                                 fontSize = 18.sp
                             )
                             Text(
-                                text = "Keine sauberen Lehrbuch-Monologe. Natürlicher Redefluss & Dialekte.",
+                                text = "Originalquellen und eigene Aufnahmen · TTS-Dialoge klar als synthetisch markiert.",
                                 color = BerlinTheme.onHero2,
                                 fontSize = 12.sp
                             )
@@ -150,6 +150,23 @@ fun ListeningLabScreen(
 
             item {
                 ExternalListeningSourcesSection()
+            }
+
+            item {
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    color = BerlinTheme.surface2,
+                    border = BorderStroke(1.dp, BerlinTheme.line)
+                ) {
+                    Text(
+                        text = "Die folgenden eingebauten Dialoge sind originale Übungsskripte und werden über die Sprachfunktion des Geräts wiedergegeben. Sie trainieren Strategie und Wortschatz, sind aber keine Aufnahme von Muttersprachlern und kein Nachweis für Hörverstehen. Für echte Stimmen nutze oben die Originalquellen, deine Buchaufnahmen oder künftig freigegebene Studioaufnahmen.",
+                        modifier = Modifier.padding(14.dp),
+                        fontSize = 12.sp,
+                        color = BerlinTheme.ink2,
+                        lineHeight = 17.sp
+                    )
+                }
             }
 
             // Scenario Selector Row
@@ -303,7 +320,7 @@ fun ListeningLabScreen(
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(
-                                    text = if (isPlaying) "Wiedergabe stoppen" else "Blind anhören (${speed}x)",
+                                    text = if (isPlaying) "Wiedergabe stoppen" else "Synthetischen Übungsdialog anhören (${speed}x)",
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 16.sp
                                 )
@@ -443,7 +460,7 @@ fun ListeningLabScreen(
 
                         if (!transcriptRevealed) {
                             Text(
-                                text = "Hören Sie zuerst blind und beantworten Sie die Inferenz-Fragen oben, um Ihr echtes C1-Hörverstehen zu schärfen.",
+                                text = "Hören Sie zuerst blind und beantworten Sie die Inferenz-Fragen oben. Das trainiert Strategien, misst aber kein authentisches Hörverstehen.",
                                 fontSize = 13.sp,
                                 color = BerlinTheme.ink2
                             )
