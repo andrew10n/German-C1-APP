@@ -35,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.MainApplication
@@ -54,17 +55,20 @@ fun BookAudioPracticeSection(
     onPlaybackStart: () -> Unit,
     modifier: Modifier = Modifier,
     language: ProgrammeLanguage = ProgrammeLanguage.DE,
+    selectionKey: String? = null,
     onSelectionChanged: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val selectionRepository = remember(context) {
         (context.applicationContext as MainApplication).bookAudioSelectionRepository
     }
-    val initialSelection = remember(selectionRepository) { selectionRepository.load() }
-    var selectedUriString by remember {
+    val initialSelection = remember(selectionRepository, selectionKey) {
+        selectionRepository.load(selectionKey)
+    }
+    var selectedUriString by remember(selectionRepository, selectionKey) {
         mutableStateOf(initialSelection.uri)
     }
-    var selectedName by remember {
+    var selectedName by remember(selectionRepository, selectionKey) {
         mutableStateOf(initialSelection.displayName)
     }
     var player by remember { mutableStateOf<MediaPlayer?>(null) }
@@ -89,7 +93,7 @@ fun BookAudioPracticeSection(
         if (uri != null) {
             try {
                 val name = displayName(context, uri)
-                selectionRepository.select(uri, name)
+                selectionRepository.select(uri, name, selectionKey)
                 selectedUriString = uri.toString()
                 selectedName = name
                 error = null
@@ -222,18 +226,29 @@ fun BookAudioPracticeSection(
     }
 
     Card(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth().testTag(
+            selectionKey?.let { "lesson_book_audio_$it" } ?: "book_audio_practice"
+        ),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Text(language.text("Deine Buchaufnahmen", "Your book audio"), fontWeight = FontWeight.SemiBold)
-            Text(language.text(
-                "Wähle eine Aufnahme aus deinem Gerät oder einem Cloud-Speicher. Die Datei bleibt dort und wird nicht in die App kopiert.",
-                "Choose a recording from your device or cloud storage. It stays there and is not copied into the app."
-            ))
+            Text(
+                if (selectionKey == null) language.text("Deine Buchaufnahmen", "Your book audio")
+                else language.text("Passendes Audio zu dieser Lektion", "Audio for this lesson"),
+                fontWeight = FontWeight.SemiBold
+            )
+            Text(
+                if (selectionKey == null) language.text(
+                    "Wähle eine Aufnahme aus deinem Gerät oder einem Cloud-Speicher. Die Datei bleibt dort und wird nicht in die App kopiert.",
+                    "Choose a recording from your device or cloud storage. It stays there and is not copied into the app."
+                ) else language.text(
+                    "Wähle die passende Aufnahme aus deinen Kursdateien. Sie wird direkt hier abgespielt, bleibt am ursprünglichen Speicherort und nicht in der App.",
+                    "Choose the matching recording from your course files. It plays here, stays in its original location, and is not copied into the app."
+                )
+            )
             Button(onClick = { audioPicker.launch(arrayOf("audio/*")) }) {
                 Text(if (selectedUri == null) language.text("Audio auswählen", "Choose audio")
                 else language.text("Andere Aufnahme auswählen", "Choose another recording"))

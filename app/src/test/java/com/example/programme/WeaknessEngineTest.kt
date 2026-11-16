@@ -64,6 +64,25 @@ class WeaknessEngineTest {
         assertEquals(ContextTrack.COACHING, summary.contexts.single())
     }
 
+    @Test
+    fun futureEvidenceDoesNotEnterThePracticeProfile() {
+        val future = experience("future", 20, ContextTrack.GENERAL)
+
+        assertTrue(WeaknessEngine.profile(emptyList(), listOf(future), now = 10).summaries.isEmpty())
+    }
+
+    @Test
+    fun oldSignalsLosePriorityAndConfidenceAsTheyAge() {
+        val old = experience("old", 1, ContextTrack.GENERAL)
+        val recent = experience("recent", 100, ContextTrack.SOCIAL)
+
+        val oldProfile = WeaknessEngine.profile(emptyList(), listOf(old), now = 1 + 180 * 86_400_000L)
+        val recentProfile = WeaknessEngine.profile(emptyList(), listOf(recent), now = 101)
+
+        assertTrue(oldProfile.top().single().priority < recentProfile.top().single().priority)
+        assertEquals(WeaknessConfidence.LOW, oldProfile.top().single().confidence)
+    }
+
     private fun experience(id: String, createdAt: Long, context: ContextTrack) =
         RealLifeExperience(
             id = id,

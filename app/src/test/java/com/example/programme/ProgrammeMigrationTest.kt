@@ -239,6 +239,8 @@ class ProgrammeMigrationTest {
             unitId = unit.id,
             taskId = "writing",
             response = "Ich bleibe, weil ich gehe morgen.",
+            source = EvidenceSource.SELF_REFLECTION,
+            assisted = false,
             errors = emptyList()
         )
         val claim = AdaptiveLearning.recommend(unit, listOf(attempt), attempt.timestamp + 1)

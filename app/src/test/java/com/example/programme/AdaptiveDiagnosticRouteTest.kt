@@ -117,6 +117,20 @@ class AdaptiveDiagnosticRouteTest {
         )
     }
 
+    @Test
+    fun completedLessonReviewReschedulesFromTheSavedRetrievalResponse() {
+        val quiz = quiz(correct = true)
+        val firstDue = AdaptiveDiagnosticRoute.nextReview(listOf(quiz), unit.id, 2_000L)!!
+        val review = production(
+            "retrieval",
+            firstDue,
+            ContextTrack.GENERAL,
+            "Ich fasse die Entscheidung zusammen."
+        )
+
+        assertTrue(AdaptiveDiagnosticRoute.nextReview(listOf(quiz, review), unit.id, firstDue)!! > firstDue)
+    }
+
     private fun quiz(correct: Boolean) = Attempt(
         id = "quiz-$correct",
         unitId = unit.id,

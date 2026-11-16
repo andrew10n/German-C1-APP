@@ -12,9 +12,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.MenuBook
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Insights
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -30,6 +30,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -50,10 +51,9 @@ internal fun LearnerBottomNav(
     onSelect: (String) -> Unit
 ) {
     val items = listOf(
-        Triple("today", language.text("Heute", "Today"), Icons.Default.Home),
-        Triple("learn", language.text("Lernen", "Learn"), Icons.AutoMirrored.Filled.MenuBook),
+        Triple("lessons", language.text("Lernweg", "Lessons"), Icons.AutoMirrored.Filled.MenuBook),
         Triple("progress", language.text("Fortschritt", "Progress"), Icons.Default.Insights),
-        Triple("profile", language.text("Profil", "Profile"), Icons.Default.Person)
+        Triple("settings", language.text("Einstellungen", "Settings"), Icons.Default.Settings)
     )
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
@@ -76,22 +76,34 @@ internal fun LearnerBottomNav(
 internal fun LearnArea(
     modifier: Modifier = Modifier,
     language: ProgrammeLanguage,
-    onOpen: (CurriculumUnit, String) -> Unit,
-    onOpenListening: () -> Unit,
-    onOpenSpeaking: () -> Unit,
-    onOpenConversation: () -> Unit,
-    onOpenMediation: () -> Unit
+    attempts: List<Attempt>,
+    now: Long,
+    historyAvailable: Boolean,
+    adaptiveDecision: AdaptiveControlDecision,
+    weaknessProfile: WeaknessProfile,
+    streakState: DailyStreakState,
+    dailyMinutes: Int,
+    onOpen: (CurriculumUnit, String) -> Unit
 ) {
-    val authoredUnits = CurriculumCatalogue.units.filter { it.content != null }
-    var browsing by rememberSaveable { mutableStateOf(false) }
+    val authoredUnits = CurriculumCatalogue.coreUnits.filter { it.content != null }
+    val nextUnit = adaptiveDecision.recommendedUnitId
+        ?.let { recommendedId -> authoredUnits.firstOrNull { it.id == recommendedId } }
+    val sessionTask = adaptiveDecision.primaryTaskId ?: "retrieval"
+    val hasStarted = nextUnit != null && attempts.any {
+        it.unitId == nextUnit.id && it.timestamp <= now
+    }
     var searchOpen by rememberSaveable { mutableStateOf(false) }
     var searchQuery by rememberSaveable { mutableStateOf("") }
-    var expandedStage by rememberSaveable { mutableStateOf<Int?>(null) }
+    var expandedStage by rememberSaveable(nextUnit?.stage) { mutableStateOf(nextUnit?.stage) }
+    fun matchesQuery(unit: CurriculumUnit, query: String): Boolean {
+        val term = query.trim()
+        return term.isBlank() ||
+            unit.title.contains(term, ignoreCase = true) ||
+            unit.objectives.any { it.contains(term, ignoreCase = true) } ||
+            unit.contexts.values.any { it.contains(term, ignoreCase = true) }
+    }
     val matchingUnits = authoredUnits.filter { unit ->
-        searchQuery.isBlank() ||
-            unit.title.contains(searchQuery.trim(), ignoreCase = true) ||
-            unit.objectives.any { it.contains(searchQuery.trim(), ignoreCase = true) } ||
-            unit.contexts.values.any { it.contains(searchQuery.trim(), ignoreCase = true) }
+        matchesQuery(unit, searchQuery)
     }
 
     LazyColumn(
@@ -101,30 +113,62 @@ internal fun LearnArea(
     ) {
         item {
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text(language.text("LERNEN", "LEARN"), style = MaterialTheme.typography.labelMedium, color = BerlinTheme.accentInk)
-                Text(language.text("Wähle eine Lernfläche.", "Choose a practice area."), style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
+                Text(language.text("DEIN KURSWEG", "YOUR COURSE PATH"), style = MaterialTheme.typography.labelMedium, color = BerlinTheme.accentInk)
+                Text(language.text("Eine Lektion nach der anderen.", "One lesson at a time."), style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
                 Text(language.text(
-                    "Kurze, konkrete Übungen – der Rest bleibt im Hintergrund.",
-                    "Short, focused practice. Everything else stays out of the way."
+                    "Dein nächster Schritt wird aus deinem Lernverlauf gewählt. Du kannst direkt weitermachen oder den Kursweg ansehen.",
+                    "Your next step is chosen from your practice history. Continue directly or explore the course map."
                 ), style = MaterialTheme.typography.bodyMedium)
             }
         }
         item {
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
-                LearnCard("H", language.text("Hören", "Listening"), language.text("Signale", "Signals"), Modifier.weight(1f), onOpenListening)
-                LearnCard("S", language.text("Sprechen", "Speaking"), language.text("Klarheit", "Clarity"), Modifier.weight(1f), onOpenSpeaking)
-            }
-        }
-        item {
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
-                LearnCard(
-                    "W",
-                    language.text("Schreiben / Mediation", "Writing / mediation"),
-                    language.text("adressatengerecht erklären", "reframe for an audience"),
-                    Modifier.weight(1f),
-                    onOpenMediation
-                )
-                LearnCard("I", language.text("Interaktion", "Interaction"), language.text("Reagieren", "Respond"), Modifier.weight(1f), onOpenConversation)
+            Card(
+                modifier = Modifier.fillMaxWidth().testTag("lesson_roadmap_recommendation"),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                shape = RoundedCornerShape(24.dp)
+            ) {
+                Column(
+                    modifier = Modifier.padding(20.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+                        Text(language.text("HEUTE · DEIN NÄCHSTER SCHRITT", "TODAY · YOUR NEXT STEP"),
+                            style = MaterialTheme.typography.labelMedium, color = BerlinTheme.accentInk)
+                        Text(language.text("${streakState.currentStreak} Tage Serie", "${streakState.currentStreak}-day streak"),
+                            style = MaterialTheme.typography.labelMedium)
+                    }
+                    Text(
+                        nextUnit?.title ?: language.text("Kursweg abgeschlossen", "Course path complete"),
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        if (historyAvailable) adaptiveExplanation(adaptiveDecision, weaknessProfile, language)
+                        else language.text(
+                            "Dein adaptiver Lernweg startet, sobald dein lokaler Lernverlauf geladen ist.",
+                            "Your adaptive path starts once your local practice history is ready."
+                        ),
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    Text(
+                        language.text(
+                            "${dailyMinutes} Min. Tagesziel · vorgeschlagene Übung: ${roadmapTaskLabel(sessionTask, language)}",
+                            "${dailyMinutes}-minute daily goal · suggested practice: ${roadmapTaskLabel(sessionTask, language)}"
+                        ),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    nextUnit?.let { unit ->
+                        Button(
+                            onClick = { onOpen(unit, sessionTask) },
+                            enabled = historyAvailable,
+                            modifier = Modifier.fillMaxWidth().testTag("lesson_roadmap_continue")
+                        ) {
+                            Text(if (hasStarted) language.text("Lektion fortsetzen", "Continue lesson")
+                            else language.text("Adaptive Lektion starten", "Start adaptive lesson"))
+                        }
+                    }
+                }
             }
         }
         item {
@@ -133,118 +177,153 @@ internal fun LearnArea(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
             ) {
-                Text(language.text("Kursweg", "Course path"), style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
-                TextButton(onClick = { browsing = !browsing }) {
-                    Text(
-                        if (browsing) language.text("Schließen", "Close")
-                        else language.text("Durchsuchen", "Browse")
-                    )
+                Text(language.text("Kurskarte", "Course map"),
+                    style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+                TextButton(onClick = { searchOpen = !searchOpen }) {
+                    Text(if (searchOpen) language.text("Suche schließen", "Hide search")
+                    else language.text("Lektionen suchen", "Search lessons"))
                 }
             }
         }
-        if (browsing) {
+        if (searchOpen) {
             item {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
-                ) {
-                    TextButton(onClick = { searchOpen = !searchOpen }) {
-                        Text(if (searchOpen) language.text("Suche schließen", "Hide search")
-                        else language.text("Einheiten suchen", "Search units"))
-                    }
-                }
-                if (searchOpen) {
-                    OutlinedTextField(
-                        value = searchQuery,
-                        onValueChange = { searchQuery = it },
-                        modifier = Modifier.fillMaxWidth().testTag("learn_course_search"),
-                        label = { Text(language.text("Titel, Ziel oder Kontext", "Title, goal or context")) },
-                        singleLine = true
-                    )
-                }
+                OutlinedTextField(
+                    value = searchQuery,
+                    onValueChange = { query ->
+                        searchQuery = query
+                        expandedStage = if (query.isBlank()) nextUnit?.stage
+                        else authoredUnits.firstOrNull { matchesQuery(it, query) }?.stage ?: expandedStage
+                    },
+                    modifier = Modifier.fillMaxWidth().testTag("learn_course_search"),
+                    label = { Text(language.text("Titel, Ziel oder Kontext", "Title, goal or context")) },
+                    singleLine = true
+                )
             }
+        }
+        if (searchQuery.isBlank()) {
             CurriculumCatalogue.stages.forEachIndexed { stage, stageTitle ->
                 val stageUnits = matchingUnits.filter { it.stage == stage }
                 if (stageUnits.isNotEmpty()) {
+                    val stageCompleted = stageUnits.count { unit ->
+                        AdaptiveDiagnosticRoute.isCheckpointComplete(unit, attempts, now)
+                    }
                     item(key = "learn-stage-$stage") {
                         Card(
                             modifier = Modifier.fillMaxWidth().clickable {
                                 expandedStage = if (expandedStage == stage) null else stage
                             },
                             colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceVariant
+                                containerColor = if (stage == nextUnit?.stage) MaterialTheme.colorScheme.secondaryContainer
+                                else MaterialTheme.colorScheme.surfaceVariant
                             )
                         ) {
-                            Row(
+                            Column(
                                 modifier = Modifier.fillMaxWidth().padding(16.dp),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+                                verticalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
-                                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                    Text(
-                                        language.text("STUFE $stage", "STAGE $stage"),
-                                        style = MaterialTheme.typography.labelSmall,
-                                        color = BerlinTheme.accentInk
-                                    )
-                                    Text(localizedStageTitle(stage, language, stageTitle), fontWeight = FontWeight.Bold)
-                                    Text(
-                                        language.text(
-                                            "${stageUnits.size} Einheiten",
-                                            "${stageUnits.size} units"
-                                        ),
-                                        style = MaterialTheme.typography.bodySmall
-                                    )
-                                    if (stage == 0) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+                                ) {
+                                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                        Text(language.text("STUFE $stage", "STAGE $stage"),
+                                            style = MaterialTheme.typography.labelSmall, color = BerlinTheme.accentInk)
+                                        Text(localizedStageTitle(stage, language, stageTitle), fontWeight = FontWeight.Bold)
                                         Text(
-                                            language.text(
-                                                "Optionale Orientierung · kein Zugangsschritt",
-                                                "Optional orientation · not an access step"
-                                            ),
-                                            style = MaterialTheme.typography.bodySmall,
-                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                            language.text("$stageCompleted / ${stageUnits.size} Lektionen", "$stageCompleted / ${stageUnits.size} lessons"),
+                                            style = MaterialTheme.typography.bodySmall
                                         )
                                     }
+                                    Text(if (expandedStage == stage) "−" else "+", style = MaterialTheme.typography.titleLarge)
                                 }
-                                Text(if (expandedStage == stage) "−" else "+", style = MaterialTheme.typography.titleLarge)
+                                LinearProgressIndicator(
+                                    progress = { if (stageUnits.isEmpty()) 0f else stageCompleted.toFloat() / stageUnits.size },
+                                    modifier = Modifier.fillMaxWidth(),
+                                    color = BerlinTheme.accent,
+                                    trackColor = BerlinTheme.line
+                                )
                             }
                         }
                     }
-                    if (expandedStage == stage || searchQuery.isNotBlank()) {
+                    if (expandedStage == stage) {
                         items(stageUnits, key = { it.id }) { unit ->
+                            val complete = AdaptiveDiagnosticRoute.isCheckpointComplete(unit, attempts, now)
                             Card(
-                                modifier = Modifier.fillMaxWidth().clickable { onOpen(unit, "retrieval") },
+                                modifier = Modifier.fillMaxWidth()
+                                    .clickable { onOpen(unit, sessionTask) }
+                                    .testTag("course_roadmap_unit_${unit.id}"),
                                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
                             ) {
-                                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                    Text(unit.title, fontWeight = FontWeight.Bold)
-                                    Text(unit.objectives.firstOrNull().orEmpty(), style = MaterialTheme.typography.bodySmall)
+                                Row(
+                                    modifier = Modifier.fillMaxWidth().padding(16.dp),
+                                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+                                ) {
+                                    Text(if (complete) "✓" else "○", color = BerlinTheme.accentInk,
+                                        style = MaterialTheme.typography.titleMedium)
+                                    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                                        Text(unit.title, fontWeight = FontWeight.Bold)
+                                        if (unit.id == nextUnit?.id) {
+                                            Text(language.text("Nächste adaptive Lektion", "Next adaptive lesson"),
+                                                style = MaterialTheme.typography.labelSmall, color = BerlinTheme.accentInk)
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-            if (matchingUnits.isEmpty()) {
-                item {
-                    Text(
-                        language.text("Keine passenden Einheiten gefunden.", "No matching units found."),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+        } else {
+            items(matchingUnits, key = { it.id }) { unit ->
+                val complete = AdaptiveDiagnosticRoute.isCheckpointComplete(unit, attempts, now)
+                Card(
+                    modifier = Modifier.fillMaxWidth()
+                        .clickable { onOpen(unit, sessionTask) }
+                        .testTag("course_roadmap_unit_${unit.id}"),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+                    ) {
+                        Text(if (complete) "✓" else "○", color = BerlinTheme.accentInk,
+                            style = MaterialTheme.typography.titleMedium)
+                        Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                            Text(unit.title, fontWeight = FontWeight.Bold)
+                            Text(localizedStageTitle(unit.stage, language, CurriculumCatalogue.stages[unit.stage]),
+                                style = MaterialTheme.typography.bodySmall)
+                            if (unit.id == nextUnit?.id) {
+                                Text(language.text("Nächste adaptive Lektion", "Next adaptive lesson"),
+                                    style = MaterialTheme.typography.labelSmall, color = BerlinTheme.accentInk)
+                            }
+                        }
+                    }
                 }
+            }
+        }
+        if (matchingUnits.isEmpty()) {
+            item {
+                Text(
+                    language.text("Keine passenden Lektionen gefunden.", "No matching lessons found."),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         }
     }
 }
 
-@Composable
-private fun LearnCard(symbol: String, title: String, subtitle: String, modifier: Modifier, onClick: () -> Unit) {
-    Card(modifier = modifier.clickable(onClick = onClick), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(symbol, style = MaterialTheme.typography.headlineSmall, color = BerlinTheme.accentInk)
-            Text(title, fontWeight = FontWeight.Bold)
-            Text(subtitle, style = MaterialTheme.typography.bodySmall)
-        }
-    }
+private fun roadmapTaskLabel(task: String, language: ProgrammeLanguage): String = when (task) {
+    "listening" -> language.text("Hörverstehen", "listening")
+    "quiz" -> language.text("Verständnischeck", "comprehension check")
+    "controlled" -> language.text("Sprachmittel", "language patterns")
+    "speaking" -> language.text("Sprechen", "speaking")
+    "interaction" -> language.text("Interaktion", "interaction")
+    "writing" -> language.text("Schreiben", "writing")
+    "transfer" -> language.text("Transfer", "transfer")
+    else -> language.text("Abruf", "recall")
 }
 
 @Composable
@@ -255,12 +334,27 @@ internal fun ProgressArea(
     now: Long,
     adaptiveDecision: AdaptiveControlDecision,
     weaknessProfile: WeaknessProfile,
-    streakState: DailyStreakState,
-    onOpenSettings: () -> Unit
+    streakState: DailyStreakState
 ) {
     val units = CurriculumCatalogue.units.filter { it.content != null }
     val completed = AdaptiveDiagnosticRoute.completedAuthoredUnits(attempts, now)
     val total = units.size
+    var showMoreDetails by rememberSaveable { mutableStateOf(false) }
+    var showAllMistakes by rememberSaveable { mutableStateOf(false) }
+    val skillTasks = listOf(
+        Triple("listening", language.text("Hören", "Listening"), setOf("listening")),
+        Triple("speaking", language.text("Sprechen", "Speaking"), setOf("speaking")),
+        Triple("writing", language.text("Schreiben / Mediation", "Writing / mediation"),
+            setOf("writing", "transfer", "controlled", "context-application")),
+        Triple("interaction", language.text("Interaktion", "Interaction"), setOf("interaction"))
+    )
+    val mistakes = remember(attempts) {
+        attempts.asSequence()
+            .filter { it.errors.isNotEmpty() }
+            .flatMap { attempt -> attempt.errors.asSequence().map { error -> attempt to error } }
+            .sortedByDescending { (attempt, _) -> attempt.timestamp }
+            .toList()
+    }
     val practiceCounts = mapOf(
         "listening" to attempts.count { it.taskId == "listening" },
         "speaking" to attempts.count { it.taskId == "speaking" },
@@ -283,13 +377,123 @@ internal fun ProgressArea(
         item {
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text(language.text("FORTSCHRITT", "PROGRESS"), style = MaterialTheme.typography.labelMedium, color = BerlinTheme.accentInk)
-                Text(language.text("Dein Fortschritt", "Your progress"), style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
+                Text(language.text("Fertigkeiten und Fehler", "Skills and mistakes"), style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
                 Text(language.text(
-                    "Übungsfortschritt und Kompetenznachweise bleiben getrennt.",
-                    "Practice progress and proficiency evidence are kept separate."
+                    "Deine Sterne aktualisieren sich automatisch, sobald du Lektionen abschließt.",
+                    "Your stars update automatically as you complete lesson practice."
                 ), style = MaterialTheme.typography.bodyMedium)
             }
         }
+        item {
+            ProgrammeAreaCard(language.text("Übungssterne je Fertigkeit", "Practice stars by skill")) {
+                Text(
+                    language.text(
+                        "Ein Stern steht für eine Lektion, in der du diese Fertigkeit geübt hast (höchstens fünf). Das ist Lernaktivität, keine Kompetenznote.",
+                        "Each star represents a lesson where you practised that skill (up to five). This tracks practice, not proficiency."
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                skillTasks.forEach { (id, label, tasks) ->
+                    val practicedLessons = attempts.asSequence()
+                        .filter { it.taskId in tasks }
+                        .map { it.unitId }
+                        .distinct()
+                        .count()
+                    val stars = practicedLessons.coerceAtMost(5).toInt()
+                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(label, fontWeight = FontWeight.SemiBold)
+                            Text("$stars / 5", style = MaterialTheme.typography.labelMedium,
+                                modifier = Modifier.testTag("skill_rating_$id"))
+                        }
+                        Text(
+                            buildString {
+                                repeat(5) { append(if (it < stars) "★" else "☆") }
+                            },
+                            style = MaterialTheme.typography.titleLarge,
+                            color = BerlinTheme.accentInk,
+                            modifier = Modifier.testTag("skill_stars_$id")
+                        )
+                        Text(
+                            language.text("$practicedLessons Lektionen geübt", "$practicedLessons lessons practised"),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+        }
+        item {
+            ProgrammeAreaCard(language.text("Fehlerprotokoll", "Mistake log")) {
+                Text(
+                    language.text(
+                        "Gespeicherte Quizfehler und lokale Formulierungshinweise. Automatische Hinweise können ungenau sein.",
+                        "Saved quiz errors and local writing signals. Automatic signals can be imperfect."
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                if (mistakes.isEmpty()) {
+                    Text(
+                        language.text("Noch keine gespeicherten Fehlerhinweise.", "No saved mistake signals yet."),
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.testTag("mistake_log_empty")
+                    )
+                } else {
+                    mistakes.take(if (showAllMistakes) mistakes.size else 5).forEach { (attempt, errorText) ->
+                        val unitTitle = CurriculumCatalogue.units.firstOrNull { it.id == attempt.unitId }?.title
+                            ?: attempt.unitId
+                        Card(
+                            modifier = Modifier.fillMaxWidth().testTag("mistake_log_entry"),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(12.dp),
+                                verticalArrangement = Arrangement.spacedBy(4.dp)
+                            ) {
+                                Text(
+                                    "$unitTitle · ${roadmapTaskLabel(attempt.taskId, language)}",
+                                    style = MaterialTheme.typography.labelMedium,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                                Text(errorText.substringAfter(": "), style = MaterialTheme.typography.bodySmall)
+                                if (attempt.response.isNotBlank()) {
+                                    Text(
+                                        attempt.response.take(160),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    if (mistakes.size > 5) {
+                        TextButton(onClick = { showAllMistakes = !showAllMistakes }) {
+                            Text(
+                                if (showAllMistakes) language.text("Weniger anzeigen", "Show less")
+                                else language.text("Alle ${mistakes.size} Hinweise anzeigen", "Show all ${mistakes.size} signals")
+                            )
+                        }
+                    }
+                }
+            }
+        }
+        item {
+            TextButton(
+                onClick = { showMoreDetails = !showMoreDetails },
+                modifier = Modifier.fillMaxWidth().testTag("progress_details_toggle")
+            ) {
+                Text(
+                    if (showMoreDetails) language.text("Weitere Details ausblenden", "Hide extra details")
+                    else language.text("Weitere Lernverlaufsdetails", "More learning-history details")
+                )
+            }
+        }
+        if (showMoreDetails) {
         item {
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -483,10 +687,6 @@ internal fun ProgressArea(
                 )
             }
         }
-        item {
-            OutlinedButton(onClick = onOpenSettings, modifier = Modifier.fillMaxWidth()) {
-                Text(language.text("Einstellungen und Datenschutz", "Settings and privacy"))
-            }
         }
     }
 }
@@ -518,7 +718,6 @@ internal fun ProfileArea(
     language: ProgrammeLanguage,
     onOpenSettings: () -> Unit,
     onOpenOnboarding: () -> Unit,
-    onOpenAudioPreferences: () -> Unit,
     onOpenPracticeTools: () -> Unit,
     onOpenIntelligenceProfile: () -> Unit
 ) {
@@ -530,22 +729,18 @@ internal fun ProfileArea(
     ) {
         item {
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text(language.text("PROFIL", "PROFILE"), style = MaterialTheme.typography.labelMedium, color = BerlinTheme.accentInk)
-                Text(language.text("Dein Raum", "Your space"), style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
+                Text(language.text("EINSTELLUNGEN", "SETTINGS"), style = MaterialTheme.typography.labelMedium, color = BerlinTheme.accentInk)
+                Text(language.text("Dein Lernweg, deine Einstellungen.", "Your learning path, your settings."),
+                    style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
                 Text(language.text(
-                    "Persönliche Einstellungen, Datenschutz und Lerngrenzen.",
-                    "Personal settings, privacy and learning boundaries."
+                    "Name, Sprache, Tagesziel, Design, Audio, Export und Datenschutz.",
+                    "Name, language, daily goal, theme, audio, export and privacy."
                 ), style = MaterialTheme.typography.bodyMedium)
             }
         }
         item {
             OutlinedButton(onClick = onOpenSettings, modifier = Modifier.fillMaxWidth()) {
                 Text(language.text("Einstellungen öffnen", "Open settings"))
-            }
-        }
-        item {
-            OutlinedButton(onClick = onOpenAudioPreferences, modifier = Modifier.fillMaxWidth()) {
-                Text(language.text("Audio und Hörquellen", "Audio and listening sources"))
             }
         }
         item {

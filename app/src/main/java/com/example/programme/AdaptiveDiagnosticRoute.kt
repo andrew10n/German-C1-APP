@@ -19,7 +19,7 @@ data class DiagnosticCheckpoint(
  * A completed checkpoint means practice requirements were met; it is not a proficiency rating.
  */
 object AdaptiveDiagnosticRoute {
-    private val productionTasks = setOf("retrieval", "controlled", "speaking", "interaction", "writing", "transfer")
+    private val productionTasks = setOf("speaking", "interaction", "writing", "transfer")
 
     fun evaluate(
         unit: CurriculumUnit,
@@ -113,6 +113,37 @@ object AdaptiveDiagnosticRoute {
         val latestQuiz = quizzes.maxByOrNull { it.timestamp } ?: return null
         if (latestQuiz.scores[Dimension.COMPREHENSION] != 4) {
             return plusDays(latestQuiz.timestamp, RetrievalPolicy.errorRetryDays.toLong())
+        }
+        val latestRetrieval = history
+            .filter { it.taskId == "retrieval" && it.source == EvidenceSource.SELF_REFLECTION && !it.assisted }
+            .maxByOrNull { it.timestamp }
+            ?.takeIf { it.timestamp > latestQuiz.timestamp }
+        if (latestRetrieval != null) {
+            if (AdaptiveLearning.detectResponseSignals(latestRetrieval.response, unit).isNotEmpty()) {
+                return plusDays(latestRetrieval.timestamp, RetrievalPolicy.errorRetryDays.toLong())
+            }
+            val successfulReviews = history
+                .filter {
+                    it.taskId == "retrieval" &&
+                        it.source == EvidenceSource.SELF_REFLECTION &&
+                        !it.assisted &&
+                        it.timestamp >= latestQuiz.timestamp &&
+                        AdaptiveLearning.detectResponseSignals(it.response, unit).isEmpty()
+                }
+                .map { it.timestamp / MasteryEngine.DAY_MILLIS }
+                .distinct()
+                .size
+            val successfulDays = quizzes
+                .filter { it.scores[Dimension.COMPREHENSION] == 4 }
+                .map { it.timestamp / MasteryEngine.DAY_MILLIS }
+                .distinct()
+                .size
+            val intervalIndex = (successfulDays + successfulReviews - 1)
+                .coerceIn(0, RetrievalPolicy.intervalsDays.lastIndex)
+            return plusDays(
+                latestRetrieval.timestamp,
+                RetrievalPolicy.intervalsDays[intervalIndex].toLong()
+            )
         }
         val successfulDays = quizzes
             .filter { it.scores[Dimension.COMPREHENSION] == 4 }

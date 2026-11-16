@@ -157,7 +157,7 @@ class LearnerDiagnosticEngineTest {
         val decision = AdaptiveControlEngine.decide(listOf(quizFailure), emptyList(), 2)
 
         assertEquals("quiz", decision.primaryTaskId)
-        assertTrue(decision.reason.contains("Fragiles Signal"))
+        assertEquals(AdaptiveReasonCode.QUIZ_REPAIR, decision.reasonCode)
     }
 
     private fun experience(id: String, createdAt: Long) = RealLifeExperience(

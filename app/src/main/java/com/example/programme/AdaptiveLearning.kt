@@ -34,7 +34,8 @@ data class ErrorRecyclingPlan(
 
 /** Conservative, local pattern checks. These are suggestions for revision, never proficiency scores. */
 object AdaptiveLearning {
-    private val PRODUCTION_TASKS = setOf("retrieval", "controlled", "speaking", "interaction", "writing", "transfer")
+    private val RESPONSE_TASKS = setOf("retrieval", "controlled", "speaking", "interaction", "writing", "transfer")
+    private val CHALLENGE_PRODUCTION_TASKS = setOf("speaking", "interaction", "writing", "transfer")
     fun detectResponseSignals(response: String, unit: CurriculumUnit): List<LearnerError> =
         detectErrors(response, unit)
 
@@ -47,14 +48,32 @@ object AdaptiveLearning {
         val recent = attempts.filter {
             it.unitId == unit.id && it.timestamp <= now && it.response.isNotBlank()
         }.sortedByDescending { it.timestamp }
-        val errors = recent.flatMap { detectErrors(it.response, unit) }
+        val latestQuiz = recent
+            .filter { it.taskId == "quiz" && it.source == EvidenceSource.AUTOMATIC_QUIZ }
+            .maxByOrNull { it.timestamp }
+        val latestResponses = recent
+            .filter { it.source == EvidenceSource.SELF_REFLECTION && !it.assisted && it.taskId in RESPONSE_TASKS }
+            .groupBy { it.taskId }
+            .values
+            .mapNotNull { taskAttempts -> taskAttempts.maxByOrNull { it.timestamp } }
+        val latestProduction = latestResponses.filter { it.taskId in CHALLENGE_PRODUCTION_TASKS }
+        val activeErrorEvidence = latestResponses.flatMap { attempt ->
+            detectErrors(attempt.response, unit).map { attempt to it }
+        }
+        val errors = activeErrorEvidence.map { it.second }
             .distinctBy { "${it.code}:${it.excerpt}" }
             .take(4)
-        val feedbackClaims = recent
-            .flatMap { attempt -> FeedbackEvidenceEngine.claimsFor(attempt, detectErrors(attempt.response, unit)) }
+        val feedbackClaims = activeErrorEvidence
+            .groupBy { it.first.id }
+            .values
+            .flatMap { evidence ->
+                val attempt = evidence.first().first
+                FeedbackEvidenceEngine.claimsFor(attempt, evidence.map { it.second })
+            }
             .distinctBy { it.id }
             .take(4)
-        val errorCounts = recent.flatMap { detectErrors(it.response, unit) }
+        val errorCounts = recent
+            .flatMap { detectErrors(it.response, unit) }
             .groupingBy { it.code }
             .eachCount()
         val recyclingPlans = errors.map { error ->
@@ -74,24 +93,15 @@ object AdaptiveLearning {
             )
         }
         val weaknesses = WeaknessEngine.profile(attempts, realLifeExperiences, now).top()
-        val weakSignals = recent.sumOf { detectErrors(it.response, unit).size }
-        val incorrectQuizzes = recent.count {
-            it.taskId == "quiz" && it.errors.isNotEmpty()
-        }
-        val latestProduction = recent
-            .filter { it.source == EvidenceSource.SELF_REFLECTION && !it.assisted && it.taskId in PRODUCTION_TASKS }
-            .groupBy { it.taskId }
-            .values
-            .mapNotNull { taskAttempts -> taskAttempts.maxByOrNull { it.timestamp } }
+        val weakSignals = activeErrorEvidence.size
+        val incorrectQuizzes = if (
+            latestQuiz != null && latestQuiz.scores[Dimension.COMPREHENSION] != 4
+        ) 1 else 0
         val challengeReady =
-            recent.any {
-                it.taskId == "quiz" &&
-                    it.source == EvidenceSource.AUTOMATIC_QUIZ &&
-                    it.scores[Dimension.COMPREHENSION] == 4
-            } &&
+            latestQuiz?.scores?.get(Dimension.COMPREHENSION) == 4 &&
                 latestProduction.size >= 3 &&
                 latestProduction.map { it.context }.distinct().size >= 2 &&
-                latestProduction.all { detectErrors(it.response, unit).isEmpty() }
+                activeErrorEvidence.isEmpty()
         val personalStruggles = realLifeExperiences.filter { it.nextReviewAt <= now }
         val difficulty = when {
             personalStruggles.isNotEmpty() || incorrectQuizzes >= 2 || weakSignals >= 3 ||

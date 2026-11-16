@@ -77,7 +77,6 @@ fun MainAppShell(viewModel: C1ViewModel, programmeViewModel: ProgrammeViewModel)
                     viewModel = programmeViewModel,
                     onLegacyPractice = { viewModel.navigateTo(Screen.LegacyHome) },
                     onOpenIntelligenceProfile = { viewModel.navigateTo(Screen.IntelligenceProfile) },
-                    onOpenListeningLab = { viewModel.navigateTo(Screen.ListeningLab) },
                     onOpenSpeakingLab = { viewModel.navigateTo(Screen.SpeakingLab) },
                     onOpenConversation = { viewModel.navigateTo(Screen.ConversationSimulator) },
                     onOpenMediation = { viewModel.navigateTo(Screen.Mediation) }

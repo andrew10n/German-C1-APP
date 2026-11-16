@@ -11,11 +11,17 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -54,6 +60,7 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -70,6 +77,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
@@ -89,6 +97,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.core.content.ContextCompat
@@ -139,9 +148,11 @@ fun ProgrammeScreen(
     val streakState by viewModel.streakState.collectAsStateWithLifecycle()
     var selectedId by rememberSaveable { mutableStateOf(viewModel.lastUnitId) }
     var initialTask by rememberSaveable { mutableStateOf(viewModel.lastTaskId) }
+    var initialContextName by rememberSaveable { mutableStateOf(ContextTrack.GENERAL.name) }
+    var showFullLessonContent by rememberSaveable(selectedId) { mutableStateOf(false) }
     var settings by rememberSaveable { mutableStateOf(false) }
     var showOnboarding by rememberSaveable { mutableStateOf(!viewModel.onboardingComplete) }
-    var homeSection by rememberSaveable { mutableStateOf("today") }
+    var homeSection by rememberSaveable { mutableStateOf("lessons") }
     var showRealLifeDialog by rememberSaveable { mutableStateOf(false) }
     var reviewExperience by remember { mutableStateOf<RealLifeExperience?>(null) }
     val now by produceState(System.currentTimeMillis()) {
@@ -150,7 +161,10 @@ fun ProgrammeScreen(
             delay(60_000)
         }
     }
-    val evidence = remember(attempts, now) { attempts.filter { it.timestamp <= now } }
+    val evidence = remember(attempts, now) {
+        val evidenceCutoff = maxOf(now, System.currentTimeMillis())
+        attempts.filter { it.timestamp <= evidenceCutoff }
+    }
     val weaknessProfile = remember(attempts, realLifeExperiences, now) {
         WeaknessEngine.profile(attempts, realLifeExperiences, now)
     }
@@ -184,10 +198,9 @@ fun ProgrammeScreen(
                             Text(
                                 if (selected != null) preferences.language.text("Lernwerkstatt", "Lesson studio")
                                 else when (homeSection) {
-                                    "learn" -> preferences.language.text("Lernen", "Learn")
+                                    "lessons" -> preferences.language.text("Lernweg", "Lessons")
                                     "progress" -> preferences.language.text("Fortschritt", "Progress")
-                                    "profile" -> preferences.language.text("Profil", "Profile")
-                                    else -> preferences.language.text("Heute", "Today")
+                                    else -> preferences.language.text("Einstellungen", "Settings")
                                 }
                             )
                         }
@@ -198,8 +211,16 @@ fun ProgrammeScreen(
                         }
                     },
                     actions = {
-                        TextButton(onClick = { settings = true }) {
-                            Text(preferences.language.text("Anpassen · Einstellungen", "Settings"))
+                        if (selected?.content != null) {
+                            TextButton(
+                                onClick = { showFullLessonContent = !showFullLessonContent },
+                                modifier = Modifier.testTag("lesson_expand_all_content")
+                            ) {
+                                Text(
+                                    if (showFullLessonContent) preferences.language.text("Fokus", "Focus")
+                                    else preferences.language.text("Alles", "All")
+                                )
+                            }
                         }
                     }
                 )
@@ -235,17 +256,25 @@ fun ProgrammeScreen(
                     val openUnit: (CurriculumUnit, String) -> Unit = { unit, task ->
                         selectedId = unit.id
                         initialTask = task
+                        initialContextName = if (unit.id == adaptiveDecision.recommendedUnitId) {
+                            adaptiveDecision.recommendedContext?.name ?: ContextTrack.GENERAL.name
+                        } else {
+                            ContextTrack.GENERAL.name
+                        }
                         viewModel.rememberLesson(unit.id, task)
                     }
                     when (homeSection) {
-                        "learn" -> LearnArea(
+                        "lessons" -> LearnArea(
                             modifier = Modifier.weight(1f),
                             language = preferences.language,
+                            attempts = evidence,
+                            now = now,
+                            historyAvailable = historyAvailable,
+                            adaptiveDecision = adaptiveDecision,
+                            weaknessProfile = weaknessProfile,
+                            streakState = streakState,
+                            dailyMinutes = preferences.dailyMinutes,
                             onOpen = openUnit,
-                            onOpenListening = onOpenListeningLab,
-                            onOpenSpeaking = onOpenSpeakingLab,
-                            onOpenConversation = onOpenConversation,
-                            onOpenMediation = onOpenMediation
                         )
                         "progress" -> ProgressArea(
                             modifier = Modifier.weight(1f),
@@ -254,46 +283,58 @@ fun ProgrammeScreen(
                             now = now,
                             adaptiveDecision = adaptiveDecision,
                             weaknessProfile = weaknessProfile,
-                            streakState = streakState,
-                            onOpenSettings = { settings = true }
+                            streakState = streakState
                         )
-                        "profile" -> ProfileArea(
+                        "settings" -> ProfileArea(
                             modifier = Modifier.weight(1f),
                             language = preferences.language,
                             onOpenSettings = { settings = true },
                             onOpenOnboarding = { showOnboarding = true },
-                            onOpenAudioPreferences = onOpenListeningLab,
                             onOpenPracticeTools = onLegacyPractice,
                             onOpenIntelligenceProfile = onOpenIntelligenceProfile
                         )
-                        else -> TodayScreen(
-                            modifier = Modifier.weight(1f),
-                            preferences = preferences,
-                            attempts = evidence,
-                            now = now,
-                            historyAvailable = historyAvailable,
-                            adaptiveDecision = adaptiveDecision,
-                            weaknessProfile = weaknessProfile,
-                            streakState = streakState,
-                            onOpen = openUnit
-                        )
+                        else -> Unit
                     }
                 } else {
                     UnitDetail(
-                        selected, evidence, realLifeExperiences, preferences.compact, initialTask,
-                        now, attemptsByUnit[selected.id].orEmpty().filter { it.timestamp <= now },
+                        unit = selected,
+                        attempts = evidence,
+                        realLifeExperiences = realLifeExperiences,
+                        compact = preferences.compact,
+                        initialTask = initialTask,
+                        initialContextName = initialContextName,
+                        showFullLessonContent = showFullLessonContent,
+                        now = now,
+                        unitAttempts = attemptsByUnit[selected.id].orEmpty().filter { it.timestamp <= now },
                         enabled = historyAvailable && selected.content != null,
-                        saving = saving, result = results[selected.id],
+                        saving = saving,
+                        result = results[selected.id],
                         assisted = selected.id in assistedUnits,
                         onReveal = { viewModel.revealModel(selected.id) },
                         onQuiz = { option, context -> viewModel.submitQuiz(selected.id, option, context) },
+                        onQuizWithCompletion = { option, context, onSaved ->
+                            viewModel.submitQuiz(selected.id, option, context, onSaved)
+                        },
                         onSave = { task, response, context -> viewModel.recordPractice(selected.id, task, response, context) },
+                        onSaveWithCompletion = { task, response, context, onSaved ->
+                            viewModel.recordPractice(selected.id, task, response, context, onSaved)
+                        },
+                        onSaveAdaptiveAddition = { addition, response, onSaved ->
+                            viewModel.recordPractice(selected.id, addition.taskId, response, addition.context) {
+                                addition.reviewExperienceId?.let { experienceId ->
+                                    realLifeExperiences.firstOrNull { it.id == experienceId }?.let { experience ->
+                                        viewModel.completeRealLifeReview(experience, response)
+                                    }
+                                }
+                                onSaved?.invoke()
+                            }
+                        },
+                        onFinish = { selectedId = null },
                         onAddExpressions = { viewModel.addCourseExpressionsToRetrieval(selected.id) },
                         onChallengeFeedback = viewModel::challengeFeedback,
                         humanReviews = humanReviews,
                         onRecordHumanReview = viewModel::recordHumanReview,
                         existingFeedbackClaimIds = feedbackChallenges.mapTo(mutableSetOf()) { it.claimId },
-                        onOpenListeningLab = onOpenListeningLab,
                         onOpenSpeakingLab = onOpenSpeakingLab,
                         onOpenConversation = onOpenConversation,
                         language = preferences.language
@@ -1340,12 +1381,404 @@ private fun ProgrammeDashboard(
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
+private fun GuidedLessonFlow(
+    unit: CurriculumUnit,
+    content: UnitContent,
+    context: ContextTrack,
+    compact: Boolean,
+    initialTask: String,
+    adaptivePlan: AdaptiveLessonContentPlan,
+    enabled: Boolean,
+    saving: Boolean,
+    result: ProgrammeQuizResult?,
+    selectedExpressionIndex: Int,
+    onSelectedExpressionIndexChange: (Int) -> Unit,
+    lessonAudioController: BookAudioPlaybackController,
+    stopSyntheticAudio: () -> Unit,
+    onStopSyntheticAudioAvailable: ((() -> Unit) -> Unit),
+    showModel: Boolean,
+    onShowModel: () -> Unit,
+    onQuiz: (Int?, ContextTrack, () -> Unit) -> Unit,
+    onSave: (String, String, ContextTrack, () -> Unit) -> Unit,
+    onSaveAdaptiveAddition: (AdaptiveLessonAddition, String, (() -> Unit)?) -> Unit,
+    onAddExpressions: () -> Unit,
+    onFinish: () -> Unit,
+    language: ProgrammeLanguage
+) {
+    val initialFocus = adaptivePlan.focusTaskId.ifBlank { initialTask }
+    val inputTask by rememberSaveable(unit.id) {
+        mutableStateOf(if (initialFocus == "listening" || initialTask == "listening") "listening" else "reading")
+    }
+    val addition = adaptivePlan.addition
+    val outputTask = addition?.taskId ?: when (initialFocus) {
+        "controlled", "speaking", "interaction", "writing", "transfer" -> initialFocus
+        else -> "controlled"
+    }
+    val outputTitle = addition?.title ?: when (outputTask) {
+        "speaking" -> "05 / Frei sprechen"
+        "interaction" -> "05 / Im Dialog handeln"
+        "writing" -> "05 / Schreiben"
+        "transfer" -> "05 / Transfer in einen neuen Kontext"
+        else -> "05 / Kontrolliert formulieren"
+    }
+    val steps = listOf(
+        GuidedLessonStep("retrieval", "01 / Abruf vor dem Nachlesen"),
+        GuidedLessonStep("input", if (inputTask == "listening") "02 / Hören" else "02 / Lesen"),
+        GuidedLessonStep("quiz", "03 / Verständnis prüfen"),
+        GuidedLessonStep("language", "04 / Sprachmittel in Aktion"),
+        GuidedLessonStep("application", outputTitle)
+    )
+    var currentStepIndex by rememberSaveable(unit.id) { mutableIntStateOf(0) }
+    var completedStepKeys by rememberSaveable(unit.id) { mutableStateOf("") }
+    val completedSteps = completedStepKeys.split('|').filter(String::isNotBlank).toSet()
+    val currentIndex = currentStepIndex.coerceIn(steps.indices)
+    val currentStep = steps[currentIndex]
+    val currentTaskId = when (currentStep.key) {
+        "retrieval" -> "retrieval"
+        "input" -> inputTask
+        "quiz" -> "quiz"
+        "application" -> outputTask
+        else -> null
+    }
+    val saveContext = if (currentStep.key == "application") addition?.context ?: context else context
+    val app = LocalContext.current.applicationContext as MainApplication
+    var currentDraft by rememberSaveable(unit.id, currentStep.key, currentTaskId, saveContext) {
+        mutableStateOf(currentTaskId?.let {
+            app.practiceDraftRepository.load(unit.id, it, saveContext)
+        }.orEmpty())
+    }
+    val needsSave = currentTaskId != null &&
+        currentStep.key != "quiz" &&
+        currentStep.key !in completedSteps
+    val canContinue = currentTaskId == null || currentStep.key in completedSteps
+    val canAct = if (needsSave) {
+        enabled && !saving && currentDraft.isNotBlank()
+    } else {
+        canContinue && !saving && (currentTaskId == null || enabled)
+    }
+
+    fun markStepComplete(stepKey: String) {
+        completedStepKeys = (completedSteps + stepKey).joinToString("|")
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 6.dp)
+            .testTag("lesson_guided_flow"),
+        verticalArrangement = Arrangement.spacedBy(6.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                unit.title,
+                modifier = Modifier.weight(1f),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            Text("${currentIndex + 1} / ${steps.size}", style = MaterialTheme.typography.labelLarge)
+        }
+        LinearProgressIndicator(
+            progress = { (currentIndex + 1f) / steps.size },
+            modifier = Modifier.fillMaxWidth().testTag("lesson_step_progress")
+        )
+
+        AnimatedContent(
+            targetState = currentIndex,
+            modifier = Modifier.weight(1f).fillMaxWidth(),
+            transitionSpec = {
+                (slideInHorizontally { it / 4 } + fadeIn()) togetherWith
+                    (slideOutHorizontally { -it / 4 } + fadeOut())
+            },
+            label = "guided-lesson-step"
+        ) { targetIndex ->
+            val step = steps[targetIndex]
+            val saveCurrent: (String, String, ContextTrack) -> Unit = { task, response, saveContext ->
+                onSave(task, response, saveContext) { markStepComplete(step.key) }
+            }
+            when (step.key) {
+                "retrieval" -> Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    LessonStepVisual(unit, phase = 0, language = language)
+                    Text(step.title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+                    Text(
+                        "Was kannst du aus dem Gedächtnis zum Lernziel erklären? Notiere eine offene Frage.",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    ResponseField(
+                        unitId = unit.id,
+                        task = "retrieval",
+                        label = "Deine Antwort / ehrliche Selbstreflexion",
+                        context = context,
+                        enabled = enabled,
+                        saving = saving,
+                        onSave = saveCurrent,
+                        includeAiFeedback = false,
+                        minLines = 1,
+                        showDraftDisclosure = false,
+                        showSaveButton = false,
+                        onDraftChange = { currentDraft = it }
+                    )
+                }
+                "input" -> if (inputTask == "reading") {
+                    ProgrammeSection(step.title, compact = true) {
+                        LessonStepVisual(unit, phase = 1, language = language)
+                        ReadingChunkStudio(unit.id, content.reading, language)
+                        ResponseField(
+                            unit.id,
+                            "reading",
+                            "Kernaussage in eigenen Worten",
+                            context,
+                            enabled,
+                            saving,
+                            saveCurrent,
+                            taskDescription = "Lektion: ${unit.title}\n${content.reading}",
+                            includeAiFeedback = false,
+                            minLines = 1,
+                            showDraftDisclosure = false,
+                            showSaveButton = false,
+                            onDraftChange = { currentDraft = it }
+                        )
+                    }
+                } else {
+                    ProgrammeSection(step.title, compact = true) {
+                        LessonStepVisual(unit, phase = 1, language = language)
+                        SyntheticListening(
+                            content.listening,
+                            language,
+                            onStopAvailable = onStopSyntheticAudioAvailable
+                        )
+                        BookAudioPracticeSection(
+                            controller = lessonAudioController,
+                            onPlaybackStart = stopSyntheticAudio,
+                            language = language,
+                            selectionKey = unit.id
+                        )
+                        ResponseField(
+                            unit.id,
+                            "listening",
+                            "Was hast du verstanden?",
+                            context,
+                            enabled,
+                            saving,
+                            saveCurrent,
+                            taskDescription = "Lektion: ${unit.title}\n${content.listening}",
+                            includeAiFeedback = false,
+                            minLines = 1,
+                            showDraftDisclosure = false,
+                            showSaveButton = false,
+                            onDraftChange = { currentDraft = it }
+                        )
+                    }
+                }
+                "quiz" -> Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    LessonStepVisual(unit, phase = 1, language = language)
+                    QuizSection(
+                        unit = unit,
+                        context = context,
+                        result = result,
+                        enabled = enabled,
+                        saving = saving,
+                        onReveal = {},
+                        onQuiz = { option, quizContext ->
+                            onQuiz(option, quizContext) { markStepComplete(step.key) }
+                        },
+                        compact = true,
+                        onQuizWithCompletion = onQuiz,
+                        onStepSaved = { markStepComplete(step.key) }
+                    )
+                }
+                "language" -> ProgrammeSection(step.title, compact = true) {
+                    LessonConceptMap(
+                        unit = unit,
+                        context = context,
+                        expressions = content.expressions,
+                        selectedExpressionIndex = selectedExpressionIndex,
+                        language = language
+                    )
+                    if (content.expressions.isNotEmpty()) {
+                        TextButton(
+                            onClick = {
+                                onSelectedExpressionIndexChange(
+                                    (selectedExpressionIndex + 1) % content.expressions.size
+                                )
+                            }
+                        ) {
+                            Text(language.text("Nächste Sprachhandlung", "Next language move"))
+                        }
+                    }
+                    OutlinedButton(onClick = onAddExpressions, modifier = Modifier.fillMaxWidth()) {
+                        Text(language.text("Ausdrücke ins Abruftraining", "Add phrases to retrieval practice"))
+                    }
+                }
+                "application" -> {
+                    val adaptiveAddition = addition
+                    LessonStepVisual(unit, phase = 2, language = language)
+                    if (adaptiveAddition != null) {
+                        ProgrammeSection(adaptiveAddition.title, compact = true) {
+                            Text(adaptiveAddition.instruction, style = MaterialTheme.typography.bodySmall)
+                            Text(adaptiveAddition.prompt, fontWeight = FontWeight.SemiBold)
+                            ResponseField(
+                                unitId = unit.id,
+                                task = adaptiveAddition.taskId,
+                                label = "Deine Antwort",
+                                context = adaptiveAddition.context,
+                                enabled = enabled,
+                                saving = saving,
+                                onSave = { _, response, _ ->
+                                    onSaveAdaptiveAddition(adaptiveAddition, response) {
+                                        markStepComplete(step.key)
+                                    }
+                                },
+                                taskDescription = "${adaptiveAddition.title}\n${adaptiveAddition.prompt}",
+                                includeAiFeedback = false,
+                                minLines = 1,
+                                showDraftDisclosure = false,
+                                showSaveButton = false,
+                                onDraftChange = { currentDraft = it }
+                            )
+                        }
+                    } else when (outputTask) {
+                        "speaking" -> PracticeSection(
+                            unit.id, "speaking", step.title, content.speaking, context,
+                            enabled, saving, true, saveCurrent,
+                            limitation = "Sprich laut und speichere danach dein Skript oder eine ehrliche Selbstreflexion. Die App nimmt hier kein Audio auf und bewertet keine Aussprache.",
+                            includeAiFeedback = false,
+                            minLines = 1,
+                            showDraftDisclosure = false,
+                            showSaveButton = false,
+                            onDraftChange = { currentDraft = it }
+                        )
+                        "interaction" -> PracticeSection(
+                            unit.id, "interaction", step.title, content.interaction, context,
+                            enabled, saving, true, saveCurrent,
+                            limitation = "Übe mit einer realen Person oder wechsle selbst die Rollen. Notiere den Dialog oder reflektiere ihn ehrlich.",
+                            includeAiFeedback = false,
+                            minLines = 1,
+                            showDraftDisclosure = false,
+                            showSaveButton = false,
+                            onDraftChange = { currentDraft = it }
+                        )
+                        "writing" -> PracticeSection(
+                            unit.id, "writing", step.title, content.writing, context,
+                            enabled, saving, true, saveCurrent,
+                            includeAiFeedback = false,
+                            minLines = 1,
+                            showDraftDisclosure = false,
+                            showSaveButton = false,
+                            onDraftChange = { currentDraft = it }
+                        )
+                        "transfer" -> PracticeSection(
+                            unit.id, "transfer", step.title, content.transfer, context,
+                            enabled, saving, true, saveCurrent,
+                            limitation = "Bearbeite die Situation ohne Modell und prüfe sie anschließend selbst. Das bleibt Übung, kein verifizierter Kompetenznachweis.",
+                            includeAiFeedback = false,
+                            minLines = 1,
+                            showDraftDisclosure = false,
+                            showSaveButton = false,
+                            onDraftChange = { currentDraft = it }
+                        )
+                        else -> ProgrammeSection(step.title, compact = true) {
+                            Text(content.controlledPrompt)
+                            ResponseField(
+                                unit.id,
+                                "controlled",
+                                "Deine Formulierung",
+                                context,
+                                enabled,
+                                saving,
+                                saveCurrent,
+                                taskDescription = "Lektion: ${unit.title}\n${content.controlledPrompt}",
+                                includeAiFeedback = false,
+                                minLines = 1,
+                                showDraftDisclosure = false,
+                                showSaveButton = false,
+                                onDraftChange = { currentDraft = it }
+                            )
+                            OutlinedButton(onClick = onShowModel) {
+                                Text("Modell öffnen · zählt als Hilfe")
+                            }
+                            if (showModel) Text(content.controlledModel)
+                        }
+                    }
+                }
+            }
+        }
+
+        if (currentTaskId != null && !canContinue) {
+            Text(
+                if (!enabled) "Lernverlauf noch nicht verfügbar."
+                else language.text(
+                    "Speichere deine Antwort, damit der nächste Schritt freigeschaltet wird.",
+                    "Save your response to unlock the next step."
+                ),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            TextButton(
+                onClick = { currentStepIndex = (currentIndex - 1).coerceAtLeast(0) },
+                enabled = currentIndex > 0,
+                modifier = Modifier.testTag("lesson_previous")
+            ) {
+                Text(language.text("Voriger Schritt", "Previous step"))
+            }
+            Button(
+                onClick = {
+                    when {
+                        needsSave -> {
+                            if (currentStep.key == "application" && addition != null) {
+                                onSaveAdaptiveAddition(addition, currentDraft) {
+                                    markStepComplete(currentStep.key)
+                                }
+                            } else {
+                                onSave(currentTaskId, currentDraft, saveContext) {
+                                    markStepComplete(currentStep.key)
+                                }
+                            }
+                        }
+                        currentIndex == steps.lastIndex -> onFinish()
+                        else -> currentStepIndex = currentIndex + 1
+                    }
+                },
+                enabled = canAct,
+                modifier = Modifier.testTag(
+                    if (needsSave) "save_practice_${unit.id}_$currentTaskId" else "lesson_next"
+                )
+            ) {
+                Text(
+                    when {
+                        needsSave -> language.text("Antwort speichern", "Save response")
+                        currentIndex == steps.lastIndex -> language.text("Lektion abschließen", "Finish lesson")
+                        else -> language.text("Weiter", "Next")
+                    }
+                )
+            }
+        }
+    }
+}
+
+private data class GuidedLessonStep(val key: String, val title: String)
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
 private fun UnitDetail(
     unit: CurriculumUnit,
     attempts: List<Attempt>,
     realLifeExperiences: List<RealLifeExperience>,
     compact: Boolean,
     initialTask: String,
+    initialContextName: String,
+    showFullLessonContent: Boolean,
     now: Long,
     unitAttempts: List<Attempt>,
     enabled: Boolean,
@@ -1354,20 +1787,24 @@ private fun UnitDetail(
     assisted: Boolean,
     onReveal: () -> Unit,
     onQuiz: (Int?, ContextTrack) -> Unit,
+    onQuizWithCompletion: (Int?, ContextTrack, () -> Unit) -> Unit,
     onSave: (String, String, ContextTrack) -> Unit,
+    onSaveWithCompletion: (String, String, ContextTrack, () -> Unit) -> Unit,
+    onSaveAdaptiveAddition: (AdaptiveLessonAddition, String, (() -> Unit)?) -> Unit,
+    onFinish: () -> Unit,
     onChallengeFeedback: (FeedbackClaim, FeedbackChallengeDecision, String?) -> Unit,
     humanReviews: List<HumanReviewSubmission>,
     onRecordHumanReview: (String, String, String, Map<Dimension, Int>) -> Unit,
     existingFeedbackClaimIds: Set<String>,
-    onOpenListeningLab: () -> Unit,
     onOpenSpeakingLab: () -> Unit,
     onOpenConversation: () -> Unit,
     onAddExpressions: () -> Unit,
     language: ProgrammeLanguage
 ) {
-    var contextName by rememberSaveable(unit.id) { mutableStateOf(ContextTrack.GENERAL.name) }
+    var contextName by rememberSaveable(unit.id, initialContextName) { mutableStateOf(initialContextName) }
     val context = ContextTrack.values().first { it.name == contextName }
     val content = unit.content
+    var selectedExpressionIndex by rememberSaveable(unit.id) { mutableIntStateOf(0) }
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
     var showModel by rememberSaveable(unit.id) { mutableStateOf(false) }
@@ -1378,6 +1815,8 @@ private fun UnitDetail(
     var reviewName by rememberSaveable(unit.id) { mutableStateOf("") }
     var reviewComment by rememberSaveable(unit.id) { mutableStateOf("") }
     var reviewScores by remember(unit.id) { mutableStateOf<Map<Dimension, Int>>(emptyMap()) }
+    val lessonAudioController = remember(unit.id) { BookAudioPlaybackController() }
+    var stopSyntheticAudio by remember(unit.id) { mutableStateOf<() -> Unit>({}) }
     val practiceTasks = listOf(
         "retrieval" to "Abruf",
         "reading" to "Lesen",
@@ -1391,20 +1830,61 @@ private fun UnitDetail(
     )
     val completedTasks = unitAttempts.map { it.taskId }.toSet()
     val latestQuiz = unitAttempts.filter { it.taskId == "quiz" }.maxByOrNull { it.timestamp }
-    val adaptive = remember(unit.id, attempts, realLifeExperiences, now) {
-        AdaptiveLearning.recommend(unit, attempts, now, realLifeExperiences)
+    val adaptivePlan = remember(unit.id, attempts, realLifeExperiences, context, now) {
+        AdaptiveLessonContentEngine.create(unit, attempts, realLifeExperiences, context, now)
     }
+    val adaptive = adaptivePlan.recommendation
+    val focusedTaskId = adaptivePlan.focusTaskId.ifBlank { initialTask }
     val selectedClaim = adaptive.feedbackClaims.firstOrNull { it.id == selectedClaimId }
-    val taskIndexes = mapOf("retrieval" to 3, "reading" to 4, "listening" to 5, "quiz" to 7,
-        "controlled" to 8, "speaking" to 9, "interaction" to 10, "writing" to 11, "transfer" to 12)
-    LaunchedEffect(unit.id, initialTask) {
-        if (content != null) listState.scrollToItem(taskIndexes[initialTask] ?: 0)
+    val focusedTaskIndex = when {
+        adaptivePlan.addition != null -> 4
+        showFullLessonContent -> mapOf(
+            "retrieval" to 5, "reading" to 6, "listening" to 7, "quiz" to 9,
+            "controlled" to 10, "speaking" to 11, "interaction" to 12, "writing" to 13, "transfer" to 14
+        )[focusedTaskId] ?: 5
+        focusedTaskId in setOf("controlled", "speaking", "interaction", "writing") -> 6
+        else -> 5
     }
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(), state = listState,
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(20.dp),
-        verticalArrangement = Arrangement.spacedBy(if (compact) 10.dp else 18.dp)
-    ) {
+    fun showTask(taskId: String): Boolean =
+        showFullLessonContent ||
+            (focusedTaskId == taskId && adaptivePlan.addition?.taskId != taskId)
+    LaunchedEffect(unit.id, focusedTaskId, focusedTaskIndex, showFullLessonContent) {
+        if (showFullLessonContent && content != null) listState.scrollToItem(focusedTaskIndex)
+    }
+    if (content != null && !showFullLessonContent) {
+        GuidedLessonFlow(
+            unit = unit,
+            content = content,
+            context = context,
+            compact = compact,
+            initialTask = initialTask,
+            adaptivePlan = adaptivePlan,
+            enabled = enabled,
+            saving = saving,
+            result = result,
+            selectedExpressionIndex = selectedExpressionIndex,
+            onSelectedExpressionIndexChange = { selectedExpressionIndex = it },
+            lessonAudioController = lessonAudioController,
+            stopSyntheticAudio = { stopSyntheticAudio() },
+            onStopSyntheticAudioAvailable = { stopSyntheticAudio = it },
+            showModel = showModel,
+            onShowModel = {
+                onReveal()
+                showModel = true
+            },
+            onQuiz = onQuizWithCompletion,
+            onSave = onSaveWithCompletion,
+            onSaveAdaptiveAddition = onSaveAdaptiveAddition,
+            onAddExpressions = onAddExpressions,
+            onFinish = onFinish,
+            language = language
+        )
+    } else {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(), state = listState,
+            contentPadding = androidx.compose.foundation.layout.PaddingValues(20.dp),
+            verticalArrangement = Arrangement.spacedBy(if (compact) 10.dp else 18.dp)
+        ) {
         item {
             ProgrammeSection(unit.title, compact) {
                 Text(CurriculumCatalogue.stages[unit.stage], color = MaterialTheme.colorScheme.primary)
@@ -1421,6 +1901,7 @@ private fun UnitDetail(
                     Text("Voraussetzungen: " + if (required.isEmpty()) "Lernverlauf muss verfügbar sein."
                         else required.joinToString { id -> CurriculumCatalogue.units.find { it.id == id }?.title ?: id },
                         style = MaterialTheme.typography.bodySmall)
+                    }
                 }
                 if (assisted) Text("Modellhilfe bereits geöffnet: Weitere Antworten dieser Einheit werden konservativ als assistiert markiert (auch nach Neustart).",
                     style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
@@ -1433,10 +1914,15 @@ private fun UnitDetail(
                 }
                 TextButton(onClick = { scope.launch { listState.animateScrollToItem(0) } }) { Text("Einheitsübersicht") }
             }
-        }
         item {
             ProgrammeSection("Das lernst du", compact) {
-                LessonObjectiveMap(unit.objectives, language)
+                LessonConceptMap(
+                    unit = unit,
+                    context = context,
+                    expressions = content?.expressions.orEmpty(),
+                    selectedExpressionIndex = selectedExpressionIndex,
+                    language = language
+                )
             }
         }
         item {
@@ -1447,12 +1933,22 @@ private fun UnitDetail(
                             label = { Text(contextLabel(track)) })
                     }
                 }
-                ContextTrack.values().forEach { track ->
-                    Text("${contextLabel(track)}: ${unit.contexts[track] ?: "Kein Kontext verfasst"}")
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    color = MaterialTheme.colorScheme.surfaceVariant
+                ) {
+                    Column(
+                        modifier = Modifier.padding(14.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        Text(contextLabel(context), fontWeight = FontWeight.SemiBold)
+                        Text(unit.contexts[context] ?: "Kein Kontext verfasst")
+                    }
                 }
                 Text("Gespeicherte Antworten tragen den gewählten Kontext. Ein Kontextwechsel allein ist kein Transfernachweis.",
-                    style = MaterialTheme.typography.bodySmall)
-                if (content != null) {
+                style = MaterialTheme.typography.bodySmall)
+                if (content != null && (showFullLessonContent || focusedTaskId == "context-application")) {
                     HorizontalDivider()
                     Text("Solo-Anwendung im gewählten Kontext", fontWeight = FontWeight.SemiBold)
                     Text(
@@ -1507,15 +2003,38 @@ private fun UnitDetail(
         item {
             ProgrammeSection("Dein adaptiver nächster Schritt", compact) {
                 Text(
-                    when (adaptive.difficulty) {
-                        AdaptiveDifficulty.SUPPORT -> "REPARATUR · erst Sicherheit aufbauen"
-                        AdaptiveDifficulty.CORE -> "KERNPFAD · gezielt weiterüben"
-                        AdaptiveDifficulty.CHALLENGE -> "TRANSFER · neue Anforderung versuchen"
+                    when (adaptivePlan.difficulty) {
+                        AdaptiveDifficulty.SUPPORT -> language.text("GEZIELTE HILFE · erst Sicherheit aufbauen", "TARGETED SUPPORT · build confidence first")
+                        AdaptiveDifficulty.CORE -> language.text("KERNPFAD · gezielt weiterüben", "CORE PATH · focused practice")
+                        AdaptiveDifficulty.CHALLENGE -> language.text("NEUER TRANSFER · zusätzliche Herausforderung", "NEW TRANSFER · added challenge")
                     },
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.primary
                 )
-                Text(adaptive.reason, style = MaterialTheme.typography.bodySmall)
+                Text(adaptivePlan.reason, style = MaterialTheme.typography.bodySmall)
+                Text(
+                    language.text(
+                        "Aktueller Fokus: ${taskLabel(focusedTaskId, language)}. Nicht benötigte Abschnitte bleiben eingeklappt.",
+                        "Current focus: ${taskLabel(focusedTaskId, language)}. Unneeded sections stay out of the way."
+                    ),
+                    style = MaterialTheme.typography.bodySmall
+                )
+                adaptivePlan.addition?.let { addition ->
+                    ProgrammeSection(addition.title, compact) {
+                        Text(addition.instruction, style = MaterialTheme.typography.bodySmall)
+                        Text(addition.prompt)
+                        ResponseField(
+                            unitId = unit.id,
+                            task = addition.taskId,
+                            label = "Deine neue Antwort / Selbstreflexion",
+                            context = addition.context,
+                            enabled = enabled,
+                            saving = saving,
+                            onSave = { _, response, _ -> onSaveAdaptiveAddition(addition, response, null) },
+                            taskDescription = "${addition.title}\n${addition.prompt}"
+                        )
+                    }
+                }
                 adaptive.errors.forEach { error ->
                     Text("${error.label}: ${error.explanation}", style = MaterialTheme.typography.bodySmall)
                     Text("Nächste Reparatur: ${error.remediation}", style = MaterialTheme.typography.bodySmall)
@@ -1548,12 +2067,12 @@ private fun UnitDetail(
             }
         }
         if (content != null) {
-            item {
+            if (showTask("retrieval")) item {
                 PracticeSection(unit.id, "retrieval", "01 / Abruf vor dem Nachlesen",
                     "Schließe deine bisherigen Vorlagen. Erkläre aus dem Gedächtnis, was du zu diesem Lernziel bereits sagen kannst. Notiere eine offene Frage. Wenn es dein erster Versuch ist, halte fest, was du noch nicht weißt.",
                     context, enabled, saving, compact, onSave)
             }
-            item {
+            if (showTask("reading")) item {
                 ProgrammeSection("02 / Lesen", compact) {
                     ReadingChunkStudio(unit.id, content.reading, language)
                     ResponseField(
@@ -1564,12 +2083,21 @@ private fun UnitDetail(
                     )
                 }
             }
-            item {
+            if (showTask("listening")) item {
                 ProgrammeSection("03 / Hören · synthetische Stimme", compact) {
-                    SyntheticListening(content.listening, language)
+                    SyntheticListening(
+                        content.listening,
+                        language,
+                        onStopAvailable = { stopSyntheticAudio = it }
+                    )
                     Text("Das sichtbare Transkript kann das Hörverstehen unterstützen; dies ist kein unabhängiger Hörtest.",
                         style = MaterialTheme.typography.bodySmall)
-                    OutlinedButton(onClick = onOpenListeningLab) { Text("Hörlabor öffnen · eigene Buchaufnahmen") }
+                    BookAudioPracticeSection(
+                        controller = lessonAudioController,
+                        onPlaybackStart = { stopSyntheticAudio() },
+                        language = language,
+                        selectionKey = unit.id
+                    )
                     ResponseField(
                         unit.id, "listening", "Was hast du verstanden? Notiere auch, ob du das Transkript verwendet hast.",
                         context, enabled, saving, onSave,
@@ -1578,16 +2106,17 @@ private fun UnitDetail(
                     )
                 }
             }
-            item {
-                LessonListeningResources(unit.id, onOpenListeningLab)
-            }
-            item {
+            if (showFullLessonContent || focusedTaskId in setOf("controlled", "speaking", "interaction", "writing") ||
+                adaptivePlan.difficulty == AdaptiveDifficulty.SUPPORT
+            ) item {
                 ProgrammeSection("Sprachmittel & Grammatik", compact) {
                     LanguagePatternStudio(
                         unitId = unit.id,
                         expressions = content.expressions,
                         grammar = content.grammar,
-                        language = language
+                        language = language,
+                        selectedIndex = selectedExpressionIndex,
+                        onSelectedIndexChange = { selectedExpressionIndex = it }
                     )
                     OutlinedButton(
                         onClick = onAddExpressions,
@@ -1597,10 +2126,10 @@ private fun UnitDetail(
                     }
                 }
             }
-            item {
+            if (showTask("quiz")) item {
                 QuizSection(unit, context, result, enabled, saving, onReveal, onQuiz, compact)
             }
-            item {
+            if (showTask("controlled")) item {
                 ProgrammeSection("05 / Kontrolliert formulieren", compact) {
                     Text(content.controlledPrompt)
                     ResponseField(
@@ -1613,38 +2142,40 @@ private fun UnitDetail(
                     if (showModel) Text(content.controlledModel)
                 }
             }
-            item {
+            if (showTask("speaking")) item {
                 PracticeSection(unit.id, "speaking", "06 / Frei sprechen", content.speaking,
                     context, enabled, saving, compact, onSave,
                     "Sprich laut außerhalb der App. Hier sind weder Aufnahme noch Spracherkennung implementiert. Speichere danach dein Skript oder deine Selbstreflexion, keinen vermeintlichen Audio-Nachweis.",
                     onOpenTool = onOpenSpeakingLab,
                     toolLabel = "Sprechlabor öffnen")
             }
-            item {
+            if (showTask("interaction")) item {
                 PracticeSection(unit.id, "interaction", "07 / Im Dialog handeln", content.interaction,
                     context, enabled, saving, compact, onSave,
                     "Übe mit einer realen Person oder wechsle selbst die Rollen. Kein KI-Gesprächspartner, keine Aufnahme und keine automatische Interaktionsbewertung. Notiere den Dialog oder reflektiere ihn ehrlich.",
                     onOpenTool = onOpenConversation,
                     toolLabel = "Dialogsimulator öffnen")
             }
-            item {
+            if (showTask("writing")) item {
                 PracticeSection(unit.id, "writing", "08 / Schreiben", content.writing,
                     context, enabled, saving, compact, onSave)
             }
-            item {
+            if (showFullLessonContent ||
+                (focusedTaskId == "transfer" && adaptivePlan.addition?.taskId != "transfer")
+            ) item {
                 PracticeSection(unit.id, "transfer", "Transfer · neuer Kontext", content.transfer,
                     context, enabled, saving, compact, onSave,
                     "Bearbeite die Situation ohne Modell und prüfe sie anschließend selbst. Optional kannst du den Text bewusst an eine externe KI teilen; dieses Feedback bleibt ungeprüft und ist kein unabhängiges Urteil. Weil der Impuls hier sichtbar und wiederholbar ist, gilt diese Eingabe nicht als verifizierter unbekannter Test.")
             }
-            item {
+            if (showFullLessonContent) item {
                 ProgrammeSection("Modellrückmeldung · kein Urteil über dich", compact) {
                     Text("Dieser Text ist ein verfasstes Feedbackbeispiel, keine Analyse deiner Eingabe.")
                     OutlinedButton(onClick = { onReveal(); showFeedback = true }) { Text("Beispiel öffnen · zählt als Hilfe") }
                     if (showFeedback) Text(content.feedback)
                 }
             }
-            item { RubricSection(compact) }
-            item {
+            if (showFullLessonContent) item { RubricSection(compact) }
+            if (showFullLessonContent) item {
                 ProgrammeSection("Gespeicherter Verlauf dieser Einheit", compact) {
                     val history = attempts.filter { it.unitId == unit.id }.sortedByDescending { it.timestamp }
                     if (history.isEmpty()) Text("Noch keine gespeicherte Antwort. Unbeurteilt ist nicht gleich null Punkte.")
@@ -1690,6 +2221,7 @@ private fun UnitDetail(
                     Text("Für diesen Karteneintrag fehlen Lesetext, Hörskript, Aufgaben und Bewertungsevidenz. Es werden weder Übungen noch Resultate erfunden.")
                 }
             }
+        }
         }
     }
     selectedClaim?.let { claim ->
@@ -1852,7 +2384,12 @@ private fun PracticeSection(
     unitId: String, task: String, title: String, prompt: String, context: ContextTrack,
     enabled: Boolean, saving: Boolean, compact: Boolean,
     onSave: (String, String, ContextTrack) -> Unit, limitation: String? = null,
-    onOpenTool: (() -> Unit)? = null, toolLabel: String? = null
+    onOpenTool: (() -> Unit)? = null, toolLabel: String? = null,
+    includeAiFeedback: Boolean = true,
+    minLines: Int = 3,
+    showDraftDisclosure: Boolean = true,
+    showSaveButton: Boolean = true,
+    onDraftChange: ((String) -> Unit)? = null
 ) {
     ProgrammeSection(title, compact) {
         Text(prompt)
@@ -1863,7 +2400,12 @@ private fun PracticeSection(
         }
         ResponseField(
             unitId, task, "Deine Antwort / ehrliche Selbstreflexion", context, enabled, saving, onSave,
-            taskDescription = "$title\n$prompt"
+            taskDescription = "$title\n$prompt",
+            includeAiFeedback = includeAiFeedback,
+            minLines = minLines,
+            showDraftDisclosure = showDraftDisclosure,
+            showSaveButton = showSaveButton,
+            onDraftChange = onDraftChange
         )
     }
 }
@@ -1872,7 +2414,12 @@ private fun PracticeSection(
 private fun ResponseField(
     unitId: String, task: String, label: String, context: ContextTrack,
     enabled: Boolean, saving: Boolean, onSave: (String, String, ContextTrack) -> Unit,
-    taskDescription: String = "Deutschübung '$task' im Kontext ${contextLabel(context)}: $label"
+    taskDescription: String = "Deutschübung '$task' im Kontext ${contextLabel(context)}: $label",
+    includeAiFeedback: Boolean = true,
+    minLines: Int = 3,
+    showDraftDisclosure: Boolean = true,
+    showSaveButton: Boolean = true,
+    onDraftChange: ((String) -> Unit)? = null
 ) {
     val app = LocalContext.current.applicationContext as MainApplication
     val draftRepository = remember(app) { app.practiceDraftRepository }
@@ -1884,30 +2431,39 @@ private fun ResponseField(
         onValueChange = {
             draft = it
             draftRepository.save(unitId, task, context, it)
+            onDraftChange?.invoke(it)
         },
         label = { Text(label) },
-        modifier = Modifier.fillMaxWidth(), minLines = 3, enabled = enabled && !saving)
-    Text("Entwurf wird lokal automatisch gespeichert · nur Text · keine automatische Benotung",
-        style = MaterialTheme.typography.labelSmall)
-    Button(
-        onClick = { onSave(task, draft, context) },
-        enabled = enabled && !saving && draft.isNotBlank(),
-        modifier = Modifier.testTag("save_practice_${unitId}_$task")
-    ) {
-        Text("Als Selbstreflexion speichern")
+        modifier = Modifier.fillMaxWidth(), minLines = minLines, enabled = enabled && !saving)
+    if (showDraftDisclosure) {
+        Text("Entwurf wird lokal automatisch gespeichert · nur Text · keine automatische Benotung",
+            style = MaterialTheme.typography.labelSmall)
     }
-    AiFeedbackShareButton(
-        task = taskDescription,
-        response = draft,
-        modifier = Modifier.fillMaxWidth()
-    )
+    if (showSaveButton) {
+        Button(
+            onClick = { onSave(task, draft, context) },
+            enabled = enabled && !saving && draft.isNotBlank(),
+            modifier = Modifier.testTag("save_practice_${unitId}_$task")
+        ) {
+            Text("Als Selbstreflexion speichern")
+        }
+    }
+    if (includeAiFeedback) {
+        AiFeedbackShareButton(
+            task = taskDescription,
+            response = draft,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
 }
 
 @Composable
 private fun QuizSection(
     unit: CurriculumUnit, context: ContextTrack, result: ProgrammeQuizResult?,
     enabled: Boolean, saving: Boolean, onReveal: () -> Unit,
-    onQuiz: (Int?, ContextTrack) -> Unit, compact: Boolean
+    onQuiz: (Int?, ContextTrack) -> Unit, compact: Boolean,
+    onQuizWithCompletion: ((Int?, ContextTrack, () -> Unit) -> Unit)? = null,
+    onStepSaved: (() -> Unit)? = null
 ) {
     val content = unit.content ?: return
     var selection by rememberSaveable(unit.id) { mutableStateOf(-1) }
@@ -1936,10 +2492,22 @@ private fun QuizSection(
                 }
             }
         }
-        Button(onClick = { onQuiz(selection, context) }, enabled = enabled && !saving && selection >= 0) {
+        Button(onClick = {
+            if (onQuizWithCompletion != null) {
+                onQuizWithCompletion(selection, context) { onStepSaved?.invoke() }
+            } else {
+                onQuiz(selection, context)
+            }
+        }, enabled = enabled && !saving && selection >= 0) {
             Text("Antwort abgeben & speichern")
         }
-        TextButton(onClick = { onQuiz(null, context) }, enabled = enabled && !saving) {
+        TextButton(onClick = {
+            if (onQuizWithCompletion != null) {
+                onQuizWithCompletion(null, context) { onStepSaved?.invoke() }
+            } else {
+                onQuiz(null, context)
+            }
+        }, enabled = enabled && !saving) {
             Text("Weiß ich noch nicht · ohne Score speichern")
         }
         if (result != null) {
@@ -1963,7 +2531,11 @@ private fun QuizSection(
 }
 
 @Composable
-private fun SyntheticListening(transcript: String, language: ProgrammeLanguage) {
+private fun SyntheticListening(
+    transcript: String,
+    language: ProgrammeLanguage,
+    onStopAvailable: ((() -> Unit) -> Unit)? = null
+) {
     val context = LocalContext.current.applicationContext
     var engine by remember { mutableStateOf<TextToSpeech?>(null) }
     var ready by remember { mutableStateOf(false) }
@@ -1988,10 +2560,12 @@ private fun SyntheticListening(transcript: String, language: ProgrammeLanguage) 
                 }
             }
             engine = instance
+            onStopAvailable?.invoke { instance?.stop() }
         } catch (_: Exception) {
             status = "Sprachausgabe konnte nicht gestartet werden. Nutze das Transkript."
         }
         onDispose {
+            onStopAvailable?.invoke {}
             disposed = true
             handler.removeCallbacksAndMessages(null)
             instance?.stop()
@@ -2004,21 +2578,25 @@ private fun SyntheticListening(transcript: String, language: ProgrammeLanguage) 
     ),
         style = MaterialTheme.typography.bodySmall)
     Text(status, style = MaterialTheme.typography.bodySmall)
-    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+    Text(
+        language.text(
+            "Hörweg: zuerst ohne Text hören und eigene Notizen machen; danach langsamer wiederholen und erst dann mit dem Transkript vergleichen.",
+            "Listen first without the text and take your own notes; replay more slowly, then compare with the transcript."
+        ),
+        style = MaterialTheme.typography.bodySmall
+    )
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Button(enabled = ready, onClick = {
-            try {
-                val parts = transcript.chunked((TextToSpeech.getMaxSpeechInputLength() - 1).coerceAtLeast(1))
-                val failed = parts.mapIndexed { index, part ->
-                    engine?.speak(part, if (index == 0) TextToSpeech.QUEUE_FLUSH else TextToSpeech.QUEUE_ADD,
-                        null, "programme-listening-$index") ?: TextToSpeech.ERROR
-                }.any { it == TextToSpeech.ERROR }
-                status = if (failed) "Wiedergabe fehlgeschlagen. Nutze das Transkript."
-                    else "An die synthetische Sprachausgabe übergeben. Keine Aufnahme oder Bewertung."
-            } catch (_: Exception) {
-                status = "Wiedergabe nicht verfügbar. Nutze das Transkript."
-            }
-        }) { Text(language.text("Vorlesen", "Read aloud")) }
-        OutlinedButton(enabled = ready, onClick = { engine?.stop(); status = "Wiedergabe gestoppt." }) {
+            playLessonAudio(engine, transcript, 1.0f) { status = it }
+        }) {
+            Text(language.text("Normal anhören", "Listen at normal speed"))
+        }
+        OutlinedButton(enabled = ready, onClick = {
+            playLessonAudio(engine, transcript, 0.85f) { status = it }
+        }) {
+            Text(language.text("Nochmal · langsamer", "Replay · slower"))
+        }
+        TextButton(enabled = ready, onClick = { engine?.stop(); status = "Wiedergabe gestoppt." }) {
             Text(language.text("Stopp", "Stop"))
         }
     }
@@ -2030,6 +2608,37 @@ private fun SyntheticListening(transcript: String, language: ProgrammeLanguage) 
     }
     AnimatedVisibility(visible = showTranscript) {
         ListeningTranscriptStudio(transcript, language)
+    }
+}
+
+private fun playLessonAudio(
+    engine: TextToSpeech?,
+    transcript: String,
+    speechRate: Float,
+    onStatus: (String) -> Unit
+) {
+    try {
+        engine?.setSpeechRate(speechRate)
+        val parts = transcript.chunked((TextToSpeech.getMaxSpeechInputLength() - 1).coerceAtLeast(1))
+        val failed = parts.mapIndexed { index, part ->
+            engine?.speak(
+                part,
+                if (index == 0) TextToSpeech.QUEUE_FLUSH else TextToSpeech.QUEUE_ADD,
+                null,
+                "programme-listening-$index"
+            ) ?: TextToSpeech.ERROR
+        }.any { it == TextToSpeech.ERROR }
+        onStatus(
+            when {
+                failed -> "Wiedergabe fehlgeschlagen. Nutze das Transkript."
+                speechRate < 1f -> "Langsame Wiedergabe gestartet. Keine Aufnahme oder Bewertung."
+                else -> "Wiedergabe gestartet. Keine Aufnahme oder Bewertung."
+            }
+        )
+    } catch (_: IllegalArgumentException) {
+        onStatus("Wiedergabe nicht verfügbar. Nutze das Transkript.")
+    } catch (_: IllegalStateException) {
+        onStatus("Wiedergabe nicht verfügbar. Nutze das Transkript.")
     }
 }
 
@@ -2526,7 +3135,7 @@ private fun PreferencesDialog(preferences: ProgrammePreferences, viewModel: Prog
     }
 }
 
-private fun contextLabel(context: ContextTrack): String = when (context) {
+internal fun contextLabel(context: ContextTrack): String = when (context) {
     ContextTrack.GENERAL -> "Alltag"
     ContextTrack.SOCIAL -> "Soziales"
     ContextTrack.ENGINEERING -> "Engineering"

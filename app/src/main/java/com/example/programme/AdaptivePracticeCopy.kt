@@ -37,24 +37,69 @@ internal fun adaptiveExplanation(
 ): String {
     val focus = decision.primaryTaskId?.let { taskLabel(it, language) }
         ?: return language.text(
-            "Der Kernpfad bleibt aktiv; es gibt noch kein klares Prioritätssignal.",
-            "The core path continues; there is no clear priority signal yet."
+            "Der geführte Kursweg ist abgeschlossen; aktuell ist keine Lektion verfügbar.",
+            "The guided course path is complete; no lesson is currently available."
         )
-    if (decision.reason.startsWith("Fälliger persönlicher Reparaturschritt")) {
-        return language.text(
-            "Heute steht $focus im Fokus, weil ein persönlicher Reparaturschritt fällig ist. Das ist eine Übungsnavigation, keine Kompetenzbewertung.",
-            "Today's practice focuses on $focus because a personal review step is due. This guides practice; it is not a proficiency rating."
+    val signal = profile.top().firstOrNull { it.signal == decision.focusSignal }
+    return when (decision.reasonCode) {
+        AdaptiveReasonCode.PERSONAL_REPAIR_DUE -> language.text(
+            "Ein persönlicher Übungsschritt ist fällig. Heute: $focus. Das ist Übungsnavigation, keine Kompetenzbewertung.",
+            "A personal practice step is due. Today's focus: $focus. This guides practice; it is not a proficiency rating."
+        )
+        AdaptiveReasonCode.LESSON_REVIEW_DUE -> language.text(
+            "Der Wiederholungsplan ist fällig. Heute beginnt die Lektion mit aktivem Abruf: $focus.",
+            "A scheduled review is due. Today's lesson starts with active retrieval: $focus."
+        )
+        AdaptiveReasonCode.QUIZ_REPAIR -> language.text(
+            "Die Verständnisprüfung braucht einen weiteren Versuch. Erst danach führt der Lernweg weiter.",
+            "The comprehension check needs another attempt. The guided path continues after it."
+        )
+        AdaptiveReasonCode.RESPONSE_REPAIR -> language.text(
+            "Ein lokaler Hinweis in einer gespeicherten Antwort führt zu gezielter Überarbeitung: $focus. Einzelne Textmuster belegen keine Gesamtkompetenz.",
+            "A local signal in a saved response calls for focused revision: $focus. One text pattern does not establish overall ability."
+        )
+        AdaptiveReasonCode.FIRST_RETRIEVAL -> language.text(
+            "Beginne ohne Vorlage mit aktivem Abruf. Danach führt dich der Plan Schritt für Schritt durch Input, Hören und Anwendung.",
+            "Start with a no-notes retrieval attempt. The plan then guides you through input, listening, and application."
+        )
+        AdaptiveReasonCode.NEXT_INPUT -> language.text(
+            "Dein erster Abruf ist gespeichert. Als Nächstes folgt der Lektionsinput: $focus.",
+            "Your first retrieval attempt is saved. Next comes the lesson input: $focus."
+        )
+        AdaptiveReasonCode.NEXT_LISTENING -> language.text(
+            "Der Lektionsinput ist bearbeitet. Als Nächstes folgt das integrierte Hörtraining: $focus.",
+            "The lesson input is complete. Next comes integrated listening practice: $focus."
+        )
+        AdaptiveReasonCode.NEXT_COMPREHENSION_CHECK -> language.text(
+            "Input und Hören sind bearbeitet. Prüfe jetzt das Textverständnis: $focus.",
+            "Input and listening are complete. Now check your comprehension: $focus."
+        )
+        AdaptiveReasonCode.NEXT_CONTROLLED_PRACTICE -> language.text(
+            "Das Verständnis ist gesichert. Jetzt folgt angeleitete Formulierung: $focus.",
+            "Comprehension is supported. Now move to guided formulation: $focus."
+        )
+        AdaptiveReasonCode.NEXT_PRODUCTION -> language.text(
+            "Jetzt folgt eine eigenständige Anwendung in einem weiteren Aufgabentyp: $focus.",
+            "Now apply the lesson independently in another task type: $focus."
+        )
+        AdaptiveReasonCode.RECURRING_SIGNAL -> if (signal == null) {
+            language.text(
+                "Ein wiederkehrendes Übungssignal lenkt die nächste Aufgabe: $focus.",
+                "A recurring practice signal guides the next task: $focus."
+            )
+        } else {
+            language.text(
+                "Das Übungssignal „${signalLabel(signal.signal, language)}“ trat in ${signal.sampleCount} Einträgen auf. Deshalb folgt $focus. Das ist keine Kompetenzbewertung.",
+                "The practice signal “${signalLabel(signal.signal, language)}” appeared in ${signal.sampleCount} records, so next is $focus. This is not a proficiency rating."
+            )
+        }
+        AdaptiveReasonCode.BALANCED_PRACTICE -> language.text(
+            "Der Kernpfad ist bearbeitet. Als Nächstes wählen wir einen zuletzt weniger geübten Bereich: $focus.",
+            "The core path is complete. Next, practice an area used less recently: $focus."
+        )
+        AdaptiveReasonCode.COURSE_COMPLETE -> language.text(
+            "Der geführte Kursweg ist abgeschlossen; aktuell ist keine Lektion verfügbar.",
+            "The guided course path is complete; no lesson is currently available."
         )
     }
-    val signal = profile.top(1).firstOrNull()
-    if (signal == null || !decision.reason.startsWith("Wiederkehrendes Signal")) {
-        return language.text(
-            "Heute steht $focus im Fokus. Das ist eine Übungsempfehlung, keine Kompetenzbewertung.",
-            "Today's practice focuses on $focus. This is a practice recommendation, not a proficiency rating."
-        )
-    }
-    return language.text(
-        "Heute steht $focus im Fokus, weil das Signal „${signalLabel(signal.signal, language)}“ in ${signal.sampleCount} Übungshinweis(en) vorkam. Das lenkt die Übungsauswahl, bewertet aber nicht deine Gesamtkompetenz.",
-        "Today's practice focuses on $focus because the signal “${signalLabel(signal.signal, language)}” appeared in ${signal.sampleCount} practice record(s). This guides practice selection; it does not rate overall proficiency."
-    )
 }

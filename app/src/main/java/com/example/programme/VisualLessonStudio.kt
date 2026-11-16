@@ -1,12 +1,14 @@
 package com.example.programme
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,6 +19,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.selection.selectable
@@ -32,17 +35,30 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sin
 
 private data class ListeningTurn(
     val speaker: String?,
@@ -405,46 +421,457 @@ internal fun LessonJourneyVisual(
 }
 
 @Composable
-internal fun LessonObjectiveMap(
-    objectives: List<String>,
+internal fun LessonConceptMap(
+    unit: CurriculumUnit,
+    context: ContextTrack,
+    expressions: List<String>,
+    selectedExpressionIndex: Int,
     language: ProgrammeLanguage
 ) {
+    val expression = expressions.getOrNull(selectedExpressionIndex) ?: expressions.firstOrNull().orEmpty()
+    val parts = expression.split(Regex("\\s+[–—]\\s+"), limit = 2)
+    val phrase = parts.firstOrNull()?.takeIf { it.isNotBlank() }
+        ?: language.text("Noch kein Sprachmittel", "No language move yet")
+    val purpose = parts.getOrNull(1) ?: unit.objectives.firstOrNull().orEmpty()
+    val visual = lessonVisualBlueprint(unit.id)
+    var selectedStep by rememberSaveable(unit.id) { mutableIntStateOf(1) }
+    var showObjectives by rememberSaveable(unit.id) { mutableStateOf(false) }
+    val steps = listOf(
+        Triple("KONTEXT", contextLabel(context), unit.contexts[context] ?: "Kein Kontext verfasst"),
+        Triple("SPRACHZUG", phrase, phrase),
+        Triple("WIRKUNG", "Was sich dadurch ändert", purpose)
+    )
+    val activeStep = selectedStep.coerceIn(steps.indices)
+
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Text(
+            language.text("VISUELLE IDEE", "VISUAL MODEL"),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.primary
+        )
+        LessonVisualGraphic(visual.graphic, activeStep)
+        Text(
+            language.text(visual.caption, visual.englishCaption),
+            style = MaterialTheme.typography.titleSmall,
+            fontWeight = FontWeight.SemiBold
+        )
         Text(
             language.text("WORAN DU ARBEITEST", "WHAT YOU WILL WORK ON"),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.primary
         )
-        objectives.forEachIndexed { index, objective ->
+        unit.objectives.firstOrNull()?.let { objective ->
+            Text(
+                objective,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        Column {
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalAlignment = Alignment.Top
+                modifier = Modifier.fillMaxWidth().selectableGroup(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Surface(
-                    modifier = Modifier.size(30.dp),
-                    shape = CircleShape,
-                    color = if (index == 0) MaterialTheme.colorScheme.primary
-                    else MaterialTheme.colorScheme.secondaryContainer
-                ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Text(
-                            "${index + 1}",
-                            color = if (index == 0) MaterialTheme.colorScheme.onPrimary
-                            else MaterialTheme.colorScheme.onSecondaryContainer,
-                            style = MaterialTheme.typography.labelLarge,
-                            fontWeight = FontWeight.Bold
+                steps.forEachIndexed { index, _ ->
+                    Surface(
+                        modifier = Modifier
+                            .size(42.dp)
+                            .selectable(
+                                selected = activeStep == index,
+                                onClick = { selectedStep = index },
+                                role = Role.Tab
+                            )
+                            .testTag("lesson_concept_step_$index"),
+                        shape = CircleShape,
+                        color = if (activeStep == index) MaterialTheme.colorScheme.primary
+                        else MaterialTheme.colorScheme.secondaryContainer
+                    ) {
+                        Box(contentAlignment = Alignment.Center) {
+                            Text(
+                                "${index + 1}",
+                                color = if (activeStep == index) MaterialTheme.colorScheme.onPrimary
+                                else MaterialTheme.colorScheme.onSecondaryContainer,
+                                style = MaterialTheme.typography.labelLarge,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    }
+
+                    if (index < steps.lastIndex) {
+                        Box(
+                            modifier = Modifier.weight(1f).height(3.dp)
+                                .background(
+                                    if (activeStep > index) MaterialTheme.colorScheme.primary
+                                    else MaterialTheme.colorScheme.surfaceVariant
+                                )
                         )
                     }
                 }
+            }
+            Row(modifier = Modifier.fillMaxWidth()) {
+                steps.forEachIndexed { index, step ->
+                    Text(
+                        step.first,
+                        modifier = Modifier.width(42.dp).padding(top = 6.dp),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = if (activeStep == index) MaterialTheme.colorScheme.primary
+                        else MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                    )
+                    if (index < steps.lastIndex) Box(modifier = Modifier.weight(1f))
+                }
+            }
+        }
+        AnimatedContent(
+            targetState = activeStep,
+            transitionSpec = { fadeIn() togetherWith fadeOut() },
+            label = "lesson-concept-step"
+        ) { target ->
+            val step = steps[target]
+            Card(
+                modifier = Modifier.fillMaxWidth().animateContentSize(),
+                shape = RoundedCornerShape(20.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = when (target) {
+                        0 -> MaterialTheme.colorScheme.primaryContainer
+                        1 -> MaterialTheme.colorScheme.tertiaryContainer
+                        else -> MaterialTheme.colorScheme.secondaryContainer
+                    }
+                )
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Text(step.second, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+                    if (target != 1) Text(step.third, style = MaterialTheme.typography.bodyMedium)
+                }
+            }
+        }
+        if (unit.objectives.size > 1) {
+            TextButton(onClick = { showObjectives = !showObjectives }) {
                 Text(
-                    objective,
-                    modifier = Modifier.weight(1f).padding(top = 3.dp),
-                    style = MaterialTheme.typography.bodyMedium
+                    if (showObjectives) language.text("Weniger Lernziele", "Fewer learning goals")
+                    else language.text("Alle Lernziele anzeigen", "Show all learning goals")
+                )
+            }
+            AnimatedVisibility(visible = showObjectives) {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    unit.objectives.drop(1).forEachIndexed { index, objective ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                            verticalAlignment = Alignment.Top
+                        ) {
+                            Text(
+                                "${index + 2}",
+                                color = MaterialTheme.colorScheme.primary,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(objective, modifier = Modifier.weight(1f), style = MaterialTheme.typography.bodySmall)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+private enum class LessonGraphicType {
+    TARGET, GRID, PROCESS, ARGUMENT, EVIDENCE, DIALOGUE, BRIDGE, FUNNEL, BALANCE, CYCLE
+}
+
+private data class LessonVisualBlueprint(
+    val graphic: LessonGraphicType,
+    val caption: String,
+    val englishCaption: String
+)
+
+@Composable
+internal fun LessonStepVisual(
+    unit: CurriculumUnit,
+    phase: Int,
+    language: ProgrammeLanguage
+) {
+    val visual = lessonVisualBlueprint(unit.id)
+    val stage = phase.coerceIn(0, 2)
+    val stageTitle = when (stage) {
+        0 -> language.text("Erst erinnern", "Recall first")
+        1 -> language.text("Muster erkennen", "Notice the pattern")
+        else -> language.text("Eigenständig anwenden", "Apply it yourself")
+    }
+
+    Card(
+        modifier = Modifier.fillMaxWidth().testTag("lesson_step_visual_$stage"),
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(10.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            LessonVisualGraphic(
+                graphic = visual.graphic,
+                activeStep = stage,
+                modifier = Modifier.width(90.dp),
+                height = 66.dp,
+                testTag = "lesson_step_art_$stage"
+            )
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(3.dp)
+            ) {
+                Text(
+                    language.text("DIE IDEE ALS BILD", "THE IDEA IN ONE IMAGE"),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+                AnimatedContent(
+                    targetState = stageTitle,
+                    transitionSpec = { fadeIn() togetherWith fadeOut() },
+                    label = "lesson-visual-stage"
+                ) { title ->
+                    Text(
+                        title,
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+                Text(
+                    language.text(visual.caption, visual.englishCaption),
+                    style = MaterialTheme.typography.bodySmall,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }
     }
+}
+
+private fun lessonVisualBlueprint(unitId: String): LessonVisualBlueprint = when (unitId) {
+    "s0-profile" -> LessonVisualBlueprint(LessonGraphicType.TARGET, "Wunsch → überprüfbares Ziel", "Wish → observable goal")
+    "s0-diagnose" -> LessonVisualBlueprint(LessonGraphicType.GRID, "Vier Fertigkeiten, ein ehrlicher Ausgangspunkt", "Four skills, one honest starting point")
+    "s0-repair" -> LessonVisualBlueprint(LessonGraphicType.DIALOGUE, "Störung → Klärung → gemeinsames Verständnis", "Breakdown → clarification → shared understanding")
+    "s0-retrieve", "s5-revise", "s6-retention" ->
+        LessonVisualBlueprint(LessonGraphicType.CYCLE, "Abrufen, prüfen und erneut anwenden", "Recall, check and apply again")
+    "s1-explain" -> LessonVisualBlueprint(LessonGraphicType.PROCESS, "Schrittfolge mit sichtbaren Übergängen", "A sequence with visible transitions")
+    "s1-justify", "s4-argument" ->
+        LessonVisualBlueprint(LessonGraphicType.ARGUMENT, "These, Beleg und Einwand auseinanderhalten", "Separate claim, evidence and counterargument")
+    "s1-uncertainty", "s2-data", "s4-challenge", "s6-specialist" ->
+        LessonVisualBlueprint(LessonGraphicType.EVIDENCE, "Aussage, Beleg und Unsicherheitsgrenze", "Claim, evidence and uncertainty boundary")
+    "s1-feedback" -> LessonVisualBlueprint(LessonGraphicType.DIALOGUE, "Beobachtung → Wirkung → nächster Schritt", "Observation → impact → next step")
+    "s2-register" -> LessonVisualBlueprint(LessonGraphicType.BRIDGE, "Adressat und Situation steuern das Register", "Audience and situation shape register")
+    "s2-summarise", "s4-present" ->
+        LessonVisualBlueprint(LessonGraphicType.FUNNEL, "Wesentliches bündeln, Grenzen erhalten", "Distil the essential while preserving limits")
+    "s2-mediate", "s3-negotiate" ->
+        LessonVisualBlueprint(LessonGraphicType.BRIDGE, "Perspektiven verbinden, ohne sie gleichzusetzen", "Connect perspectives without conflating them")
+    "s3-disagree" -> LessonVisualBlueprint(LessonGraphicType.BALANCE, "Klar widersprechen und das Gegenüber achten", "Disagree clearly while respecting the other person")
+    "s3-deescalate" -> LessonVisualBlueprint(LessonGraphicType.CYCLE, "Spannung aufnehmen, neu rahmen, Lösung öffnen", "Acknowledge tension, reframe and open a way forward")
+    "s3-agree" -> LessonVisualBlueprint(LessonGraphicType.PROCESS, "Verantwortung, Termin und Kriterium festhalten", "Record ownership, timing and a success criterion")
+    "s4-ethics" -> LessonVisualBlueprint(LessonGraphicType.BALANCE, "Werte abwägen und die Entscheidung begrenzen", "Balance values and qualify the decision")
+    "s5-spontaneous" -> LessonVisualBlueprint(LessonGraphicType.DIALOGUE, "Hören → reagieren → bei Bedarf reparieren", "Listen → respond → repair when needed")
+    "s5-nuance" -> LessonVisualBlueprint(LessonGraphicType.EVIDENCE, "Bedeutung als Abstufung statt Entweder-oder", "Meaning as a spectrum, not a binary")
+    "s5-facilitate" -> LessonVisualBlueprint(LessonGraphicType.GRID, "Mehrere Stimmen zu einem gemeinsamen Faden verknüpfen", "Weave multiple voices into a shared thread")
+    "s6-general" -> LessonVisualBlueprint(LessonGraphicType.PROCESS, "Neue Aufgabe → Strategie → Selbstcheck", "New task → strategy → self-check")
+    "s6-checkpoint" -> LessonVisualBlueprint(LessonGraphicType.TARGET, "Signale in ein begrenztes Übungsziel übersetzen", "Turn signals into a bounded practice goal")
+    else -> LessonVisualBlueprint(LessonGraphicType.PROCESS, "Kontext → Sprachzug → Wirkung", "Context → language move → effect")
+}
+
+@Composable
+private fun LessonVisualGraphic(
+    graphic: LessonGraphicType,
+    activeStep: Int,
+    modifier: Modifier = Modifier.fillMaxWidth(),
+    height: Dp = 154.dp,
+    testTag: String = "lesson_visual_illustration"
+) {
+    val colors = MaterialTheme.colorScheme
+    val progress by animateFloatAsState(activeStep / 2f, label = "lesson-graphic-progress")
+    Canvas(
+        modifier = modifier
+            .height(height)
+            .clip(RoundedCornerShape(24.dp))
+            .background(colors.surfaceVariant)
+            .testTag(testTag)
+    ) {
+        val unit = size.minDimension
+        val stroke = unit * 0.018f
+        val line = colors.onSurfaceVariant.copy(alpha = 0.58f)
+        val accent = colors.primary
+        val soft = colors.primaryContainer
+        val warm = colors.tertiaryContainer
+        val cool = colors.secondaryContainer
+        val center = Offset(size.width / 2f, size.height / 2f)
+        val nodeRadius = unit * (0.105f + 0.018f * progress)
+
+        when (graphic) {
+            LessonGraphicType.TARGET -> {
+                val target = Offset(size.width * 0.72f, center.y)
+                drawArrow(Offset(size.width * 0.12f, size.height * 0.78f), target, accent, stroke)
+                drawCircle(warm, unit * 0.31f, target)
+                drawCircle(colors.surface, unit * 0.22f, target)
+                drawCircle(accent, unit * 0.11f, target)
+            }
+            LessonGraphicType.GRID -> {
+                val points = listOf(
+                    Offset(size.width * 0.32f, size.height * 0.34f),
+                    Offset(size.width * 0.68f, size.height * 0.34f),
+                    Offset(size.width * 0.32f, size.height * 0.68f),
+                    Offset(size.width * 0.68f, size.height * 0.68f)
+                )
+                points.forEachIndexed { index, point ->
+                    drawLine(line, center, point, strokeWidth = stroke)
+                    drawCircle(if (index % 2 == 0) soft else warm, unit * 0.11f, point)
+                    drawCircle(accent, unit * 0.035f, point)
+                }
+                drawCircle(colors.surface, unit * 0.105f, center)
+                drawCircle(accent, unit * 0.045f, center)
+            }
+            LessonGraphicType.PROCESS -> {
+                val points = listOf(
+                    Offset(size.width * 0.18f, center.y),
+                    center,
+                    Offset(size.width * 0.82f, center.y)
+                )
+                points.zipWithNext().forEachIndexed { index, (start, end) ->
+                    drawArrow(start, end, if (progress >= (index + 1) / 2f) accent else line, stroke)
+                }
+                points.forEachIndexed { index, point ->
+                    drawCircle(if (progress >= index / 2f) soft else cool, nodeRadius, point)
+                    drawCircle(if (progress >= index / 2f) accent else line, nodeRadius * 0.35f, point)
+                }
+            }
+            LessonGraphicType.ARGUMENT -> {
+                val claim = Offset(size.width * 0.22f, center.y)
+                val evidence = listOf(
+                    Offset(size.width * 0.72f, size.height * 0.25f),
+                    Offset(size.width * 0.72f, center.y),
+                    Offset(size.width * 0.72f, size.height * 0.75f)
+                )
+                evidence.forEachIndexed { index, point ->
+                    drawArrow(claim, point, if (index == 1) accent else line, stroke)
+                    drawCircle(if (index == 1) warm else cool, unit * 0.095f, point)
+                }
+                drawRoundRect(soft, Offset(claim.x - unit * 0.12f, claim.y - unit * 0.12f),
+                    Size(unit * 0.24f, unit * 0.24f), CornerRadius(unit * 0.06f))
+                drawCircle(accent, unit * 0.045f, claim)
+            }
+            LessonGraphicType.EVIDENCE -> {
+                val left = size.width * 0.16f
+                val right = size.width * 0.84f
+                val bottom = size.height * 0.78f
+                drawLine(line, Offset(left, size.height * 0.18f), Offset(left, bottom), strokeWidth = stroke)
+                drawLine(line, Offset(left, bottom), Offset(right, bottom), strokeWidth = stroke)
+                val bars = listOf(0.35f, 0.58f, 0.44f)
+                bars.forEachIndexed { index, height ->
+                    val x = size.width * (0.32f + index * 0.2f)
+                    val top = bottom - size.height * height
+                    drawRoundRect(
+                        if (index == 1) warm else soft,
+                        Offset(x - unit * 0.055f, top),
+                        Size(unit * 0.11f, bottom - top),
+                        CornerRadius(unit * 0.04f)
+                    )
+                    drawLine(accent, Offset(x, top - unit * 0.055f), Offset(x, top + unit * 0.055f), strokeWidth = stroke)
+                }
+                drawLine(accent, Offset(size.width * 0.28f, size.height * 0.35f),
+                    Offset(size.width * 0.77f, size.height * 0.35f), strokeWidth = stroke * 0.8f)
+            }
+            LessonGraphicType.DIALOGUE -> {
+                val bubbleWidth = size.width * 0.31f
+                val bubbleHeight = size.height * 0.34f
+                val first = Offset(size.width * 0.12f, size.height * 0.2f)
+                val second = Offset(size.width * 0.57f, size.height * 0.48f)
+                drawRoundRect(soft, first, Size(bubbleWidth, bubbleHeight), CornerRadius(unit * 0.09f))
+                drawRoundRect(warm, second, Size(bubbleWidth, bubbleHeight), CornerRadius(unit * 0.09f))
+                repeat(3) { index ->
+                    drawCircle(accent, unit * 0.025f, Offset(first.x + bubbleWidth * (0.3f + index * 0.2f), first.y + bubbleHeight * 0.48f))
+                    drawCircle(accent, unit * 0.025f, Offset(second.x + bubbleWidth * (0.3f + index * 0.2f), second.y + bubbleHeight * 0.48f))
+                }
+                drawArrow(Offset(first.x + bubbleWidth, first.y + bubbleHeight * 0.72f),
+                    Offset(second.x, second.y + bubbleHeight * 0.28f), accent, stroke)
+            }
+            LessonGraphicType.BRIDGE -> {
+                val left = Offset(size.width * 0.2f, size.height * 0.65f)
+                val right = Offset(size.width * 0.8f, size.height * 0.65f)
+                val arch = Path().apply {
+                    moveTo(left.x, left.y)
+                    cubicTo(size.width * 0.32f, size.height * 0.1f, size.width * 0.68f, size.height * 0.1f, right.x, right.y)
+                }
+                drawPath(arch, accent, style = Stroke(width = stroke * 2f))
+                drawRoundRect(soft, Offset(left.x - unit * 0.08f, left.y), Size(unit * 0.16f, unit * 0.2f), CornerRadius(unit * 0.04f))
+                drawRoundRect(warm, Offset(right.x - unit * 0.08f, right.y), Size(unit * 0.16f, unit * 0.2f), CornerRadius(unit * 0.04f))
+                drawLine(line, Offset(left.x - unit * 0.12f, left.y + unit * 0.2f),
+                    Offset(right.x + unit * 0.12f, right.y + unit * 0.2f), strokeWidth = stroke)
+            }
+            LessonGraphicType.FUNNEL -> {
+                val funnel = Path().apply {
+                    moveTo(size.width * 0.15f, size.height * 0.22f)
+                    lineTo(size.width * 0.85f, size.height * 0.22f)
+                    lineTo(size.width * 0.58f, size.height * 0.62f)
+                    lineTo(size.width * 0.58f, size.height * 0.76f)
+                    lineTo(size.width * 0.42f, size.height * 0.76f)
+                    lineTo(size.width * 0.42f, size.height * 0.62f)
+                    close()
+                }
+                drawPath(funnel, soft)
+                drawLine(accent, Offset(size.width * 0.26f, size.height * 0.34f),
+                    Offset(size.width * 0.74f, size.height * 0.34f), strokeWidth = stroke)
+                drawCircle(warm, unit * 0.08f, Offset(center.x, size.height * 0.83f))
+            }
+            LessonGraphicType.BALANCE -> {
+                val pivot = Offset(center.x, size.height * 0.76f)
+                val beamY = size.height * (0.34f + 0.08f * progress)
+                drawLine(accent, Offset(size.width * 0.23f, beamY), Offset(size.width * 0.77f, beamY), strokeWidth = stroke * 2f)
+                drawLine(line, Offset(center.x, beamY), pivot, strokeWidth = stroke * 2f)
+                drawTriangle(pivot, unit * 0.18f, warm)
+                listOf(size.width * 0.31f, size.width * 0.69f).forEach { x ->
+                    drawLine(line, Offset(x, beamY), Offset(x, size.height * 0.68f), strokeWidth = stroke)
+                    drawArc(soft, 0f, 180f, false, Offset(x - unit * 0.13f, size.height * 0.62f),
+                        Size(unit * 0.26f, unit * 0.16f), style = Stroke(width = stroke * 2f))
+                }
+            }
+            LessonGraphicType.CYCLE -> {
+                val points = listOf(
+                    Offset(center.x, size.height * 0.2f),
+                    Offset(size.width * 0.76f, size.height * 0.65f),
+                    Offset(size.width * 0.24f, size.height * 0.65f)
+                )
+                points.indices.forEach { index ->
+                    drawArrow(points[index], points[(index + 1) % points.size], accent, stroke)
+                }
+                points.forEachIndexed { index, point ->
+                    drawCircle(if (index == activeStep) warm else soft, nodeRadius, point)
+                }
+            }
+        }
+    }
+}
+
+private fun DrawScope.drawArrow(start: Offset, end: Offset, color: Color, stroke: Float) {
+    drawLine(color, start, end, strokeWidth = stroke, cap = StrokeCap.Round)
+    val angle = atan2(end.y - start.y, end.x - start.x)
+    val head = stroke * 3.2f
+    val left = Offset(end.x - head * cos(angle - 0.55f), end.y - head * sin(angle - 0.55f))
+    val right = Offset(end.x - head * cos(angle + 0.55f), end.y - head * sin(angle + 0.55f))
+    val arrow = Path().apply {
+        moveTo(end.x, end.y)
+        lineTo(left.x, left.y)
+        lineTo(right.x, right.y)
+        close()
+    }
+    drawPath(arrow, color)
+}
+
+private fun DrawScope.drawTriangle(center: Offset, radius: Float, color: Color) {
+    val triangle = Path().apply {
+        moveTo(center.x, center.y)
+        lineTo(center.x - radius, center.y - radius * 1.5f)
+        lineTo(center.x + radius, center.y - radius * 1.5f)
+        close()
+    }
+    drawPath(triangle, color)
 }
 
 @Composable
@@ -453,13 +880,14 @@ internal fun LanguagePatternStudio(
     unitId: String,
     expressions: List<String>,
     grammar: String,
-    language: ProgrammeLanguage
+    language: ProgrammeLanguage,
+    selectedIndex: Int,
+    onSelectedIndexChange: (Int) -> Unit
 ) {
     if (expressions.isEmpty()) {
-        Text(grammar)
+        GrammarDetails(unitId, grammar, language)
         return
     }
-    var selectedIndex by rememberSaveable(unitId) { mutableIntStateOf(0) }
     val index = selectedIndex.coerceIn(expressions.indices)
 
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -482,7 +910,7 @@ internal fun LanguagePatternStudio(
                     .let { if (it.length < expression.substringBefore(" – ").length) "$it…" else it }
                 FilterChip(
                     selected = itemIndex == index,
-                    onClick = { selectedIndex = itemIndex },
+                    onClick = { onSelectedIndexChange(itemIndex) },
                     label = { Text("${itemIndex + 1} · $label") }
                 )
             }
@@ -502,32 +930,72 @@ internal fun LanguagePatternStudio(
                     modifier = Modifier.padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Text(
-                        language.text("FORMULIERUNG", "PHRASE"),
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                    Text(
-                        parts.first(),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                    parts.getOrNull(1)?.let { explanation ->
-                        Text(
-                            language.text("FUNKTION", "PURPOSE"),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Text(explanation, style = MaterialTheme.typography.bodyMedium)
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        verticalAlignment = Alignment.Top
+                    ) {
+                        Column(
+                            modifier = Modifier.weight(1f),
+                            verticalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Text(
+                                language.text("FORMULIERUNG", "PHRASE"),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                            Text(parts.first(), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+                        }
+                        if (parts.size > 1) {
+                            Text("→", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
+                            Column(
+                                modifier = Modifier.weight(1f),
+                                verticalArrangement = Arrangement.spacedBy(6.dp)
+                            ) {
+                                Text(
+                                    language.text("FUNKTION", "PURPOSE"),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                                Text(parts[1], style = MaterialTheme.typography.bodyMedium)
+                            }
+                        }
                     }
                 }
             }
         }
+        GrammarDetails(unitId, grammar, language)
+    }
+}
+
+@Composable
+private fun GrammarDetails(
+    unitId: String,
+    grammar: String,
+    language: ProgrammeLanguage
+) {
+    var expanded by rememberSaveable(unitId) { mutableStateOf(false) }
+    Text(
+        language.text("GRAMMATIK IM KONTEXT", "GRAMMAR IN CONTEXT"),
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.primary
+    )
+    TextButton(
+        modifier = Modifier.testTag("lesson_grammar_toggle"),
+        onClick = { expanded = !expanded }
+    ) {
         Text(
-            language.text("GRAMMATIK IM KONTEXT", "GRAMMAR IN CONTEXT"),
-            style = MaterialTheme.typography.labelMedium,
-            color = MaterialTheme.colorScheme.primary
+            if (expanded) language.text("Grammatik ausblenden", "Hide grammar")
+            else language.text("Grammatik im Detail anzeigen", "Show grammar details")
         )
-        Text(grammar)
+    }
+    AnimatedVisibility(visible = expanded) {
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(16.dp),
+            color = MaterialTheme.colorScheme.surfaceVariant
+        ) {
+            Text(grammar, modifier = Modifier.padding(14.dp))
+        }
     }
 }

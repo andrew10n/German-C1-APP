@@ -487,14 +487,24 @@ class ProgrammeViewModel(application: Application) : AndroidViewModel(applicatio
         val timeByTask = steps.mapIndexed { index, (id, _) -> id to times[index] }.toMap()
         val adjustedTimes = focusTask.focusMinutes?.let { focusMinutes ->
             val id = focusTask.primaryTaskId
-            if (id == null) timeByTask else {
-                val delta = focusMinutes - (timeByTask[id] ?: focusMinutes)
-                val donor = timeByTask.keys
+            val current = timeByTask[id]
+            if (id == null || current == null || focusMinutes <= current) timeByTask
+            else {
+                val receptive = setOf("reading", "listening", "quiz")
+                val sameHalf = if (id in receptive) receptive else timeByTask.keys - receptive
+                val adjusted = timeByTask.toMutableMap()
+                var remaining = focusMinutes - current
+                sameHalf.asSequence()
                     .filter { it != id }
-                    .maxByOrNull { timeByTask.getValue(it) }
-                if (donor == null || delta <= 0) timeByTask
-                else timeByTask + (id to focusMinutes) +
-                    (donor to (timeByTask.getValue(donor) - delta).coerceAtLeast(1))
+                    .sortedByDescending { timeByTask.getValue(it) }
+                    .forEach { donor ->
+                        val available = (adjusted.getValue(donor) - 1).coerceAtLeast(0)
+                        val reduction = minOf(remaining, available)
+                        adjusted[donor] = adjusted.getValue(donor) - reduction
+                        remaining -= reduction
+                    }
+                adjusted[id] = focusMinutes - remaining
+                adjusted
             }
         } ?: timeByTask
         return ordered.map { (id, title) -> ProgrammePlanStep(id, title, adjustedTimes.getValue(id)) }
@@ -526,7 +536,12 @@ class ProgrammeViewModel(application: Application) : AndroidViewModel(applicatio
         return unit
     }
 
-    fun submitQuiz(unitId: String, option: Int?, context: ContextTrack) {
+    fun submitQuiz(
+        unitId: String,
+        option: Int?,
+        context: ContextTrack,
+        onSaved: (() -> Unit)? = null
+    ) {
         if (_saving.value) return
         val unit = availableUnit(unitId) ?: return
         val content = unit.content ?: return
@@ -544,10 +559,17 @@ class ProgrammeViewModel(application: Application) : AndroidViewModel(applicatio
         )
         save(attempt) {
             _quizResults.value = _quizResults.value + (unitId to ProgrammeQuizResult(option, correct, assisted))
+            onSaved?.invoke()
         }
     }
 
-    fun recordPractice(unitId: String, taskId: String, response: String, context: ContextTrack) {
+    fun recordPractice(
+        unitId: String,
+        taskId: String,
+        response: String,
+        context: ContextTrack,
+        onSaved: (() -> Unit)? = null
+    ) {
         if (_saving.value) return
         if (taskId !in setOf(
                 "retrieval", "reading", "listening", "controlled", "speaking",
@@ -571,6 +593,7 @@ class ProgrammeViewModel(application: Application) : AndroidViewModel(applicatio
             )
         ) {
             practiceDraftRepository.clear(unitId, taskId, context)
+            onSaved?.invoke()
         }
     }
 

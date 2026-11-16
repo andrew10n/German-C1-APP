@@ -1,6 +1,8 @@
 package com.example.programme
 
+import kotlin.math.ln
 import kotlin.math.max
+import kotlin.math.pow
 
 enum class WeaknessSignal(val label: String) {
     SOUND_RECOGNITION("Laute in natürlicher Sprache erkennen"),
@@ -58,24 +60,34 @@ object WeaknessEngine {
         experiences: List<RealLifeExperience>,
         now: Long
     ): WeaknessProfile {
-        val evidence = experiences.flatMap(::classifyExperience) +
-            attempts.flatMap(::classifyAttempt)
+        val evidence = experiences.asSequence()
+            .filter { it.createdAt <= now }
+            .flatMap { classifyExperience(it).asSequence() }
+            .toList() + attempts.asSequence()
+            .filter { it.timestamp <= now }
+            .flatMap { classifyAttempt(it).asSequence() }
+            .toList()
         val grouped = evidence.groupBy { it.signal }
         val summaries = grouped.map { (signal, items) ->
             val ordered = items.sortedByDescending { it.timestamp }
             val count = items.size
             val contexts = items.map { it.context }.toSet()
-            val recency = ordered.first().timestamp
-                .let { (now - it).coerceAtLeast(0L) }
-                .toDouble()
-                .let { 1.0 / (1.0 + it / DAY_MILLIS) }
-            val priority = count * items.map { it.confidence }.average() +
-                max(0, contexts.size - 1) * 0.25 + recency
+            val recencyWeights = items.map { item ->
+                val ageDays = (now - item.timestamp).coerceAtLeast(0L).toDouble() / DAY_MILLIS
+                0.5.pow(ageDays / HALF_LIFE_DAYS)
+            }
+            val effectiveSamples = recencyWeights.sum()
+            val recency = recencyWeights.maxOrNull() ?: 0.0
+            val averageConfidence = items.map { it.confidence }.average()
+            val priority = items.zip(recencyWeights).sumOf { (item, weight) ->
+                item.confidence * weight
+            } + ln(1.0 + count) * 0.35 +
+                max(0, contexts.size - 1) * 0.25 + recency * 0.5
             WeaknessSummary(
                 signal = signal,
                 contexts = contexts,
                 sampleCount = count,
-                confidence = confidenceFor(count, items.map { it.confidence }.average()),
+                confidence = confidenceFor(effectiveSamples, averageConfidence),
                 priority = priority,
                 latestEvidence = ordered.first()
             )
@@ -139,11 +151,12 @@ object WeaknessEngine {
     private fun String.startsWithAny(vararg prefixes: String): Boolean =
         prefixes.any { startsWith(it, ignoreCase = true) }
 
-    private fun confidenceFor(count: Int, average: Double): WeaknessConfidence = when {
-        count >= 3 && average >= 0.5 -> WeaknessConfidence.HIGH
-        count >= 2 || average >= 0.7 -> WeaknessConfidence.MEDIUM
+    private fun confidenceFor(effectiveSamples: Double, average: Double): WeaknessConfidence = when {
+        effectiveSamples >= 2.5 && average >= 0.5 -> WeaknessConfidence.HIGH
+        effectiveSamples >= 1.7 || average >= 0.7 -> WeaknessConfidence.MEDIUM
         else -> WeaknessConfidence.LOW
     }
 
     private const val DAY_MILLIS = 86_400_000L
+    private const val HALF_LIFE_DAYS = 45.0
 }

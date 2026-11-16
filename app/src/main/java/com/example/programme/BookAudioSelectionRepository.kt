@@ -15,20 +15,24 @@ class BookAudioSelectionRepository(
     private val context: Context,
     private val preferences: SharedPreferences
 ) {
-    fun load(): BookAudioSelection = BookAudioSelection(
-        uri = preferences.getString(KEY_URI, null),
-        displayName = preferences.getString(KEY_NAME, null)
-    )
+    fun load(selectionKey: String? = null): BookAudioSelection {
+        val suffix = selectionSuffix(selectionKey)
+        return BookAudioSelection(
+            uri = preferences.getString("$KEY_URI$suffix", null),
+            displayName = preferences.getString("$KEY_NAME$suffix", null)
+        )
+    }
 
-    fun select(uri: Uri, displayName: String?) {
-        val previousUri = load().uri
+    fun select(uri: Uri, displayName: String?, selectionKey: String? = null) {
+        val suffix = selectionSuffix(selectionKey)
+        val previousUri = load(selectionKey).uri
         context.contentResolver.takePersistableUriPermission(
             uri,
             Intent.FLAG_GRANT_READ_URI_PERMISSION
         )
         val saved = preferences.edit()
-            .putString(KEY_URI, uri.toString())
-            .putString(KEY_NAME, displayName)
+            .putString("$KEY_URI$suffix", uri.toString())
+            .putString("$KEY_NAME$suffix", displayName)
             .commit()
         if (!saved) {
             releaseIfPersisted(uri)
@@ -36,15 +40,47 @@ class BookAudioSelectionRepository(
         }
         previousUri
             ?.takeIf { it != uri.toString() }
-            ?.let { releaseIfPersisted(Uri.parse(it)) }
+            ?.let(::releaseIfUnreferenced)
     }
 
-    fun clear() {
-        val selected = load().uri
-        if (!preferences.edit().clear().commit()) {
+    fun clear(selectionKey: String? = null) {
+        if (selectionKey == null) {
+            val selected = preferences.all
+                .filterKeys { it.startsWith(KEY_URI) }
+                .values
+                .filterIsInstance<String>()
+                .distinct()
+            if (!preferences.edit().clear().commit()) {
+                throw IllegalStateException("Selected audio URI could not be cleared.")
+            }
+            selected.forEach { releaseIfPersisted(Uri.parse(it)) }
+            return
+        }
+
+        val suffix = selectionSuffix(selectionKey)
+        val selected = load(selectionKey).uri
+        if (!preferences.edit()
+                .remove("$KEY_URI$suffix")
+                .remove("$KEY_NAME$suffix")
+                .commit()
+        ) {
             throw IllegalStateException("Selected audio URI could not be cleared.")
         }
-        selected?.let { releaseIfPersisted(Uri.parse(it)) }
+        selected?.let(::releaseIfUnreferenced)
+    }
+
+    private fun selectionSuffix(selectionKey: String?): String {
+        if (selectionKey == null) return ""
+        require(selectionKey.isNotBlank()) { "Audio selection key must not be blank." }
+        return ":$selectionKey"
+    }
+
+    private fun releaseIfUnreferenced(uriString: String) {
+        val stillSelected = preferences.all
+            .filterKeys { it.startsWith(KEY_URI) }
+            .values
+            .any { it == uriString }
+        if (!stillSelected) releaseIfPersisted(Uri.parse(uriString))
     }
 
     private fun releaseIfPersisted(uri: Uri) {

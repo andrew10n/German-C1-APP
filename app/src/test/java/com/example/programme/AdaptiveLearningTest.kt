@@ -79,9 +79,9 @@ class AdaptiveLearningTest {
     }
 
     @Test fun repeatedWeakSignalsMoveLearnerToSupport() {
-        val attempts = (1..3).map {
+        val attempts = listOf("writing", "speaking", "interaction").mapIndexed { index, task ->
             Attempt(
-                id = "a$it", unitId = unit.id, taskId = "writing$it", timestamp = it.toLong(),
+                id = "a$index", unitId = unit.id, taskId = task, timestamp = index.toLong(),
                 response = "Ich bleibe, weil ich gehe morgen.",
                 source = EvidenceSource.SELF_REFLECTION
             )
