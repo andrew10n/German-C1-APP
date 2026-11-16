@@ -1174,36 +1174,95 @@ private fun ProgrammeDashboard(
                     unlocked -> "NÄCHSTER DIAGNOSE-SCHRITT"
                     else -> "FREI ÜBEN · Route wartet auf Checkpoints"
                 }
-                Card(onClick = { onOpen(unit, "retrieval") }, modifier = Modifier.fillMaxWidth()) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth().padding(if (preferences.compact) 14.dp else 20.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Column(
-                            Modifier.weight(1f),
-                            verticalArrangement = Arrangement.spacedBy(6.dp)
-                        ) {
-                            Text(status, style = MaterialTheme.typography.labelSmall,
-                                color = if (unlocked) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant)
-                            Text(unit.title, style = MaterialTheme.typography.titleMedium)
-                            Text(if (unit.content == null) "Ziele und vier Kontexte ansehen →" else "Inhalte und Nachweisstatus ansehen →",
-                                style = MaterialTheme.typography.bodySmall)
-                        }
-                        val isBookmarked = unit.id in bookmarkedUnitIds
-                        IconButton(
-                            onClick = { onToggleBookmark(unit.id) },
-                            modifier = Modifier.testTag("bookmark_${unit.id}")
-                        ) {
-                            Icon(
-                                imageVector = if (isBookmarked) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
-                                contentDescription = if (isBookmarked) {
-                                    preferences.language.text("Lesezeichen entfernen", "Remove bookmark")
-                                } else {
-                                    preferences.language.text("Einheit speichern", "Bookmark unit")
-                                },
-                                tint = if (isBookmarked) MaterialTheme.colorScheme.primary
-                                    else MaterialTheme.colorScheme.onSurfaceVariant
+                val objectivePreview = unit.objectives.firstOrNull() ?: "Zielbeschreibung noch offen."
+                val isBookmarked = unit.id in bookmarkedUnitIds
+                Card(
+                    onClick = { onOpen(unit, "retrieval") },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(20.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(
+                                Brush.horizontalGradient(
+                                    listOf(
+                                        MaterialTheme.colorScheme.primary.copy(alpha = 0.10f),
+                                        Color.Transparent,
+                                        MaterialTheme.colorScheme.surface
+                                    )
+                                )
                             )
+                            .padding(if (preferences.compact) 14.dp else 18.dp)
+                    ) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.Top
+                        ) {
+                            Surface(
+                                shape = RoundedCornerShape(14.dp),
+                                color = MaterialTheme.colorScheme.primaryContainer,
+                                modifier = Modifier
+                                    .padding(end = 12.dp)
+                                    .sizeIn(minWidth = 54.dp, minHeight = 54.dp)
+                            ) {
+                                Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                                    Text(
+                                        "${unit.stage + 1}",
+                                        style = MaterialTheme.typography.titleMedium,
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                                    )
+                                }
+                            }
+                            Column(
+                                Modifier.weight(1f),
+                                verticalArrangement = Arrangement.spacedBy(6.dp)
+                            ) {
+                                Text(
+                                    status,
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = if (unlocked) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                Text(unit.title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+                                Text(
+                                    objectivePreview,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                    ContextTrack.values().forEach { track ->
+                                        val text = unit.contexts[track]?.takeIf { it.isNotBlank() } ?: return@forEach
+                                        Surface(
+                                            shape = RoundedCornerShape(999.dp),
+                                            color = MaterialTheme.colorScheme.surfaceVariant,
+                                            tonalElevation = 0.dp
+                                        ) {
+                                            Text(
+                                                text = contextLabel(track),
+                                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 5.dp),
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                            IconButton(
+                                onClick = { onToggleBookmark(unit.id) },
+                                modifier = Modifier.testTag("bookmark_${unit.id}")
+                            ) {
+                                Icon(
+                                    imageVector = if (isBookmarked) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
+                                    contentDescription = if (isBookmarked) {
+                                        preferences.language.text("Lesezeichen entfernen", "Remove bookmark")
+                                    } else {
+                                        preferences.language.text("Einheit speichern", "Bookmark unit")
+                                    },
+                                    tint = if (isBookmarked) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
                         }
                     }
                 }
