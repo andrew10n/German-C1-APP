@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.MainApplication
+import com.example.data.model.DailyStreakState
 import java.io.File
 import java.util.UUID
 import kotlinx.coroutines.CancellationException
@@ -55,6 +56,7 @@ class ProgrammeViewModel(application: Application) : AndroidViewModel(applicatio
     private val practiceDraftRepository = (application as MainApplication).practiceDraftRepository
     private val bookAudioSelectionRepository = (application as MainApplication).bookAudioSelectionRepository
     private val reviewerWorkflowRepository = (application as MainApplication).reviewerWorkflowRepository
+    private val dailyStreakRepository = (application as MainApplication).dailyStreakRepository
     private val storage = application.getSharedPreferences("programme_dashboard", Context.MODE_PRIVATE)
     val lastUnitId: String? = storage.getString("last_unit_id", null)
     val lastTaskId: String = storage.getString("last_task_id", "retrieval").orEmpty()
@@ -73,6 +75,7 @@ class ProgrammeViewModel(application: Application) : AndroidViewModel(applicatio
         )
     )
     val preferences = _preferences.asStateFlow()
+    val streakState: StateFlow<DailyStreakState> = dailyStreakRepository.streakState
 
     private val _error = MutableStateFlow<String?>(null)
     val error = _error.asStateFlow()
@@ -601,6 +604,7 @@ class ProgrammeViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             try {
                 repository.record(attempt)
+                dailyStreakRepository.recordActivity("C1 practice")
                 onSaved()
                 _notice.value = if (attempt.source == EvidenceSource.AUTOMATIC_QUIZ) {
                     "Quizantwort gespeichert. Das Ergebnis betrifft nur diese Verständnisfrage, nicht die Gesamtkompetenz."

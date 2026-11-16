@@ -26,7 +26,7 @@ object AdaptiveDiagnosticRoute {
         attempts: List<Attempt>,
         now: Long
     ): DiagnosticCheckpoint {
-        if (unit.content == null || unit.stage !in 1..6) {
+        if (unit.content == null || unit.stage !in 0..6) {
             return DiagnosticCheckpoint(DiagnosticCheckpointState.UNAVAILABLE, 0, emptyList())
         }
 
@@ -125,6 +125,9 @@ object AdaptiveDiagnosticRoute {
 
     fun completedCoreUnits(attempts: List<Attempt>, now: Long): Int =
         CurriculumCatalogue.coreUnits.count { isCheckpointComplete(it, attempts, now) }
+
+    fun completedAuthoredUnits(attempts: List<Attempt>, now: Long): Int =
+        CurriculumCatalogue.units.count { isCheckpointComplete(it, attempts, now) }
 
     fun nextUnit(attempts: List<Attempt>, now: Long): CurriculumUnit? {
         val available = CurriculumCatalogue.coreUnits.filter { isUnlocked(it, attempts, now) }

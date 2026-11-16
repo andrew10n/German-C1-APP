@@ -16,6 +16,25 @@ The next completion pass extended the existing foundations without claiming exte
 - Relevant lesson screens now link to specific official Easy German episodes and provide contextual entry points to the listening, speaking and conversation tools. The listening lab can play a user-selected audio file from device/cloud storage without copying it into the APK.
 - Sicher! C1/1 topic review found useful extra practice for tourism, art criticism and university/study communication. The licensed Aspekte neu C1 Kursbuch, Arbeitsbuch, Intensivtrainer, chapter-word list and Lehrbuch/Arbeitsbuch audio folders are available locally at `D:\German\Aspekte neu C1\Aspekte neu C1`. Four new original prompts reference relevant chapters and page ranges; audio selection points to the correct CD/chapter folder and requires matching the printed track number. Neither publisher text nor recordings are reproduced or bundled.
 
+### Implementation update — 2026-11-16: visual learning dashboard
+
+The programme dashboard received a visual microlearning-oriented redesign inspired by public visual-learning patterns such as short learning moments, a single clear next action, strong visual anchors and progressive disclosure. This is an original implementation and does not copy the reference app's branding or assets.
+
+- Primary navigation is limited to Today, Learn, Progress and Profile. Today shows one recommended session, daily activity status, streak, planned time and a brief, evidence-bounded reason for the next practice step.
+- Learn starts with four visual cards (listening, speaking, writing/mediation and interaction). Stage browsing and search are revealed only on request; the home screen does not expose raw curriculum metadata.
+- Progress shows completed practice checkpoints, saved-response balance, practice signals, the next task order and due reviews. These are kept separate from proficiency evidence. Settings, audio sources and privacy controls are in Profile; legacy tools and the practice profile are hidden under Advanced. No reviewer controls are exposed there.
+- Dashboard UI tests cover the focused home view, on-demand course browsing/search, progress boundaries, advanced navigation and English UI labels. Full-suite validation is rerun for this change.
+
+### Lesson studio and learning design
+
+- The lesson opening now visualizes four concrete phases—retrieval, comprehension, application and transfer—with animated progress tied to saved task activity. It does not represent that activity as a language score.
+- Original reading passages are divided at their authored paragraph boundaries and revealed one section at a time. Learners can move back and forth without losing the full source text used by the response exercise.
+- Listening scripts reveal as speaker-labelled conversation cards after the first attempt, preserving the blind-first listening workflow while making turn changes visible.
+- Lesson objectives are presented as a visual sequence. Expressions can be selected to connect the original phrase to its authored communicative purpose; the full grammar explanation remains available in context.
+- The learning sequence combines retrieval before review, comprehension checks, controlled production, freer production and a new-context transfer task, with spaced review handled separately. This draws on open retrieval-practice guidance from [The Learning Scientists](https://www.learningscientists.org/retrieval-practice); it does not reproduce their materials.
+- For additional learner-selected German input, [DW Learn German](https://learngerman.dw.com/en/learn-german/s-9528) offers free courses and material through C1. The app links out rather than copying DW content or media.
+- Progress now covers all 28 authored units: 26 sequenced core lessons and 2 optional orientation lessons. Orientation checkpoints count when completed, but neither orientation lesson is required to unlock the core route.
+
 ### Current implementation notes
 
 - The local JSON export is now version 2 and gathers all available learner records: attempts, assessment tasks/responses and timestamps, feedback challenges, local review assignments/audit records, real-life entries, source-listening notes, practice drafts, preferences/bookmarks, and retained legacy baseline, vocabulary, streak, and progress records. Audio bytes and the selected document URI are deliberately excluded. Export is asynchronous from the settings UI and reports failures.

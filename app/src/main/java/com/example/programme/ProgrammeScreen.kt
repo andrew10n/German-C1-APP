@@ -10,6 +10,12 @@ import android.speech.tts.TextToSpeech
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -26,6 +32,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
@@ -109,6 +116,7 @@ import java.io.IOException
 fun ProgrammeScreen(
     viewModel: ProgrammeViewModel,
     onLegacyPractice: () -> Unit,
+    onOpenIntelligenceProfile: () -> Unit = {},
     onOpenListeningLab: () -> Unit = {},
     onOpenSpeakingLab: () -> Unit = {},
     onOpenConversation: () -> Unit = {},
@@ -128,10 +136,12 @@ fun ProgrammeScreen(
     val realLifeExperiences by viewModel.realLifeExperiences.collectAsStateWithLifecycle()
     val feedbackChallenges by viewModel.feedbackChallenges.collectAsStateWithLifecycle()
     val humanReviews by viewModel.humanReviews.collectAsStateWithLifecycle()
+    val streakState by viewModel.streakState.collectAsStateWithLifecycle()
     var selectedId by rememberSaveable { mutableStateOf(viewModel.lastUnitId) }
     var initialTask by rememberSaveable { mutableStateOf(viewModel.lastTaskId) }
     var settings by rememberSaveable { mutableStateOf(false) }
     var showOnboarding by rememberSaveable { mutableStateOf(!viewModel.onboardingComplete) }
+    var homeSection by rememberSaveable { mutableStateOf("today") }
     var showRealLifeDialog by rememberSaveable { mutableStateOf(false) }
     var reviewExperience by remember { mutableStateOf<RealLifeExperience?>(null) }
     val now by produceState(System.currentTimeMillis()) {
@@ -172,8 +182,13 @@ fun ProgrammeScreen(
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.primary)
                             Text(
-                                if (selected == null) preferences.language.text("Dein Programm", "Your program")
-                                else preferences.language.text("Lernwerkstatt", "Lesson studio")
+                                if (selected != null) preferences.language.text("Lernwerkstatt", "Lesson studio")
+                                else when (homeSection) {
+                                    "learn" -> preferences.language.text("Lernen", "Learn")
+                                    "progress" -> preferences.language.text("Fortschritt", "Progress")
+                                    "profile" -> preferences.language.text("Profil", "Profile")
+                                    else -> preferences.language.text("Heute", "Today")
+                                }
                             )
                         }
                     },
@@ -217,31 +232,52 @@ fun ProgrammeScreen(
                     }
                 }
                 if (selected == null) {
-                    ProgrammeDashboard(
-                        preferences, evidence, realLifeExperiences, weaknessProfile, diagnosticProfile,
-                        adaptiveDecision,
-                        now, loading, historyAvailable,
-                        onMinutes = viewModel::updateDailyMinutes,
-                        plan = viewModel.plan(preferences.dailyMinutes, realLifeExperiences, now, attempts),
-                        onOpen = {
-                            unit, task ->
-                            selectedId = unit.id
-                            initialTask = task
-                            viewModel.rememberLesson(unit.id, task)
-                        },
-                        onLegacyPractice = onLegacyPractice,
-                        onLogRealLife = { showRealLifeDialog = true },
-                        onReviewRealLife = { reviewExperience = it },
-                        feedbackChallenges = feedbackChallenges,
-                        onResolveChallenge = viewModel::resolveFeedbackChallenge,
-                        onRecordAssessment = viewModel::recordAssessmentResponse,
-                        bookmarkedUnitIds = bookmarkedUnitIds,
-                        onToggleBookmark = viewModel::toggleBookmark,
-                        onOpenListeningLab = onOpenListeningLab,
-                        onOpenSpeakingLab = onOpenSpeakingLab,
-                        onOpenConversation = onOpenConversation,
-                        onOpenMediation = onOpenMediation
-                    )
+                    val openUnit: (CurriculumUnit, String) -> Unit = { unit, task ->
+                        selectedId = unit.id
+                        initialTask = task
+                        viewModel.rememberLesson(unit.id, task)
+                    }
+                    when (homeSection) {
+                        "learn" -> LearnArea(
+                            modifier = Modifier.weight(1f),
+                            language = preferences.language,
+                            onOpen = openUnit,
+                            onOpenListening = onOpenListeningLab,
+                            onOpenSpeaking = onOpenSpeakingLab,
+                            onOpenConversation = onOpenConversation,
+                            onOpenMediation = onOpenMediation
+                        )
+                        "progress" -> ProgressArea(
+                            modifier = Modifier.weight(1f),
+                            language = preferences.language,
+                            attempts = evidence,
+                            now = now,
+                            adaptiveDecision = adaptiveDecision,
+                            weaknessProfile = weaknessProfile,
+                            streakState = streakState,
+                            onOpenSettings = { settings = true }
+                        )
+                        "profile" -> ProfileArea(
+                            modifier = Modifier.weight(1f),
+                            language = preferences.language,
+                            onOpenSettings = { settings = true },
+                            onOpenOnboarding = { showOnboarding = true },
+                            onOpenAudioPreferences = onOpenListeningLab,
+                            onOpenPracticeTools = onLegacyPractice,
+                            onOpenIntelligenceProfile = onOpenIntelligenceProfile
+                        )
+                        else -> TodayScreen(
+                            modifier = Modifier.weight(1f),
+                            preferences = preferences,
+                            attempts = evidence,
+                            now = now,
+                            historyAvailable = historyAvailable,
+                            adaptiveDecision = adaptiveDecision,
+                            weaknessProfile = weaknessProfile,
+                            streakState = streakState,
+                            onOpen = openUnit
+                        )
+                    }
                 } else {
                     UnitDetail(
                         selected, evidence, realLifeExperiences, preferences.compact, initialTask,
@@ -259,8 +295,12 @@ fun ProgrammeScreen(
                         existingFeedbackClaimIds = feedbackChallenges.mapTo(mutableSetOf()) { it.claimId },
                         onOpenListeningLab = onOpenListeningLab,
                         onOpenSpeakingLab = onOpenSpeakingLab,
-                        onOpenConversation = onOpenConversation
+                        onOpenConversation = onOpenConversation,
+                        language = preferences.language
                     )
+                    }
+                    if (selected == null) {
+                        LearnerBottomNav(homeSection, preferences.language) { homeSection = it }
                     }
             }
         }
@@ -543,6 +583,34 @@ private fun ProgrammeDashboard(
                     "${AdaptiveDiagnosticRoute.completedCoreUnits(attempts, now)} / ${authored.size} practice checkpoints completed."
                 ) else preferences.language.text("Übungsverlauf wird geladen.", "Loading practice history."),
                     style = MaterialTheme.typography.bodySmall)
+                val completed = AdaptiveDiagnosticRoute.completedCoreUnits(attempts, now)
+                val progress = if (authored.isEmpty()) 0f else (completed.toFloat() / authored.size).coerceIn(0f, 1f)
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(14.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        CircularProgressIndicator(
+                            progress = progress,
+                            modifier = Modifier.sizeIn(minWidth = 58.dp, minHeight = 58.dp),
+                            strokeWidth = 7.dp,
+                            color = MaterialTheme.colorScheme.primary,
+                            trackColor = MaterialTheme.colorScheme.surfaceVariant
+                        )
+                        Text("${(progress * 100).toInt()}%", style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Bold)
+                    }
+                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                        Text(preferences.language.text("Deine Route", "Your route"), fontWeight = FontWeight.SemiBold)
+                        Text(preferences.language.text(
+                            "$completed von ${authored.size} Kernschritten sichtbar gemacht",
+                            "$completed of ${authored.size} core steps completed"
+                        ), style = MaterialTheme.typography.bodySmall)
+                        Text(preferences.language.text("Kein künstlicher Streak. Nur echte Übung.", "No invented streak. Just real practice."),
+                            style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                }
                 quickStartUnit?.let { unit ->
                     Button(
                         onClick = { onOpen(unit, "retrieval") },
@@ -560,36 +628,24 @@ private fun ProgrammeDashboard(
             }
         }
         item {
-            ProgrammeSection("C1-Kernfertigkeiten", preferences.compact) {
+            ProgrammeSection("Deine vier Lernflächen", preferences.compact) {
                 Text(
-                    "Trainiere jede Fertigkeit praktisch. Aufnahmen, Notizen und Texte bleiben auf diesem Gerät; die App vergibt dabei keine C1- oder Prüfungsnote.",
-                    style = MaterialTheme.typography.bodySmall
+                    "Wähle eine Fläche. Jede Karte öffnet eine kurze, konkrete Übung.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                FlowRow(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    OutlinedButton(
-                        onClick = onOpenListeningLab,
-                        modifier = Modifier.testTag("dashboard_skill_listening")
-                    ) { Text("Hören") }
-                    OutlinedButton(
-                        onClick = onOpenSpeakingLab,
-                        modifier = Modifier.testTag("dashboard_skill_speaking")
-                    ) { Text("Sprechen") }
-                    OutlinedButton(
-                        onClick = onOpenMediation,
-                        modifier = Modifier.testTag("dashboard_skill_mediation")
-                    ) { Text("Sprachmittlung") }
-                    OutlinedButton(
-                        onClick = onOpenConversation,
-                        modifier = Modifier.testTag("dashboard_skill_interaction")
-                    ) { Text("Interaktion") }
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
+                    VisualSkillCard("H", "Hören", "Signale", onOpenListeningLab,
+                        Modifier.weight(1f).testTag("dashboard_skill_listening"))
+                    VisualSkillCard("S", "Sprechen", "Klarheit", onOpenSpeakingLab,
+                        Modifier.weight(1f).testTag("dashboard_skill_speaking"))
                 }
-                Text(
-                    "Für Schreiben wähle im Tagesplan eine Schreibaufgabe oder starte unten eine zeitgebundene Textübung.",
-                    style = MaterialTheme.typography.bodySmall
-                )
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
+                    VisualSkillCard("M", "Mediation", "Vermitteln", onOpenMediation,
+                        Modifier.weight(1f).testTag("dashboard_skill_mediation"))
+                    VisualSkillCard("I", "Interaktion", "Reagieren", onOpenConversation,
+                        Modifier.weight(1f).testTag("dashboard_skill_interaction"))
+                }
             }
         }
         item {
@@ -1306,7 +1362,8 @@ private fun UnitDetail(
     onOpenListeningLab: () -> Unit,
     onOpenSpeakingLab: () -> Unit,
     onOpenConversation: () -> Unit,
-    onAddExpressions: () -> Unit
+    onAddExpressions: () -> Unit,
+    language: ProgrammeLanguage
 ) {
     var contextName by rememberSaveable(unit.id) { mutableStateOf(ContextTrack.GENERAL.name) }
     val context = ContextTrack.values().first { it.name == contextName }
@@ -1367,12 +1424,19 @@ private fun UnitDetail(
                 }
                 if (assisted) Text("Modellhilfe bereits geöffnet: Weitere Antworten dieser Einheit werden konservativ als assistiert markiert (auch nach Neustart).",
                     style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
+                if (content != null) {
+                    LessonJourneyVisual(
+                        unit = unit,
+                        completedTaskIds = completedTasks,
+                        language = language
+                    )
+                }
                 TextButton(onClick = { scope.launch { listState.animateScrollToItem(0) } }) { Text("Einheitsübersicht") }
             }
         }
         item {
             ProgrammeSection("Das lernst du", compact) {
-                unit.objectives.forEach { Text("• $it") }
+                LessonObjectiveMap(unit.objectives, language)
             }
         }
         item {
@@ -1491,7 +1555,7 @@ private fun UnitDetail(
             }
             item {
                 ProgrammeSection("02 / Lesen", compact) {
-                    Text(content.reading)
+                    ReadingChunkStudio(unit.id, content.reading, language)
                     ResponseField(
                         unit.id, "reading", "Gib die Kernaussagen in eigenen Worten wieder. Was bleibt unklar?",
                         context, enabled, saving, onSave,
@@ -1502,7 +1566,7 @@ private fun UnitDetail(
             }
             item {
                 ProgrammeSection("03 / Hören · synthetische Stimme", compact) {
-                    SyntheticListening(content.listening)
+                    SyntheticListening(content.listening, language)
                     Text("Das sichtbare Transkript kann das Hörverstehen unterstützen; dies ist kein unabhängiger Hörtest.",
                         style = MaterialTheme.typography.bodySmall)
                     OutlinedButton(onClick = onOpenListeningLab) { Text("Hörlabor öffnen · eigene Buchaufnahmen") }
@@ -1519,15 +1583,18 @@ private fun UnitDetail(
             }
             item {
                 ProgrammeSection("Sprachmittel & Grammatik", compact) {
-                    content.expressions.forEach { Text("• $it") }
+                    LanguagePatternStudio(
+                        unitId = unit.id,
+                        expressions = content.expressions,
+                        grammar = content.grammar,
+                        language = language
+                    )
                     OutlinedButton(
                         onClick = onAddExpressions,
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text("Kursausdrücke ins aktive Abruftraining übernehmen")
                     }
-                    HorizontalDivider()
-                    Text(content.grammar)
                 }
             }
             item {
@@ -1896,7 +1963,7 @@ private fun QuizSection(
 }
 
 @Composable
-private fun SyntheticListening(transcript: String) {
+private fun SyntheticListening(transcript: String, language: ProgrammeLanguage) {
     val context = LocalContext.current.applicationContext
     var engine by remember { mutableStateOf<TextToSpeech?>(null) }
     var ready by remember { mutableStateOf(false) }
@@ -1931,7 +1998,10 @@ private fun SyntheticListening(transcript: String) {
             instance?.shutdown()
         }
     }
-    Text("Android TextToSpeech · synthetisch, kein Audio von Muttersprachlern. Stimme und Qualität hängen vom Gerät ab; der gewählte Systemanbieter kann Netzwerkzugriff verwenden.",
+    Text(language.text(
+        "Android TextToSpeech · synthetisch, kein Audio von Muttersprachlern. Stimme und Qualität hängen vom Gerät ab; der gewählte Systemanbieter kann Netzwerkzugriff verwenden.",
+        "Android TextToSpeech · synthetic, not native-speaker audio. Voice and quality depend on the device; the selected system provider may use network access."
+    ),
         style = MaterialTheme.typography.bodySmall)
     Text(status, style = MaterialTheme.typography.bodySmall)
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -1947,16 +2017,19 @@ private fun SyntheticListening(transcript: String) {
             } catch (_: Exception) {
                 status = "Wiedergabe nicht verfügbar. Nutze das Transkript."
             }
-        }) { Text("Vorlesen") }
-        OutlinedButton(enabled = ready, onClick = { engine?.stop(); status = "Wiedergabe gestoppt." }) { Text("Stopp") }
-    }
-    if (showTranscript) {
-        Text("Transkript", style = MaterialTheme.typography.titleSmall)
-        Text(transcript)
-    } else {
-        TextButton(onClick = { showTranscript = true }) {
-            Text("Transkript nach dem ersten Versuch anzeigen")
+        }) { Text(language.text("Vorlesen", "Read aloud")) }
+        OutlinedButton(enabled = ready, onClick = { engine?.stop(); status = "Wiedergabe gestoppt." }) {
+            Text(language.text("Stopp", "Stop"))
         }
+    }
+    TextButton(onClick = { showTranscript = !showTranscript }) {
+        Text(
+            if (showTranscript) language.text("Transkript ausblenden", "Hide transcript")
+            else language.text("Transkript nach dem ersten Versuch anzeigen", "Show transcript after your first attempt")
+        )
+    }
+    AnimatedVisibility(visible = showTranscript) {
+        ListeningTranscriptStudio(transcript, language)
     }
 }
 
@@ -1996,12 +2069,116 @@ private fun RubricSection(compact: Boolean) {
 }
 
 @Composable
+private fun VisualSkillCard(
+    mark: String,
+    title: String,
+    subtitle: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val pulse = rememberInfiniteTransition(label = "skill_card_pulse").animateFloat(
+        initialValue = 0.7f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(1200),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "skill_card_pulse_value"
+    )
+
+    Card(
+        modifier = modifier
+            .heightIn(min = 112.dp)
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
+                            MaterialTheme.colorScheme.surface,
+                            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.65f)
+                        )
+                    )
+                )
+                .padding(14.dp)
+        ) {
+            Column(
+                Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                Surface(
+                    shape = RoundedCornerShape(12.dp),
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    tonalElevation = 0.dp
+                ) {
+                    Text(
+                        mark,
+                        Modifier.padding(horizontal = 10.dp, vertical = 7.dp),
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                }
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    Text(title, fontWeight = FontWeight.SemiBold)
+                    Text(
+                        subtitle,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .size(24.dp)
+                    .background(
+                        MaterialTheme.colorScheme.primary.copy(alpha = pulse.value * 0.18f),
+                        shape = RoundedCornerShape(8.dp)
+                    )
+            )
+        }
+    }
+}
+
+@Composable
 private fun ProgrammeSection(title: String, compact: Boolean, content: @Composable ColumnScope.() -> Unit) {
-    Card(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
-        Column(Modifier.padding(if (compact) 14.dp else 20.dp), verticalArrangement = Arrangement.spacedBy(if (compact) 8.dp else 12.dp)) {
-            Text(title, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
-            content()
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+    ) {
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        Brush.horizontalGradient(
+                            listOf(
+                                MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
+                                MaterialTheme.colorScheme.primary.copy(alpha = 0.04f),
+                                Color.Transparent
+                            )
+                        )
+                    )
+                    .padding(horizontal = if (compact) 14.dp else 18.dp, vertical = if (compact) 12.dp else 14.dp)
+            ) {
+                Text(
+                    title,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+            Column(
+                Modifier.padding(if (compact) 14.dp else 20.dp),
+                verticalArrangement = Arrangement.spacedBy(if (compact) 8.dp else 12.dp)
+            ) {
+                content()
+            }
         }
     }
 }

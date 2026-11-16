@@ -65,22 +65,13 @@ class ProgrammeScreenTest {
     }
 
     @Test
-    fun emptyDashboardShowsUnknownSkillsRatherThanFabricatedC1Progress() {
+    fun firstUseShowsOneFocusedSessionRatherThanAnAnalyticsDashboard() {
         showDashboard()
+        compose.onNodeWithText("Verstanden").performClick()
 
-        compose.onNodeWithText("Dein Programm").assertIsDisplayed()
-        compose.onNodeWithText("Mehr ausdrücken.\nJeden Tag ein Stück.").assertIsDisplayed()
-        val authored = CurriculumCatalogue.coreUnits.size
-        compose.onNodeWithText(
-            "0 / $authored Übungs-Checkpoints abgeschlossen."
-        ).assertIsDisplayed()
-
-        scrollTo("Was die automatische Diagnose wirklich misst")
-        compose.onNodeWithText("0 objektive Quizantworten · 0 Selbstreflexionen").assertIsDisplayed()
-        scrollTo("Korrektheit: nicht automatisch messbar")
-        compose.onNodeWithText("Korrektheit: nicht automatisch messbar").assertIsDisplayed()
-        scrollTo("Natürlichkeit: nicht automatisch messbar")
-        compose.onNodeWithText("Natürlichkeit: nicht automatisch messbar").assertIsDisplayed()
+        compose.onNodeWithTag("today_screen").assertIsDisplayed()
+        compose.onNodeWithText("Heute nur ein guter Schritt.").assertIsDisplayed()
+        compose.onNodeWithTag("dashboard_quick_start").performScrollTo().assertIsDisplayed()
         compose.runOnIdle {
             assertTrue(viewModel.attempts.value.isEmpty())
             assertFalse(viewModel.loading.value)
@@ -93,7 +84,7 @@ class ProgrammeScreenTest {
         showDashboard()
 
         compose.onNodeWithText("Verstanden").performClick()
-        val quickStart = compose.onNodeWithTag("dashboard_quick_start")
+        val quickStart = compose.onNodeWithTag("dashboard_quick_start").performScrollTo()
         quickStart.assertIsDisplayed()
         quickStart.performClick()
 
@@ -107,7 +98,7 @@ class ProgrammeScreenTest {
         showDashboard()
 
         compose.onNodeWithText("Verstanden").performClick()
-        compose.onNodeWithTag("dashboard_quick_start").performClick()
+        compose.onNodeWithTag("dashboard_quick_start").performScrollTo().performClick()
         scrollTo("04 / Objektiver Verständnischeck")
         val firstOption = compose.onNodeWithTag("quiz_option_0")
 
@@ -121,7 +112,7 @@ class ProgrammeScreenTest {
         showDashboard()
 
         compose.onNodeWithText("Verstanden").performClick()
-        compose.onNodeWithTag("dashboard_quick_start").performClick()
+        compose.onNodeWithTag("dashboard_quick_start").performScrollTo().performClick()
         scrollTo("Deine Antwort / ehrliche Selbstreflexion")
         compose.onNodeWithText("Deine Antwort / ehrliche Selbstreflexion")
             .performTextReplacement("Unfertiger Entwurf bleibt erhalten")
@@ -131,7 +122,7 @@ class ProgrammeScreenTest {
         compose.runOnIdle { assertTrue(viewModel.attempts.value.isEmpty()) }
 
         compose.onNodeWithText("Zurück").performClick()
-        compose.onNodeWithTag("dashboard_quick_start").performClick()
+        compose.onNodeWithTag("dashboard_quick_start").performScrollTo().performClick()
         scrollTo("Deine Antwort / ehrliche Selbstreflexion")
         compose.onNodeWithText("Unfertiger Entwurf bleibt erhalten").assertIsDisplayed()
         compose.runOnIdle { assertTrue(viewModel.attempts.value.isEmpty()) }
@@ -162,28 +153,8 @@ class ProgrammeScreenTest {
         }
         val sourceAttempt = viewModel.attempts.value.first { it.unitId == unit.id }
 
-        showDashboard()
-        compose.onNodeWithText("Verstanden").performClick()
-        compose.onNodeWithTag("dashboard_quick_start").performClick()
-        compose.waitForIdle()
-        scrollTo("Gespeicherter Verlauf dieser Einheit")
-        compose.onNodeWithText("Lokale Review-Notiz erfassen").performScrollTo().performClick()
-        compose.onNodeWithTag("human_review_name").performTextReplacement("Coach")
-        Dimension.values().forEach { dimension ->
-            compose.onNodeWithTag("human_review_${dimension.name}_3")
-                .performScrollTo()
-                .performClick()
-        }
-        compose.onNodeWithTag("human_review_save").performClick()
-        compose.waitUntil(10_000) {
-            viewModel.humanReviews.value.any { it.attemptId == sourceAttempt.id }
-        }
-
-        val review = viewModel.humanReviews.value.single { it.attemptId == sourceAttempt.id }
-        assertEquals(false, review.reviewer.verified)
-        assertEquals("Coach", review.reviewer.displayName)
-        assertEquals(Dimension.values().toSet(), review.scores.keys)
-        assertTrue(review.scores.values.all { it == 3 })
+        // The full local-review workflow is covered in HumanReviewRepositoryTest.
+        // Home navigation must not silently rewrite an attempt into human evidence.
         assertEquals(EvidenceSource.SELF_REFLECTION, sourceAttempt.source)
         assertFalse(viewModel.attempts.value.first { it.id == sourceAttempt.id }.source == EvidenceSource.HUMAN_REVIEW)
     }
@@ -211,6 +182,7 @@ class ProgrammeScreenTest {
     @Test
     fun personalizationChangesGreetingAndPersistsThemeAndNameAcrossViewModels() {
         showDashboard()
+        compose.onNodeWithText("Verstanden").performClick()
 
         compose.onNodeWithText("Anpassen · Einstellungen").performClick()
         compose.onNodeWithText("Dein Cockpit").assertIsDisplayed()
@@ -221,7 +193,7 @@ class ProgrammeScreenTest {
         compose.onNodeWithText("Fertig").performClick()
 
         compose.onNodeWithText("Dein Cockpit").assertDoesNotExist()
-        compose.onNodeWithText("Hallo, Mira.\nHeute zählt dein nächster Schritt.").assertIsDisplayed()
+        compose.onNodeWithText("Heute genügt ein guter Schritt, Mira.").assertIsDisplayed()
         val restored = newViewModel()
         compose.runOnIdle {
             assertEquals("Mira", viewModel.preferences.value.learnerName)
@@ -234,54 +206,129 @@ class ProgrammeScreenTest {
     }
 
     @Test
-    fun englishModeLocalizesAssessmentControls() {
+    fun englishPreferencePersistsWithoutAddingNavigationChrome() {
         showDashboard()
         compose.onNodeWithText("Verstanden").performClick()
         viewModel.updateLanguage(ProgrammeLanguage.EN)
-        scrollTo("Independent writing practice")
-
-        compose.onNodeWithText("Choose a short retrieval, writing, or formulation task from your course.")
-            .assertIsDisplayed()
-        compose.onNodeWithText("Listening practice with your audio").performClick()
-        compose.onNodeWithText("Start practice").assertIsDisplayed()
-            .performClick()
-        compose.onNodeWithText("1 / 1 · Audio response").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithText("Your listening notes").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithText("Finish").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("today_screen").assertIsDisplayed()
+        compose.onNodeWithText("Take one good step today.").assertIsDisplayed()
+        compose.onNodeWithTag("learner_nav_learn").performClick()
+        compose.onNodeWithText("Choose a practice area.").assertIsDisplayed()
+        compose.runOnIdle { assertEquals(ProgrammeLanguage.EN, viewModel.preferences.value.language) }
     }
 
     @Test
-    fun curriculumSearchAndBookmarksPersistAndCanFilterTheLearningPath() {
+    fun profileKeepsSettingsOnboardingAndLegacyLearningViewsReachable() {
+        var practiceToolsOpened = false
+        var intelligenceProfileOpened = false
+        showDashboard(
+            onLegacyPractice = { practiceToolsOpened = true },
+            onOpenIntelligenceProfile = { intelligenceProfileOpened = true }
+        )
+        compose.onNodeWithText("Verstanden").performClick()
+        compose.onNodeWithTag("learner_nav_profile").performClick()
+
+        compose.onNodeWithText("Einstellungen öffnen").assertIsDisplayed()
+        compose.onNodeWithText("Weitere Übungstools").assertDoesNotExist()
+        compose.onNodeWithText("Übungsprofil öffnen").assertDoesNotExist()
+        compose.onNodeWithTag("profile_advanced_toggle").performScrollTo().performClick()
+        scrollTo("Weitere Übungstools")
+        compose.onNodeWithText("Weitere Übungstools").performClick()
+        scrollTo("Übungsprofil öffnen")
+        compose.onNodeWithText("Übungsprofil öffnen").performClick()
+        scrollTo("Lern- und Evidenzgrenzen ansehen")
+        compose.onNodeWithText("Lern- und Evidenzgrenzen ansehen").assertIsDisplayed()
+        compose.runOnIdle {
+            assertTrue(practiceToolsOpened)
+            assertTrue(intelligenceProfileOpened)
+        }
+    }
+
+    @Test
+    fun learnShowsFourAreasAndOnlyBrowsesCourseWhenRequested() {
         showDashboard()
         compose.onNodeWithText("Verstanden").performClick()
-        scrollTo("Deine Lernroute")
+        compose.onNodeWithTag("learner_nav_learn").performClick()
+
+        compose.onNodeWithText("Hören").assertIsDisplayed()
+        compose.onNodeWithText("Sprechen").assertIsDisplayed()
+        compose.onNodeWithText("Schreiben / Mediation").assertIsDisplayed()
+        compose.onNodeWithText("Interaktion").assertIsDisplayed()
+        compose.onNodeWithTag("learn_course_search").assertDoesNotExist()
 
         val unit = CurriculumCatalogue.coreUnits.first()
-        compose.onNodeWithTag("curriculum_search").performTextReplacement(unit.title)
-        compose.onNode(hasScrollAction()).performScrollToNode(hasTestTag("bookmark_${unit.id}"))
-        compose.onNodeWithTag("bookmark_${unit.id}").assertIsDisplayed().performClick()
-        compose.onNodeWithTag("curriculum_bookmarks_filter").performClick()
-
-        compose.runOnIdle {
-            assertTrue(unit.id in viewModel.bookmarkedUnitIds.value)
-        }
-        val restored = newViewModel()
-        compose.runOnIdle {
-            assertTrue(unit.id in restored.bookmarkedUnitIds.value)
-        }
-        compose.onNodeWithTag("bookmark_${unit.id}").assertIsDisplayed()
+        scrollTo("Durchsuchen")
+        compose.onNodeWithText("Durchsuchen").performClick()
+        scrollTo("Einheiten suchen")
+        compose.onNodeWithText("Einheiten suchen").performClick()
+        compose.onNodeWithTag("learn_course_search").performTextReplacement(unit.title)
+        compose.onNodeWithText(unit.title).assertIsDisplayed()
+        val orientation = CurriculumCatalogue.orientationUnits.first()
+        compose.onNodeWithTag("learn_course_search").performTextReplacement(orientation.title)
+        compose.onNodeWithText(orientation.title).assertIsDisplayed()
     }
 
     @Test
-    fun dailyPlanChoicesUpdateSelectedBudgetBalanceAndPersist() {
+    fun progressSeparatesPracticeCompletionFromEvidenceBoundaries() {
+        showDashboard()
+        compose.onNodeWithText("Verstanden").performClick()
+        compose.onNodeWithTag("learner_nav_progress").performClick()
+
+        compose.onNodeWithText("0 / ${CurriculumCatalogue.units.size}").performScrollTo().assertIsDisplayed()
+        scrollTo(
+            "26 Kernlektionen und 2 optionale Orientierungseinheiten. Ein Checkpoint ist Übungsfortschritt, keine C1- oder Kompetenznote."
+        )
+        compose.onNodeWithText(
+            "26 Kernlektionen und 2 optionale Orientierungseinheiten. Ein Checkpoint ist Übungsfortschritt, keine C1- oder Kompetenznote."
+        ).assertIsDisplayed()
+        scrollTo("Übungsbalance")
+        compose.onNodeWithText("Übungsbalance").assertIsDisplayed()
+        scrollTo("Aktuelle Fokusbereiche")
+        compose.onNodeWithText("Aktuelle Fokusbereiche").assertIsDisplayed()
+        scrollTo("Wiederholungsplan")
+        compose.onNodeWithText("Wiederholungsplan").assertIsDisplayed()
+        scrollTo("Evidenzgrenzen")
+        compose.onNodeWithText("Evidenzgrenzen").assertIsDisplayed()
+    }
+
+    @Test
+    fun lessonShowsAnAnimatedLearningPathAndInteractiveLanguagePatterns() {
+        showDashboard()
+        compose.onNodeWithText("Verstanden").performClick()
+        compose.onNodeWithTag("dashboard_quick_start").performScrollTo().performClick()
+
+        scrollTo("DEIN LERNWEG")
+        compose.onNodeWithText("DEIN LERNWEG").assertIsDisplayed()
+        compose.onNodeWithTag("lesson_path_step_0").assertIsDisplayed()
+        compose.onNodeWithTag("lesson_path_step_3").performClick()
+        compose.onNodeWithTag("lesson_path_step_3").assertIsSelected()
+        scrollTo("WORAN DU ARBEITEST")
+        compose.onNodeWithText("WORAN DU ARBEITEST").assertIsDisplayed()
+        scrollTo("LESEN · SINNABSCHNITTE")
+        compose.onNodeWithText("LESEN · SINNABSCHNITTE").assertIsDisplayed()
+        scrollTo("Transkript nach dem ersten Versuch anzeigen")
+        compose.onNodeWithText("Transkript nach dem ersten Versuch anzeigen").performClick()
+        compose.onNodeWithText("DIALOGVERLAUF").assertIsDisplayed()
+        scrollTo("Sprachmittel & Grammatik")
+        compose.onNodeWithText(
+            "Wähle ein Sprachmittel, um Form und Funktion zu verbinden."
+        ).assertIsDisplayed()
+    }
+
+    @Test
+    fun visualDashboardKeepsTheFullCourseAvailableThroughTheFocusedLessonPath() {
+        showDashboard()
+        compose.onNodeWithText("Verstanden").performClick()
+        compose.onNodeWithTag("dashboard_quick_start").performScrollTo().performClick()
+        compose.onNodeWithText("Lernwerkstatt").assertIsDisplayed()
+    }
+
+    @Test
+    fun dailyPlanPreferencesPersistWithoutShowingAPlanningMenuOnHome() {
         showDashboard()
 
         listOf(20, 60, 90).forEach { minutes ->
-            scrollTo("$minutes Min.")
-            compose.onNodeWithText("$minutes Min.").performClick().assertIsSelected()
-            val balance = "${minutes / 2} Min. rezeptiv · ${minutes / 2} Min. produktiv"
-            scrollTo(balance)
-            compose.onNodeWithText(balance).assertIsDisplayed()
+            viewModel.updateDailyMinutes(minutes)
             compose.runOnIdle { assertEquals(minutes, viewModel.preferences.value.dailyMinutes) }
             val restored = newViewModel()
             compose.runOnIdle { assertEquals(minutes, restored.preferences.value.dailyMinutes) }
@@ -292,18 +339,16 @@ class ProgrammeScreenTest {
     fun startUnitOpensWorkshopAndBackReturnsToDashboardWithoutCreatingEvidence() {
         showDashboard()
 
-        scrollTo("Mit Abruf starten")
-        compose.onNodeWithText("Mit Abruf starten").performScrollTo().assertIsDisplayed().performClick()
+        compose.onNodeWithTag("dashboard_quick_start").performScrollTo().performClick()
         compose.onNodeWithText("Lernwerkstatt").assertIsDisplayed()
         compose.onNodeWithText("Dein Programm").assertDoesNotExist()
         scrollTo("Das lernst du")
         compose.onNodeWithText("Das lernst du").assertIsDisplayed()
         compose.onNodeWithText("Zurück").assertIsDisplayed().performClick()
 
-        compose.onNodeWithText("Dein Programm").assertIsDisplayed()
+        compose.onNodeWithTag("today_screen").assertIsDisplayed()
         compose.onNodeWithText("Lernwerkstatt").assertDoesNotExist()
-        scrollTo("Mehr ausdrücken.\nJeden Tag ein Stück.")
-        compose.onNodeWithText("Mehr ausdrücken.\nJeden Tag ein Stück.").assertIsDisplayed()
+        compose.onNodeWithText("Heute nur ein guter Schritt.").assertIsDisplayed()
         compose.runOnIdle { assertTrue(viewModel.attempts.value.isEmpty()) }
     }
 
@@ -356,11 +401,16 @@ class ProgrammeScreenTest {
         ]
     }
 
-    private fun showDashboard() {
+    private fun showDashboard(
+        onLegacyPractice: () -> Unit = {},
+        onOpenIntelligenceProfile: () -> Unit = {}
+    ) {
         compose.setContent {
-            ProgrammeScreen(viewModel = viewModel, onLegacyPractice = {
-                throw AssertionError("Smoke tests must stay inside the programme")
-            })
+            ProgrammeScreen(
+                viewModel = viewModel,
+                onLegacyPractice = onLegacyPractice,
+                onOpenIntelligenceProfile = onOpenIntelligenceProfile
+            )
         }
         compose.waitUntil(timeoutMillis = 10_000) { !viewModel.loading.value }
         compose.runOnIdle { assertTrue("History must load before asserting empty progress", viewModel.historyAvailable.value) }

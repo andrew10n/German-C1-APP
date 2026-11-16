@@ -64,6 +64,45 @@ class AdaptiveDiagnosticRouteTest {
     }
 
     @Test
+    fun optionalOrientationCheckpointCountsInCourseProgressWithoutUnlockingTheCoreRoute() {
+        val orientation = CurriculumCatalogue.orientationUnits.first()
+        val attempts = listOf(
+            Attempt(
+                id = "orientation-quiz",
+                unitId = orientation.id,
+                taskId = "quiz",
+                timestamp = 1_000L,
+                response = "Option 1",
+                source = EvidenceSource.AUTOMATIC_QUIZ,
+                scores = mapOf(Dimension.COMPREHENSION to 4)
+            ),
+            Attempt(
+                id = "orientation-writing",
+                unitId = orientation.id,
+                taskId = "writing",
+                timestamp = 2_000L,
+                response = "Ich erläutere zuerst das konkrete Ziel und nenne anschließend ein überprüfbares Kriterium.",
+                source = EvidenceSource.SELF_REFLECTION,
+                independentProduction = true
+            ),
+            Attempt(
+                id = "orientation-speaking",
+                unitId = orientation.id,
+                taskId = "speaking",
+                timestamp = 3_000L,
+                response = "Mein Ziel ist es, die nächste Situation ohne Vorlage verständlich zu erklären.",
+                source = EvidenceSource.SELF_REFLECTION,
+                independentProduction = true
+            )
+        )
+
+        assertTrue(AdaptiveDiagnosticRoute.isCheckpointComplete(orientation, attempts, 3_000L))
+        assertFalse(AdaptiveDiagnosticRoute.isUnlocked(orientation, attempts, 3_000L))
+        assertEquals(1, AdaptiveDiagnosticRoute.completedAuthoredUnits(attempts, 3_000L))
+        assertEquals(0, AdaptiveDiagnosticRoute.completedCoreUnits(attempts, 3_000L))
+    }
+
+    @Test
     fun practiceCheckpointDoesNotAdvanceOnAssistedOrFutureAnswers() {
         val attempts = listOf(
             quiz(correct = true),
