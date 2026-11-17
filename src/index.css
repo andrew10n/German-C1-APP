@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/barlow.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("/fonts/barlow_condensed.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #F4F6FA;
+  --surface: #FFFFFF;
+  --surface2: #EAEFF6;
+  --ink: #0B132B;
+  --ink2: #4A5568;
+  --line: #D6DFEE;
+  --hero: #080D1A;
+  --on-hero: #F7FAFC;
+  --on-hero2: #A0AEC0;
+  --accent: #0D9488;
+  --accent-ink: #0F766E;
+  --accent-soft: #CCFBF1;
+  --on-accent: #FFFFFF;
+  --violet: #6366F1;
+  --violet-soft: #EEF2FF;
+  --sky: #0284C7;
+  --sky-soft: #E0F2FE;
+  --coral: #EF4444;
+  --coral-soft: #FEE2E2;
+  --ok: #10B981;
+  --ok-bg: #D1FAE5;
+}
+
+html.dark {
+  --bg: #030712;
+  --surface: #0B132B;
+  --surface2: #111B38;
+  --ink: #F9FAFB;
+  --ink2: #9CA3AF;
+  --line: #1F293D;
+  --hero: #020617;
+  --on-hero: #F9FAFB;
+  --on-hero2: #9CA3AF;
+  --accent: #14B8A6;
+  --accent-ink: #5EEAD4;
+  --accent-soft: #134E4A;
+  --on-accent: #042F2E;
+  --violet: #818CF8;
+  --violet-soft: #1E1B4B;
+  --sky: #38BDF8;
+  --sky-soft: #082F49;
+  --coral: #F87171;
+  --coral-soft: #450A0A;
+  --ok: #34D399;
+  --ok-bg: #064E3B;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+
+  .font-display {
+    font-family: "Barlow Condensed", "Barlow", sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes c1FadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes c1WaveScale {
+  0%,
+  100% {
+    transform: scaleY(0.24);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes c1DashFlow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes c1PingRing {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.72;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+@keyframes c1FloatSlow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.c1-animate-enter {
+  animation: c1FadeSlideUp 340ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.c1-wave-bar {
+  transform-origin: center bottom;
+  transform: scaleY(0.22);
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.c1-wave-bar-active {
+  animation: c1WaveScale var(--wave-dur, 760ms) ease-in-out var(--wave-delay, 0ms) infinite;
+}
+
+.c1-svg-flow {
+  stroke-dasharray: 8 6;
+  animation: c1DashFlow 1.4s linear infinite;
+}
+
+.c1-mic-ring {
+  animation: c1PingRing 1.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.c1-float-slow {
+  animation: c1FloatSlow 4.2s ease-in-out infinite;
+}
+
+/* 3D Flashcard Flip */
+.c1-flip-scene {
+  perspective: 1100px;
+}
+
+.c1-flip-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.c1-flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.c1-flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.c1-flip-face-back {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c1-animate-enter,
+  .c1-wave-bar-active,
+  .c1-svg-flow,
+  .c1-mic-ring,
+  .c1-float-slow {
+    animation: none !important;
+  }
+
+  .c1-flip-card {
+    transition: none !important;
+  }
+}
