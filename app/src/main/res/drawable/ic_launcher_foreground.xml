@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Bold geometric C1 Mastery Monogram + Soundwave Arc inside 66dp safe zone -->
+    <path
+        android:fillColor="#F59E0B"
+        android:pathData="M50,30 C37.85,30 28,39.85 28,52 C28,64.15 37.85,74 50,74 L58,74 L58,64 L50,64 C43.37,64 38,58.63 38,52 C38,45.37 43.37,40 50,40 L58,40 L58,30 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M65,32 L75,32 L75,74 L65,74 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M60,38 L65,38 L65,45 L60,45 Z" />
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M46,47 L56,47 L56,57 L46,57 Z" />
+</vector>

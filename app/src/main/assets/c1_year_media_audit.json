@@ -1,0 +1,365 @@
+{
+  "yearAuditReport": {
+    "releaseVersion": "2026.12 · 365-Day Personal C1 Final Release",
+    "totalAnnualCapacityDays": 365,
+    "audioArchitectureSummaryDe": "Dual-Engine Echt-Audio (Null Android-Roboter-TTS): 1) Gemini 3.1 Flash Studio Mehrsprecher-Dialoge (lokal als WAV gecacht + Tempo-Steuerung) & 2) Live-RSS-MP3-Streaming echter deutscher Sender (auto motor und sport Moove, Rasenfunk, SWR Kultur, Tagesschau 100s, Deutschlandfunk) + YouTube-/Buch-Brücken.",
+    "gapResolutions": [
+      {
+        "dimension": "1. Natürliches Hörverstehen & Schnellsprech-Reduktionen",
+        "previousStatus": "Robotisches Android-TTS & zu wenig Mehrsprecher-/Dialektdialoge",
+        "finalReleaseSolution": "42 Mehrsprecher-Dialoge mit Gemini 3.1 Studio Audio + 16 Echt-Podcast-/Doku-Missionen (Moove, Rasenfunk, SWR, DLF, Tagesschau, Bloch/JP/Manu Thiele).",
+        "itemCountDelivered": 58
+      },
+      {
+        "dimension": "2. Spontanes Sprechen & Direktabruf (<5s) ohne Übersetzen",
+        "previousStatus": "Antwort-Latenz & Lehnübersetzungen aus EN/AR, fehlende Telefon-Ohne-Kontext-Drills",
+        "finalReleaseSolution": "Reaktionszeit-IRT (>12.5s Latenz-Detektor), 4 Telefon-/Zero-Visual-Szenarien, 3-Sekunden-Umschreibungs-Reparatur & Gegenwind-Twists.",
+        "itemCountDelivered": 42
+      },
+      {
+        "dimension": "3. Alltags-Pragmatik, Esslingen & Schwäbisch vs. Standarddeutsch",
+        "previousStatus": "Verständliche Sätze wie ‚Das steht zweimal hier‘ wurden kaum natürlich hochgestuft",
+        "finalReleaseSolution": "Register-Regler (Verständlich -> Herzlich -> Souverän C1) für Kasse, Nachbarn, Kehrwoche, Handwerker, Arzt, Wohnungssuche & schwäbische Partikeln (fei, gell).",
+        "itemCountDelivered": 18
+      },
+      {
+        "dimension": "4. Kollokationen, Modalpartikeln & Funktionsverbgefüge",
+        "previousStatus": "Teilweise lose Einzelphrasen ohne FSRS-Retention",
+        "finalReleaseSolution": "220+ kontextuelle Satzrahmen-Karten mit FSRS-4.5 Power-Law-Gedächtniskurve & Zero-Word-Lists-Prinzip.",
+        "itemCountDelivered": 220
+      },
+      {
+        "dimension": "5. Mercedes-AMG / Porsche 911 / HS Esslingen Powertrain",
+        "previousStatus": "Basis-Technik abgedeckt, Lücken bei 8D/NVH-Hedging, Prüfstand-Jargon vs. Protokoll, ISO 26262",
+        "finalReleaseSolution": "Tiefe Ingenieurs-Runden: Tip-in vs. Inverter-Derating, 8D-Stirnrad-NVH, GT-Power/Simulink-Offset an der HS Esslingen, FuSi-FTTI & Bloch/AMS-Analysen.",
+        "itemCountDelivered": 24
+      },
+      {
+        "dimension": "6. SV 1845 Esslingen F-Jugend & BVB / DFB Trainerlizenz",
+        "previousStatus": "Nur U15-Einzelkarten; fehlende Eltern-Diplomatie & kindgerechte FUNiño-Kommandos",
+        "finalReleaseSolution": "Doppel-Register: Kurze Kinder-Kommandos (<6 Wörter) + Elternarbeit an der Seitenlinie + BVB-Restverteidigung/Rasenfunk/Manu-Thiele-Analysen.",
+        "itemCountDelivered": 20
+      },
+      {
+        "dimension": "7. Offizielles modulares Goethe-Zertifikat C1 (2024+)",
+        "previousStatus": "Lesen/Hören/Schreiben/Sprechen waren nicht explizit modular auditiert",
+        "finalReleaseSolution": "Alle 4 Goethe-Module systematisch verankert (125+ IRT-Proben, 28 Lehrbuch-Units, Vortrag Teil 1, Verhandlung Teil 2, Schreiben Teil 1/2).",
+        "itemCountDelivered": 125
+      }
+    ],
+    "goetheExamMatrix": [
+      {
+        "moduleCode": "LESEN (T1–T4)",
+        "officialFormatDe": "65 Min · Fachtext-Rekonstruktion, Standpunkt-Zuordnung & erweiterte Partizipialattribute",
+        "targetedSubskillsDe": "Linke Satzklammer entpacken, implizite Autorenhaltung erkennen, Lücken im kohärenten Text schließen",
+        "embeddedPracticeCount": 44
+      },
+      {
+        "moduleCode": "HÖREN (T1–T4)",
+        "officialFormatDe": "40 Min · Alltagsstatements (1× hören), Experten-Interview, Gespräch & Fachvortrag",
+        "targetedSubskillsDe": "Blind-First ohne Transkript, Tonfall-/Ironie-Detektion & echte Podcasts (DLF / SWR / Rasenfunk / Moove)",
+        "embeddedPracticeCount": 58
+      },
+      {
+        "moduleCode": "SCHREIBEN (T1–T2)",
+        "officialFormatDe": "75 Min · Teil 1 Diskussionsbeitrag (ca. 230 Wörter) + Teil 2 formelle/halbformelle Korrespondenz",
+        "targetedSubskillsDe": "Nominalstil, Genitiv-Präpositionen, Nomen-Verb-Verbindungen, Konjunktiv II & Gemini-C1-Stil-Chirurgie",
+        "embeddedPracticeCount": 36
+      },
+      {
+        "moduleCode": "SPRECHEN (T1–T2)",
+        "officialFormatDe": "15–20 Min · Teil 1 Strukturierter Kurzvortrag (3 Min) + Teil 2 Gemeinsame Aushandlung",
+        "targetedSubskillsDe": "Spontane Verteidigung bei Prüfer-Unterbrechung, Pro-Contra-Synthese & Konzessions-Brücken",
+        "embeddedPracticeCount": 42
+      }
+    ]
+  },
+  "extraScenarioFamilies": [
+    {
+      "id": "fam_phone_zero_visual",
+      "title": "Telefonate ohne Mimik & 3-Sekunden-Umschreibung",
+      "priorityRank": 7,
+      "targetWeakness": "Spontanabruf & Verstehen ohne Lippenablesen/Gestik unter Zeitdruck",
+      "environment": "Alltag & Beruf am Telefon (Arztpraxis, Ausländerbehörde, Lieferant)",
+      "visualTheme": "WAVEFORM_RADAR",
+      "description": "Kurze, realistische Telefonate mit Rückfragen, akustischem Nachfragen und schnellem Umschreiben fehlender Wörter."
+    },
+    {
+      "id": "fam_amg_911_dynamics",
+      "title": "AMG / 911 Powertrain, 8D-NVH & HS Esslingen",
+      "priorityRank": 8,
+      "targetWeakness": "Fachpräzision, diplomatisches Gegenhalten & Hypothesen-Hedging auf OEM-Niveau",
+      "environment": "Affalterbach / Untertürkheim / Hochschule Esslingen Prüfstand",
+      "visualTheme": "POWERTRAIN_SIGNAL_FLOW",
+      "description": "Abstimmungsrunden zu Tip-in/Derating, Stirnrad-NVH im 8D-Report, ISO 26262 FTTI & Master-Kolloquium."
+    },
+    {
+      "id": "fam_bvb_dfb_coaching",
+      "title": "BVB 09 Taktik, SV 1845 Elternarbeit & DFB-Lizenz",
+      "priorityRank": 9,
+      "targetWeakness": "Schneller Registerwechsel zwischen Kinder-Platzruf und lizenzreifer Taktikanalyse",
+      "environment": "Sportplatz SV 1845 Esslingen & Trainerheim",
+      "visualTheme": "FUNINO_PITCH_SPLIT",
+      "description": "Kinderfußball-Kommandos (FUNiño 3v3), übersteuernde Eltern an der Seitenlinie & taktische Pressing-Debatte."
+    },
+    {
+      "id": "fam_goethe_c1_oral_exam",
+      "title": "Goethe C1 Sprechen T1/T2 & Prüfer-Gegenwind",
+      "priorityRank": 10,
+      "targetWeakness": "Strukturierter 3-Minuten-Vortrag, Kompromiss-Aushandlung & Unterbrechungs-Recovery",
+      "environment": "Goethe-Institut Prüfungsraum",
+      "visualTheme": "MULTI_SPEAKER_TABLE",
+      "description": "Prüfungsnahe Simulationen mit kritischen Nachfragen, Registerkontrolle und sauberer Konjunktiv-/Nominalstruktur."
+    }
+  ],
+  "mediaImmersionMissions": [
+    {
+      "id": "mm_ams_01",
+      "title": "E-Mobilität, Hybrid-Strategie & Software-Defined Powertrain",
+      "sourceName": "auto motor und sport · Moove Podcast",
+      "sourceType": "PODCAST_LIVE_STREAM",
+      "podcastFeedId": "ams_moove",
+      "externalUrl": "https://www.auto-motor-und-sport.de/podcast/",
+      "contextTrack": "ENGINEERING",
+      "mappedPillar": "NOMEN_VERB",
+      "difficulty": "C1.1",
+      "goetheExamPartTag": "Goethe C1 Hören Teil 2 & Teil 4",
+      "listeningMissionDe": "Streamen Sie eine aktuelle Folge von ‚auto motor und sport · Moove‘. Filtern Sie beim ersten Hören ohne Notizen heraus, welches Hauptproblem bei Entwicklungskosten oder Ladenetz benannt wird.",
+      "keyCollocationsToCatch": [
+        "in Serie gehen",
+        "auf den Prüfstand stellen",
+        "Akzeptanz beim Kunden finden",
+        "wirtschaftlich tragfähig sein"
+      ],
+      "spokenFeaturesNoteDe": "Schnelle Redaktionsdialoge mit spontanen Einwürfen, englischen OEM-Leihwörtern im deutschen Satzrahmen & realer Sprechmelodie.",
+      "checkQuestionDe": "Welche Formulierung klingt in einer Entwicklungsrunde bei Mercedes-Benz am idiomatischsten?",
+      "checkOptions": [
+        "‚Wir müssen das Problem ernst gucken.‘",
+        "‚Wir sollten den Kostenzuwachs dringend auf den Prüfstand stellen, bevor das Konzept in Serie geht.‘",
+        "‚Das Konzept macht Serie, obwohl der Preis hoch geht.‘",
+        "‚Wir stellen Prüfung auf die Serie.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "Die feste Kombination ‚etwas auf den Prüfstand stellen‘ + ‚in Serie gehen‘ sitzt im deutschen Automotive-Umfeld auf den Punkt.",
+      "activeReactionPromptDe": "Fassen Sie in 2–3 gesprochenen oder getippten Sätzen zusammen, welcher Antriebsmix (BEV vs. Performance-Hybrid) aus Ihrer Sicht im nächsten Jahrzehnt trägt.",
+      "sampleSovereignReactionDe": "Während reine E-Plattformen im Flottenschnitt zweifellos den Ton angeben, behalten Performance-Hybride im Sportwagensegment vorerst ihre Daseinsberechtigung — vorausgesetzt, Komplexität und Mehrgewicht bleiben beherrschbar."
+    },
+    {
+      "id": "mm_rasenfunk_02",
+      "title": "BVB-Spielanalyse: Pressing-Auslöser, Raumaufteilung & Umschaltspiel",
+      "sourceName": "Rasenfunk · Schlusskonferenz / Kurzpass",
+      "sourceType": "PODCAST_LIVE_STREAM",
+      "podcastFeedId": "rasenfunk",
+      "externalUrl": "https://rasenfunk.de/",
+      "contextTrack": "COACHING",
+      "mappedPillar": "SATZGEFUEGE",
+      "difficulty": "C1.2",
+      "goetheExamPartTag": "Goethe C1 Hören Teil 3 (Mehrsprecher-Gespräch)",
+      "listeningMissionDe": "Hören Sie 5–8 Minuten einer aktuellen Rasenfunk-Episode. Achten Sie auf Sprecherwechsel, ironische Spitzen und die exakte Begründung, warum ein Pressing entweder greift oder überspielt wird.",
+      "keyCollocationsToCatch": [
+        "Zugriff auf den Ballführenden bekommen",
+        "das Zentrum kompakt schließen",
+        "im Gegenpressing sofort nachsetzen",
+        "sich dem Druck spielerisch entziehen"
+      ],
+      "spokenFeaturesNoteDe": "Mehrere Stimmen gleichzeitig, schnelles Nachhaken (‚Ja gut, aber…‘) — optimales Training gegen Übersetzungs-Latenz.",
+      "checkQuestionDe": "Was bedeutet im Taktik-Talk ‚Die erste Pressinglinie wurde mit einem einzigen Pass ins Leere geschickt‘?",
+      "checkOptions": [
+        "Der Torwart hat den Ball ins Aus geschossen.",
+        "Die vordersten Angreifer wurden vertikal überspielt, sodass sie hinter dem Ball stehen und keinen Druck mehr ausüben.",
+        "Der Schiedsrichter hat Abseits gepfiffen.",
+        "Das Spiel wurde abgebrochen."
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "‚Ins Leere laufen / geschickt werden‘ beschreibt exakt das Überspieltwerden beim Anlaufen.",
+      "activeReactionPromptDe": "Beschreiben Sie in 2 Sätzen für Trainerkollegen, woran Sie als Co-Trainer sehen, ob ein Anlaufen sauber ausgelöst wurde.",
+      "sampleSovereignReactionDe": "Entscheidend ist, dass beim Anlaufen auf den Außenverteidiger gleichzeitig die Halbräume geschlossen werden — sonst läuft unsere vordere Linie nur hinterher."
+    },
+    {
+      "id": "mm_swr_03",
+      "title": "Forschung, Technik & Gesellschaft im Südwesten",
+      "sourceName": "SWR Kultur · Das Wissen",
+      "sourceType": "PODCAST_LIVE_STREAM",
+      "podcastFeedId": "swr_wissen",
+      "externalUrl": "https://www.swr.de/swrkultur/wissen/index.html",
+      "contextTrack": "GENERAL",
+      "mappedPillar": "NOMINALISIERUNG",
+      "difficulty": "Goethe C1",
+      "goetheExamPartTag": "Goethe C1 Hören Teil 4 (Wissensvortrag)",
+      "listeningMissionDe": "Streamen Sie eine Episode von ‚SWR Kultur · Das Wissen‘. Trainieren Sie das Erfassen komplexer Nominalphrasen und Experten-O-Töne aus Südwestdeutschland.",
+      "keyCollocationsToCatch": [
+        "Erkenntnisse in die Praxis umsetzen",
+        "auf Widerstand stoßen",
+        "unter Vorbehalt stehen",
+        "weitreichende Konsequenzen nach sich ziehen"
+      ],
+      "spokenFeaturesNoteDe": "Moderation wechselt nahtlos zwischen klarem Radiodeutsch und spontanen O-Tönen von Forschenden und Praktikern.",
+      "checkQuestionDe": "Welche C1-Struktur fasst eine Kausalbeziehung im Fachbeitrag am präzisesten zusammen?",
+      "checkOptions": [
+        "‚Wegen dem Problem kam ein Schaden.‘",
+        "‚Infolge der verzögerten Wärmeleitung stieg das Ausfallrisiko signifikant an.‘",
+        "‚Trotz dass Wärme war, ging es kaputt.‘",
+        "‚Weil Hitze gewesen ist, entstand Risiko.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "‚Infolge + Genitiv‘ gehört zu den ergiebigsten Nominalstil-Mustern für Hören Teil 4 und Schreiben Teil 1.",
+      "activeReactionPromptDe": "Geben Sie eine Kernaussage aus einem technischen oder gesellschaftlichen Artikel in 2 dichten Nominalstil-Sätzen wieder.",
+      "sampleSovereignReactionDe": "Angesichts steigender Leistungsdichten gewinnt ein vorausschauendes Thermomanagement enorm an Bedeutung. Infolge verbesserter Regelalgorithmen lässt sich die Lebensdauer spürbar verlängern."
+    },
+    {
+      "id": "mm_tagesschau_04",
+      "title": "Hochgeschwindigkeit-Kompakt: Tagesschau in 100 Sekunden",
+      "sourceName": "ARD Tagesschau in 100 Sekunden",
+      "sourceType": "PODCAST_LIVE_STREAM",
+      "podcastFeedId": "tagesschau_100s",
+      "externalUrl": "https://www.tagesschau.de/multimedia/sendung/tagesschau_in_100_sekunden",
+      "contextTrack": "GENERAL",
+      "mappedPillar": "KONJUNKTIV",
+      "difficulty": "C1.2",
+      "goetheExamPartTag": "Goethe C1 Hören Teil 1 & Konjunktiv I",
+      "listeningMissionDe": "Perfekter täglicher 2-Minuten-Start: Hören Sie die tagesaktuellen 100 Sekunden komplett ohne Pause. Notieren Sie gedanklich 3 Meldungen inkl. distanzierender indirekter Rede (Konjunktiv I).",
+      "keyCollocationsToCatch": [
+        "wie es aus Regierungskreisen hieß",
+        "ein Sprecher teilte mit, es gebe",
+        "Kritiker warfen ... vor, man habe versäumt",
+        "Maßnahmen auf den Weg bringen"
+      ],
+      "spokenFeaturesNoteDe": "Sehr hohe Informationsdichte pro Sekunde, viele Partizipialattribute und konsequenter Konjunktiv I bei Quellenangaben.",
+      "checkQuestionDe": "Wie kennzeichnet die Tagesschau im ersten Satz, dass eine Zahl noch nicht unabhängig bestätigt wurde?",
+      "checkOptions": [
+        "‚Sie sagten, es hat passiert.‘",
+        "‚Nach Angaben des Ministeriums sei die Zahl der Betroffenen deutlich niedriger ausgefallen.‘",
+        "‚Es wurde vielleicht nicht wahr gesagt.‘",
+        "‚Laut dem Chef ist es bestimmt so.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "‚Nach Angaben + Genitiv‘ kombiniert mit Konjunktiv I (‚sei ausgefallen / habe gegeben‘) ist der goldene Nachrichtenstandard im C1.",
+      "activeReactionPromptDe": "Geben Sie eine aktuelle Meldung oder eine Kolleginnen-Aussage in 2 Sätzen mit Konjunktiv I (‚sei / habe / werde‘) wieder.",
+      "sampleSovereignReactionDe": "Laut Projektleitung sei die Terminverschiebung vor allem auf fehlende Musterteile zurückzuführen. Man rechne jedoch damit, die Erprobung nächste Woche wieder aufzunehmen."
+    },
+    {
+      "id": "mm_bloch_05",
+      "title": "Bloch erklärt: Thermomanagement, Doppelkupplung & Fahrwerkskinematik",
+      "sourceName": "YouTube · auto motor und sport (Bloch erklärt)",
+      "sourceType": "YOUTUBE_DOCUMENTARY",
+      "podcastFeedId": "ams_moove",
+      "externalUrl": "https://www.youtube.com/results?search_query=Bloch+erkl%C3%A4rt+Porsche+911+AMG+Getriebe+Hybrid",
+      "contextTrack": "ENGINEERING",
+      "mappedPillar": "SATZGEFUEGE",
+      "difficulty": "C1.1",
+      "goetheExamPartTag": "Technisches Erklären & Goethe C1 Sprechen Teil 1",
+      "listeningMissionDe": "Schauen/hören Sie ein Erklärvideo von Alexander Bloch (z. B. Porsche 911 T-Hybrid oder AMG-Antrieb). Achten Sie darauf, wie er hochkomplexe Physik mit klaren deutschen Bildern erklärt.",
+      "keyCollocationsToCatch": [
+        "Kraftfluss ohne Zugkraftunterbrechung",
+        "das Ansprechverhalten spürbar schärfen",
+        "im Teillastbereich effizienter arbeiten",
+        "den Schwerpunkt gezielt absenken"
+      ],
+      "spokenFeaturesNoteDe": "Schnelle, begeisterte Erklärsprache — exzellente Vorlage, um komplexe Antriebsthemen vor Nicht-Spezialisten lebendig zu erklären.",
+      "checkQuestionDe": "Was macht Blochs Erklärstil auch für Ihre Master-Präsentationen in Esslingen so stark?",
+      "checkOptions": [
+        "Möglichst viele verschachtelte Passivsätze ohne Beispiel.",
+        "Er koppelt das präzise Fachwort sofort an einen anschaulichen Vergleich und ein klares Ursache-Wirkungs-Prinzip (‚Dadurch, dass …‘).",
+        "Er spricht ausschließlich auf Englisch.",
+        "Er vermeidet jede Zahl."
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "Die Brücke ‚Fachbegriff -> anschauliche Konsequenz‘ unterscheidet souveräne Ingenieurinnen und Ingenieure von reinen Foliensprechern.",
+      "activeReactionPromptDe": "Erklären Sie einem technisch interessierten Freund in 2–3 klaren deutschen Sätzen, wie ein E-Turbolader das Turboloch beim AMG / 911 schließt.",
+      "sampleSovereignReactionDe": "Während ein klassischer Abgasturbo erst auf genügend Abgasmasse warten muss, beschleunigt eine kleine E-Maschine direkt auf der Laderwelle das Verdichterrad schon ab Leerlaufdrehzahl vor — dadurch liegt sofort Ladedruck an."
+    },
+    {
+      "id": "mm_manuthiele_06",
+      "title": "Manu Thiele / DFB-Akademie: Trainer-Rhetorik & Spielprinzipien",
+      "sourceName": "YouTube · Manu Thiele / DFB-Akademie & Rasenfunk",
+      "sourceType": "YOUTUBE_DOCUMENTARY",
+      "podcastFeedId": "rasenfunk",
+      "externalUrl": "https://www.youtube.com/results?search_query=Manu+Thiele+Borussia+Dortmund+Taktik+DFB",
+      "contextTrack": "COACHING",
+      "mappedPillar": "MODALPARTIKELN",
+      "difficulty": "B2+ -> C1",
+      "goetheExamPartTag": "Alltagsnahe Taktikdebatte & Modalpartikeln",
+      "listeningMissionDe": "Analysieren Sie ein aktuelles BVB- oder DFB-Video (oder hören Sie parallel den Rasenfunk). Achten Sie auf typische Einschübe wie ‚eben‘, ‚halt‘, ‚ja im Grunde‘ beim Abwägen.",
+      "keyCollocationsToCatch": [
+        "zwischen den Linien anspielbar sein",
+        "Tiefe hinter der Kette belaufen",
+        "im letzten Drittel die Ruhe bewahren",
+        "eine klare Handschrift erkennen lassen"
+      ],
+      "spokenFeaturesNoteDe": "Sehr natürliches, schnelles Redetempo jüngerer deutscher Sportjournalisten inkl. typischer Füll- und Abtönungswörter.",
+      "checkQuestionDe": "Wie drücken Sie differenzierte Kritik nach einem schwachen BVB-Spieltag auf Trainer-Niveau aus?",
+      "checkOptions": [
+        "‚Die Spieler wollten einfach nicht rennen.‘",
+        "‚Gegen den Ball hat mir die Kompaktheit eigentlich gefallen, bloß im Übergangsspiel fehlten uns halt die sauberen Dreiecke im Halbraum.‘",
+        "‚Das System war total schlecht gemacht.‘",
+        "‚Ohne Tore verliert man halt.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "‚Eigentlich‘ (Anerkennung) + ‚bloß … halt‘ (präziser Hebel) klingt exakt wie ein ausgebildeter deutscher Lizenztrainer.",
+      "activeReactionPromptDe": "Nennen Sie ein Spielprinzip (z. B. Dreiecksbildung oder Anschlussbewegung), einmal für Trainerkollegen (C1) und einmal als F-Jugend-Ruf (<6 Wörter).",
+      "sampleSovereignReactionDe": "Trainerteam: ‚Nach dem Pass in die Breite muss der Achter sofort als Klatsche nachschieben.‘ — F-Jugend: ‚Pass ab und sofort freilaufen!‘"
+    },
+    {
+      "id": "mm_arte_07",
+      "title": "ARTEde / DLF Hintergrund: Mobilität, Stadtentwicklung & Arbeitskultur",
+      "sourceName": "ARTEde Dokus & Deutschlandfunk Der Tag",
+      "sourceType": "YOUTUBE_DOCUMENTARY",
+      "podcastFeedId": "dlf_der_tag",
+      "externalUrl": "https://www.youtube.com/results?search_query=ARTEde+Doku+Automobilindustrie+Deutschland",
+      "contextTrack": "SOCIAL",
+      "mappedPillar": "RHETORIK",
+      "difficulty": "C1.2",
+      "goetheExamPartTag": "Goethe C1 Schreiben Teil 1 & Sprechen Teil 2",
+      "listeningMissionDe": "Nutzen Sie den DLF-Tagesrückblick oder eine ARTE-Reportage als Ideensteinbruch für Pro-Contra-Argumente (Goethe C1 Diskussionsbeitrag + alltägliche Debatten).",
+      "keyCollocationsToCatch": [
+        "auf einen gemeinsamen Nenner kommen",
+        "Schattenseiten nicht ausblenden dürfen",
+        "langfristig angelegte Investitionen",
+        "Akzeptanz durch Transparenz schaffen"
+      ],
+      "spokenFeaturesNoteDe": "Klares, abwägendes Kultur- und Politikdeutsch mit rhetorischen Konzessionen (‚Zwar steht außer Frage, dennoch…‘).",
+      "checkQuestionDe": "Welche Einleitung passt perfekt in einen Goethe-C1-Diskussionsbeitrag (Schreiben Teil 1)?",
+      "checkOptions": [
+        "‚Heute möchte ich schreiben über ein wichtiges Thema für alle.‘",
+        "‚Angesichts wachsender Mobilitätsbedürfnisse bei gleichzeitiger Klimaverantwortung stellt sich dringlicher denn je die Frage, wie bezahlbare und zugleich emissionsarme Infrastruktur gelingen kann.‘",
+        "‚Viele Leute mögen Autos, aber Züge sind besser.‘",
+        "‚In diesem Text geht es um meine Meinung.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "Problemaufriss mit ‚Angesichts…‘ + präziser Kernfrage zeigt ab Satz 1 sicheres C1-Niveau.",
+      "activeReactionPromptDe": "Formulieren Sie 2 kontroverse Pro-Contra-Sätze zum Thema ‚Tempolimit 130 auf deutschen Autobahnen‘ mit ‚Einerseits … andererseits‘.",
+      "sampleSovereignReactionDe": "Einerseits ließe sich durch ein generelles Tempolimit der Verkehrsfluss auf überlasteten Abschnitten spürbar verstetigen; andererseits zweifle ich daran, dass pauschale Verbote ohne besseren Schienenausbau die eigentlichen Engpässe beheben."
+    },
+    {
+      "id": "mm_book_erkundungen_01",
+      "title": "Erkundungen C1 & Aspekte neu C1: Redewendungen, Modalität & Lesetempo",
+      "sourceName": "Erkundungen C1 (Schubert) · Aspekte neu C1 (Klett) + Tagesschau",
+      "sourceType": "BOOK_DEEP_DIVE",
+      "podcastFeedId": "tagesschau_100s",
+      "externalUrl": "https://www.schubert-verlag.de/erkundungen-c1.php",
+      "contextTrack": "GENERAL",
+      "mappedPillar": "NOMINALISIERUNG",
+      "difficulty": "Goethe C1",
+      "goetheExamPartTag": "Goethe C1 Lesen Teil 1–4 · Kompakt-Schleife",
+      "listeningMissionDe": "Verbindet klassische C1-Referenzwerke (‚Erkundungen C1‘, Kap. Technik/Sprache/Alltag) mit aktuellem Audiostream: Zuerst 100-Sekunden-Audio hören, dann die schriftsprachliche Umformung aktiv beherrschen.",
+      "keyCollocationsToCatch": [
+        "im Zuge der Digitalisierung",
+        "Maßstäbe setzen in",
+        "einen wesentlichen Beitrag leisten zu",
+        "außer Zweifel stehen"
+      ],
+      "spokenFeaturesNoteDe": "Direktes Nebeneinander von mündlichem ‚Es ist klar, dass wir das machen müssen‘ und schriftlichem C1-Stil ‚Die Umsetzung steht außer Frage‘.",
+      "checkQuestionDe": "Wie nominalisieren Sie im Stil von ‚Erkundungen C1‘ den Satz ‚Weil die Validierung streng kontrolliert wurde, traten keine Feldfehler auf‘?",
+      "checkOptions": [
+        "‚Wegen strengen Kontrollieren kam kein Fehler.‘",
+        "‚Dank der streng kontrollierten Validierung traten im Feld keinerlei Fehler auf.‘",
+        "‚Infolge dem Kontrollieren blieben Fehler weg.‘",
+        "‚Durch dass man streng prüfte, war es fehlerfrei.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "‚Dank + Genitiv/Dativ‘ mit Partizipialattribut (‚streng kontrollierten‘) komprimiert Nebensätze sauber auf C1-Lesen/Schreiben-Standard.",
+      "activeReactionPromptDe": "Formen Sie mündlich oder schriftlich ‚Obwohl das Wetter schlecht war, haben wir auf dem Platz trainiert‘ in eine kompakte Nominalphrase mit ‚Trotz‘ um.",
+      "sampleSovereignReactionDe": "Trotz des widrigen Wetters haben wir beim SV 1845 eine konzentrierte Einheit durchgezogen."
+    }
+  ]
+}

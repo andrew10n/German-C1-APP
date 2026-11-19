@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">German C1</string>
+    <string name="hub_subtitle">C1 Visual Atelier</string>
+    <string name="hub_title">Deutsch C1 Mastery</string>
+    <string name="controller_directive_label">Diagnostic Directive</string>
+    <string name="competency_map_title">6-Pillar Competency Map</string>
+    <string name="visual_decks_title">Visual Story Decks</string>
+    <string name="arena_title">Adaptive CAT Arena</string>
+    <string name="srs_title">Visual Lexikon &amp; NVV</string>
+    <string name="ai_studio_title">C1 AI Atelier</string>
+    <string name="controller_center_title">Adaptive Diagnostic Controller</string>
+</resources>

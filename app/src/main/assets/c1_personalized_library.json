@@ -1,0 +1,3043 @@
+{
+  "contentAudit": {
+    "learnerSummary": "Arabic L1 · EN C2 · ES C1 · DE B2+ -> Functional C1 | M.Eng. Automotive Systems (HS Esslingen) · Powertrain Intern (Mercedes-Benz, ex-Hyundai Dubai) · F-Jugend Co-Trainer (SV 1845 Esslingen)",
+    "provisionalNote": "Prioritäten basieren auf realen Alltagssituationen (keine starren Testwerte). Funktionale C1-Reife und Goethe-C1-Prüfungsreife werden getrennt geführt.",
+    "coveredWell": [
+      "Formale C1-Schriftsprache, Nominalstil & Satzklammer (28 Basis-Units + Aspekte neu / Sicher! Brücken)",
+      "Klassische Diskussions- & Debattenrollen (Podium, Gehaltsgespräch, Eigentümerversammlung)",
+      "Schriftliche Sprachmittlung / Mediation aus Behörden-, Rechts- und ESG-Texten",
+      "U13/U15 Großfeld-Taktikbegriffe (Halbraum, Kette schieben)"
+    ],
+    "coveredSuperficially": [
+      "7 Dialog-Rohkonzepte (ownedDialogueBriefs: supermarket, supervisor, football-children, informal-regional) waren bisher nur leere Metadaten-Platzhalter ohne Dialoge oder Übungen",
+      "Gesprochene Reduktionen & Verschleifungen im schnellen Alltagsdeutsch (nur 1 Einzelprobe im Diagnosetest)",
+      "Schwäbisch-süddeutsche Alltagsfärbung im Raum Esslingen/Stuttgart vs. gesprochenes Standarddeutsch",
+      "Antriebsstrang-Applikation (ECU/TCU, Hybrid-Übergang, INCA-Messabweichung, ISO 26262) im spontanen Gespräch mit Betreuern"
+    ],
+    "missingCriticalGaps": [
+      "Blind-First-Hörverstehen (erst hören & Intention deuten, Transkript erst danach aufdecken) mit 2–3 unterschiedlichen Sprecherpersönlichkeiten",
+      "Nicht-bestrafendes Situational-Upgrading für verständliche Sätze (z. B. ‚Das steht zweimal hier‘ -> natürliche Register-Alternativen)",
+      "Spontanes Sprechen OHNE vorher sichtbare Musterlösung inkl. unerwarteter Rückfragen & 11-Kategorien-Fehlerdiagnose",
+      "Zweigeteiltes Fußball-Register für SV 1845 Esslingen: kindgerechtes F-Jugend/FUNiño-Coaching (U8/U9) vs. analytisches Trainerteam-/Lizenzgespräch",
+      "Systematische Transfer-Aufgaben in unbekannte Situationen + verzögerte Abruf-Anker (Delayed Retrieval)"
+    ]
+  },
+  "validationReport": {
+    "batchName": "Personalized Esslingen / MB / SV 1845 Mastery Library (Batch 1 + 2 Validated)",
+    "totalExercises": 20,
+    "scenarioFamiliesCount": 6,
+    "skillsCovered": {
+      "SITUATIONAL_PRAGMATICS": 4,
+      "NATURAL_LISTENING": 3,
+      "ENGINEERING_COMMUNICATION": 5,
+      "FOOTBALL_COACHING": 4,
+      "SPONTANEOUS_SPEAKING": 3,
+      "COLLOCATIONS_PARTICLES": 1
+    },
+    "contextDistribution": {
+      "EVERYDAY_UMGANGSSPRACHE": 8,
+      "AUTOMOTIVE_ENGINEERING": 6,
+      "FOOTBALL_COACHING": 6
+    },
+    "difficultyDistribution": {
+      "B2": 2,
+      "B2+": 7,
+      "C1": 7,
+      "ADVANCED_C1": 4
+    },
+    "duplicatesDetected": 0,
+    "qualityChecksCompleted": [
+      "All 21 Personalized Exercise Format & 16 Content Principle fields verified non-empty",
+      "Zero ID or title collisions against existing 28 units, 10 conversations, 9 mediations, and 6 U15 scenarios",
+      "Blind-first listening architecture verified (transcript locked until comprehension & intention checks answered)",
+      "Spontaneous speaking verified model-hidden prior to learner submission",
+      "Regional German verified authentic (moderate Esslingen/Stuttgart Swabian vs. Standard Spoken German)",
+      "Dual-register Football Coaching verified (F-Jugend U8/U9 FUNiño child cues vs. Coach-to-Coach / DFB License)",
+      "Automotive Powertrain Engineering verified (ECU/TCU torque blending, INCA deviation, ISO 26262 FTTI, 8D CAN timeout)",
+      "Synthetic TTS explicitly labeled; zero synthetic clips claimed as native studio recordings"
+    ],
+    "missingAudioAssets": [
+      "pf_alltag_01",
+      "pf_alltag_02",
+      "pf_alltag_03",
+      "pf_listen_01",
+      "pf_listen_02",
+      "pf_listen_03",
+      "pf_eng_01",
+      "pf_eng_02",
+      "pf_eng_03",
+      "pf_eng_04",
+      "pf_eng_05",
+      "pf_eng_06",
+      "pf_coach_01",
+      "pf_coach_02",
+      "pf_coach_03",
+      "pf_coach_04",
+      "pf_coach_05",
+      "pf_coach_06",
+      "pf_alltag_04",
+      "pf_listen_04"
+    ],
+    "integrationStatus": "INTEGRATED_VISUAL_ANIMATED_STUDIO_AND_DIAGNOSTIC_CONTROLLER"
+  },
+  "errorTaxonomy11": [
+    {
+      "id": "LISTENING_RECOGNITION",
+      "labelDe": "Hörerkennung im Schnellsprech-Strom"
+    },
+    {
+      "id": "CONNECTED_SPEECH_DECODING",
+      "labelDe": "Verschleifungen & Kurzformen (ham’wa, fei, ’n)"
+    },
+    {
+      "id": "VOCABULARY",
+      "labelDe": "Kontext-Wortschatz & Fachkollokation"
+    },
+    {
+      "id": "INTERPRETATION",
+      "labelDe": "Sprecherabsicht, Ironie & Zwischentöne"
+    },
+    {
+      "id": "SITUATIONAL_UNDERSTANDING",
+      "labelDe": "Situationsanforderung & Handlungsimpuls"
+    },
+    {
+      "id": "ACTIVE_RETRIEVAL",
+      "labelDe": "Spontaner Ausdrucksabruf ohne Übersetzen"
+    },
+    {
+      "id": "SENTENCE_FORMULATION",
+      "labelDe": "Natürlicher Satzbau im Echtzeit-Sprechen"
+    },
+    {
+      "id": "GRAMMAR_UNDER_PRESSURE",
+      "labelDe": "Grammatikstabilität unter Gesprächsdruck"
+    },
+    {
+      "id": "NATURALNESS",
+      "labelDe": "Idiomatik & Modalpartikel-Feingefühl"
+    },
+    {
+      "id": "REGISTER",
+      "labelDe": "Registertreffsicherheit (Alltag / Technik / Kind vs. Trainer)"
+    },
+    {
+      "id": "INTERACTION",
+      "labelDe": "Unterbrechungen, Themenwechsel & Gesprächsreparatur"
+    }
+  ],
+  "scenarioFamilies": [
+    {
+      "id": "fam_everyday_kasse_service",
+      "title": "Alltags-Pragmatik & Reklamation ohne Übersetzungskrampf",
+      "priorityRank": 1,
+      "targetWeakness": "Situational Communication & Natural Expression Retrieval",
+      "environment": "EVERYDAY_UMGANGSSPRACHE",
+      "visualTheme": "RECEIPT_REGISTER_MORPH",
+      "description": "Verständliches B2-Deutsch in Sekundenschnelle in idiomatische, situationspassende Alltagsreaktionen verwandeln."
+    },
+    {
+      "id": "fam_swabian_colleagues_multi",
+      "title": "Schnelles Alltagsdeutsch, Schwäbische Färbung & 3er-Runden",
+      "priorityRank": 2,
+      "targetWeakness": "Natural Listening Comprehension & Umgangssprache",
+      "environment": "EVERYDAY_UMGANGSSPRACHE",
+      "visualTheme": "WAVEFORM_RADAR",
+      "description": "Verschleifungen, Modalpartikeln (halt, eben, doch, mal, fei, gell), Ironie und schnelle Themenwechsel im Raum Esslingen sicher entschlüsseln."
+    },
+    {
+      "id": "fam_mb_powertrain_data",
+      "title": "Prüfstand, ECU/TCU-Kalibrierung & Betreuer-Rückfragen",
+      "priorityRank": 3,
+      "targetWeakness": "Spontaneous Technical Speaking & Evidence Precision",
+      "environment": "AUTOMOTIVE_ENGINEERING",
+      "visualTheme": "POWERTRAIN_SIGNAL_FLOW",
+      "description": "Messabweichungen, Hybrid-Schaltübergänge und ISO-26262-Annahmen präzise erklären, ohne ungesicherte Hypothesen als Fakten darzustellen."
+    },
+    {
+      "id": "fam_eng_fmea_report",
+      "title": "Root-Cause-Analyse, FMEA & Werkstatt-zu-Management-Register",
+      "priorityRank": 4,
+      "targetWeakness": "Register Control & Technical Argumentation under Pressure",
+      "environment": "AUTOMOTIVE_ENGINEERING",
+      "visualTheme": "PARTICLE_TONE_DIAL",
+      "description": "Zwischen direktem Prüfstands-Ton mit Messtechnikern und belastbarem Engineering-Readout für Projektleitung wechseln."
+    },
+    {
+      "id": "fam_sv1845_fjugend_pitch",
+      "title": "SV 1845 Esslingen: F-Jugend & FUNiño Kinder-Coaching",
+      "priorityRank": 5,
+      "targetWeakness": "Child-Directed Coaching Clarity & Instant Code-Switching",
+      "environment": "FOOTBALL_COACHING",
+      "visualTheme": "FUNINO_PITCH_SPLIT",
+      "description": "Kurze, bildhafte Impulse, Leitfragen statt Dauer-Kommandos und positives Fehler-Coaching für 7- bis 8-Jährige."
+    },
+    {
+      "id": "fam_sv1845_cotrainer_lizenz",
+      "title": "Trainerteam-Taktik, Trainingsmethodik & DFB-Lizenzdialog",
+      "priorityRank": 6,
+      "targetWeakness": "Specialist Coaching Discourse & Diplomatic Disagreement",
+      "environment": "FOOTBALL_COACHING",
+      "visualTheme": "MULTI_SPEAKER_TABLE",
+      "description": "Auf Augenhöhe mit Trainerkollegen und Prüfern über Umschaltspiel, Gegenpressing, Spielformen und Belastung diskutieren."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "pf_alltag_01",
+      "scenarioFamilyId": "fam_everyday_kasse_service",
+      "title": "Supermarktkasse Esslingen: Artikel doppelt auf dem Bon",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Natürliche Korrektur an der Supermarktkasse ohne Übersetzungsstarre",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Gesprochenes Standarddeutsch mit leichter süddeutscher Alltagsfärbung",
+      "difficulty": "B2",
+      "visualSceneType": "RECEIPT_REGISTER_MORPH",
+      "learningObjective": "Einen doppelten Scan an einer vollen Kasse höflich, präzise und natürlich ansprechen, statt nur wörtlich auf den Kassenzettel zu zeigen.",
+      "germanInput": "Freitagabend im Supermarkt in Esslingen. Hinter Ihnen wartet eine Schlange. Sie schauen kurz auf den Kassenbon und sehen: Die Hafermilch wurde zweimal erfasst.",
+      "audioRequirements": {
+        "deliveryStyle": "Schnelles, routiniertes Kassentempo (ca. 165 Silben/Min.), Hintergrundgeräusche vom Scanner-Piepen",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch gefärbtes Alltagsdeutsch (Standardnah)",
+        "ttsDisclosure": "Synthetische TTS-Vorschau im App-Player (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Frau Kurz",
+          "role": "Kassiererin",
+          "personality": "Gehetzt, direkt, aber nicht unfreundlich",
+          "variety": "Süddeutsch-Alltag"
+        },
+        {
+          "name": "Kunde hinter Ihnen",
+          "role": "Wartender",
+          "personality": "Ungeduldig aufs Handy schauend",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Frau Kurz",
+          "line": "Macht dann vierundzwanzig Achtzig. Mit Karte oder bar?",
+          "cue": "Schnell, schaut schon aufs Kartenterminal"
+        },
+        {
+          "speaker": "Frau Kurz",
+          "line": "Ach Moment, Sie gucken so auf’n Zettel – passt was net?",
+          "cue": "Kurze Verschleifung: auf’n = auf den, net = nicht"
+        }
+      ],
+      "transcript": "Frau Kurz: Macht dann vierundzwanzig Achtzig. Mit Karte oder bar?\nFrau Kurz: Ach Moment, Sie gucken so auf’n Zettel – passt was net?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "auf’n Zettel",
+          "standard": "auf den Zettel",
+          "note": "Klitisierung des Artikels im schnellen Sprechen"
+        },
+        {
+          "spoken": "passt was net?",
+          "standard": "stimmt etwas nicht?",
+          "note": "Süddeutsche Kurzform ‚net‘ statt ‚nicht‘"
+        }
+      ],
+      "vocabulary": [
+        "doppelt abziehen / doppelt scannen — nicht ‚zweimal stehen‘",
+        "der Kassenbon / der Beleg — Alltagsbegriff an der Kasse",
+        "stornieren — einen Posten wieder herausnehmen"
+      ],
+      "usefulExpressions": [
+        "Ich glaube, [Artikel] ist versehentlich zweimal drübergegangen.",
+        "Könnten Sie da bitte kurz draufschauen?",
+        "Kein Stress, aber die Hafermilch wurde wohl doppelt gescannt."
+      ],
+      "grammarPatterns": [
+        "Passiv im Alltag mit ‚werden‘ + Modalpartikel ‚wohl‘ / ‚versehentlich‘ zur Gesichtswahrung: ‚Der Artikel wurde wohl zweimal gescannt.‘",
+        "Konjunktiv II der Höflichkeit: ‚Könnten Sie das kurz prüfen?‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was signalisiert die Rückfrage „Passt was net?“ in diesem Moment?",
+          "options": [
+            "Die Kassiererin lädt Sie knapp ein, das Problem sofort konkret zu benennen.",
+            "Sie lehnt jede Reklamation ab, weil schon bezahlt wurde.",
+            "Sie fragt, ob Sie eine Einkaufstüte brauchen.",
+            "Sie bittet den nächsten Kunden vorzutreten."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Kurze, pragmatische Aufforderung, den Fehler direkt zu nennen."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum wirkt „versehentlich“ oder „wohl“ hier natürlicher als „Sie haben das zweimal gescannt“?",
+          "options": [
+            "Es nimmt den Vorwurf heraus und löst die Situation kooperativ trotz Zeitdruck.",
+            "Es ist grammatisch zwingend vorgeschrieben.",
+            "Sonst versteht die Kassiererin den Satz inhaltlich nicht.",
+            "Es macht den Satz künstlich akademisch."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Deeskaliert sofort und vermeidet direkten Schuldvorwurf."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was ist an Ihrem realen Satz „Das steht zweimal hier“ sprachlich genau der Lernpunkt?",
+          "options": [
+            "Er ist völlig verständlich, lässt aber offen, was passiert ist und welche Handlung Sie wünschen.",
+            "Er ist grammatisch komplett falsch und unverständlich.",
+            "Man darf an der Kasse kein Demonstrativpronomen benutzen.",
+            "Das Wort ‚zweimal‘ existiert im gesprochenen Deutsch nicht."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Verständliches Deutsch, dem nur das präzise Verb (gescannt/abgezogen) und die höfliche Bitte fehlen."
+          ]
+        }
+      ],
+      "speakingTask": "Reagieren Sie jetzt spontan in 1–2 natürlichen Sätzen auf „Passt was net?“, ohne aus dem Englischen zu übersetzen.",
+      "interactionTask": "Frau Kurz schaut kurz drauf und brummt: „Ach herrje, stimmt – brauchen Sie die Stornierung bar raus oder zahlen Sie eh erst noch mit Karte?“ Reagieren Sie sofort natürlich.",
+      "expectedResponseCharacteristics": [
+        "Benennt den doppelten Scan präzise (gescannt / gebucht / drauf)",
+        "Kein vorwurfsvoller Ton, natürliche Kürze",
+        "Klare Handlungsbitte"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Das steht zweimal hier.",
+        "verdict": "Verständlich im Alltag — kein Grammatikfehler, aber unpräzise im Verb und ohne klare Bitte."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Locker & natürlich",
+          "text": "Ja, entschuldigen Sie – ich glaub, die Hafermilch ist grad zweimal drübergegangen."
+        },
+        {
+          "register": "Höflich-Standard",
+          "text": "Ich glaube, der Artikel wurde versehentlich zweimal gescannt. Könnten Sie das kurz überprüfen?"
+        },
+        {
+          "register": "Knapp bei Zeitdruck",
+          "text": "Schauen Sie mal kurz: Die Milch steht wohl doppelt auf dem Bon."
+        }
+      ],
+      "errorClassifications": [
+        "SITUATIONAL_UNDERSTANDING: Wörtliche Ortsbeschreibung (‚steht hier‘) statt Vorgangsverb (‚wurde gescannt‘)",
+        "NATURALNESS: Fehlende Abtönung (wohl / kurz / versehentlich)",
+        "ACTIVE_RETRIEVAL: Verzögerung beim Abruf von ‚Kassenbon / stornieren‘"
+      ],
+      "correctionGuidance": "Bestätige zuerst, dass ‚Das steht zweimal hier‘ verstanden wird. Zeige dann den Sprung zu ‚wurde zweimal gescannt‘ + ‚Könnten Sie kurz schauen?‘.",
+      "transferTask": "Neuer Kontext (Bäckerei am Bahnhof): Sie haben ein Brezel-Kombi-Angebot bestellt, aber auf dem Display steht der Einzelpreis plus ein Kaffee, den Sie gar nicht hatten. Klären Sie das in einem Satz.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Ich glaube, [X] ist versehentlich doppelt drübergegangen – könnten Sie kurz schauen?‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 4 Tage -> 14 Tage"
+    },
+    {
+      "id": "pf_alltag_02",
+      "scenarioFamilyId": "fam_everyday_kasse_service",
+      "title": "Restaurant am Neckar: Falsche Beilage & indirekte Nachfrage",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Missverständnis im Restaurant charmant aufklären",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Alltagsdeutsch im Café / Restaurant",
+      "difficulty": "B2+",
+      "visualSceneType": "RECEIPT_REGISTER_MORPH",
+      "learningObjective": "Eine falsche Bestellung freundlich reklamieren, wenn der Kellner im Vorbeigehen nur knapp nachfragt.",
+      "germanInput": "Sie sitzen mit einem Kommilitonen in Esslingen beim Mittagessen. Sie hatten ausdrücklich die Linsen OHNE Speck bestellt (halal/vegetarisch), bekommen aber den Teller mit Speckwürfeln.",
+      "audioRequirements": {
+        "deliveryStyle": "Lebhaftes Lokal-Hintergrundgeräusch, Kellner spricht im Weitergehen (170 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Alltag",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Lukas",
+          "role": "Kellner",
+          "personality": "Freundlich, aber im Mittagsstress auf dem Sprung",
+          "variety": "Süddeutsch"
+        },
+        {
+          "name": "Jonas",
+          "role": "Kommilitone",
+          "personality": "Entspannt, will keinen Aufstand machen",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Lukas",
+          "line": "Sooo, einmal die Käsespätzle und einmal Linsen komplett – lasst’s euch schmecken!",
+          "cue": "Will sich schon umdrehen"
+        },
+        {
+          "speaker": "Jonas",
+          "line": "Du, warte mal kurz – hattest du nich’ extra ohne Fleisch gesagt?",
+          "cue": "Leise zu Ihnen"
+        }
+      ],
+      "transcript": "Lukas: Sooo, einmal die Käsespätzle und einmal Linsen komplett – lasst’s euch schmecken!\nJonas: Du, warte mal kurz – hattest du nich’ extra ohne Fleisch gesagt?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "lasst’s euch",
+          "standard": "lasst es euch",
+          "note": "Typische Verschmelzung von Verb + ‚es‘"
+        },
+        {
+          "spoken": "hattest du nich’",
+          "standard": "hattest du nicht",
+          "note": "Wegfall des auslautenden -t im Gespräch"
+        }
+      ],
+      "vocabulary": [
+        "da ist wohl etwas durcheinandergeraten — höfliche Problemformel ohne Schuldzuweisung",
+        "ausdrücklich ohne [X] bestellen — klare, ruhige Präzisierung",
+        "nochmal zurückgehen lassen — Gastronomie-Ausdruck"
+      ],
+      "usefulExpressions": [
+        "Entschuldigung, warten Sie grad noch kurz – ich hatte die Portion eigentlich ohne Speck bestellt.",
+        "Da ist in der Küche wohl kurz was verwechselt worden.",
+        "Wäre es möglich, das nochmal ohne Speck zu bekommen?"
+      ],
+      "grammarPatterns": [
+        "Plusquamperfekt für höflichen Rückbezug auf die ursprüngliche Bestellung: ‚Ich hatte das eigentlich ohne Speck bestellt.‘ (wirkt viel weicher als Perfekt!)"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was bedeutet „einmal Linsen komplett“ im Kontext des Kellners?",
+          "options": [
+            "Die Standardportion inklusive aller üblichen Fleisch-/Speckbeilagen.",
+            "Dass das Gericht kostenlos aufs Haus geht.",
+            "Dass die Küche keine Linsen mehr hat.",
+            "Dass der Kellner die Rechnung sofort kassieren möchte."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Standardausführung mit allen Beilagen, also inklusive Speck."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum nutzt man im Deutschen bei Reklamationen im Restaurant fast immer „Ich HATTE ... bestellt“?",
+          "options": [
+            "Das Plusquamperfekt verlegt den Fakt höflich in die Vorvergangenheit und klingt sachlich statt anklagend.",
+            "Weil Perfekt im Restaurant grammatisch falsch wäre.",
+            "Um zu zeigen, dass man keinen Hunger mehr hat.",
+            "Weil es ein schwäbischer Dialektzwang ist."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Höfliche Distanzierung ohne direkten Vorwurf an den Kellner."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was signalisiert Jonas mit „Du, warte mal kurz ...“?",
+          "options": [
+            "Er bestärkt Sie darin, den Kellner sofort anzusprechen, bevor dieser wieder verschwindet.",
+            "Er möchte Ihren Teller selbst essen.",
+            "Er bittet Sie, nichts zu sagen.",
+            "Er will das Lokal verlassen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Kurzer Impuls, sofort zu reagieren, solange der Kellner noch am Tisch steht."
+          ]
+        }
+      ],
+      "speakingTask": "Halten Sie Lukas freundlich auf und klären Sie das Missverständnis klar, aber entspannt.",
+      "interactionTask": "Lukas bleibt stehen: „Oh Mist, hab ich’s falsch eingetippt! Soll ich bloß den Speck runternehmen oder komplett frisch machen lassen – dauert halt sieben, acht Minuten?“ Antworten Sie spontan.",
+      "expectedResponseCharacteristics": [
+        "Freundlicher Aufmerksamkeitsruf (Entschuldigung, kurzen Moment bitte)",
+        "Plusquamperfekt + ‚eigentlich‘",
+        "Klare Entscheidung bei der Rückfrage (frisch ohne Schweinefleisch/Speck)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Ich esse keinen Speck, das ist falsch.",
+        "verdict": "Inhaltlich klar, klingt aber abrupt und konfrontativ."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Natürlich & freundlich",
+          "text": "Entschuldigung, kurzen Moment noch – ich hatte die Linsen eigentlich ohne Speck bestellt, weil ich kein Schweinefleisch esse."
+        },
+        {
+          "register": "Souverän bei Rückfrage",
+          "text": "Kein Problem, aber bitte einmal frisch ohne Speck – die paar Minuten warte ich gern."
+        },
+        {
+          "register": "Knapp & entspannt",
+          "text": "Passt für mich heute Abend leider nicht mehr – lassen wir’s einfach auf morgen früh schieben, ja?"
+        }
+      ],
+      "errorClassifications": [
+        "REGISTER: Zu harte Ablehnung statt ‚Ich hatte eigentlich ... bestellt‘",
+        "GRAMMAR_UNDER_PRESSURE: Unsicherheit bei Plusquamperfekt vs. Präsens",
+        "INTERACTION: Zu langsamer Einstieg, wenn das Gegenüber schon weitergeht"
+      ],
+      "correctionGuidance": "Achte auf den schnellen Gesprächseinstieg (‚Entschuldigung, kurzen Moment!‘) plus Plusquamperfekt ‚hatte bestellt‘.",
+      "transferTask": "Transfer (Werkstatt-Kantine bei Mercedes-Benz): An der Essensausgabe legt der Koch versehentlich Bratensoße mit Speck über Ihre Beilage. Reagieren Sie freundlich direkt am Tresen.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Entschuldigung, ich hatte ... eigentlich ohne [X] bestellt – könnten wir das kurz tauschen?‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 10 Tage"
+    },
+    {
+      "id": "pf_alltag_03",
+      "scenarioFamilyId": "fam_everyday_kasse_service",
+      "title": "Kundenservice & Paketshop: Missverständliche Ausrede souverän klären",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Abwimmeln im Kundenservice erkennen und lösungsorientiert kontern",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Sachlich-bestimmtes Alltags- & Servicedeutsch",
+      "difficulty": "C1",
+      "visualSceneType": "PARTICLE_TONE_DIAL",
+      "learningObjective": "Versteckte Ablehnung im Kundenservice sofort durchschauen und höflich, aber verbindlich eine konkrete Lösung einfordern.",
+      "germanInput": "Ihr wichtiges Einschreiben von der Ausländerbehörde/Hochschule liegt laut Sendungsverfolgung seit gestern in der Filiale. Der Mitarbeiter schaut kaum hin und will Sie wegschicken.",
+      "audioRequirements": {
+        "deliveryStyle": "Monoton-routiniert, leicht genervt (160 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch mit Umgangssprache",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Herr Beck",
+          "role": "Schaltermitarbeiter",
+          "personality": "Abwehrend, verweist reflexhaft aufs System",
+          "variety": "Umgangssprachlich"
+        },
+        {
+          "name": "Kundin nebenan",
+          "role": "Passantin",
+          "personality": "Murmelt zustimmend",
+          "variety": "Süddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Herr Beck",
+          "line": "Ja nee, wenn Sie keine gelbe Karte im Briefkasten hatten, brauch ich hinten gar net erst suchen.",
+          "cue": "Winkt ab"
+        },
+        {
+          "speaker": "Herr Beck",
+          "line": "Da steht im Scanner oft irgendwas drin – kommen S’ halt morgen nochmal vorbei.",
+          "cue": "kommen S’ = kommen Sie"
+        }
+      ],
+      "transcript": "Herr Beck: Ja nee, wenn Sie keine gelbe Karte im Briefkasten hatten, brauch ich hinten gar net erst suchen.\nHerr Beck: Da steht im Scanner oft irgendwas drin – kommen S’ halt morgen nochmal vorbei.",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "brauch ich ... gar net erst suchen",
+          "standard": "brauche ich gar nicht erst zu suchen",
+          "note": "Typischer Wegfall von ‚zu‘ nach ‚brauchen‘ in der Umgangssprache"
+        },
+        {
+          "spoken": "kommen S’ halt",
+          "standard": "kommen Sie eben",
+          "note": "Resignativ-abwehrendes ‚halt‘"
+        }
+      ],
+      "vocabulary": [
+        "laut Sendungsverfolgung hinterlegt sein — präziser Faktenbezug",
+        "fristgebunden sein — sachliche Dringlichkeit ohne Drama",
+        "kurz im Lager nachsehen — konkreter Lösungsschritt"
+      ],
+      "usefulExpressions": [
+        "Ich verstehe, dass das ohne Abholkarte umständlich ist – laut App wurde der Brief aber gestern um 14 Uhr genau hier eingescannt.",
+        "Es geht um ein fristgebundenes Schreiben; könnten Sie gegen meinen Ausweis bitte trotzdem kurz hinten nachschauen?",
+        "Damit wäre mir wirklich sehr geholfen."
+      ],
+      "grammarPatterns": [
+        "Konzessiver Zweischritt im Gespräch: ‚Ich verstehe [Einwand], aber laut [Beleg] ...‘",
+        "Konditionale Höflichkeit: ‚Wäre es möglich, anhand der Sendungsnummer kurz nachzusehen?‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was versucht Herr Beck mit „kommen S’ halt morgen nochmal vorbei“ eigentlich zu erreichen?",
+          "options": [
+            "Er möchte sich den Suchaufwand im Hinterzimmer sparen und Sie auf morgen vertrösten.",
+            "Er garantiert Ihnen, dass der Brief erst morgen geliefert wird.",
+            "Er bietet Ihnen einen persönlichen VIP-Termin an.",
+            "Er erklärt, dass die Filiale heute geschlossen ist."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Bequemes Abwimmeln ohne Prüfung der Sendungsnummer."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Welche Funktion hat das Wort „halt“ in „kommen S’ halt morgen nochmal“?",
+          "options": [
+            "Es stellt die Situation als angeblich unveränderlich dar und senkt seine eigene Verantwortlichkeit.",
+            "Es drückt höchste formelle Ehrerbietung aus.",
+            "Es bedeutet wörtlich ‚Stopp! Bleiben Sie stehen!‘.",
+            "Es leitet eine Entschuldigung ein."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "stellt das Wegschicken als alternativlose Kleinigkeit dar."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Wie reagieren Sie auf C1-Niveau am wirksamsten?",
+          "options": [
+            "Verständnis kurz signalisieren, konkreten Scan-Zeitpunkt + Ausweis anbieten und freundlich um kurzes Nachsehen bitten.",
+            "Sofort laut mit einem Anwalt drohen.",
+            "Wortlos gehen und hoffen, dass die Karte noch kommt.",
+            "Auf Englisch wechseln, um seriöser zu wirken."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Empathie + harter Fakt (Sendungsnummer/Ausweis) + konkrete kleine Bitte."
+          ]
+        }
+      ],
+      "speakingTask": "Überzeugen Sie Herrn Beck ruhig, natürlich und bestimmt, jetzt anhand Ihres Ausweises und der Sendungsnummer nachzusehen.",
+      "interactionTask": "Herr Beck seufzt: „Na gut, wie heißt denn der Absender und wann genau soll der Fahrer das abgegeben haben?“ Antworten Sie präzise ohne Stocken.",
+      "expectedResponseCharacteristics": [
+        "Geht kurz auf den Einwand ein, lässt sich aber nicht abwimmeln",
+        "Nennt Fakten (Sendungsnummer, Uhrzeit, Ausweis, Frist)",
+        "Bleibt ruhig und respektvoll im Ton"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Aber in meinem Handy steht, das Paket ist hier. Sie müssen schauen.",
+        "verdict": "Verständlich, aber ‚Sie müssen‘ erzeugt sofort Abwehr beim Schalterpersonal."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Souverän & kooperativ (C1)",
+          "text": "Ich weiß, ohne Karte ist das blöd – aber laut Sendungsverfolgung liegt das Einschreiben seit gestern 14 Uhr hier. Da eine Frist dranhängt: Könnten Sie mit meinem Ausweis bitte kurz hinten schauen?"
+        },
+        {
+          "register": "Kompakt & bestimmt",
+          "text": "Die Benachrichtigungskarte fehlt leider, aber ich habe die Sendungsnummer und meinen Ausweis direkt parat. Wären Sie so nett, kurz nachzusehen?"
+        },
+        {
+          "register": "Ruhig-bestimmt vor Ort",
+          "text": "Mir geht’s gar nicht um Bürokratie – könnten Sie mir den Ausfall nur kurz auf der Fahrkarte vermerken, damit’s nachher keinen Ärger gibt?"
+        }
+      ],
+      "errorClassifications": [
+        "REGISTER: Zu forderndes ‚Sie müssen‘ statt verbindlicher Frage",
+        "SITUATIONAL_UNDERSTANDING: Abwimmel-Partikel ‚halt‘ nicht erkannt",
+        "SENTENCE_FORMULATION: Satzbruch bei Begründung der Dringlichkeit"
+      ],
+      "correctionGuidance": "Ersetze ‚Sie müssen‘ durch die Kombination aus Fakt (‚laut Sendungsverfolgung hinterlegt‘) + Begründung (‚fristgebunden‘) + kooperativer Bitte.",
+      "transferTask": "Transfer (Bürgeramt / Zulassungsstelle): Die Sachbearbeiterin meint, ein Dokument aus Ihrem Praxissemester fehle im Original, obwohl die digitale Bestätigung der Hochschule vorliegt. Reagieren Sie ruhig und lösungsorientiert.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Ich verstehe den Punkt – da das Schreiben fristgebunden ist, könnten Sie anhand der Nummer bitte kurz nachsehen?‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 7 Tage -> 21 Tage"
+    },
+    {
+      "id": "pf_listen_01",
+      "scenarioFamilyId": "fam_swabian_colleagues_multi",
+      "title": "Hausflur in Esslingen: Nachbar, Paket & „Net gschimpft isch globt gnug“",
+      "skill": "NATURAL_LISTENING",
+      "subskill": "Süddeutsch-schwäbische Alltagsfärbung (fei, gell, Untertreibung) verstehen",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Schwäbisch gefärbtes Alltagsdeutsch (Raum Esslingen) vs. Standarddeutsch",
+      "difficulty": "B2+",
+      "visualSceneType": "WAVEFORM_RADAR",
+      "learningObjective": "Authentisch schwäbisch gefärbtes Alltagsdeutsch entschlüsseln, implizites Lob erkennen und im natürlichen Standarddeutsch passend antworten.",
+      "germanInput": "Sie treffen Ihren älteren Nachbarn Herrn Häberle im Treppenhaus in Esslingen, nachdem Sie am Wochenende das Treppenhaus gekehrt und sein schweres Paket angenommen haben.",
+      "audioRequirements": {
+        "deliveryStyle": "Gemütlich-trockener Tonfall, schwäbische Satzmelodie, 155 Silben/Min.",
+        "speakerCount": 2,
+        "regionalVariety": "Gemäßigtes Alltagsschwäbisch (Raum Esslingen/Neckar) — authentisch, nicht überzeichnet",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Regionalaufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Herr Häberle",
+          "role": "Hausnachbar (62)",
+          "personality": "Trockener Humor, herzlich hinter schwäbischer Zurückhaltung",
+          "variety": "Alltagsschwäbisch (Esslingen)"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Herr Häberle",
+          "line": "Ah, guat dass i Sie treff! Danke no fürs Päckle gestern – des war fei sauschwer, gell?",
+          "cue": "fei = wirklich/echt, gell = nicht wahr?"
+        },
+        {
+          "speaker": "Herr Häberle",
+          "line": "Ond zur Kehrwoch im Flur sag i bloß: Net gschimpft isch globt gnug! Aber stell’n Se d’ Schuah heut Abend lieber rein, d’ Hausverwaltung kontrolliert wohl morgen früh.",
+          "cue": "Indirektes großes Lob + freundliche Warnung"
+        }
+      ],
+      "transcript": "Herr Häberle: Ah, guat dass i Sie treff! Danke no fürs Päckle gestern – des war fei sauschwer, gell?\nHerr Häberle: Ond zur Kehrwoch im Flur sag i bloß: Net gschimpft isch globt gnug! Aber stell’n Se d’ Schuah heut Abend lieber rein, d’ Hausverwaltung kontrolliert wohl morgen früh.",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "des war fei",
+          "standard": "das war wirklich / aber",
+          "note": "Süddeutsche Bekräftigungs- und Warnpartikel ‚fei‘"
+        },
+        {
+          "spoken": "Net gschimpft isch globt gnug",
+          "standard": "Nicht geschimpft ist gelobt genug",
+          "note": "Klassisches schwäbisches Anerkennungs-Idiom (bedeutet: sehr ordentlich gemacht!)"
+        },
+        {
+          "spoken": "stell’n Se d’ Schuah",
+          "standard": "stellen Sie die Schuhe",
+          "note": "Reduziertes Pronomen + Artikel im gesprochenen Süddeutsch"
+        }
+      ],
+      "vocabulary": [
+        "fei (süddeutsch/schwäbisch) — betont Überraschung, Nachdruck oder freundliche Warnung (im Standarddeutschen: ‚wirklich / bloß‘)",
+        "gell? — holt Zustimmung ein (Standarddeutsch: ‚nicht wahr? / oder?‘)",
+        "die Kehrwoche — württembergische Hausordnungs-Tradition"
+      ],
+      "usefulExpressions": [
+        "Kein Thema, hab ich gern angenommen!",
+        "Gut zu wissen mit morgen früh – danke für den Tipp, ich räum sie gleich rein!",
+        "Da bin ich ja beruhigt, wenn Sie zufrieden sind!"
+      ],
+      "grammarPatterns": [
+        "Unterscheidung Verstehen vs. Eigenproduktion: Sie müssen ‚fei / Net gschimpft...‘ sofort verstehen, antworten selbst aber ganz natürlich in lockerem Standarddeutsch (kein künstliches Nachahmen von Dialekt nötig!)."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was meint Herr Häberle mit „Net gschimpft isch globt gnug!“ zur Kehrwoche?",
+          "options": [
+            "Er lobt Sie auf humorvoll-schwäbische Art dafür, dass Sie den Flur tadellos sauber gemacht haben.",
+            "Er beschwert sich, dass Sie überhaupt nicht geputzt haben.",
+            "Er kündigt eine Beschwerde bei der Hausverwaltung an.",
+            "Er bittet Sie, leiser im Treppenhaus zu sprechen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Herzliches schwäbisches Lob durch typische Untertreibung."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum erwähnt er am Ende die Schuhe und die Hausverwaltung?",
+          "options": [
+            "Er gibt Ihnen einen wohlmeinenden Nachbarschafts-Tipp, damit Sie morgen keinen Ärger bekommen.",
+            "Er will Ihre Schuhe kaufen.",
+            "Er beschuldigt Sie, den Flur blockiert zu haben.",
+            "Er arbeitet selbst als Hausverwalter."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Kameradschaftliche Vorwarnung unter Nachbarn."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Welche Nuance trägt „fei“ in „des war fei sauschwer“?",
+          "options": [
+            "Echte Anerkennung („Das war übrigens wirklich ganz schön schwer!“).",
+            "Verneinung („Das war überhaupt nicht schwer“).",
+            "Zeitangabe („gestern früh“).",
+            "Formelle Distanz."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Bekräftigung und Wertschätzung Ihrer Hilfe."
+          ]
+        }
+      ],
+      "speakingTask": "Antworten Sie Herrn Häberle locker, humorvoll und natürlich im gesprochenen Standarddeutsch (Dank annehmen, den Spruch aufgreifen und auf den Schuh-Hinweis reagieren).",
+      "interactionTask": "Herr Häberle lacht: „Ha, Sie blicken’s ja scho richtig gut hier bei uns! Saget Se mal, schaffet Sie eigentlich noch beim Daimler drüben in Untertürkheim?“ Reagieren Sie spontan.",
+      "expectedResponseCharacteristics": [
+        "Versteht den Humor von ‚Net gschimpft...‘ ohne Verunsicherung",
+        "Natürliches gesprochenes Standarddeutsch (kein steifes Schriftsprach-Deutsch)",
+        "Bedankt sich für die Vorwarnung"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Bitte sehr. Entschuldigung, ich werde meine Schuhe sofort entfernen.",
+        "verdict": "Grammatisch korrekt, klingt im Hausflur aber viel zu steif und übersieht den herzlichen Humor."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Warm & schlagfertig (Alltags-C1)",
+          "text": "Gern geschehen! Und wenn sogar Sie nichts zu meckern haben, hab ich die Kehrwoche ja bestanden. Danke für den Vorwarn-Tipp, die Schuhe hol ich direkt rein!"
+        },
+        {
+          "register": "Locker & natürlich",
+          "text": "Kein Problem mit dem Paket! Freut mich, dass der Flur passt – und danke für den Hinweis mit morgen früh, ich stell die Schuhe gleich rein."
+        },
+        {
+          "register": "Humorvoll-locker in der Runde",
+          "text": "Alles gut, solang’s bloß ums Muggaseggele geht, krieg mer das bis morgen locker glattgezogen."
+        }
+      ],
+      "errorClassifications": [
+        "INTERPRETATION: Schwäbische Untertreibung fälschlich als Kritik gedeutet",
+        "CONNECTED_SPEECH_DECODING: ‚fei‘ / ‚stell’n Se d’ Schuah‘ akustisch nicht aufgelöst",
+        "REGISTER: Zu formelles Amtsdeutsch (‚entfernen‘) im Nachbarschaftsgespräch"
+      ],
+      "correctionGuidance": "Zeige den Unterschied zwischen passiver Dialektkompetenz (verstehen) und lockerem Standarddeutsch in der Antwort (‚reinholen / reinstellen‘ statt ‚entfernen‘).",
+      "transferTask": "Transfer (Sportplatz SV 1845 Esslingen): Ein schwäbischer Platzwart sagt nach Ihrem F-Jugend-Training: „Heut habt ihr d’ Hütchen fei flott aufgräumt, sonst muss i immer hinterherbruddla!“ Antworten Sie locker im Vorbeigehen.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Kein Thema, gern gemacht – und danke für den Tipp, ich hol’s gleich rein!‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 10 Tage"
+    },
+    {
+      "id": "pf_listen_02",
+      "scenarioFamilyId": "fam_swabian_colleagues_multi",
+      "title": "Kantinenrunde (3 Kollegen): Zwischen Scherz, Kantinenkritik & Prüfstand-Slot",
+      "skill": "NATURAL_LISTENING",
+      "subskill": "3-Personen-Mittagstisch mit Ironie, Modalpartikeln & schnellem Themenwechsel",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Informelles Kollegen-Gespräch in der Kantine",
+      "difficulty": "C1",
+      "visualSceneType": "MULTI_SPEAKER_TABLE",
+      "learningObjective": "Einem schnellen Dreiergespräch mit unvollständigen Sätzen, Ironie und plötzlichem Wechsel vom Mittagessen zum Projektalltag folgen und nahtlos einsteigen.",
+      "germanInput": "Mittagspause bei Mercedes-Benz. Drei Kollegen aus Ihrem Team reden durcheinander über das Tagesgericht und wechseln plötzlich auf Ihren morgigen Messslot.",
+      "audioRequirements": {
+        "deliveryStyle": "Schnell (180 Silben/Min.), überlappende Einsätze, kurzes Lachen, natürliche Satzabbrüche",
+        "speakerCount": 3,
+        "regionalVariety": "Mix aus Standarddeutsch und leichter süddeutscher Umgangssprache",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Tobi",
+          "role": "Applikationsingenieur",
+          "personality": "Ironisch, schnell sprechend",
+          "variety": "Umgangssprachlich"
+        },
+        {
+          "name": "Miriam",
+          "role": "Versuchsingenieurin",
+          "personality": "Pragmatisch, bringt Themen auf den Punkt",
+          "variety": "Standarddeutsch"
+        },
+        {
+          "name": "Sven",
+          "role": "Teamkollege",
+          "personality": "Trocken, wirft kurze Halbsätze ein",
+          "variety": "Süddeutsch gefärbt"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Tobi",
+          "line": "Boah, ‚knuspriges Pfannengemüse‘ hieß des auf’m Plan – also knusprig war da höchstens der Preis, oder?",
+          "cue": "Ironischer Einstieg"
+        },
+        {
+          "speaker": "Sven",
+          "line": "Ja komm, für vier Euro zwanzig meckert ma’ halt net lang ... wobei, kalt war’s scho a bissle.",
+          "cue": "Relativiert + stimmt halb zu"
+        },
+        {
+          "speaker": "Miriam",
+          "line": "Du, apropos morgen früh – eh ich’s wieder vergess: Haben wir den Rollenprüfstand ab sieben jetzt eigentlich sicher, oder schiebt sich das schon wieder?",
+          "cue": "Abrupter Themenwechsel direkt zu Ihnen!"
+        }
+      ],
+      "transcript": "Tobi: Boah, ‚knuspriges Pfannengemüse‘ hieß des auf’m Plan – also knusprig war da höchstens der Preis, oder?\nSven: Ja komm, für vier Euro zwanzig meckert ma’ halt net lang ... wobei, kalt war’s scho a bissle.\nMiriam: Du, apropos morgen früh – eh ich’s wieder vergess: Haben wir den Rollenprüfstand ab sieben jetzt eigentlich sicher, oder schiebt sich das schon wieder?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "auf’m Plan / meckert ma’",
+          "standard": "auf dem Plan / meckert man",
+          "note": "Alltägliche Verschmelzung in schnellen Tischrunden"
+        },
+        {
+          "spoken": "eh ich’s wieder vergess",
+          "standard": "ehe ich es wieder vergesse",
+          "note": "Typischer Gesprächsmarker für abrupten Themenwechsel (‚apropos ... eh ich’s vergess‘)"
+        }
+      ],
+      "vocabulary": [
+        "apropos / eh ich’s vergesse — Signalwörter für spontanen Themenwechsel",
+        "höchstens [X] — ironische Einschränkung",
+        "sich schon wieder schieben — Termin/Slot verzögert sich erneut"
+      ],
+      "usefulExpressions": [
+        "Ja, der Slot ab sieben steht – ich hab vorhin extra nochmal mit der Prüfstandskoordination telefoniert.",
+        "Stand jetzt haben wir grünes Licht ab sieben, nur die Vorkonditionierung läuft noch bis halb.",
+        "Kurz zum Prüfstand: Von meiner Seite ist alles eingetaktet."
+      ],
+      "grammarPatterns": [
+        "Modalpartikel ‚eigentlich‘ in Entscheidungsfragen (‚Haben wir den Slot eigentlich sicher?‘) = bittet um aktuellen Realitätscheck trotz Vorplanung."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was meint Tobi mit „knusprig war da höchstens der Preis“?",
+          "options": [
+            "Das Gemüse war überhaupt nicht knusprig und dafür ziemlich teuer.",
+            "Das Essen war hervorragend gebraten und sehr günstig.",
+            "Er hat heute gar nichts in der Kantine gegessen.",
+            "Er lobt die Speisekarte der Kantine."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Ironische Kritik an matschigem Essen bei hohem Preis."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum wirft Miriam mitten beim Essen „Du, apropos morgen früh – eh ich’s wieder vergess“ ein?",
+          "options": [
+            "Sie nutzt die informelle Runde, um sich rasch abzusichern, ob der Prüfstandstermin morgen wirklich klappt.",
+            "Sie möchte das Mittagessen sofort abbrechen.",
+            "Sie kritisiert Ihre Arbeitsweise vor dem Team.",
+            "Sie fragt nach dem Speiseplan für morgen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Kurzer informeller Status-Check, bevor alle wieder in Meetings verschwinden."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was verrät die Formulierung „oder schiebt sich das schon wieder?“?",
+          "options": [
+            "Dass es in letzter Zeit mehrfach Verzögerungen gab und sie Planungssicherheit für ihren Morgen braucht.",
+            "Dass der Prüfstand physisch in eine andere Halle geschoben wird.",
+            "Dass der Test komplett gestrichen wurde.",
+            "Dass sie morgen Urlaub hat."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "leichte Skepsis wegen früherer Verschiebungen; Wunsch nach klarem Status."
+          ]
+        }
+      ],
+      "speakingTask": "Steigen Sie ohne Zögern in Miriams Themenwechsel ein: Geben Sie ein klares, kollegiales Update zum 7-Uhr-Slot (inkl. einer kleinen realistischen Einschränkung).",
+      "interactionTask": "Sven hakt sofort dazwischen: „Moment – ist auf dem Prüfstand gestern Abend nich’ noch der Kühlkreislauf getropft?“ Reagieren Sie spontan, ohne etwas Ungesichertes zu erfinden.",
+      "expectedResponseCharacteristics": [
+        "Schaltet gedanklich sofort vom Kantinen-Smalltalk auf den Fachstatus um",
+        "Locker-kollegialer Ton (kein steifes Präsentationsdeutsch am Mittagstisch)",
+        "Trennt bei Svens Einwand sauber zwischen bestätigtem Stand und noch zu klärendem Punkt"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Ja, wir haben morgen um sieben Uhr den Termin. Ich denke, es ist okay.",
+        "verdict": "Verständlich, wirkt gegenüber erfahrenen Kollegen aber vage (‚Ich denke, es ist okay‘) statt verlässlich."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Kollegial & präzise (C1)",
+          "text": "Stand vor einer Stunde steht unser Slot ab sieben fest – die Werkstatt wollte nur heute Nachmittag noch kurz das Dichtheitsprotokoll freigeben, da hak ich um zwei nochmal nach."
+        },
+        {
+          "register": "Locker am Tisch",
+          "text": "Ab sieben haben wir grünes Licht! Wegen dem Kühlkreislauf gestern Abend ruf ich nach dem Kaffee kurz beim Prüfstandsteam durch, damit wir morgen früh keine Überraschung erleben."
+        },
+        {
+          "register": "Gesprächsbrücke nach Themenwechsel",
+          "text": "Kurzer Punkt noch zur Freigabe eben – heißt das, wir fahren den Stand heute Abend trotzdem schon aufs Fahrzeug?"
+        }
+      ],
+      "errorClassifications": [
+        "LISTENING_RECOGNITION: Themenwechsel-Signal ‚eh ich’s vergess‘ zu spät verarbeitet",
+        "ACTIVE_RETRIEVAL: Wortsuche für ‚Stand jetzt / grünes Licht / nachhaken‘",
+        "INTERACTION: Durch Svens Zwischenruf aus dem Konzept gebracht"
+      ],
+      "correctionGuidance": "Trainiere den dreiteiligen Kollegen-Baustein: ‚Stand jetzt steht [X] – nur [kleiner Vorbehalt], da hak ich nachher noch kurz nach.‘",
+      "transferTask": "Transfer (Trainerkabine SV 1845 Esslingen): Zwei Trainer scherzen erst über den Regen, dann fragt einer plötzlich zu Ihnen rüber: „Sag mal, haben wir Samstag beim F-Jugend-Festival eigentlich genug Minitore auf Platz 2?“ Antworten Sie sofort natürlich.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Stand jetzt haben wir grünes Licht – wegen [X] hak ich nachher sicherheitshalber nochmal kurz nach.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 7 Tage -> 21 Tage"
+    },
+    {
+      "id": "pf_listen_03",
+      "scenarioFamilyId": "fam_swabian_colleagues_multi",
+      "title": "Feierabendrunde: „Ja gut, kann man schon so machen, aber ...“",
+      "skill": "NATURAL_LISTENING",
+      "subskill": "Indirekten Widerspruch & ‚Gschmäckle‘ zwischen den Zeilen heraushören",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Informelles Gruppengespräch (Abendrunde / Verein)",
+      "difficulty": "ADVANCED_C1",
+      "visualSceneType": "PARTICLE_TONE_DIAL",
+      "learningObjective": "Verdeckte Skepsis, Modalpartikel-Kombinationen (ja schon, halt, eigentlich) und das süddeutsche Wort ‚Gschmäckle‘ präzise deuten und diplomatisch darauf eingehen.",
+      "germanInput": "Nach dem Vereinstraining in Esslingen wird überlegt, die Helfergebühr beim Sommerfest nur auf neue Mitglieder umzulegen. Zwei langjährige Mitglieder äußern sich indirekt.",
+      "audioRequirements": {
+        "deliveryStyle": "Natürliches Gesprächstempo mit nachdenklichen Pausen und gedehntem ‚Jaaa guuut...‘ (165 Silben/Min.)",
+        "speakerCount": 3,
+        "regionalVariety": "Süddeutsch gefärbtes Standarddeutsch",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Bernd",
+          "role": "Kassenwart",
+          "personality": "Pragmatisch, schlägt die Abkürzung vor",
+          "variety": "Süddeutsch"
+        },
+        {
+          "name": "Claudia",
+          "role": "Jugendleiterin",
+          "personality": "Diplomatisch, vermeidet offenen Streit, meint aber klares Nein",
+          "variety": "Süddeutsch-Standard"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Bernd",
+          "line": "Dann teilen wir die Schichten halt einfach unter den Neuen auf, die waren letztes Jahr ja eh noch net dabei.",
+          "cue": "Vorschlag"
+        },
+        {
+          "speaker": "Claudia",
+          "line": "Jaaa gut, kann man theoretisch schon so machen ... hat halt irgendwie so’n leichtes Gschmäckle, findest nich’? Was meinst’n du als Neuer dazu?",
+          "cue": "Indirekte Ablehnung + Ball direkt zu Ihnen!"
+        }
+      ],
+      "transcript": "Bernd: Dann teilen wir die Schichten halt einfach unter den Neuen auf, die waren letztes Jahr ja eh noch net dabei.\nClaudia: Jaaa gut, kann man theoretisch schon so machen ... hat halt irgendwie so’n leichtes Gschmäckle, findest nich’? Was meinst’n du als Neuer dazu?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "so’n leichtes Gschmäckle",
+          "standard": "so einen leichten faden Beigeschmack",
+          "note": "Süddeutscher Schlüsselbegriff für etwas, das unfair oder fragwürdig wirkt"
+        },
+        {
+          "spoken": "Was meinst’n du",
+          "standard": "Was meinst denn du",
+          "note": "Verschliffenes ‚denn‘ als ’n zur freundlichen Einbindung"
+        }
+      ],
+      "vocabulary": [
+        "ein Gschmäckle haben — moralisch oder sozial einen schiefen Beigeschmack haben",
+        "kann man schon so machen (, aber ...) — im gesprochenen Deutsch fast immer höfliche Einleitung für Skepsis!",
+        "mit gutem Beispiel vorangehen — faire Alternative im Verein"
+      ],
+      "usefulExpressions": [
+        "Ich helf als Neuer total gern mit, aber wenn’s fair auf alle verteilt wird, zieht das ganze Team viel eher an einem Strang.",
+        "Ehrlich gesagt fände ich eine gemischte Schicht aus Erfahrenen und Neuen sinnvoller – allein schon, weil man die Abläufe noch gar nicht kennt.",
+        "Ich versteh den praktischen Gedanken, aber nach außen wirkt eine gemeinsame Liste bestimmt runder."
+      ],
+      "grammarPatterns": [
+        "Schein-Zustimmung mit ‚schon‘ + Konjunktiv II für diplomatische Gegenposition: ‚Das kann man schon überlegen, allerdings fände ich ... deutlich fairer.‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Stimmt Claudia Bernds Vorschlag inhaltlich zu?",
+          "options": [
+            "Nein – „Jaaa gut, kann man theoretisch schon so machen ... hat halt ein Gschmäckle“ ist eine klare, aber höflich verpackte Ablehnung.",
+            "Ja, sie findet die Idee ausgezeichnet.",
+            "Sie hat überhaupt keine Meinung dazu.",
+            "Sie möchte das Sommerfest komplett absagen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Höflich verpackter Widerspruch: sie hält die Regelung für unfair."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum gibt Claudia die Frage direkt an Sie („Was meinst’n du als Neuer dazu?“) weiter?",
+          "options": [
+            "Sie holt Ihre Perspektive als Betroffener rein, ohne Bernd frontal bloßzustellen.",
+            "Sie will Sie zwingen, alle Schichten allein zu übernehmen.",
+            "Sie prüft Ihre Deutschgrammatik.",
+            "Sie möchte das Thema beenden."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Bindet Sie solidarisch ein, um eine fairere Lösung anzustoßen."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was bedeutet „ein Gschmäckle haben“ in Süddeutschland genau?",
+          "options": [
+            "Etwas wirkt unfair, parteiisch oder hinterlässt einen unangenehmen Eindruck.",
+            "Das Essen beim Vereinsfest ist gut gewürzt.",
+            "Ein Vorschlag ist besonders kreativ.",
+            "Eine Regel ist gesetzlich vorgeschrieben."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Fader, fragwürdiger Beigeschmack bei Entscheidungen."
+          ]
+        }
+      ],
+      "speakingTask": "Beziehen Sie spontan Stellung: Zeigen Sie eigene Hilfsbereitschaft, aber begründen Sie charmant, warum gemischte Teams aus Alten und Neuen viel besser funktionieren.",
+      "interactionTask": "Bernd brummt: „Mir ging’s ja bloß drum, dass nich’ wieder dieselben drei Leut’ bis Mitternacht am Grill stehen!“ Fangen Sie seinen Punkt konstruktiv auf.",
+      "expectedResponseCharacteristics": [
+        "Erkennt Claudias Steilpass sofort",
+        "Stellt Bernd nicht bloß, sondern schlägt ein praktisches Tandem-Modell (Erfahrene + Neue) vor",
+        "Natürlicher Umgangston ohne Behördenwörter"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Ich denke, das ist nicht fair für neue Mitglieder. Alle müssen gleich arbeiten.",
+        "verdict": "Inhaltlich berechtigt, klingt in der Vereinsrunde aber konfrontativ und verpasst die elegante Brücke."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Diplomatisch & souverän (C1+)",
+          "text": "Also ich pack beim Fest auf jeden Fall gern mit an! Praktisch fände ich’s aber super, wenn immer ein alter Hase mit einem Neuen zusammen eingeteilt wird – dann lernen wir die Abläufe direkt und keiner fühlt sich vorgeschoben."
+        },
+        {
+          "register": "Kurz & verbindend",
+          "text": "Ich übernehm gern eine Schicht – aber gemischte Tandems aus Erfahrenen und Neuen kommen im Verein bestimmt besser an und entlasten trotzdem eure Stammleute."
+        },
+        {
+          "register": "Diplomatisch den Subtext aufgreifen",
+          "text": "Ich hör raus, dass euch das zeitlich grad echt drückt – sollen wir den Umfang für Freitag sauber halbieren?"
+        }
+      ],
+      "errorClassifications": [
+        "INTERPRETATION: ‚kann man schon machen‘ wörtlich als Zustimmung missverstanden",
+        "VOCABULARY: ‚Gschmäckle‘ / ‚alter Hase‘ / ‚an einem Strang ziehen‘",
+        "INTERACTION: Bernd in die Defensive gedrängt statt seine Sorge aufzugreifen"
+      ],
+      "correctionGuidance": "Nutze den Vereins-Dreischritt: 1. Eigene Bereitschaft zeigen (‚Ich pack gern mit an‘) -> 2. Praktischen Nutzen für alle nennen (‚gemischte Tandems‘) -> 3. Bernds Sorge lösen.",
+      "transferTask": "Transfer (Praktikantenrunde bei Mercedes-Benz): Ein Kollege schlägt halbernst vor, dass immer die Praktikanten das Freitagsprotokoll für alle schreiben. Eine Kollegin sagt: „Naja, theoretisch praktisch, aber ... was sagst du?“ Reagieren Sie souverän.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Ich pack da gern mit an – noch runder wär’s aber, wenn wir das im Wechsel / als Tandem aufteilen.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 4 Tage -> 14 Tage -> 30 Tage"
+    },
+    {
+      "id": "pf_eng_01",
+      "scenarioFamilyId": "fam_mb_powertrain_data",
+      "title": "Prüfstand-Rückfrage: Unerwarteter Momentensprung im Hybrid-Übergang",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "Unerwartete Messabweichung am Antriebsstrang-Prüfstand präzise einordnen",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Fachgespräch mit Betreuer / Versuchsleitung (präzise, evidenzbasiert)",
+      "difficulty": "B2+",
+      "visualSceneType": "POWERTRAIN_SIGNAL_FLOW",
+      "learningObjective": "Einem Betreuer spontan erklären, welche Messabweichung im INCA-Schrieb zu sehen ist, und sauber zwischen gesichertem Messwert und offener Ursachenhypothese trennen.",
+      "germanInput": "Ihr Betreuer kommt direkt an Ihren Schreibtisch: Beim Wiederzustart des Verbrenners im Hybridmodus zeigt die Momentenmesswelle einen kurzen Peak von +18 Nm über Sollwert.",
+      "audioRequirements": {
+        "deliveryStyle": "Fokussiert, zügiges Ingenieurstempo (170 Silben/Min.), direkte Nachfragen",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsches Fach- & Büro-Standarddeutsch",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Dr. Kramer",
+          "role": "Betreuer Antriebsapplikation",
+          "personality": "Analytisch, allergisch gegen vorschnelle Vermutungen",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Dr. Kramer",
+          "line": "Sagen Sie mal kurz zu Lauf vierzehn: Woher kommt denn dieser Überschwinger von achtzehn Newtonmetern beim K0-Kupplungsschließen?",
+          "cue": "Direkte Fachfrage ohne Vorlauf"
+        },
+        {
+          "speaker": "Dr. Kramer",
+          "line": "Ist das ’n echter Momentenstoß im Pfad oder liegt’s bloß am Offset vom Sensor?",
+          "cue": "Prüft Ihre Evidenzdisziplin"
+        }
+      ],
+      "transcript": "Dr. Kramer: Sagen Sie mal kurz zu Lauf vierzehn: Woher kommt denn dieser Überschwinger von achtzehn Newtonmetern beim K0-Kupplungsschließen?\nDr. Kramer: Ist das ’n echter Momentenstoß im Pfad oder liegt’s bloß am Offset vom Sensor?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "Ist das ’n echter",
+          "standard": "Ist das ein echter",
+          "note": "Normale gesprochene Reduktion auch unter Ingenieuren"
+        },
+        {
+          "spoken": "liegt’s bloß am",
+          "standard": "liegt es nur am",
+          "note": "Kompakte Ursachenfrage"
+        }
+      ],
+      "vocabulary": [
+        "der Überschwinger — kurzzeitiges Überschreiten des Zielwerts im Signalverlauf",
+        "reproduzierbar auftreten — sich unter gleichen Randbedingungen wiederholen",
+        "etwas noch nicht abschließend ausschließen können — seriöse Ingenieurs-Abgrenzung"
+      ],
+      "usefulExpressions": [
+        "In den Rohdaten sehen wir den Peak reproduzierbar bei drei aufeinanderfolgenden Zustarts.",
+        "Ob die Ursache in der Vorsteuerung der K0-Kupplung oder in einer Phasenverschiebung auf dem CAN-Signal liegt, prüfe ich gerade noch.",
+        "Einen reinen Nullpunkt-Offset des Sensors können wir weitgehend ausschließen, weil das stationäre Niveau davor exakt stimmt."
+      ],
+      "grammarPatterns": [
+        "Evidenz-Trennung im Ingenieursdeutsch: Indikativ für gemessene Daten (‚Der Peak tritt bei 1.800 1/min reproduzierbar auf‘) vs. vorsichtige Modalität für Hypothesen (‚könnte mit der Rampensteilheit zusammenhängen / lässt sich erst nach dem Referenzlauf bestätigen‘)."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Welche zwei Möglichkeiten stellt Dr. Kramer gegenüber?",
+          "options": [
+            "Einen realen physikalischen Drehmomentstoß im Antriebsstrang versus ein messtechnisches Sensor-Artefakt.",
+            "Einen Motorschaden versus eine leere 12V-Batterie.",
+            "Software-Update versus Fahrzeugverkauf.",
+            "Prüfstand A versus Prüfstand B."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Reales physikalisches Phänomen im Antriebspfad vs. Messfehler/Sensor-Offset."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Worauf achtet ein erfahrener Entwicklungsbetreuer bei Ihrer Antwort am meisten?",
+          "options": [
+            "Dass Sie Beobachtung, Ausschlusskriterien und nächste Prüfschritte klar trennen, statt zu raten.",
+            "Dass Sie möglichst lange Schachtelsätze bilden.",
+            "Dass Sie sofort versprechen, dass gar kein Problem vorliegt.",
+            "Dass Sie die Schuld auf den Zulieferer schieben."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Saubere Trennung zwischen Fakt (Messung) und Hypothese + konkreter Folgeschritt."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Warum wäre die Antwort „Das ist bestimmt die Kupplungssoftware“ hier riskant?",
+          "options": [
+            "Weil eine unbewiesene Hypothese als feststehende Tatsache ausgegeben wird.",
+            "Weil das Wort ‚Kupplung‘ umgangssprachlich ist.",
+            "Weil man gegenüber Vorgesetzten nie technische Begriffe nennt.",
+            "Weil 18 Nm physikalisch unmöglich sind."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Verletzt technische Glaubwürdigkeit durch vorschnelle Festlegung ohne Nachweis."
+          ]
+        }
+      ],
+      "speakingTask": "Antworten Sie Dr. Kramer spontan in 3 klaren Sätzen: 1. Was die Messung sicher zeigt, 2. Warum ein simpler Sensor-Offset unwahrscheinlich ist, 3. Welchen Prüfschritt Sie als Nächstes fahren.",
+      "interactionTask": "Dr. Kramer hakt sofort nach: „Okay – schaffen wir den Abgleich noch vor der Applikationsrunde um vierzehn Uhr, oder sollen wir den Punkt von der Agenda nehmen?“ Reagieren Sie präzise.",
+      "expectedResponseCharacteristics": [
+        "Klare Struktur: Befund -> Hypothese -> Nächster Validierungsschritt",
+        "Keine erfundenen Gewissheiten",
+        "Verbindliche Zeiteinschätzung bei der Nachfrage"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Ich denke, der Sensor ist richtig. Vielleicht kommt das Problem von der Kupplung, ich schaue das später.",
+        "verdict": "Verständlich, klingt im Engineering-Umfeld aber unscharf (‚ich denke / vielleicht / später‘) statt methodisch."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Souveränes Engineering-Deutsch (C1)",
+          "text": "Der Peak von 18 Nm tritt in allen drei Kaltläufen exakt beim Schließen der K0-Kupplung auf; ein reiner Sensor-Offset ist unwahrscheinlich, da die Nulllinie stationär sauber anliegt. Ich gleiche gerade noch die Momentenanforderung zwischen ECU und TCU im Zeitraster ab und gebe Ihnen bis 13:30 Uhr Rückmeldung."
+        },
+        {
+          "register": "Kompakt am Schreibtisch",
+          "text": "Stationär passt das Sensorsignal, deshalb spricht viel für einen realen Übergangseffekt in der Momentenkoordination. Abschließend festlegen will ich mich erst, sobald ich die ECU/TCU-Signallaufzeiten aus Lauf 14 gegenübergestellt habe."
+        },
+        {
+          "register": "Knapp am Rollenprüfstand",
+          "text": "Beim Lastpunktwechsel zieht das Kupplungsmoment noch kurz nach; ich glätte die Rampe in der TCU-Applikation und messe gegen."
+        }
+      ],
+      "errorClassifications": [
+        "VOCABULARY: ‚Überschwinger / stationär / Momentenkoordination / eingrenzen‘",
+        "SENTENCE_FORMULATION: Unklare Vermischung von Messbefund und Vermutung",
+        "ACTIVE_RETRIEVAL: Verzögerung unter direktem Nachfragedruck des Betreuers"
+      ],
+      "correctionGuidance": "Nutze das 3-Stufen-Raster für Ingenieure: ‚Reproduzierbar gemessen ist [X] – unwahrscheinlich ist [Y], weil [Z] – zur Eingrenzung prüfe ich bis [Uhrzeit] noch [Schritt].‘",
+      "transferTask": "Transfer (Thermomanagement E-Maschine): Im Dauerlauf steigt die Wicklungstemperatur 6 K schneller an als in der Simulation. Ihre Teamleiterin fragt im Flur, ob der Kühlmitteldurchfluss eingebrochen ist oder das Modell danebenliegt. Antworten Sie methodisch sauber.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚In den Messdaten ist [X] reproduzierbar sichtbar; ob die Ursache in [A] oder [B] liegt, grenze ich über [Prüfschritt] ein.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 7 Tage -> 21 Tage"
+    },
+    {
+      "id": "pf_eng_02",
+      "scenarioFamilyId": "fam_mb_powertrain_data",
+      "title": "ECU/TCU-Applikationsrunde: Zielkonflikt beim Rückschalten in der Rekuperation",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "ECU/TCU-Kalibrierungskonflikt (Schaltkomfort vs. Effizienz) präsentieren",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Technische Abstimmungsrunde (Antriebsapplikation)",
+      "difficulty": "C1",
+      "visualSceneType": "POWERTRAIN_SIGNAL_FLOW",
+      "learningObjective": "Einen Kalibrierungs-Zielkonflikt zwischen Verzögerungsgefühl (Fahrbarkeit) und Energierückgewinnung präzise darstellen und eine begründete Parametrierung vorschlagen.",
+      "germanInput": "In der wöchentlichen Abstimmung zwischen Hybrid-Energiemanagement und Getriebeapplikation diskutieren Sie das spürbare Ruckeln bei der Rückschaltung 4->3 während starker Rekuperation.",
+      "audioRequirements": {
+        "deliveryStyle": "Konzentrierte Fachrunde (175 Silben/Min.), präzise Rückfragen",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Markus",
+          "role": "TCU-Applikateur",
+          "personality": "Schützt seine Schaltzeiten, argumentiert zahlenbasiert",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Markus",
+          "line": "Wenn wir das Bremsmoment der E-Maschine während der Rückschaltung noch früher rausrampen, verlieren wir halt messbar Rekuperationsenergie im WLTP-nahen Stadtzyklus.",
+          "cue": "Benennt den Zielkonflikt"
+        },
+        {
+          "speaker": "Markus",
+          "line": "Wie viel Komfortgewinn bringt euer Kennfeld-Vorschlag denn real im Fahrzeug, und was kostet uns das energetisch?",
+          "cue": "Fordert quantifizierte Abwägung"
+        }
+      ],
+      "transcript": "Markus: Wenn wir das Bremsmoment der E-Maschine während der Rückschaltung noch früher rausrampen, verlieren wir halt messbar Rekuperationsenergie im WLTP-nahen Stadtzyklus.\nMarkus: Wie viel Komfortgewinn bringt euer Kennfeld-Vorschlag denn real im Fahrzeug, und was kostet uns das energetisch?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "rausrampen",
+          "standard": "über eine Rampe reduzieren",
+          "note": "Etablierter Applikations-Jargon im deutschen Antriebsteam"
+        }
+      ],
+      "vocabulary": [
+        "der Zielkonflikt (Trade-off) — gegenläufige Entwicklungsziele",
+        "die Momentenüberblendung (Torque Blending) — Übergabe zwischen E-Maschine und Reib-/Schaltmoment",
+        "spürbare Längsbeschleunigungsspitze — objektivierbarer Ruck im Fahrzeug"
+      ],
+      "usefulExpressions": [
+        "Hier stehen wir vor einem klassischen Zielkonflikt zwischen Schaltkomfort und Rekuperationsausbeute.",
+        "Mit der flacheren Überblendrampe reduzieren wir den Längsruck um rund dreißig Prozent, während der energetische Verlust unter einem halben Prozent bleibt.",
+        "Aus Gesamtfahrzeugsicht überwiegt an diesem Betriebspunkt klar die Fahrbarkeit."
+      ],
+      "grammarPatterns": [
+        "Gegenüberstellung mit ‚während‘ / ‚wohingegen‘ zur präzisen Quantifizierung von Trade-offs."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was befürchtet Markus beim früheren Reduzieren des E-Maschinen-Moments?",
+          "options": [
+            "Dass im Stadtbetrieb messbar weniger Bremsenergie zurückgewonnen wird.",
+            "Dass das Getriebe mechanisch überhitzt.",
+            "Dass die Höchstgeschwindigkeit sinkt.",
+            "Dass die Diagnose-LED im Cockpit angeht."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Einbußen bei der Rekuperationsenergie im relevanten Fahrzyklus."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Was braucht Markus von Ihnen, um dem Kompromiss zuzustimmen?",
+          "options": [
+            "Eine sachliche Gegenüberstellung von gemessenem Komfortgewinn (Längsruck) und tatsächlicher Energieeinbuße.",
+            "Eine allgemeine Bitte um kollegiale Hilfe.",
+            "Den Hinweis, dass Effizienz unwichtig sei.",
+            "Einen Verweis auf Marketing-Slogans."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Belastbare Abwägung beider Messgrößen am konkreten Betriebspunkt."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Warum passt das Verb „überwiegen“ in solchen Design-Entscheidungen ideal?",
+          "options": [
+            "Es erkennt beide Kriterien als valide an, begründet aber sachlich, warum eines im konkreten Fall Vorrang hat.",
+            "Es ignoriert das Gegenargument komplett.",
+            "Es drückt persönliche Unsicherheit aus.",
+            "Es wird nur in Gesetzestexten verwendet."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Diplomatische, kriterienbasierte Priorisierung."
+          ]
+        }
+      ],
+      "speakingTask": "Beantworten Sie Markus’ Frage strukturiert: Anerkennen Sie das Effizienzziel, beziffern Sie den Komfortgewinn vs. den minimalen Rekuperationsverlust und schlagen Sie eine kennfeldabhängige Lösung (z. B. nur bei niedriger Geschwindigkeit) vor.",
+      "interactionTask": "Markus überlegt kurz: „Hm, wenn ihr das wirklich nur unter dreißig km/h im Komfort-Fahrprogramm aktiviert – habt ihr geprüft, wie sich das bei glatter Fahrbahn mit dem ESP-Eingriff verträgt?“ Antworten Sie seriös.",
+      "expectedResponseCharacteristics": [
+        "Benennt den Trade-off präzise mit Fachbegriffen (Momentenüberblendung, Längsruck, Betriebspunkt)",
+        "Schlägt eine differenzierte Kennfeld-Einschränkung vor statt Schwarz-Weiß-Lösung",
+        "Bleibt bei der ESP-Rückfrage ehrlich bezüglich noch offener Schlechtweg-/Niedrigreibwert-Prüfung"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Der Komfort ist sehr besser mit unserer Änderung und wir verlieren fast keine Energie.",
+        "verdict": "Grammatikfehler (‚sehr besser‘ -> ‚deutlich besser‘) und für eine Applikationsrunde zu unkonkret."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Präzise Applikationsrunde (C1)",
+          "text": "Den Effizienzpunkt sehe ich genauso – deshalb würden wir die flachere Momentenüberblendung gezielt auf Geschwindigkeiten unter 30 km/h im Komfort-Modus begrenzen. Dort senken wir die Ruckspitze deutlich, während der Rekuperationsverlust im Gesamtzyklus im Promillebereich liegt."
+        },
+        {
+          "register": "Kollegial im Kalibrier-Daily",
+          "text": "In der INCA-Messung sehen wir bei Kälte noch ’nen leichten Überschwinger im Momentenaufbau – ich prüf erst die Sensorrohdaten, bevor wir das Kennfeld anfassen."
+        },
+        {
+          "register": "Präzise im Projekt-Review",
+          "text": "Die Abweichung tritt reproduzierbar im Warmlauf auf; nach Abgleich der Randbedingungen schlage ich eine gezielte Anpassung der Vorsteuerung vor."
+        }
+      ],
+      "errorClassifications": [
+        "GRAMMAR_UNDER_PRESSURE: Komparativ-Verstärkung (‚deutlich / spürbar besser‘ statt *‚sehr besser‘)",
+        "VOCABULARY: ‚Momentenüberblendung / im Promillebereich / auf Betriebspunkte begrenzen‘",
+        "INTERACTION: Auf kritische ESP-Nachfrage ohne Scheinwissen reagieren"
+      ],
+      "correctionGuidance": "Achte auf ‚deutlich / spürbar / signifikant‘ vor Komparativen und nutze ‚gezielt auf [Betriebsbereich] begrenzen‘ als starken Kompromissbaustein.",
+      "transferTask": "Transfer (Kaltstart-Kalibrierung): Zwischen Akustik-Team (NVH) und Abgasnachbehandlung besteht ein Zielkonflikt bei der Leerlaufdrehzahl nach Kaltstart. Formulieren Sie den Kompromissvorschlag in zwei Sätzen.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Wenn wir die Anpassung gezielt auf [Betriebspunkt] begrenzen, gewinnen wir deutlich an [X], ohne bei [Y] nennenswert einzubüßen.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 4 Tage -> 14 Tage"
+    },
+    {
+      "id": "pf_eng_03",
+      "scenarioFamilyId": "fam_mb_powertrain_data",
+      "title": "Safety-Review (ISO 26262): Kritische Randbedingung diplomatisch hinterfragen",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "Technische Annahme in einem ISO-26262-Safety-Review diplomatisch hinterfragen",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Formelles Design- & Functional-Safety-Review (3 Rollen)",
+      "difficulty": "ADVANCED_C1",
+      "visualSceneType": "MULTI_SPEAKER_TABLE",
+      "learningObjective": "In einer Dreierrunde mit Funktionaler Sicherheit (FuSi) und Projektleitung eine zu optimistische Annahme sachlich hinterfragen, ohne respektlos zu wirken.",
+      "germanInput": "Im Design-Review wird angenommen, dass bei Ausfall eines Temperatursensors das thermische Ersatzmodell im Inverter immer rechtzeitig abregelt (ASIL-relevant). In Ihren Messungen bei hoher Umgebungstemperatur sahen Sie jedoch 4 Sekunden Nachlaufverzögerung.",
+      "audioRequirements": {
+        "deliveryStyle": "Konzentrierter Review-Ton (165 Silben/Min.), hohe Präzisionsanforderung",
+        "speakerCount": 3,
+        "regionalVariety": "Formelles Ingenieurs-Standarddeutsch",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Herr Vogt",
+          "role": "Projektleiter",
+          "personality": "Zeitgetrieben, möchte den Meilenstein heute abhaken",
+          "variety": "Standarddeutsch"
+        },
+        {
+          "name": "Frau Dr. Lin",
+          "role": "Functional Safety Managerin (ISO 26262)",
+          "personality": "Sehr genau bei Fehlertoleranzzeiten (FTTI)",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Herr Vogt",
+          "line": "Gut, da das thermische Ersatzmodell im Steuergerät hinterlegt ist, können wir den Punkt ‚Sensorausfall unter Volllast‘ in der FMEA ja auf geringes Restrisiko setzen.",
+          "cue": "Will schnell schließen"
+        },
+        {
+          "speaker": "Frau Dr. Lin",
+          "line": "Vorausgesetzt natürlich, die Entdeckungs- und Abregelzeit bleibt unter allen Randbedingungen innerhalb der Fehlertoleranzzeit. Passt das aus Versuchssicht?",
+          "cue": "Fragt direkt in Ihre Richtung"
+        }
+      ],
+      "transcript": "Herr Vogt: Gut, da das thermische Ersatzmodell im Steuergerät hinterlegt ist, können wir den Punkt ‚Sensorausfall unter Volllast‘ in der FMEA ja auf geringes Restrisiko setzen.\nFrau Dr. Lin: Vorausgesetzt natürlich, die Entdeckungs- und Abregelzeit bleibt unter allen Randbedingungen innerhalb der Fehlertoleranzzeit. Passt das aus Versuchssicht?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "Passt das aus Versuchssicht?",
+          "standard": "Ist diese Annahme durch die Versuchsergebnisse gedeckt?",
+          "note": "Kompakte Freigabefrage im Review"
+        }
+      ],
+      "vocabulary": [
+        "unter Vorbehalt stellen — eine Freigabe an eine Bedingung knüpfen",
+        "die Fehlertoleranzzeit (FTTI) — Zeitspanne nach ISO 26262 bis zum sicheren Zustand",
+        "eine Randbedingung gesondert absichern — präziser Prüfvorschlag"
+      ],
+      "usefulExpressions": [
+        "Für den Nennbetrieb deckt sich das mit unseren Daten; für hohe Kühlmittel-Vorlauftemperaturen möchte ich allerdings auf einen wichtigen Punkt hinweisen.",
+        "In den gestrigen Heißland-Prüfstandsläufen lag die Modellreaktion rund vier Sekunden hinter dem Thermoelement – ob wir damit das FTTI-Fenster sicher einhalten, sollten wir vor dem Herabstufen noch gegenprüfen.",
+        "Ich schlage vor, den Punkt bis zum Nachlauf am Donnerstag bedingt offen zu lassen."
+      ],
+      "grammarPatterns": [
+        "Diplomatische Einschränkung im Review: ‚Für [Normalfall] trifft das zu; im Grenzfall [X] zeigt sich jedoch ..., sodass wir [Prüfschritt] vorschalten sollten.‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "An welche Bedingung knüpft Frau Dr. Lin ihre Zustimmung?",
+          "options": [
+            "Dass die Erkennungs- und Abregelzeit auch in Grenzfällen innerhalb der zulässigen Fehlertoleranzzeit bleibt.",
+            "Dass überhaupt kein Temperatursensor verbaut wird.",
+            "Dass die FMEA komplett gelöscht wird.",
+            "Dass der Test erst nächstes Jahr stattfindet."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Einhaltung der Fehlertoleranzzeit (FTTI) über alle relevanten Betriebspunkte."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Wie bringen Sie Ihre Beobachtung der 4 Sekunden Verzögerung am professionellsten ein?",
+          "options": [
+            "Erst den Normalbereich bestätigen, dann den gemessenen Heißland-Grenzfall sachlich benennen und einen kurzen Verifikationslauf vorschlagen.",
+            "Schweigen, damit Herr Vogt seinen Meilenstein schafft.",
+            "Rufen: „Das Ersatzmodell funktioniert überhaupt nicht!“",
+            "Sagen, man sei nur Praktikant und wisse nichts."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Sachliche Differenzierung zwischen Nennbetrieb und Heißland-Grenzfall mit Lösungsvorschlag."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Warum schützt präzises Eingrenzen hier sowohl das Team als auch Herrn Vogt?",
+          "options": [
+            "Es verhindert eine ungedeckte FMEA-Abstufung bei einem sicherheitsrelevanten Pfad und liefert sofort einen klaren Absicherungspfad.",
+            "Es verzögert das Projekt absichtlich ohne Grund.",
+            "Es ersetzt alle künftigen Prüfstandstests.",
+            "Es dient nur der Grammatikübung."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Konstruktive Risikotransparenz im Sinne von ISO 26262."
+          ]
+        }
+      ],
+      "speakingTask": "Antworten Sie Frau Dr. Lin und Herrn Vogt diplomatisch und technisch präzise: Bestätigen Sie den Nennpunkt, benennen Sie den 4-Sekunden-Verzug bei Heißland-Bedingungen und schlagen Sie das konkrete Vorgehen für die FMEA vor.",
+      "interactionTask": "Herr Vogt runzelt die Stirn: „Vier Sekunden? War da überhaupt schon der aktuelle Softwarestand B2.4 geflasht?“ Antworten Sie souverän und faktenfest.",
+      "expectedResponseCharacteristics": [
+        "Kein konfrontatives ‚Herr Vogt hat unrecht‘, sondern sachliche Differenzierung nach Randbedingungen",
+        "Präzise Fachterminologie (Ersatzmodell, Vorlauftemperatur, Fehlertoleranzzeit, bedingt offen lassen)",
+        "Klare Auskunft zum geflashten Softwarestand bzw. unmittelbarer Check im Messprotokoll"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Nein, wir können das nicht schließen, weil gestern war das Modell vier Sekunden zu langsam.",
+        "verdict": "Inhaltlich wichtig, aber frontales ‚Nein‘ plus Hauptsatz-Wortstellung nach ‚weil‘ schwächt die Souveränität im Review."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Souveränes Safety-Review (C1+)",
+          "text": "Im Nennbereich passt das Ersatzmodell gut; bei 65 Grad Kühlmittel-Vorlauf haben wir gestern allerdings rund vier Sekunden Verzögerung gegenüber der Referenzmessung gesehen. Ich würde empfehlen, die Abstufung in der FMEA erst freizugeben, sobald wir abgeglichen haben, ob das noch innerhalb des FTTI-Budgets liegt."
+        },
+        {
+          "register": "Direkt zum Betreuer (1:1)",
+          "text": "Ich kann die Hypothese noch nicht zu hundert Prozent abhaken, weil uns zwei Messpunkte unter Volllast fehlen – die fahre ich heute Nachmittag nach."
+        },
+        {
+          "register": "Management-taugliche Einordnung",
+          "text": "Nach aktuellem Messstand spricht vieles für thermisches Derating; zur endgültigen Absicherung fahren wir noch einen gezielten Gegenversuch."
+        }
+      ],
+      "errorClassifications": [
+        "GRAMMAR_UNDER_PRESSURE: Verbzweitstellung nach ‚weil‘ unter Stress vs. sauberer Nebensatz / ‚denn‘",
+        "REGISTER: Zu frontale Ablehnung gegenüber Projektleitung statt ‚Im Nennbereich ja – im Grenzfall allerdings...‘",
+        "VOCABULARY: ‚unter Vorbehalt / Fehlertoleranzzeit / Referenzmessung‘"
+      ],
+      "correctionGuidance": "Starte im Review mit dem gültigen Bereich (‚Im Nennpunkt deckt sich das...‘) und führe die Abweichung über ‚Im Grenzfall [X] zeigte sich allerdings...‘ ein.",
+      "transferTask": "Transfer (HV-Schütz-Abschaltung): In einer Review-Runde geht man davon aus, dass die Spannung nach Not-Aus immer unter 60 V innerhalb von 1,5 s fällt. Bei tiefen Temperaturen (-20 °C) lag Ihr Messwert knapp an der Grenze. Formulieren Sie Ihren Einwand.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Für den Nennbetrieb trifft das zu; im Grenzfall [X] haben wir jedoch [Messwert] beobachtet, weshalb wir das vor der Abstufung kurz gegenprüfen sollten.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 7 Tage -> 21 Tage"
+    },
+    {
+      "id": "pf_eng_04",
+      "scenarioFamilyId": "fam_eng_fmea_report",
+      "title": "8D-Runde: Sporadischer CAN-Timeout am Getriebesteuergerät (TCU)",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "Root-Cause-Analyse (CAN-Timeout TCU) strukturiert vorstellen",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "8D- / Taskforce-Abstimmung (Ursache vs. Symptom)",
+      "difficulty": "C1",
+      "visualSceneType": "POWERTRAIN_SIGNAL_FLOW",
+      "learningObjective": "Symptom, ausgeschlossene Pfade und wahrscheinlichste Fehlerursache in einer Taskforce knapp und logisch gliedern.",
+      "germanInput": "Bei Dauerlauf-Fahrzeugen trat dreimal sporadisch ein Botschafts-Timeout der TCU beim Start-Stopp-Wiederanlauf auf. Sie haben Spannungsaufzeichnungen (Klemme 30) ausgewertet.",
+      "audioRequirements": {
+        "deliveryStyle": "Knappes Taskforce-Stand-up (175 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Frau Weber",
+          "role": "Qualitäts- & 8D-Leiterin",
+          "personality": "Strukturiert, fragt streng nach Fehlerkette",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Frau Weber",
+          "line": "Fassen Sie bitte in sechzig Sekunden zusammen: Liegt ein Software-Bug im Bus-Stack vor oder bricht uns beim Warmstart schlichtweg die Bordnetzspannung weg?",
+          "cue": "Verlangt klare Eingrenzung"
+        }
+      ],
+      "transcript": "Frau Weber: Fassen Sie bitte in sechzig Sekunden zusammen: Liegt ein Software-Bug im Bus-Stack vor oder bricht uns beim Warmstart schlichtweg die Bordnetzspannung weg?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "bricht uns ... schlichtweg ... weg",
+          "standard": "fällt die Spannung kurzzeitig stark ab",
+          "note": "Anschauliches Ingenieursverb ‚wegbrennen / wegbrechen‘"
+        }
+      ],
+      "vocabulary": [
+        "der Spannungseinbruch — kurzzeitiges Absinken der Versorgungsspannung",
+        "zeitgleich korrelieren mit — exaktes zeitliches Zusammenfallen im Messschrieb",
+        "als primäre Ursache eingrenzen — methodischer 8D-Ausdruck"
+      ],
+      "usefulExpressions": [
+        "Alle drei Timeouts korrelieren exakt mit einem kurzzeitigen Spannungseinbruch unter 7,2 Volt während des Starter-Zugriffs.",
+        "Am Schreibtisch-HIL ohne Spannungseinbruch ließ sich der Bus-Fehler über vierzig Stunden nicht provozieren.",
+        "Das deutet stark auf die Unterspannungsschwelle des Transceivers hin; zur Bestätigung fahren wir heute Nachmittag eine gezielte Spannungsrampe."
+      ],
+      "grammarPatterns": [
+        "Kausale Evidenzkette: ‚korrelieren mit + Dativ‘ / ‚hindeuten auf + Akkusativ‘ (vermeidet unbewiesenes ‚beweist endgültig‘)."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Welche zwei Hauptursachen-Pfade will Frau Weber voneinander abgegrenzt haben?",
+          "options": [
+            "Reiner Kommunikationssoftware-Fehler im Bus-Stack vs. elektrischer Versorgungsspannungseinbruch beim Startvorgang.",
+            "Mechanischer Zahnradschaden vs. falscher Reifendruck.",
+            "Lieferverzug vs. Kostenerhöhung.",
+            "Kundenfehlbedienung vs. Waschanlage."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Software-Fehler im Stack vs. Unterspannung im 12V-Bordnetz."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum überzeugt der Hinweis auf den 40-Stunden-HIL-Lauf ohne Fehler in einer 8D-Runde sofort?",
+          "options": [
+            "Er liefert ein starkes Ausschlussindiz gegen einen permanenten Software-Stack-Fehler unter Nennspannung.",
+            "Er zeigt nur, dass man viel gearbeitet hat.",
+            "Er beweist, dass im Fahrzeug überhaupt kein Fehler auftrat.",
+            "Er ersetzt jede weitere Messung."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Systematischer Ausschluss des Alternativpfads unter stabiler Spannung."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Warum sagt man „deutet stark auf ... hin; zur Bestätigung fahren wir ...“ statt „Die Ursache steht zu 100 % fest“?",
+          "options": [
+            "Weil in 8D/Root-Cause-Prozessen eine Ursache erst nach gezieltem Reproduktionstest ( Ein-/Ausschalten des Fehlers ) als bewiesen gilt.",
+            "Weil man sich vor Verantwortung drücken will.",
+            "Weil der Konjunktiv verboten ist.",
+            "Weil man den Transceiver nicht kennt."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Methodische Strenge: Korrelation benennen + gezielte Reproduktion ankündigen."
+          ]
+        }
+      ],
+      "speakingTask": "Geben Sie Frau Weber das 60-Sekunden-Update: Korrelation im Fahrzeug, Ausschluss am HIL und heutiger Reproduktionstest mit Spannungsrampe.",
+      "interactionTask": "Frau Weber nickt: „Gut eingegrenzt! Welche Sofortmaßnahme empfehlen Sie für die zwei Erprobungsfahrzeuge, die morgen früh auf Messfahrt gehen?“ Antworten Sie praxisnah.",
+      "expectedResponseCharacteristics": [
+        "Präzise Zahlen- und Signalkorrelation",
+        "Saubere Unterscheidung zwischen Indiz und Reproduktionsnachweis",
+        "Praktikable Übergangsmaßnahme für Erprobungsträger (z. B. Stützbatterie prüfen / Start-Stopp vorübergehend deaktivieren + Logging aktivieren)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Immer wenn der Timeout passiert, geht die Spannung unter 7,2 Volt. Am HIL war kein Fehler, also ist es die Spannung.",
+        "verdict": "Logisch richtig, aber ‚also ist es die Spannung‘ überspringt die methodische Reproduktionsformulierung auf C1-Niveau."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "8D-Taskforce präzise (C1)",
+          "text": "In allen drei Fällen fällt der Timeout zeitgleich mit einem Klemme-30-Einbruch unter 7,2 Volt beim Warmstart zusammen, während am HIL bei stabiler Spannung über 40 Stunden kein einziger Aussetzer auftrat. Das deutet klar auf ein Unterspannungs-Reset hin; heute Nachmittag verifizieren wir die genaue Abschaltschwelle über eine definierte Spannungsrampe."
+        },
+        {
+          "register": "Diplomatisch in der Technikrunde",
+          "text": "Rein rechnerisch passt der Schwellenwert, aber im realen Stop-and-Go fürchte ich Fehlauslösungen – sollten wir da nicht etwas Hysterese vorsehen?"
+        },
+        {
+          "register": "Konstruktiv-analytisch",
+          "text": "Guter Punkt für den Stationärbetrieb; im dynamischen Übergang zeigt die Messung allerdings ein anderes Bild. Wollen wir beide Fälle getrennt bedaten?"
+        }
+      ],
+      "errorClassifications": [
+        "VOCABULARY: ‚zeitgleich zusammenfallen mit / Spannungseinbruch / verifizieren‘",
+        "SENTENCE_FORMULATION: Vorschneller Kausalschluss statt methodischer Indizienkette",
+        "ACTIVE_RETRIEVAL: Sofortmaßnahme unter Zeitdruck klar benennen"
+      ],
+      "correctionGuidance": "Verbinde Fahrzeugbefund und Labor-Ausschluss mit ‚während‘ und schließe mit ‚zur Reproduktion fahren wir...‘.",
+      "transferTask": "Transfer (Drehzahlsensor-Plausibilisierung): Sporadischer Fehlereintrag nur auf Kopfsteinpflaster, am Motorenprüfstand nie. Formulieren Sie die Hypothese (Steckverbindung/Kabelbaum-Vibration) plus Reproduktionstest.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Der Fehler korreliert zeitgleich mit [X], während unter konstanten Bedingungen kein Ausfall auftrat – das deutet stark auf [Y] hin.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 4 Tage -> 14 Tage"
+    },
+    {
+      "id": "pf_eng_05",
+      "scenarioFamilyId": "fam_eng_fmea_report",
+      "title": "Versuchswerkstatt Esslingen/Untertürkheim: Umbau-Verzug klären",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Registerwechsel zwischen Versuchswerkstatt (direkt/schwäbisch) und Teamleiter-Update",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Werkstatt-Umgangston vs. kompaktes Projekt-Update",
+      "difficulty": "B2+",
+      "visualSceneType": "PARTICLE_TONE_DIAL",
+      "learningObjective": "Einen erfahrenen Prüfstandsmechaniker respektvoll-kollegial auf Augenhöhe ansprechen und dieselbe Info danach sachlich an die Projektleitung weitergeben.",
+      "germanInput": "Ihr Versuchsträger sollte um 11 Uhr mit neuem Drucksensor abholbereit sein. In der Halle steht der Wagen noch auf der Hebebühne.",
+      "audioRequirements": {
+        "deliveryStyle": "Direkter, bodenständiger Werkstattton mit Hallengeräuschen (160 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-schwäbischer Werkstatt-Alltag",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Ralf",
+          "role": "Werkstattmeister Versuchsbau",
+          "personality": "Hilfsbereit, hasst aber überhebliches Büro-Deutsch",
+          "variety": "Schwäbisch gefärbt"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Ralf",
+          "line": "Mahlzeit! Du schausch scho so nach dei’m Silbernen – vergiss elf Uhr mal ganz schnell.",
+          "cue": "Direkt, kollegial"
+        },
+        {
+          "speaker": "Ralf",
+          "line": "Des Adaptergewinde vom neuen Druckaufnehmer passt fei um a Muggaseggele net rein; mir drehen grad drüben ’n passenden Ring.Vor halb zwei geht da nix.",
+          "cue": "a Muggaseggele = winziges bisschen"
+        }
+      ],
+      "transcript": "Ralf: Mahlzeit! Du schausch scho so nach dei’m Silbernen – vergiss elf Uhr mal ganz schnell.\nRalf: Des Adaptergewinde vom neuen Druckaufnehmer passt fei um a Muggaseggele net rein; mir drehen grad drüben ’n passenden Ring.Vor halb zwei geht da nix.",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "um a Muggaseggele net",
+          "standard": "um einen winzigen Bruchteil eines Millimeters nicht",
+          "note": "Berühmteste schwäbische Maßeinheit in Handwerk & Werkstatt!"
+        },
+        {
+          "spoken": " ’n passenden Ring",
+          "standard": "einen passenden Adapterring",
+          "note": "Gesprochene Kurzform"
+        }
+      ],
+      "vocabulary": [
+        "ein Muggaseggele (schwäbisch) — winzige Abweichung / Haaresbreite",
+        "Mahlzeit! — üblicher Mittagsgruß in Werkstätten und Werken zwischen ca. 11:30 und 13:30 Uhr",
+        "sich verzögern aufgrund einer mechanischen Nacharbeit — sachliche Übersetzung fürs Projekt-Update"
+      ],
+      "usefulExpressions": [
+        "Mahlzeit Ralf! Alles klar, gut dass ihr’s direkt gesehen habt – danke fürs schnelle Nachdrehen!",
+        "Reicht dir, wenn ich um Viertel vor zwei nochmal kurz durchklingel, bevor ich die Messfahrt verschiebe?",
+        "Fürs Team-Update: Die Fahrzeugübergabe verschiebt sich wegen einer kurzfristigen Gewindeanpassung am Drucksensor auf voraussichtlich 13:30 Uhr."
+      ],
+      "grammarPatterns": [
+        "Bewusster Register-Switch: Kollegiales ‚Du + Mahlzeit + Danke fürs schnelle Lösen‘ in der Halle -> kompaktes Nominal-Update gegenüber der Projektleitung."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Warum wird das Fahrzeug erst gegen 13:30 Uhr fertig?",
+          "options": [
+            "Das Gewinde des neuen Drucksensors weicht minimal ab, sodass die Werkstatt erst einen passenden Adapterring dreht.",
+            "Die Werkstatt hat den Auftrag komplett vergessen.",
+            "Der Sensor wurde noch gar nicht geliefert.",
+            "Die Hebebühne ist defekt."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Minimale Maßabweichung am Adaptergewinde; Werkstatt fertigt bereits eine Lösung an."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Was bedeutet „um a Muggaseggele net“ hier technisch?",
+          "options": [
+            "Es fehlt nur ein winziges Bisschen / wenige Zehntelmillimeter Passung.",
+            "Das Bauteil ist komplett aus dem falschen Fahrzeugprojekt.",
+            "Der Sensor wiegt zu viel.",
+            "Es gibt ein Softwareproblem."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Minimale mechanische Maßabweichung."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Welcher Fehler würde die Zusammenarbeit mit Ralf sofort abkühlen lassen?",
+          "options": [
+            "Steifes Vorwurfsdeutsch („Gemäß Terminplan war 11 Uhr vereinbart!“), obwohl sein Team längst eigeninitiativ einen Adapter fertigt.",
+            "Zurückgrüßen mit „Mahlzeit!“ und sich fürs Anfertigen des Rings bedanken.",
+            "Kurz fragen, wann man realistisch abholen kann.",
+            "Anbieten, bei Rückfragen erreichbar zu sein."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Bürokratischer Ton ignoriert seine Eigeninitiative und verletzt den Werkstatt-Respekt."
+          ]
+        }
+      ],
+      "speakingTask": "Teil A (Halle): Antworten Sie Ralf locker und wertschätzend in 1–2 Sätzen. Formulieren Sie direkt danach Teil B (1 Satz): Wie melden Sie die Verschiebung sachlich an Ihren Projektleiter?",
+      "interactionTask": "Ralf ruft Ihnen noch hinterher: „Ach hör mal, ziehn wir das Anzugsmoment nach Standardtabelle an oder habt ihr für den Alu-Stutzen ’ne eigene Vorgabe?“ Antworten Sie sauber.",
+      "expectedResponseCharacteristics": [
+        "Klarer Registerkontrast zwischen Teil A (kollegial, dankbar) und Teil B (sachlich, präzise)",
+        "Kein Raten beim Anzugsmoment (Vorgabe im Datenblatt / Konstruktion kurz gegenprüfen!)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Okay danke. Ich sage meinem Chef, das Teil passt ein Muggaseggele nicht und wir starten um halb zwei.",
+        "verdict": "Sympathisch, übernimmt aber das Dialektwort ungefiltert in die formelle Projektmeldung."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Halle + Management-Switch (C1)",
+          "text": "An Ralf: „Mahlzeit Ralf! Super, dass ihr gleich ’nen passenden Ring dreht – ich meld mich kurz nach eins nochmal.“ | An Projektleitung: „Kurzes Update: Wegen einer minimalen Maßabweichung am Sensoradapter wird in der Werkstatt aktuell nachgearbeitet; der Messbeginn verschiebt sich auf ca. 13:30 Uhr.“"
+        },
+        {
+          "register": "FMEA-Moderationsstil",
+          "text": "Damit wir die Fehlertoleranzzeit nach ISO 26262 sicher einhalten, muss der sichere Zustand greifen, noch bevor ein ungewolltes Radmoment aufgebaut wird."
+        },
+        {
+          "register": "Kurzfassung fürs Sicherheitskonzept",
+          "text": "Entscheidend ist hier das Zeitfenster bis zum Abschaltpfad: Überschreitet die Diagnose die FTTI, reicht eine reine Fahrerwarnung nicht mehr aus."
+        }
+      ],
+      "errorClassifications": [
+        "REGISTER: Dialekt-/Werkstattausdrücke ungefiltert in formelle Berichte übernommen (oder umgekehrt Behördendeutsch in der Werkstatt)",
+        "CONNECTED_SPEECH_DECODING: ‚Muggaseggele‘ / ‚dei’m Silbernen‘",
+        "SITUATIONAL_UNDERSTANDING: Sicherheitsrelevantes Anzugsmoment nie schätzen, sondern Zeichnungswert zusagen"
+      ],
+      "correctionGuidance": "Halte beide Register bewusst auseinander: Wertschätzende Kürze in der Werkstatt, präzise Sachsprache (‚Maßabweichung am Sensoradapter‘) im Status-Readout.",
+      "transferTask": "Transfer (EMV-Labor): Die Technikerin sagt locker, dass ein Schirmgeflecht am Hochvoltkabel „noch grad nachgecrimpt“ wird (45 Min. Verzug). Formulieren Sie 1 Satz an sie und 1 Satz für das Testprotokoll.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Stark, dass ihr’s direkt anpasst!‘ <-> ‚Aufgrund einer kurzfristigen mechanischen Anpassung verschiebt sich die Freigabe auf [Uhrzeit].‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 10 Tage"
+    },
+    {
+      "id": "pf_eng_06",
+      "scenarioFamilyId": "fam_eng_fmea_report",
+      "title": "Versuchsabschluss: Datenstreuung transparent benennen & nächsten Schritt sichern",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "Management-Fazit schreiben & mündlich verteidigen trotz Datenstreuung",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Management-Readout & technischer Kurzbericht",
+      "difficulty": "ADVANCED_C1",
+      "visualSceneType": "POWERTRAIN_SIGNAL_FLOW",
+      "learningObjective": "In einem kompakten Engineering-Fazit klar darlegen, was abgesichert ist, wo die Stichprobe noch zu klein ist und welche Freigabeempfehlung daraus folgt.",
+      "germanInput": "Sie haben 5 Dauerläufe zur Getriebeöl-Alterung ausgewertet: 4 Läufe liegen im Zielband, 1 Lauf zeigt erhöhten Verschleißabrieb. Die Abteilungsrunde will wissen, ob heute voll freigegeben werden kann.",
+      "audioRequirements": {
+        "deliveryStyle": "Prägnantes Management-Review (165 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Formelles Standarddeutsch",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Herr Direktor Hartmann",
+          "role": "Abteilungsleiter Antriebsversuch",
+          "personality": "Entscheidungsorientiert, fordert klare Empfehlung in 3 Sätzen",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Herr Direktor Hartmann",
+          "line": "Vier von fünf Läufen grün, einer auffällig – heißt das unter dem Strich Freigabe ja oder nein, und womit begründen Sie das?",
+          "cue": "Verlangt klare Entscheidungslogik"
+        }
+      ],
+      "transcript": "Herr Direktor Hartmann: Vier von fünf Läufen grün, einer auffällig – heißt das unter dem Strich Freigabe ja oder nein, und womit begründen Sie das?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "unter dem Strich",
+          "standard": "im Gesamtergebnis / zusammenfassend",
+          "note": "Sehr häufiges Idiom in deutschen Entscheidungsrunden"
+        }
+      ],
+      "vocabulary": [
+        "unter dem Strich — im Fazit / alles zusammengenommen",
+        "eine bedingte Freigabe empfehlen — Freigabe für nächsten Erprobungsschritt unter klaren Auflagen",
+        "die Ursache des Ausreißers klären — statistisch-technisch sauberer Begriff"
+      ],
+      "usefulExpressions": [
+        "Unter dem Strich empfehle ich heute keine unbedingte Serienfreigabe, wohl aber die Freigabe für die nächste Flottenerprobung unter begleitendem Ölanalyse-Monitoring.",
+        "Solange die Ursache des fünften Laufs – ob Chargenschwankung oder Montageeinfluss – metallurgisch noch offen ist, wäre eine Vollfreigabe fachlich nicht belastbar.",
+        "Das Laborergebnis zum Abrieb liegt bis Dienstag vor; danach ziehen wir die endgültige Entscheidung nach."
+      ],
+      "grammarPatterns": [
+        "Kontrastive Empfehlung: ‚zwar keine [Vollfreigabe], wohl aber [bedingte Stufenfreigabe] unter der Auflage, dass ...‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was verlangt Herr Hartmann mit „unter dem Strich Freigabe ja oder nein“?",
+          "options": [
+            "Eine klare, begründete Entscheidungsempfehlung statt bloßer Aufzählung von Rohdaten.",
+            "Einen 30-seitigen Theorieteil über Tribologie.",
+            "Dass Sie den fünften Lauf heimlich aus der Tabelle löschen.",
+            "Dass Sie gar keine Empfehlung abgeben."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Belastbares Fazit inklusive klarer Risikobegründung."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum ist die Differenzierung „keine Vollfreigabe, wohl aber bedingte Erprobungsfreigabe mit Monitoring“ auf C1-Niveau so stark?",
+          "options": [
+            "Sie blockiert das Projekt nicht unnötig, schützt aber die technische Sorgfaltspflicht bis zur Klärung des Ausreißers.",
+            "Sie vermeidet jede Aussage.",
+            "Sie verspricht null Risiko ohne Prüfung.",
+            "Sie klingt nur kompliziert."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Verbindet Projektfortschritt mit sauberer technischer Risikoabsicherung."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Welche sprachliche Wendung markiert den ungewöhnlichen 5. Messlauf präzise?",
+          "options": [
+            "der Ausreißer / der auffällige Einzellauf",
+            "das kaputte Ding",
+            "die Katastrophe",
+            "der Zufallstreffer"
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Sachlicher Fachbegriff ‚Ausreißer‘ bzw. ‚auffälliger Einzellauf‘."
+          ]
+        }
+      ],
+      "speakingTask": "Formulieren Sie Ihre 3-Satz-Empfehlung an Herrn Hartmann: 1. Klares Fazit (bedingte statt unbedingter Freigabe), 2. Technische Begründung wegen des ungeklärten Ausreißers, 3. Konkreter Termin für den Laborbefund.",
+      "interactionTask": "Herr Hartmann fragt sofort zurück: „Angenommen, das Labor zeigt Dienstag einen Montagefehler beim Zusammenbau – brauchen wir dann überhaupt noch einen Wiederholungslauf?“ Antworten Sie abwägend.",
+      "expectedResponseCharacteristics": [
+        "Entscheidungsstark ab dem ersten Satz (‚Unter dem Strich empfehle ich...‘)",
+        "Saubere fachliche Begriffe (Ausreißer, belastbar, unter der Auflage, Chargeneinfluss)",
+        "Logische Wenn-dann-Abwägung bei der Rückfrage"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Wir können noch nicht ganz ja sagen, weil ein Test schlecht war. Wir warten bis Dienstag auf das Labor.",
+        "verdict": "Verständlich, wirkt in einer Management-Runde aber passiv (‚wir warten‘) statt steuernd."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Management-Readout (C1+)",
+          "text": "Unter dem Strich empfehle ich heute eine bedingte Freigabe für die Flottenerprobung mit engmaschiger Ölkontrolle, aber noch keine Serienfreigabe. Solange nicht geklärt ist, ob der erhöhte Abrieb in Lauf fünf auf einen Montageeinfluss oder das Bauteil selbst zurückgeht, fehlt uns die belastbare Absicherung. Der metallurgische Befund liegt Dienstag vor – auf der Basis legen wir sofort nach."
+        },
+        {
+          "register": "Mündliches Status-Update (8D)",
+          "text": "Als Sofortmaßnahme haben wir das Timeout-Monitoring geschärft; die eigentliche Ursache lag in der Buslastspitze beim Steuergeräte-Wake-up."
+        },
+        {
+          "register": "Schriftlich-prägnant (Management Summary)",
+          "text": "Nach Eingrenzung des sporadischen CAN-Timeouts wurde das Sendeintervall entzerrt und die Wirksamkeit im Dauerlauf nachgewiesen."
+        }
+      ],
+      "errorClassifications": [
+        "REGISTER: Zu passives ‚wir warten‘ statt aktivem Projekt-Steuern",
+        "VOCABULARY: ‚auf etw. zurückgehen / belastbare Absicherung / bedingte Freigabe‘",
+        "SENTENCE_FORMULATION: Unscharfe Begründung unter Entscheidungsdruck"
+      ],
+      "correctionGuidance": "Starte bei Management-Fragen immer mit dem Fazit im ersten Satz (Top-Down) und liefere Begründung + Termin im zweiten und dritten Satz.",
+      "transferTask": "Transfer (Hochschule Esslingen Projektpräsentation): Bei Ihrer Semesterarbeit zur Hybrid-Betriebsstrategie konvergierte die Simulation in 1 von 6 Fahrprofilen (Alpenpass) nicht sauber. Präsentieren Sie dem Professor Ihr Fazit in 3 Sätzen.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Unter dem Strich empfehle ich eine bedingte Freigabe unter [Auflage], solange nicht geklärt ist, ob der Ausreißer auf [A] oder [B] zurückgeht.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 4 Tage -> 14 Tage -> 30 Tage"
+    },
+    {
+      "id": "pf_coach_01",
+      "scenarioFamilyId": "fam_sv1845_fjugend_pitch",
+      "title": "SV 1845 Esslingen F-Jugend: FUNiño-Regel & Schusszone in 20 Sekunden erklären",
+      "skill": "FOOTBALL_COACHING",
+      "subskill": "FUNiño (3 gegen 3 auf 4 Minitore) für 8-Jährige klar, kurz & motivierend erklären",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Register 1: Kindgerechtes Coaching (F-Jugend U8/U9, SV 1845 Esslingen)",
+      "difficulty": "B2",
+      "visualSceneType": "FUNINO_PITCH_SPLIT",
+      "learningObjective": "Komplexe Trainingsgedanken radikal auf kurze, bildhafte Kinder-Sätze und offene DFB-Leitfragen herunterbrechen (ohne Trainer-Fachchinesisch!).",
+      "germanInput": "Dienstagstraining bei der F-Jugend des SV 1845 Esslingen. 12 Achtjährige scharren ungeduldig mit den Füßen am Ball. Sie bauen 3-gegen-3 auf vier Minitore mit Schusszone auf.",
+      "audioRequirements": {
+        "deliveryStyle": "Lebendig, warm, klare Betonung, Sportplatz-Atmosphäre mit Kinderrufen (150 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Klares, herzliches Alltagsdeutsch auf dem Platz",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Leo (8)",
+          "role": "F-Jugend-Spieler",
+          "personality": "Voller Energie, will sofort von der Mittellinie draufbolzen",
+          "variety": "Kinder-Alltagsdeutsch"
+        },
+        {
+          "name": "Mila (8)",
+          "role": "F-Jugend-Spielerin",
+          "personality": "Aufmerksam, fragt direkt nach dem Torwart",
+          "variety": "Kinder-Alltagsdeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Leo (8)",
+          "line": "Trainer, darf ich gleich von ganz hinten volles Rohr aufs kleine Tor schießen?!",
+          "cue": "volles Rohr = mit voller Kraft"
+        },
+        {
+          "speaker": "Mila (8)",
+          "line": "Und wer steht bei uns überhaupt im Tor, wenn wir zwei Tore haben?",
+          "cue": "Typische Kinderfrage beim 4-Tore-Spiel"
+        }
+      ],
+      "transcript": "Leo (8): Trainer, darf ich gleich von ganz hinten volles Rohr aufs kleine Tor schießen?!\nMila (8): Und wer steht bei uns überhaupt im Tor, wenn wir zwei Tore haben?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "volles Rohr draufbolzen",
+          "standard": "mit voller Kraft schießen",
+          "note": "Typische Kinder- und Fußballplatz-Umgangssprache"
+        }
+      ],
+      "vocabulary": [
+        "die Schusszone (ab den gelben Hütchen) — Zone vor den Minitoren, erst dahinter zählt das Tor",
+        "Kopf hochnehmen! — kindgerechtes Signal für Orientierung/Blickwechsel",
+        "Welches Tor ist frei? — DFB-Leitfrage statt ‚Spiel nach rechts!‘"
+      ],
+      "usefulExpressions": [
+        "Alle Füße kurz auf den Ball und Augen zu mir!",
+        "Kein fester Torwart – wir greifen alle zusammen an und verteidigen alle zusammen!",
+        "Ein Tor zählt erst hinter der gelben Hütchenlinie – also erst reindribbeln oder reinpassen!",
+        "Schaut immer kurz hoch: Welches von den zwei Toren ist gerade frei?"
+      ],
+      "grammarPatterns": [
+        "Kinder-Register vs. Erwachsenen-Register: Kurze Hauptsätze, aktive Verben (‚reindribbeln, Kopf hochnehmen‘), konkrete Farben (‚gelbe Linie‘) statt Abstrakta wie ‚Raumbesetzung‘ oder ‚Überzahlschaffung‘!"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Welche zwei Spielregeln müssen Sie Leo und Mila jetzt in maximal 3 kurzen Sätzen klarmachen?",
+          "options": [
+            "1. Kein fester Torwart (alle spielen mit), 2. Tore zählen erst innerhalb der gelben Schusszone.",
+            "1. Abseitsfalle auf Zuruf, 2. asymmetrisches Aufbausystem im Halbraum.",
+            "1. Fernschüsse zählen dreifach, 2. zwei Kinder müssen draußen sitzen bleiben.",
+            "1. Absolutes Dribblingverbot, 2. nur Kopfballtore."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Alle verteidigen/greifen gemeinsam an + Abschluss erst ab der Schusszone."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum fragt man in der F-Jugend während des Spiels lieber „Welches Tor ist frei?“ statt „Pass sofort zu Mila nach rechts!“?",
+          "options": [
+            "Damit das Kind selbst den Kopf hebt, wahrnimmt und eine eigene Spielentscheidung trifft (DFB-Kinderfußball-Prinzip).",
+            "Weil man den Namen der Kinder vergessen hat.",
+            "Weil Pässe im FUNiño verboten sind.",
+            "Um möglichst streng zu klingen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Fördert eigene Wahrnehmung und Spielintelligenz statt Joystick-Coaching."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Warum funktioniert ein langer Satz wie „Aufgrund der fehlenden Torhüterposition müsst ihr die Tiefensicherung beachten“ bei 8-Jährigen nicht?",
+          "options": [
+            "Zu abstrakter Nominalstil – Kinder schalten nach 5 Sekunden ab und brauchen konkrete Bilder.",
+            "Der Satz enthält englische Wörter.",
+            "Kinder verstehen das Wort ‚und‘ nicht.",
+            "Er ist zu leise gesprochen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Fehlende Altersangemessenheit; Kinder brauchen kurze, handlungsnahe Bilder."
+          ]
+        }
+      ],
+      "speakingTask": "Antworten Sie Leo und Mila jetzt direkt auf dem Platz (max. 3 kurze, energiegeladene Sätze) und starten Sie das Spiel mit einem klaren Startsignal!",
+      "interactionTask": "Mitten im Spiel dribbelt Leo immer wieder blind in zwei Verteidiger am linken Tor, während rechts Mila völlig frei vorm zweiten Minitor steht. Rufen Sie EINEN kurzen, kindgerechten Coaching-Impuls rein!",
+      "expectedResponseCharacteristics": [
+        "Kurze, lebendige Sätze ohne Fachjargon",
+        "Positiver, ermutigender Ton",
+        "Beim Live-Impuls: Offene Wahrnehmungsfrage (‚Leo, Kopf hoch – welches Tor ist frei?‘) statt Vorwurf"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Nein Leo, du darfst nicht von hinten schießen. Wir haben keinen Torwart und ihr müsst in die Zone gehen vor dem Schuss.",
+        "verdict": "Verständlich, startet aber mit ‚Nein‘ und klingt wie ein Regelvortrag statt wie mitreißendes Kinder-Coaching."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Kindgerecht & mitreißend (F-Jugend Top)",
+          "text": "Gute Frage ihr zwei! Heute gibt’s keinen festen Torwart – ihr stürmt zu dritt und verteidigt zu dritt. Und aufgepasst, Leo: Tore zählen erst ab den gelben Hütchen – also mutig reindribbeln und los geht’s!"
+        },
+        {
+          "register": "Live-Impuls am Spielfeldrand",
+          "text": "Stark gedribbelt, Leo – und jetzt kurz Kopf hoch: Welches zweite Tor ist komplett frei?"
+        },
+        {
+          "register": "Motivierend im Trinkpausen-Kreis (U9)",
+          "text": "Super gejagt eben! Jetzt schaut mal vor dem Ballkontakt kurz hoch – welches von den zwei Toren ist ganz frei?"
+        }
+      ],
+      "errorClassifications": [
+        "REGISTER: Erwachsenes Taktikdeutsch gegenüber 8-Jährigen verwendet",
+        "SENTENCE_FORMULATION: Zu lange Erklärkette auf dem Platz",
+        "ACTIVE_RETRIEVAL: Fehlen griffiger Platz-Bilder (‚Füße auf den Ball‘, ‚ab den gelben Hütchen‘, ‚Kopf hoch‘)"
+      ],
+      "correctionGuidance": "Streiche bei F-Jugend-Ansagen jedes abstrakte Nomen. Maximal ein Gedanke pro Satz + konkretes Farbsignal + positiver Startruf.",
+      "transferTask": "Transfer (Übungswechsel): Alle vier Bälle liegen verstreut, die Kinder kicken kreuz und quer weiter. Holen Sie die Gruppe in 10 Sekunden positiv zusammen zur Trinkflasche.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Alle Füße kurz auf den Ball! Tore zählen erst ab den gelben Hütchen – schaut hoch: Welches Tor ist frei?‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 10 Tage"
+    },
+    {
+      "id": "pf_coach_02",
+      "scenarioFamilyId": "fam_sv1845_fjugend_pitch",
+      "title": "F-Jugend Training: „Kurz schütteln, sofort Ball zurückjagen!“",
+      "skill": "FOOTBALL_COACHING",
+      "subskill": "Frustriertes Kind nach Ballverlust ermutigen & ‚Sofortjagd‘ vermitteln",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Register 1: Ermutigendes Fehler-Coaching (F-Jugend)",
+      "difficulty": "B2+",
+      "visualSceneType": "FUNINO_PITCH_SPLIT",
+      "learningObjective": "Einem enttäuschten Kind nach einem missglückten Dribbling Mut zusprechen und das Umschalten nach Ballverlust kindgerecht als ‚Sofortjagd‘ verankern.",
+      "germanInput": "Ben (8) verliert beim 1-gegen-1 den Ball, bleibt mit hängendem Kopf stehen und ruft sauer: „Mann, ich kann gar nix!“ Währenddessen fällt hinten das Gegentor.",
+      "audioRequirements": {
+        "deliveryStyle": "Empathisch, ruhig, dann wieder aktivierend (145 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Herzliches Alltagsdeutsch",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Ben (8)",
+          "role": "F-Jugend-Spieler",
+          "personality": "Ehrgeizig, schnell frustriert nach Fehlern",
+          "variety": "Kinder-Alltagsdeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Ben (8)",
+          "line": "Maaann, schon wieder hängen geblieben! Ich pass jetzt gar nich’ mehr, klappt eh nix!",
+          "cue": "Frustriert, bleibt stehen"
+        }
+      ],
+      "transcript": "Ben (8): Maaann, schon wieder hängen geblieben! Ich pass jetzt gar nich’ mehr, klappt eh nix!",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "klappt eh nix",
+          "standard": "es funktioniert ohnehin nichts",
+          "note": "Emotionaler Kinderausruf"
+        }
+      ],
+      "vocabulary": [
+        "mutig ins Eins-gegen-Eins gehen — lobt den Versuch statt nur das Ergebnis",
+        "kurz abschütteln — Frust in 1 Sekunde loslassen",
+        "die Sofortjagd auf den Ball — kindgerechtes Bild für Gegenpressing / Umschalten"
+      ],
+      "usefulExpressions": [
+        "Hey Ben, komm kurz her: Ich will genau sehen, dass du dich das Dribbling traust!",
+        "Ball verlieren passiert jedem Profi zehnmal im Spiel.",
+        "Unsere Regel: Kurz schütteln und drei Sekunden Sofortjagd auf den Ball – zeig mir das beim nächsten Mal!"
+      ],
+      "grammarPatterns": [
+        "Positives Reframing statt Verbot: Nicht ‚Bleib nicht stehen!‘, sondern ‚Sobald der Ball weg ist: Sofort umdrehen und wiederholen!‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was ist in dieser Szene das eigentliche Lernziel für Ben?",
+          "options": [
+            "Mut zum Dribbling behalten und nach Ballverlust nicht abschalten, sondern sofort hinterherjagen.",
+            "Nie wieder ins Dribbling gehen.",
+            "Auf die Ersatzbank gesetzt werden.",
+            "Eine Taktiktafel über Konterabsicherung lesen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Mut bestärken + sofortige Anschlussaktion nach Ballverlust verankern."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum wirkt „Ball verlieren passiert jedem Profi – wichtig ist, was du in der Sekunde danach machst“ bei Kindern so stark?",
+          "options": [
+            "Es entkoppelt den Fehler vom Selbstwert und gibt dem Kind eine sofort machbare Aufgabe.",
+            "Es entschuldigt Faulheit.",
+            "Es verbietet Tore.",
+            "Es ist ein Zitat aus dem Regelbuch."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Nimmt die Scham aus dem Fehler und lenkt den Fokus auf die nächste Aktion."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Wie übersetzt man den Trainerbegriff „defensives Umschaltverhalten / Gegenpressing“ perfekt für 8-Jährige?",
+          "options": [
+            "„Ball weg? Sofortjagd – holt ihn euch zu zweit zurück!“",
+            "„Verdichtet sofort das Zentrum im Gegenpressing!“",
+            "„Stellt die Passwege im Halbraum zu!“",
+            "„Sichert die Restverteidigung ab!“"
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Bildhaftes ‚Sofortjagd / Ball sofort wiederholen‘ statt abstrakter Taktiksprache."
+          ]
+        }
+      ],
+      "speakingTask": "Sprechen Sie Ben in einer 15-Sekunden-Pause am Feldrand direkt an: Bestärken Sie seinen Mut und geben Sie ihm die klare ‚Sofortjagd‘-Aufgabe.",
+      "interactionTask": "Zwei Minuten später verliert Ben wieder den Ball – diesmal sprintet er aber sofort hinterher und erobert ihn zurück! Was rufen Sie ihm sofort rein?",
+      "expectedResponseCharacteristics": [
+        "Lobt zuerst den Mut zum Versuch",
+        "Kein „Nicht stehenbleiben!“, sondern positives Handlungsbild",
+        "Begeistertes, konkretes Lob bei der gelungenen Rückeroberung"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Kein Problem Ben, ärgere dich nicht. Du musst nach dem Fehler schnell zurücklaufen.",
+        "verdict": "Freundlich gemeint, aber ‚ärgere dich nicht‘ + ‚du musst zurücklaufen‘ zündet bei einem frustrierten 8-Jährigen deutlich weniger als ein aktives Jagd-Bild."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Starkes Kinder-Coaching",
+          "text": "Hey Ben, Kopf hoch – super, dass du dich das Eins-gegen-Eins traust! Wenn der Ball weg ist: Einmal kurz schütteln und sofort auf Balljagd gehen. Zeig mir gleich, wie schnell du ihn dir wiederholst!"
+        },
+        {
+          "register": "Tröstend & aktivierend (F-Jugend Kind)",
+          "text": "Hey, Kopf hoch – mutig geschossen! Hol dir direkt den nächsten Ball, gleich klappt’s!"
+        },
+        {
+          "register": "Kurz-Coaching im Spielfluss",
+          "text": "Kein Problem, weiter geht’s! Bleib sofort im Spiel und biete dich wieder frei an!"
+        }
+      ],
+      "errorClassifications": [
+        "REGISTER: Zu abstrakte oder belehrende Erwachsenensprache",
+        "NATURALNESS: Negativformulierung (‚nicht stehenbleiben‘) statt aktivem Zielbild",
+        "INTERACTION: Fehlender sofortiger Verstärker beim Erfolgserlebnis"
+      ],
+      "correctionGuidance": "Verknüpfe Ermutigung (‚Stark, dass du’s probierst!‘) immer mit einer konkreten 3-Sekunden-Mission (‚Sofortjagd auf den Ball!‘).",
+      "transferTask": "Transfer (Torabschluss über das Tor): Ein Mädchen schießt aus guter Position drüber und traut sich beim nächsten Angriff nicht mehr abzuschließen. Geben Sie ihr in zwei Sätzen neuen Mut.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Stark, dass du’s probierst! Ball weg heißt: Kurz schütteln und sofort wiederholen!‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 10 Tage"
+    },
+    {
+      "id": "pf_coach_03",
+      "scenarioFamilyId": "fam_sv1845_fjugend_pitch",
+      "title": "Kinderfußball-Festival SV 1845: Zwischenrufenden Vater freundlich-klar stoppen",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Live Code-Switching am Spielfeldrand: Kind ermutigen + reinrufenden Vater bremsen",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Doppel-Register: F-Jugend-Kind <-> Erwachsener Elternteil an der Seitenlinie",
+      "difficulty": "C1",
+      "visualSceneType": "FUNINO_PITCH_SPLIT",
+      "learningObjective": "Innerhalb von fünf Sekunden zwischen warmem Kinder-Ton und ruhiger, klarer Erwachsenen-Abgrenzung gegenüber einem Elternteil wechseln.",
+      "germanInput": "Beim Samstag-Festival ruft ein Vater von außen ständig seinem Sohn zu: „Schieß doch endlich! Nicht abspielen!“ Der Junge schaut völlig verunsichert zwischen Vater und Ihnen hin und her.",
+      "audioRequirements": {
+        "deliveryStyle": "Hektische Turnierkulisse, lauter Elternruf von der Seite (170 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsches Alltagsdeutsch am Sportplatz",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Herr Roth",
+          "role": "Vater am Spielfeldrand",
+          "personality": "Emotional mitfiebernd, merkt gar nicht, wie sehr er das Kind stresst",
+          "variety": "Süddeutsch-Alltag"
+        },
+        {
+          "name": "Noah (8)",
+          "role": "Spieler auf dem Feld",
+          "personality": "Verunsichert, bleibt mit Ball fast stehen",
+          "variety": "Stumm/Blickkontakt"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Herr Roth",
+          "line": "Noah, jetzt zieh doch endlich ab, Mensch! Hör auf rumzupassen da vorne!",
+          "cue": "Laut von der Seitenlinie"
+        },
+        {
+          "speaker": "Herr Roth",
+          "line": "Ja was denn, Trainer – irgendwer muss ihm doch sagen, wann er schießen soll!",
+          "cue": "Rechtfertigt sich direkt Ihnen gegenüber"
+        }
+      ],
+      "transcript": "Herr Roth: Noah, jetzt zieh doch endlich ab, Mensch! Hör auf rumzupassen da vorne!\nHerr Roth: Ja was denn, Trainer – irgendwer muss ihm doch sagen, wann er schießen soll!",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "rumzupassen",
+          "standard": "unentschlossen hin und her zu passen",
+          "note": "Abwertendes ‚rum-‘ in der Umgangssprache"
+        }
+      ],
+      "vocabulary": [
+        "selbst entscheiden lassen — Kernbotschaft im Kinderfußball",
+        "von außen anfeuern statt steuern — diplomatische Elternregel",
+        "nach dem Spiel kurz in Ruhe besprechen — verlagert Diskussion weg vom laufenden Spiel"
+      ],
+      "usefulExpressions": [
+        "Zu Noah: „Alles super, Noah – spiel einfach weiter, deine Entscheidung!“",
+        "Zu Herrn Roth: „Herr Roth, ich versteh das Mitfiebern total – auf dem Feld sollen die Jungs aber selbst entscheiden dürfen.“",
+        "„Feuern Sie die Kids super gern an, aber das Coaching lassen wir bitte komplett bei uns Trainern – wir quatschen gleich nach dem Spiel kurz in Ruhe.“"
+      ],
+      "grammarPatterns": [
+        "Doppel-Adressierung unter Druck: Ultrakurzer Imperativ ans Kind -> Ich-verstehe + klare Rollenregel an den Vater."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was braucht Noah in dieser Sekunde zuerst?",
+          "options": [
+            "Sofortige Entlastung durch ein kurzes positives Signal von Ihnen („Alles gut Noah, deine Entscheidung!“).",
+            "Eine 5-minütige Diskussion zwischen Ihnen und seinem Vater mitten auf dem Spielfeld.",
+            "Eine sofortige Auswechslung als Strafe.",
+            "Noch ein drittes Kommando von Ihnen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Sofort den Druck vom Kind nehmen, dann ruhig den Vater abholen."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Wie setzen Sie Herrn Roth eine klare Grenze, ohne am Spielfeldrand vor den Kindern einen Streit auszulösen?",
+          "options": [
+            "Sein Engagement kurz anerkennen („Anfeuern sehr gern“), die DFB-Fanzonen-/Trainerregel klar benennen und Details auf nach Abpfiff vertagen.",
+            "Zurückschreien, dass er keine Ahnung von Fußball hat.",
+            "Nichts sagen und wegschauen.",
+            "Mit Paragraphen der Vereinssatzung drohen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Freundlich-verbindliche Grenze: Anfeuern ja, Reincoachen nein + Gespräch nach Abpfiff."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was steckt hinter Herrn Roths Satz „irgendwer muss ihm doch sagen, wann er schießen soll“?",
+          "options": [
+            "Er verwechselt Erwachsenenfußball mit kindlichem Lernspiel und hält fehlende Kommandos für Untätigkeit.",
+            "Er möchte Ihr Co-Trainer werden.",
+            "Er kennt seinen Sohn nicht.",
+            "Er will nach Hause fahren."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Unkenntnis über selbstständiges Entscheidenlernen in der F-Jugend."
+          ]
+        }
+      ],
+      "speakingTask": "Reagieren Sie jetzt zweigeteilt: 1 kurzer Satz zu Noah aufs Feld + 2 ruhige, souveräne Sätze zu Herrn Roth an der Linie.",
+      "interactionTask": "Nach Abpfiff kommt Herr Roth nochmal her: „Sorry vorhin, ist mit mir durchgegangen – aber mir kommt’s halt so vor, als schießt er viel zu selten.“ Antworten Sie konstruktiv.",
+      "expectedResponseCharacteristics": [
+        "Spürbarer Registerwechsel zwischen Kind (warm, 5 Wörter) und Vater (ruhig, klar, auf Augenhöhe)",
+        "Klare Trennung zwischen Anfeuern und Steuern",
+        "Im Nachgespräch: Konkrete Beobachtung teilen, ohne das Kind abzuwerten"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Noah spiel weiter! Herr Roth, bitte rufen Sie nicht ins Spiel, ich bin der Trainer hier.",
+        "verdict": "Inhaltlich richtig, aber ‚ich bin der Trainer hier‘ triggert oft Trotz statt Einsicht."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Souveränes Doppel-Register (C1)",
+          "text": "Aufs Feld: „Alles gut, Noah – mutig weiterspielen, du entscheidest!“ | Zur Linie: „Herr Roth, mitfiebern und klatschen jederzeit super gern! Die Spielentscheidungen lassen wir aber bewusst bei den Kindern – lassen Sie uns gleich in der Pause kurz zwei Minuten drüber sprechen.“"
+        },
+        {
+          "register": "Klare Übungsansage auf dem Platz (U8/U9)",
+          "text": "Immer zwei gegen zwei auf vier Minitore: Sobald der Ball im Aus ist, dribbelt ihr sofort von der Linie neu ein!"
+        },
+        {
+          "register": "Kurze Korrektur-Frage an die Kinder",
+          "text": "Stopp, einfrieren! Schaut mal kurz: Steht ihr grad beide auf einer Linie oder macht ihr das Feld breit?"
+        }
+      ],
+      "errorClassifications": [
+        "REGISTER: Keinen klaren Tonwechsel zwischen 8-Jährigem und Erwachsenem vollzogen",
+        "INTERACTION: Auf Elternrechtfertigung mitten im laufenden Spiel zu lang eingestiegen",
+        "NATURALNESS: Zu autoritäre Formel statt ‚Anfeuern gern, Steuern bitte nicht‘"
+      ],
+      "correctionGuidance": "Erst das Kind in 3 Sekunden entlasten, dann dem Vater die goldene Brücke bauen: ‚Anfeuern super gern – die Entscheidungen auf dem Platz gehören den Kids.‘",
+      "transferTask": "Transfer (Auswechselzeit-Frage): Eine Mutter fragt beim Festival irritiert, warum alle 3 Minuten durchrotiert wird, obwohl ihr Sohn gerade ein Tor geschossen hat. Erklären Sie das Rotationsprinzip freundlich in zwei Sätzen.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Anfeuern jederzeit gern – die Entscheidungen auf dem Feld lassen wir bewusst bei den Kindern; wir sprechen gleich nach Abpfiff kurz in Ruhe.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 7 Tage -> 21 Tage"
+    },
+    {
+      "id": "pf_coach_04",
+      "scenarioFamilyId": "fam_sv1845_cotrainer_lizenz",
+      "title": "Trainer-Stammtisch SV 1845: Vom FUNiño zum Halbraum-Spielaufbau",
+      "skill": "FOOTBALL_COACHING",
+      "subskill": "Fachgespräch unter Trainern: Spielaufbau, Halbräume & altersgerechte Übertragung",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Register 2: Fachsprache unter Trainerkollegen (SV 1845 Trainerrunde)",
+      "difficulty": "C1",
+      "visualSceneType": "MULTI_SPEAKER_TABLE",
+      "learningObjective": "Mit erfahrenen Jugendtrainern präzise in moderner DFB-Fachsprache über Vororientierung, Halbräume und Umschaltmomente fachsimpeln.",
+      "germanInput": "Nach dem Training sitzen Sie mit dem C-Jugend-Trainer und dem Jugendkoordinator zusammen. Es geht darum, wie frühe 4-Tore-Spielformen später im 9-gegen-9 / 11-gegen-11 helfen.",
+      "audioRequirements": {
+        "deliveryStyle": "Engagiertes Fachgespräch unter Trainern (175 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch gefärbtes Vereins- & Fachdeutsch",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Steffen",
+          "role": "C-Jugend-Trainer (B-Lizenz)",
+          "personality": "Taktikverliebt, skeptisch ob Kleinfeld allein für späteres Positionsspiel reicht",
+          "variety": "Süddeutsch-Standard"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Steffen",
+          "line": "Mal ehrlich unter uns Trainern: Viele Ballkontakte im Drei-gegen-Drei sind ja top, aber wenn die Jungs mit zwölf zu mir hochkommen, stehen sie im Spielaufbau trotzdem oft im Deckungsschatten.",
+          "cue": "Fachlicher Einwand"
+        },
+        {
+          "speaker": "Steffen",
+          "line": "Wie kriegt ihr denn schon bei den Kleinen hin, dass die nich’ bloß dem Ball nachjagen, sondern offene Räume überhaupt wahrnehmen?",
+          "cue": "Fragt nach Ihrer Trainingsmethodik"
+        }
+      ],
+      "transcript": "Steffen: Mal ehrlich unter uns Trainern: Viele Ballkontakte im Drei-gegen-Drei sind ja top, aber wenn die Jungs mit zwölf zu mir hochkommen, stehen sie im Spielaufbau trotzdem oft im Deckungsschatten.\nSteffen: Wie kriegt ihr denn schon bei den Kleinen hin, dass die nich’ bloß dem Ball nachjagen, sondern offene Räume überhaupt wahrnehmen?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "Wie kriegt ihr denn ... hin",
+          "standard": "Wie erreicht ihr methodisch",
+          "note": "Natürliches gesprochenes Fachdeutsch unter Kollegen"
+        }
+      ],
+      "vocabulary": [
+        "im Deckungsschatten stehen — hinter dem Gegenspieler nicht anspielbar sein",
+        "die Vororientierung (offene Spielstellung) — vor der Ballannahme den Raum scannen",
+        "über Provokationsregeln steuern — Spielverhalten durch kluge Zonen-/Torregeln statt Vorträge auslösen"
+      ],
+      "usefulExpressions": [
+        "Genau da greift für mich die Steuerung über Provokationsregeln statt über starre Positionstafeln.",
+        "Wenn ein Tor auf das breite Minitor doppelt zählt nach Seitenverlagerung, lösen sich die Kids fast automatisch aus dem Ballknäuel.",
+        "So legen wir implizit die Vororientierung an, auf der du später in der C-Jugend die Halbraumbesetzung aufbauen kannst."
+      ],
+      "grammarPatterns": [
+        "Methodische Kausalkette im Trainerdiskurs: ‚Indem wir [Provokationsregel] setzen, fördern wir implizit [Spielverhalten], ohne die Kinder kognitiv zu überfrachten.‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Welches Problem beobachtet Steffen später bei 12- bis 13-Jährigen?",
+          "options": [
+            "Dass Spieler im Spielaufbau hinter Gegenspielern (im Deckungsschatten) stehen bleiben, statt sich anspielbar im offenen Raum zu zeigen.",
+            "Dass sie körperlich zu langsam laufen.",
+            "Dass sie keine Schuhe binden können.",
+            "Dass sie zu viele Tore schießen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Mangelnde Freilaufbewegung und Raumwahrnehmung außerhalb des Deckungsschattens."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Was unterscheidet Ihr Register hier gegenüber Steffen fundamental vom Kinder-Register auf dem Platz?",
+          "options": [
+            "Unter Trainern nutzen Sie präzise Methodikbegriffe (Deckungsschatten, Provokationsregel, Vororientierung, implizites Lernen), die Sie vor 8-Jährigen nie aussprechen würden.",
+            "Sie sprechen mit Steffen wie mit einem Grundschulkind.",
+            "Sie verwenden ausschließlich englische Fußballwörter.",
+            "Es gibt keinerlei Unterschied."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Gezielter Einsatz professioneller Trainings- und Taktikterminologie unter Kollegen."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was bedeutet „über Provokationsregeln steuern“ in der modernen Trainingslehre?",
+          "options": [
+            "Die Spielform (Zonen, Torwertung, Überzahl) so gestalten, dass die gewünschte Lösung für die Spieler am lohnendsten wird.",
+            "Den Gegner verbal provozieren.",
+            "Das Spiel alle 20 Sekunden mit der Pfeife einfrieren.",
+            "Runden ohne Ball laufen lassen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Implizite Steuerung des Entscheidungsverhaltens durch intelligente Spielregeln."
+          ]
+        }
+      ],
+      "speakingTask": "Antworten Sie Steffen auf Trainer-Augenhöhe: Geben Sie ihm beim Deckungsschatten-Punkt recht und erklären Sie an einem konkreten Beispiel, wie Sie Raumwahrnehmung über Spielformen/Provokationsregeln anbahnen.",
+      "interactionTask": "Steffen hakt interessiert nach: „Spannend! Und wie handhabt ihr’s, wenn ein spielstarker Junge dann einfach jedes Mal allein durch alle drei durchmarschiert, statt den freien Mitspieler mitzunehmen?“ Antworten Sie methodisch konkret.",
+      "expectedResponseCharacteristics": [
+        "Souveräne Fußball-Fachsprache (Deckungsschatten, Vororientierung, Provokationsregel, Seitenverlagerung, Überzahl)",
+        "Kollegialer Dialogton (‚Da hast du völlig recht ... genau deshalb steuern wir...‘)",
+        "Konkrete Trainingsanpassung bei der Nachfrage (z. B. Tor zählt doppelt nach Zuspiel / Kontaktbegrenzung nur für den stärksten Spieler)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Bei uns machen wir vier Tore, deshalb müssen die Kinder mehr schauen, wo Platz ist. Das hilft später für deine Mannschaft.",
+        "verdict": "Inhaltlich richtig, schöpft aber das fachliche Trainer-Register (B-/C-Lizenz-Niveau) noch nicht aus."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Professioneller Trainerdiskurs (C1)",
+          "text": "Den Punkt seh ich zu hundert Prozent – reines Bolzen ohne Steuerung löst das später nicht. Deshalb arbeiten wir viel mit Provokationsregeln: Wenn ein Treffer nach Verlagerung aufs gegenüberliegende Minitor doppelt zählt, heben die Kids automatisch früher den Kopf und lösen sich aus dem Ballzentrum. Damit legst du implizit genau die Vororientierung an, die sie später bei dir im Halbraum brauchen."
+        },
+        {
+          "register": "Kollegial am Taktikboard (Co-Trainer)",
+          "text": "Im ersten Drittel stehen unsere Achter noch zu flach; wenn einer leicht im Halbraum aufdreht, kommen wir viel sauberer ins Tempo."
+        },
+        {
+          "register": "DFB-Lizenz-Fachsprache",
+          "text": "Für die Spieleröffnung sollten wir die Anschlussaktion nach Ballgewinn vororientieren, statt unter Druck blind die Linie entlangzuschlagen."
+        }
+      ],
+      "errorClassifications": [
+        "VOCABULARY: ‚Deckungsschatten / Provokationsregel / Vororientierung / Seitenverlagerung‘",
+        "REGISTER: Im Gespräch unter Lizenztrainern im zu simplen Alltagsregister geblieben",
+        "ACTIVE_RETRIEVAL: Konkrete Variationsregel bei der Nachfrage spontan abrufen"
+      ],
+      "correctionGuidance": "Verbinde im Trainerdiskurs immer Trainingsform + methodischen Fachbegriff + konkreten Transfereffekt fürs Spiel.",
+      "transferTask": "Transfer (Gegenpressing-Diskussion): Ein Trainerkollege meint, Umschalttraining bringe erst ab der B-Jugend etwas. Erklären Sie differenziert den Unterschied zwischen kollektivem Gegenpressing im Großfeld und spielerischer Ballrückeroberung im Kleinfeld.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Indem wir über Provokationsregeln belohnen, dass [Spielaktion], fördern wir implizit die Vororientierung außerhalb des Deckungsschattens.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 4 Tage -> 14 Tage"
+    },
+    {
+      "id": "pf_coach_05",
+      "scenarioFamilyId": "fam_sv1845_cotrainer_lizenz",
+      "title": "Vor dem Training: Warteschlange am Hütchenparcours diplomatisch umbauen",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Dem Haupttrainer diplomatisch eine intensivere Spielform statt Stand-Übung vorschlagen",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Register 2: Kollegiale Trainingsplanung im Trainerteam",
+      "difficulty": "B2+",
+      "visualSceneType": "FUNINO_PITCH_SPLIT",
+      "learningObjective": "Als Co-Trainer einem erfahrenen Haupttrainer respektvoll eine aktivere Trainingsform mit mehr Ballkontakten vorschlagen, ohne belehrend aufzutreten.",
+      "germanInput": "15 Minuten vor Trainingsbeginn zeigt Ihnen Ihr Haupttrainer seinen Plan: Alle 14 Kinder stehen in EINER Reihe vor dem Tor zum Torschuss an (lange Standzeit bei 4 Grad Kälte).",
+      "audioRequirements": {
+        "deliveryStyle": "Kollegial, kurz vor Trainingsstart am Ballschrank (165 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Alltag",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Jürgen",
+          "role": "Haupttrainer F-Jugend",
+          "personality": "Herzensgut, seit 12 Jahren ehrenamtlich dabei, macht manches aus Gewohnheit",
+          "variety": "Schwäbisch gefärbt"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Jürgen",
+          "line": "So, heut mach mer zwanzig Minuten Torschussreihe aufs große Jugendtor – einer flankt, einer schießt, der Rest stellt sich brav hinten an. Passt für dich, oder?",
+          "cue": "Fragt kurz nach Ihrer Meinung"
+        }
+      ],
+      "transcript": "Jürgen: So, heut mach mer zwanzig Minuten Torschussreihe aufs große Jugendtor – einer flankt, einer schießt, der Rest stellt sich brav hinten an. Passt für dich, oder?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "heut mach mer",
+          "standard": "heute machen wir",
+          "note": "Typisch süddeutsche Wir-Form ‚mach mer‘"
+        }
+      ],
+      "vocabulary": [
+        "die Standzeit minimieren — vermeiden, dass Kinder frierend in Schlangen warten",
+        "parallel auf zwei Stationen aufteilen — pragmatischer Co-Trainer-Vorschlag",
+        "spielnah mit Nachsetzen verbinden — mehr Aktionen und Realitätsbezug"
+      ],
+      "usefulExpressions": [
+        "Torschuss als Schwerpunkt find ich heute super – wollen wir die 14 Kids wegen der Kälte vielleicht direkt auf zwei parallele Stationen halbieren?",
+        "Du könntest drüben den Abschluss nach Zuspiel coachen, und ich nehm sieben Kids nebenan ins schnelle Zwei-gegen-Eins auf zwei Minitore.",
+        "Dann steht keiner frierend in der Schlange und nach zehn Minuten tauschen wir einfach durch."
+      ],
+      "grammarPatterns": [
+        "Wertschätzender Co-Trainer-Vorschlag: ‚[Ziel bestätigen] + wollen wir wegen [praktischer Grund: Kälte/14 Kinder] vielleicht [Aufteilung] machen?‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was ist das methodische Hauptproblem an Jürgens ursprünglichem Aufbau mit 14 Kindern in einer Reihe?",
+          "options": [
+            "Extrem lange Warte-/Standzeiten in der Kälte und sehr wenige Aktionen pro Kind.",
+            "Dass Torschuss im Fußball unwichtig ist.",
+            "Dass Jürgen zu pünktlich ist.",
+            "Dass man dafür zu viele Bälle braucht."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Hohe Standzeit, Auskühlen und geringe Aktionsdichte."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Warum klappt der Vorschlag „Torschuss find ich super – lass uns wegen der Kälte in zwei 7er-Stationen teilen, ich übernehm die zweite“ zwischenmenschlich so gut?",
+          "options": [
+            "Er bestätigt Jürgens Trainingsschwerpunkt, nennt einen sachlichen Grund (Kälte) und bietet sofort eigene Arbeitsteilung an.",
+            "Er erklärt Jürgen, dass seine Methoden veraltet sind.",
+            "Er übernimmt heimlich die Mannschaftsleitung.",
+            "Er sagt das Training ab."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Gesichtswahrende Kooperation auf Augenhöhe statt Besserwisserei."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was signalisiert Jürgens „Passt für dich, oder?“?",
+          "options": [
+            "Er bindet Sie kollegial ein – ein kurzes, konstruktives Mitgestalten ist genau jetzt möglich.",
+            "Er verbietet jeden Vorschlag.",
+            "Er will heute nach Hause gehen.",
+            "Er testet Ihre Aussprache."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Offenes Fenster für einen partnerschaftlichen Ergänzungsvorschlag."
+          ]
+        }
+      ],
+      "speakingTask": "Schlagen Sie Jürgen jetzt spontan und kameradschaftlich die Aufteilung in zwei parallele Stationen (mit Ihrem konkreten Part) vor.",
+      "interactionTask": "Jürgen meint: „Hm, stimmt schon bei vier Grad – aber haben wir auf dem halben Platz überhaupt genug Platz für zwei Torschussfelder nebeneinander, ohne dass uns die Bälle dauernd rüberfliegen?“ Lösen Sie das praktisch!",
+      "expectedResponseCharacteristics": [
+        "Bestätigt zuerst Jürgens Thema (Torschuss)",
+        "Verwendet ‚wir‘ und bietet sofortige Übernahme der zweiten Station an",
+        "Löst die Platz-/Sicherheitsfrage konkret (entgegengesetzte Spielrichtung / Minitore Richtung Zaun)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Eine Schlange mit 14 Kindern ist zu lang, der DFB sagt wir sollen kleine Gruppen machen.",
+        "verdict": "Fachlich richtig, wirkt mit ‚der DFB sagt...‘ gegenüber einem langjährigen Ehrenamtlichen aber schnell oberlehrerhaft."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Kollegial & smart im Trainerteam",
+          "text": "Torschuss passt heute richtig gut! Wollen wir die vierzehn Jungs und Mädels bei der Kälte direkt in zwei Siebenergruppen splitten? Du nimmst das Jugendtor, ich bau daneben ein schnelles Zwei-gegen-Eins auf Minitore Richtung Zaun auf, und nach zehn Minuten wechseln wir durch – dann bleiben alle warm in Bewegung."
+        },
+        {
+          "register": "Freundlich-klar am Spielfeldrand (Eltern)",
+          "text": "Ich versteh total, dass man mitfiebert – lasst die Kids im FUNiño bitte selbst entscheiden, wann sie schießen oder dribbeln, genau so lernen sie’s am schnellsten."
+        },
+        {
+          "register": "Verbindlich im kurzen Elterngespräch",
+          "text": "Uns ist bei SV 1845 wichtig, dass alle Kinder gleich viel Spielzeit und Ballaktionen bekommen; Ergebnisse zählen in der F-Jugend bewusst noch nicht."
+        }
+      ],
+      "errorClassifications": [
+        "REGISTER: Belehrender Verbands-Ton statt kameradschaftlicher ‚Wollen-wir‘-Einladung",
+        "SITUATIONAL_UNDERSTANDING: Praktischen Aufhänger (Kälte + Arbeitsteilung) nicht genutzt",
+        "SENTENCE_FORMULATION: Unklare räumliche Beschreibung bei der Rückfrage"
+      ],
+      "correctionGuidance": "Vermeide unter Ehrenamtlichen ‚Man muss laut DFB...‘. Bestätige das Ziel, nutze die Kälte/Gruppengröße als praktischen Grund und biete deine eigene Station aktiv an.",
+      "transferTask": "Transfer (Abschlussspiel 7 gegen 7 auf ein Feld): Ein Kind hat kaum Ballkontakte am Rand. Schlagen Sie Ihrem Haupttrainer in der Trinkpause vor, zwei parallele 3v3/4v4-Felder für die letzten 12 Minuten zu machen.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Schwerpunkt passt super! Wollen wir die Gruppe direkt auf zwei parallele Felder splitten, damit keiner kalt rumsteht? Ich bau drüben direkt auf.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 10 Tage"
+    },
+    {
+      "id": "pf_coach_06",
+      "scenarioFamilyId": "fam_sv1845_cotrainer_lizenz",
+      "title": "DFB-Lizenz-Nachgespräch: Trainingssteuerung bei kurzfristiger Spielerabsage begründen",
+      "skill": "FOOTBALL_COACHING",
+      "subskill": "DFB-Lizenzlehrprobe: Spontane Trainingsanpassung & Coaching-Fokus verteidigen",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Register 2: Formell-fachliches Prüfungs- & Ausbildergespräch (C-/B-Lizenz)",
+      "difficulty": "ADVANCED_C1",
+      "visualSceneType": "MULTI_SPEAKER_TABLE",
+      "learningObjective": "Vor einem Verbandsausbilder souverän begründen, warum Sie Ihre geplante Spielform spontan angepasst und Ihr Coaching auf einen klaren Schwerpunkt reduziert haben.",
+      "germanInput": "Bei Ihrer Lehrprobe für die Trainerlizenz standen plötzlich 9 statt 12 Spieler auf dem Platz. Sie haben aus dem geplanten 6-gegen-6 spontan ein 4-gegen-4 plus 1 neutralen Wandspieler (Überzahl bei Ballbesitz) gemacht.",
+      "audioRequirements": {
+        "deliveryStyle": "Prüfendes, präzises Fachgespräch am Lehrgangsort (170 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch (Sportverband)",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Frank Lehner",
+          "role": "WFV-/DFB-Ausbilder",
+          "personality": "Sachlich-fordernd, prüft den roten Faden zwischen Ziel, Spielform und Coaching",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Frank Lehner",
+          "line": "Kommen wir kurz zur Reflexion Ihrer Einheit: Sie mussten von zwölf auf neun Spieler umbauen und haben einen Neutralen reingenommen.",
+          "cue": "Prüfungseinstieg"
+        },
+        {
+          "speaker": "Frank Lehner",
+          "line": "Hat diese Überzahl Ihr eigentliches Thema ‚Lösen aus engem Gegnerdruck‘ nicht zu einfach gemacht – und warum haben Sie in den ersten fünf Minuten fast gar nicht unterbrochen?",
+          "cue": "Doppelfrage mit kritischer These!"
+        }
+      ],
+      "transcript": "Frank Lehner: Kommen wir kurz zur Reflexion Ihrer Einheit: Sie mussten von zwölf auf neun Spieler umbauen und haben einen Neutralen reingenommen.\nFrank Lehner: Hat diese Überzahl Ihr eigentliches Thema ‚Lösen aus engem Gegnerdruck‘ nicht zu einfach gemacht – und warum haben Sie in den ersten fünf Minuten fast gar nicht unterbrochen?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "reingenommen",
+          "standard": "hinzugenommen / integriert",
+          "note": "Natürliches gesprochenes Ausbilder-Deutsch"
+        }
+      ],
+      "vocabulary": [
+        "der rote Faden der Einheit — Stimmigkeit zwischen Lernziel, Organisation und Coaching",
+        "über die Feldgröße den Zeit- und Gegnerdruck regulieren — präzise Steuergröße",
+        "erst beobachten, dann gezielt im Einfrieren/Kurz-Coaching eingreifen — methodisches Prinzip"
+      ],
+      "usefulExpressions": [
+        "Um trotz der 5-gegen-4-Überzahl den geplanten Gegnerdruck zu erhalten, habe ich das Feld bewusst um fünf Meter verengt.",
+        "Dadurch hatten die Spieler zwar eine Anspielstation mehr, aber deutlich weniger Zeit am Ball.",
+        "In den ersten fünf Minuten habe ich bewusst zunächst den Spielfluss beobachtet, um zu prüfen, ob die Spielform das Problem schon selbst aufwirft, bevor ich den ersten Coaching-Punkt setze."
+      ],
+      "grammarPatterns": [
+        "Präzise Konzessiv-Begründung vor Prüfern: ‚Zwar entstand durch den Neutralen eine numerische Überzahl, durch die Verengung des Raums blieb der reale Zeitdruck jedoch hoch.‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Welche zwei Teilfragen stellt Ausbilder Lehner gleichzeitig?",
+          "options": [
+            "1. Ob das 4v4+1 den Gegnerdruck verwässert hat, und 2. warum Sie anfangs 5 Minuten ohne Unterbrechung laufen ließen.",
+            "1. Warum drei Spieler krank waren, und 2. welche Trikotfarbe besser aussieht.",
+            "1. Wie alt die Spieler sind, und 2. wann das Abendessen beginnt.",
+            "1. Warum Sie keinen Konditionslauf gemacht haben, und 2. wer gewonnen hat."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Steuerung des Gegnerdrucks trotz Überzahl + Begründung des anfänglichen Beobachtens."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Worauf will ein DFB-Ausbilder mit einer solchen kritischen Doppelfrage hinaus?",
+          "options": [
+            "Er prüft, ob Sie Ihre organisatorische Anpassung (Raumgröße/Spielerzahl) und Ihr Coaching-Timing bewusst begründen können.",
+            "Er möchte, dass Sie Ihre komplette Einheit als Fehler bezeichnen.",
+            "Er verlangt auswendig gelernte Buchsätze.",
+            "Er testet nur Ihre Lautstärke."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Nachweis bewusster methodischer Steuerung (Raum-Zeit-Gegnerdruck + Beobachtungsphase)."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Welche Steuergröße gleicht eine numerische Überzahl (4+1 gegen 4) im Fußballtraining am direktesten wieder aus?",
+          "options": [
+            "Eine bewusste Verkleinerung/Verengung des Spielfelds (weniger Raum = höherer Zeitdruck) oder Kontaktbegrenzung für den Neutralen.",
+            "Ein noch größeres Spielfeld über den ganzen Platz.",
+            "Zehn Minuten Trinkpause.",
+            "Abschaffung der Tore."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Raumverengung oder Kontaktlimitierung des Neutralen hält den Entscheidungsdruck hoch."
+          ]
+        }
+      ],
+      "speakingTask": "Beantworten Sie beide Teilfragen von Herrn Lehner strukturiert und souverän (erst Raumsteuerung beim 4v4+1, dann bewusste 5-Minuten-Beobachtungsphase).",
+      "interactionTask": "Lehner hakt nach: „Wenn Sie dieselbe Einheit morgen nochmal halten würden – welche EINE Sache würden Sie im Hauptteil trotzdem schärfer justieren?“ Antworten Sie reflektiert ohne sich kleinzumachen.",
+      "expectedResponseCharacteristics": [
+        "Geht geordnet auf beide Teilfragen ein (‚Zum ersten Punkt ... und was die ersten fünf Minuten betrifft...‘)",
+        "Verwendet präzise Steuerungsbegriffe (numerische Überzahl, Feldgröße verengen, Zeitdruck, Beobachtungsphase)",
+        "Zeigt bei der Nachfassfrage reife Selbstreflexion an einem konkreten Detail (z. B. Zwei-Kontakt-Limit für den Neutralen ab Durchgang 2)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Ich musste 4 gegen 4 plus 1 machen wegen 9 Spielern, aber ich habe das Feld kleiner gemacht. Am Anfang wollte ich erst schauen, wie sie spielen.",
+        "verdict": "Guter sachlicher Kern, gewinnt im Lizenzgespräch durch präzise Verknüpfung von ‚numerischer Überzahl‘ und ‚Zeit-/Gegnerdruck‘ aber enorm an Überzeugungskraft."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Souveräne Lizenz-Reflexion (C1+)",
+          "text": "Zum ersten Punkt: Durch den Neutralen entstand zwar eine leichte Überzahl, deshalb habe ich das Feld in der Breite bewusst verengt, sodass der reale Zeit- und Gegnerdruck beim Aufdrehen erhalten blieb. Und in den ersten fünf Minuten wollte ich zunächst den Rhythmus entstehen lassen und beobachten, welches Muster sich tatsächlich wiederholt, bevor ich gezielt die offene Spielstellung gecoacht habe."
+        },
+        {
+          "register": "Strukturierte Halbzeit-/Spielanalyse (Trainerteam)",
+          "text": "Nach Ballverlust schalten wir im Zentrum zwei Sekunden zu spät um; im nächsten Training brauchen wir kleine Umschaltspiele mit sofortigem Gegenpressing-Impuls."
+        },
+        {
+          "register": "Ausbildungsfokus (Kinder- & Jugendkonzept)",
+          "text": "Mir ist wichtiger, dass sie mutig ins Eins-gegen-Eins gehen und Lösungen suchen, als dass wir das Ergebnis über lange Bälle verwalten."
+        }
+      ],
+      "errorClassifications": [
+        "SENTENCE_FORMULATION: Bei Doppelfragen den zweiten Teil vergessen",
+        "VOCABULARY: ‚numerische Überzahl / Zeit- und Gegnerdruck / offene Spielstellung / nachjustieren‘",
+        "REGISTER: Zu defensive Rechtfertigung statt methodischer Begründung"
+      ],
+      "correctionGuidance": "Gliedere Doppelfragen im Fachgespräch hörbar: ‚Zur Raum- und Spielersteuerung: ... Und zum Coaching-Timing in den ersten Minuten: ...‘",
+      "transferTask": "Transfer (Bewerbungsgespräch / Praxissemester-Abschlusskolloquium an der HS Esslingen): Der Prüfer fragt zweigeteilt, warum Sie ein vereinfachtes 1D-Simulationsmodell gewählt haben und warum Sie erst spät validiert haben. Antworten Sie nach derselben Zweischritt-Struktur.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Zwar entstand durch [Anpassung] eine Überzahl, über die Verengung des Raums blieb der reale Entscheidungsdruck jedoch erhalten.‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 4 Tage -> 14 Tage -> 30 Tage"
+    },
+    {
+      "id": "pf_alltag_04",
+      "scenarioFamilyId": "fam_everyday_kasse_service",
+      "title": "Unerwartete Einladung an der S-Bahn Esslingen: Zu- oder Absagen mit Feingefühl",
+      "skill": "COLLOCATIONS_PARTICLES",
+      "subskill": "Spontane Einladung & Terminabsprache mit Modalpartikeln (mal, eigentlich, doch, halt)",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Lockerer Alltag unter Kommilitonen / Nachbarn",
+      "difficulty": "B2+",
+      "visualSceneType": "PARTICLE_TONE_DIAL",
+      "learningObjective": "Auf eine spontane Einladung warm und natürlich reagieren, auch wenn man wegen Training beim SV 1845 heute absagen und direkt eine konkrete Alternative vorschlagen muss.",
+      "germanInput": "An der S-Bahn-Station Esslingen treffen Sie zufällig zwei Kommilitonen von der Hochschule, die spontan noch auf die Neckarinsel gehen wollen.",
+      "audioRequirements": {
+        "deliveryStyle": "Spontan, herzlich, S-Bahn-Hintergrund (170 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Alltag",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Nina",
+          "role": "Kommilitonin HS Esslingen",
+          "personality": "Offen, spontan",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Nina",
+          "line": "Hey, dich sieht man ja auch mal außerhalb vom Labor! Komm doch noch ’ne Stunde mit runter an’ Neckar, oder musst du schon wieder los?",
+          "cue": "doch + mal = herzliche, ungezwungene Einladung"
+        }
+      ],
+      "transcript": "Nina: Hey, dich sieht man ja auch mal außerhalb vom Labor! Komm doch noch ’ne Stunde mit runter an’ Neckar, oder musst du schon wieder los?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "runter an’ Neckar",
+          "standard": "hinunter an den Neckar",
+          "note": "Natürliche Richtungsverkürzung in Esslingen"
+        }
+      ],
+      "vocabulary": [
+        "total gern, aber ich bin heute schon verplant — warme Absage ohne Kälte",
+        "das holen wir auf jeden Fall nach! — verbindliches Signal für echtes Interesse",
+        "wie sieht’s bei euch am Donnerstag aus? — konkreter Gegenvorschlag"
+      ],
+      "usefulExpressions": [
+        "Boah, wär ich echt gern dabei – ich muss nur in zwanzig Minuten schon auf dem Trainingsplatz bei den Kids stehen!",
+        "Lasst uns das doch direkt am Donnerstag nach der Vorlesung nachholen, habt ihr da Zeit?",
+        "Grüßt die anderen lieb von mir!"
+      ],
+      "grammarPatterns": [
+        "Irrealer Wunsch mit Verb-Erst-Umgangssprache: ‚Wär ich echt gern dabei, ich muss nur leider...‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Welche Stimmung erzeugt „Komm doch noch ’ne Stunde mit“ durch die Partikel „doch“?",
+          "options": [
+            "Eine herzliche, unkomplizierte Einladung ohne Druck.",
+            "Einen strengen Befehl.",
+            "Einen Vorwurf wegen Fehlzeiten.",
+            "Eine formelle Prüfungseinladung."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Freundlich-ermunternde Einladung."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Wodurch unterscheidet sich im Deutschen eine herzliche Absage von einem kühlen Abblocken?",
+          "options": [
+            "Man zeigt echte Freude über die Frage, nennt kurz den Grund und schlägt von sich aus sofort einen konkreten Ersatztermin vor.",
+            "Man sagt nur „Nein, keine Zeit“ und geht weiter.",
+            "Man sagt zum Schein zu und erscheint dann nicht.",
+            "Man schreibt später eine formelle E-Mail."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Wertschätzung + kurzer Grund + konkreter Gegenvorschlag."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was schwingt in „dich sieht man ja auch mal außerhalb vom Labor!“ mit?",
+          "options": [
+            "Freundliches Necken unter Studierenden, weil Sie viel arbeiten/studieren.",
+            "Ernsthafte Kritik an Ihrem Studium.",
+            "Hausverbot im Labor.",
+            "Verwechslung mit einer anderen Person."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Sympathischer kleiner Scherz über Ihren vollen Zeitplan."
+          ]
+        }
+      ],
+      "speakingTask": "Greifen Sie Ninas Scherz kurz lächelnd auf, sagen Sie wegen Ihres F-Jugend-Trainings herzlich ab und schlagen Sie konkret Donnerstag vor.",
+      "interactionTask": "Nina lacht: „Donnerstag klingt top – bringst du dann eigentlich auch mal den neuen Praktikanten aus deinem Antriebsteam mit?“ Antworten Sie locker.",
+      "expectedResponseCharacteristics": [
+        "Warmes Eingehen auf den Spruch",
+        "Natürliche Modalpartikeln (echt, leider, doch, mal)",
+        "Konkreter Gegenvorschlag statt unverbindlichem ‚irgendwann‘"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Danke für die Einladung, aber ich kann heute nicht kommen, weil ich Fußballtraining habe. Vielleicht nächste Woche.",
+        "verdict": "Korrekt und höflich, klingt unter Studierenden an der S-Bahn aber etwas distanziert (‚Vielleicht nächste Woche‘ wirkt oft wie kein echtes Interesse)."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Locker & herzlich (Alltags-C1)",
+          "text": "Haha ja, ab und zu lassen sie mich tatsächlich raus! Ich wär echt super gern mitgekommen, muss aber gleich rüber zum Kindertraining beim SV 1845 – wie sieht’s denn bei euch am Donnerstag nach der Vorlesung aus?"
+        },
+        {
+          "register": "Freundlich-direkt im Hausflur",
+          "text": "Ach super, danke fürs Annehmen! Ich hol’s gleich runter – hatten Sie heute viel Stress mit der Zustellung?"
+        },
+        {
+          "register": "Nachbarschaftlich-warm (Esslingen)",
+          "text": "Mega lieb von Ihnen, echt! Wenn mal wieder was für Sie kommt, klingeln Sie einfach kurz durch, gell."
+        }
+      ],
+      "errorClassifications": [
+        "NATURALNESS: Lehrbuchformel ‚Danke für die Einladung‘ unter Gleichaltrigen",
+        "SITUATIONAL_UNDERSTANDING: Vages ‚vielleicht nächste Woche‘ wird in Deutschland oft als Desinteresse gelesen",
+        "ACTIVE_RETRIEVAL: ‚nachholen / verplant sein / wie sieht’s am Donnerstag aus‘"
+      ],
+      "correctionGuidance": "Unter Freunden/Kommilitonen statt ‚Danke für die Einladung‘ lieber direkt ‚Boah, da wär ich echt gern dabei!‘ + konkreten Tag vorschlagen.",
+      "transferTask": "Transfer (Feierabendbier im Mercedes-Team): Ihr Kollege fragt donnerstags um 16:30 Uhr spontan, ob Sie noch mit in den Biergarten kommen, aber Sie haben morgen früh eine Klausur an der HS Esslingen. Sagen Sie sympathisch ab mit Gegenvorschlag.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Da wär ich echt gern dabei – ich bin heute nur schon beim Training eingespannt. Wollen wir das Donnerstag direkt nachholen?‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 10 Tage"
+    },
+    {
+      "id": "pf_listen_04",
+      "scenarioFamilyId": "fam_swabian_colleagues_multi",
+      "title": "Spontan-Rettung im Gespräch: Weiterreden, wenn das exakte Wort kurz fehlt",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Wortfindungs-Lücke mitten im Satz elegant überbrücken (Conversational Repair)",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Natürliche Überbrückungsstrategien im Gespräch ohne Englisch-Rückfall",
+      "difficulty": "C1",
+      "visualSceneType": "WAVEFORM_RADAR",
+      "learningObjective": "Wenn unter Zeitdruck ein deutsches Fach- oder Alltagswort fehlt, ohne ins Englische zu wechseln mit natürlichen deutschen Umschreibungs-Brücken im Redefluss bleiben.",
+      "germanInput": "Im Gespräch mit Nachbarn und Kollegen wollen Sie erklären, dass die Dichtung am Fenster porös geworden ist und es zieht – genau das Wort ‚Dichtung / porös‘ fällt Ihnen im Moment nicht ein.",
+      "audioRequirements": {
+        "deliveryStyle": "Lebhaftes Alltagsgespräch (165 Silben/Min.)",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch",
+        "ttsDisclosure": "Synthetische TTS-Vorschau (keine muttersprachliche Aufnahme)",
+        "nativeAudioAsset": "MISSING_NATIVE_AUDIO"
+      },
+      "speakers": [
+        {
+          "name": "Katrin",
+          "role": "Kollegin",
+          "personality": "Aufmerksam, hilft gern weiter, wenn der Faden klar bleibt",
+          "variety": "Standarddeutsch"
+        }
+      ],
+      "transcriptTurns": [
+        {
+          "speaker": "Katrin",
+          "line": "Und, hat euer Vermieter in Esslingen jetzt endlich was wegen der kalten Zugluft im Wohnzimmer gemacht?",
+          "cue": "Offene Alltagsfrage"
+        }
+      ],
+      "transcript": "Katrin: Und, hat euer Vermieter in Esslingen jetzt endlich was wegen der kalten Zugluft im Wohnzimmer gemacht?",
+      "connectedSpeechReductions": [
+        {
+          "spoken": "was wegen der",
+          "standard": "etwas bezüglich der",
+          "note": "Natürliches ‚was‘ statt ‚etwas‘ im Gespräch"
+        }
+      ],
+      "vocabulary": [
+        "wie heißt das noch gleich — natürliche deutsche Überbrückungsformel",
+        "dieser Gummistreifen rund ums Fenster (Umschreibung für Fensterdichtung)",
+        "brüchig / undicht werden — alltagstaugliche funktionale Alternative zu ‚porös‘"
+      ],
+      "usefulExpressions": [
+        "Ich komme grad nicht auf den genauen Begriff – ich meine diesen schwarzen Gummirahmen innen am Fensterflügel, der den Spalt abdichtet.",
+        "Der ist über die Jahre total spröde geworden, sodass der Wind direkt durchzieht.",
+        "Genau, die Fensterdichtung meinte ich – danke!"
+      ],
+      "grammarPatterns": [
+        "Funktionaler Relativsatz als Echtzeit-Brücke: ‚dieses Teil / dieser Streifen am [Ort], womit / der dafür sorgt, dass ...‘"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was unterscheidet souveräne C1-Sprecher bei einer kurzen Wortlücke von B1/B2-Lernenden?",
+          "options": [
+            "Sie brechen den Satz nicht ab und wechseln nicht auf Englisch, sondern umschreiben Funktion + Ort flüssig auf Deutsch.",
+            "Sie kennen ausnahmslos jedes seltene Substantiv der deutschen Sprache.",
+            "Sie schweigen zehn Sekunden lang komplett.",
+            "Sie beenden sofort das Thema."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Flüssige funktionale Umschreibung auf Deutsch hält das Gespräch mühelos am Laufen."
+          ]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Welche kurze Formel überbrückt 1,5 Sekunden Nachdenken absolut muttersprachlich?",
+          "options": [
+            "„Mir fehlt grad das genaue Wort – ich meine diesen Gummistreifen, der ...“",
+            "„Sorry, how do you say rubber seal in German?“",
+            "„Ähm ... ähm ... Moment ...“",
+            "„Ich spreche nicht genug Deutsch.“"
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Natürliche deutsche Metakommunikation + funktionale Beschreibung."
+          ]
+        },
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Wie bestätigen Sie elegant, wenn das Gegenüber Ihnen das gesuchte Wort („Ach, die Dichtung!“) zuwirft?",
+          "options": [
+            "Kurz aufgreifen („Genau, die Fensterdichtung!“) und nahtlos den Gedanken zu Ende führen.",
+            "Sich dreimal für den Fehler entschuldigen.",
+            "Das Wort ignorieren.",
+            "Aufhören zu sprechen."
+          ],
+          "correctIndex": 0,
+          "acceptableInterpretations": [
+            "Kurzes Aufgreifen verankert das Wort sofort im eigenen Gedächtnis und hält den Fluss."
+          ]
+        }
+      ],
+      "speakingTask": "Beantworten Sie Katrins Frage flüssig auf Deutsch – umschreiben Sie dabei bewusst ein Bauteil über seine Funktion, ohne ein englisches Wort einzubauen!",
+      "interactionTask": "Katrin wirft ein: „Ach so, du meinst die Gummidichtung am Rahmen! Hat die Hausverwaltung denn schon ’nen Handwerker geschickt?“ Greifen Sie das Wort auf und führen Sie den Punkt zu Ende.",
+      "expectedResponseCharacteristics": [
+        "Kein englisches Ersatzwort",
+        "Natürliche deutsche Überbrückungsformel + präzise Funktionsbeschreibung",
+        "Sofortiges aktives Aufgreifen des zugeworfenen Begriffs in der Folgerunde"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Der Vermieter muss das ... äh ... rubber seal wechseln, weil es alt ist.",
+        "verdict": "Der Englisch-Switch reißt Sie sofort zurück in den Übersetzungsmodus."
+      },
+      "acceptableAlternatives": [
+        {
+          "register": "Natürliche C1-Reparaturbrücke",
+          "text": "Noch nicht ganz – es liegt an diesem umlaufenden Gummistreifen am Fensterrahmen, mir fällt grad das Wort nicht ein, der eigentlich gegen Zugluft abdichtet. Der ist komplett spröde geworden, und nächste Woche soll endlich der Fensterbauer kommen."
+        },
+        {
+          "register": "Souverän bei Ironie nachhaken",
+          "text": "Okay, ‚sportlich‘ klingt nach Bauchschmerzen – sag ehrlich, wo klemmt’s beim Zeitplan am meisten?"
+        },
+        {
+          "register": "Sachlich-konstruktiv entschärfen",
+          "text": "Verstanden, der Termin ist extrem eng. Was müssten wir streichen, damit der Kern bis dahin stabil steht?"
+        }
+      ],
+      "errorClassifications": [
+        "ACTIVE_RETRIEVAL: Rückfall ins Englische statt deutscher Funktions-Umschreibung",
+        "INTERACTION: Satzabbruch bei fehlendem Einzelwort",
+        "NATURALNESS: Übertriebene Selbstentschuldigung statt lockerem ‚mir liegt’s auf der Zunge‘"
+      ],
+      "correctionGuidance": "Trainiere den Reflex: Fehlt ein Nomen -> nenne sofort Oberbegriff (Streifen / Bauteil / Mechanismus) + Ort + ‚der dafür sorgt, dass...‘.",
+      "transferTask": "Transfer (Fußballplatz / Auto): Ihnen fehlt im Gespräch kurz das Wort ‚Spureinstellung / Achsvermessung‘ nach einem Bordsteinkontakt. Erklären Sie dem Werkstattannahmemeister flüssig ohne Englisch, was überprüft werden soll.",
+      "delayedRetrievalTarget": "Abruf-Anker: ‚Mir fehlt grad der genaue Begriff – ich meine [Oberbegriff + Ort], der dafür sorgt, dass ...‘",
+      "reviewSchedule": "10 Min. -> 1 Tag -> 3 Tage -> 7 Tage -> 21 Tage"
+    }
+  ]
+}

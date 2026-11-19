@@ -1,0 +1,473 @@
+{
+  "exercises": [
+    {
+      "id": "yr_he_17",
+      "scenarioFamilyId": "fam_amg_911_dynamics",
+      "title": "Hochschule Esslingen Labor-Kolloquium: Unerwartete Abweichung zwischen Simulation & Prüfstand",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "Modellgrenzen souverän benennen statt Messdaten schönzureden",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Akademisch-technisches Kolloquium M.Eng. Automotive Systems",
+      "difficulty": "C1.2",
+      "visualSceneType": "POWERTRAIN_SIGNAL_FLOW",
+      "learningObjective": "Vor Professor und Kommilitonen erklären, warum das 1D-Simulationsmodell beim Kaltstart 12 % neben dem Rollenprüfstand liegt.",
+      "germanInput": "Im Antriebslabor der Hochschule Esslingen hakt der Professor mitten in Ihrer Folie ein, warum Messung und GT-Power/Simulink-Modell im Warmlauf auseinanderlaufen.",
+      "audioRequirements": {
+        "deliveryStyle": "Prüfendes Hochschul-Kolloquium mit direktem Unterbrechen",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Akademisch",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Prof. Dr. Hartmann", "role": "Laborleiter Verbrennungs- & Hybridtechnik", "personality": "Scharfsinnig, allergisch gegen Ausreden", "variety": "Süddeutsch-Standard" },
+        { "name": "Kommilitone Niklas", "role": "Masterstudent", "personality": "Wirft Messfehler-Verdacht ein", "variety": "Standarddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Prof. Dr. Hartmann", "line": "Moment mal, stoppen Sie kurz auf Folie sieben: Zwischen Sekunde zwanzig und achtzig klaffen Simulation und Prüfstand um satte zwölf Prozent auseinander — wie erklären Sie sich diesen Offset?", "cue": "Direkte Unterbrechung mitten im Vortrag" },
+        { "speaker": "Kommilitone Niklas", "line": "War da vielleicht einfach der Drehmomentmessflansch beim Kaltstart noch nicht sauber genullt?", "cue": "Nebenspur durch Kommilitonen" }
+      ],
+      "transcript": "Prof. Hartmann: Zwischen Sekunde 20 und 80 klaffen Simulation und Prüfstand um 12 Prozent auseinander — wie erklären Sie diesen Offset? Niklas: War der Messflansch noch nicht sauber genullt?",
+      "connectedSpeechReductions": [
+        { "spoken": "klaffen ... um satte zwölf Prozent auseinander", "standard": "weichen um volle zwölf Prozent voneinander ab", "note": "Anschauliches akademisches Verb 'auseinanderklaffen'" }
+      ],
+      "vocabulary": [
+        "auf vereinfachende Modellannahmen zurückzuführen sein",
+        "einen Nullpunktdrift ausschließen können",
+        "Reibungsverluste im kalten Ölkreislauf unterschätzen",
+        "das Kennfeld im Warmlauf nachkalibrieren"
+      ],
+      "usefulExpressions": [
+        "Einen Nullpunktdrift am Messflansch konnten wir über die Referenzmessung ausschließen — die Abweichung geht vielmehr darauf zurück, dass unser Basismodell die erhöhte Getriebereibung unterhalb von zwanzig Grad Öltemperatur noch stationär annähert.",
+        "Sobald das Öl ab Sekunde neunzig auf Betriebstemperatur kommt, decken sich beide Kurven wieder bis auf ein Prozent."
+      ],
+      "grammarPatterns": [
+        "Fehlerspur ausschließen + wahre Ursache benennen: [Hypothese A] konnten wir ausschließen — die Abweichung ist vielmehr darauf zurückzuführen, dass [Ursache B]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "INTENTION",
+          "question": "Was demonstriert im Ingenieurs-Kolloquium höchste fachliche und sprachliche Reife?",
+          "options": [
+            "Sofort der Vermutung des Messfehlers zuzustimmen, ohne es geprüft zu haben.",
+            "Den Messfehler begründet auszuschließen, die physikalische Modellgrenze präzise zu benennen und auf die Konvergenz im warmen Zustand zu verweisen.",
+            "Die Folie schnell weiterzuklicken.",
+            "Zu sagen, dass Simulationen nie stimmen."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Messdrift ausschließen + Kaltreibungs-Modellgrenze benennen + Konvergenz ab 90s zeigen"]
+        }
+      ],
+      "speakingTask": "Parieren Sie beide Einwürfe ruhig und strukturiert: Schließen Sie den Nullpunktfehler aus und führen Sie den Offset auf die vereinfachte Kaltreibungs-Modellierung zurück.",
+      "interactionTask": "Prof. Hartmann nickt: ‚Und welchen nächsten Schritt leiten Sie daraus für Ihre Masterarbeit ab?‘ Antworten Sie in einem präzisen Zielsatz.",
+      "expectedResponseCharacteristics": [
+        "Verwendung von ‚zurückzuführen sein auf‘ oder ‚zurückgehen auf‘",
+        "Souveräner Umgang mit der Unterbrechung"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Der Sensor war richtig kalibriert. Der Unterschied kommt, weil unser Modell kaltes Getriebeöl noch zu einfach rechnet.",
+        "verdict": "Inhaltlich auf den Punkt! Mit ‚auf vereinfachte Reibungsannahmen im Warmlauf zurückgehen‘ klingen Sie wie ein Doktorand."
+      },
+      "acceptableAlternatives": [
+        { "register": "Souverän im Kolloquium (C1+)", "text": "Den Messflansch haben wir vorab geprüft, einen Nullpunktdrift können wir also ausschließen. Der Offset geht vielmehr darauf zurück, dass unser 1D-Modell die temperaturabhängigen Schleppverluste im kalten Getriebeöl bislang unterschätzt — ab achtzig Sekunden liegen Simulation und Messung ja wieder nahezu deckungsgleich übereinander." },
+        { "register": "Prägnant & fokussiert", "text": "Messtechnisch ist das Signal sauber; die Lücke entsteht durch die vereinfachte Kaltreibungs-Kennlinie im Modell, die wir im nächsten Schritt temperaturabhängig nachschärfen." }
+      ],
+      "errorClassifications": ["INTERACTION", "SENTENCE_FORMULATION"],
+      "correctionGuidance": "‚Auf X zurückgehen / auf X zurückzuführen sein‘ + ‚nahezu deckungsgleich liegen‘ sind Goldwert für jede technische Präsentation in Deutschland.",
+      "transferTask": "Wenden Sie dieselbe Struktur im Mercedes-Teammeeting bei einer Abweichung zwischen WLTP-Rolle und RDE-Straßenfahrt an.",
+      "delayedRetrievalTarget": "auf vereinfachte Modellannahmen zurückzuführen sein / nahezu deckungsgleich liegen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 6d -> 15d"
+    },
+    {
+      "id": "yr_amg_18",
+      "scenarioFamilyId": "fam_amg_911_dynamics",
+      "title": "TCU-Schaltapplikation: Rückschalt-Komfort vs. Zugkraftunterbrechung mit Versuchsleiter klären",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "Subjektives Fahrgefühl in objektive Applikationsgrößen übersetzen",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Erprobungsfahrt auf der Teststrecke (Beifahrersitz-Dialog)",
+      "difficulty": "C1.1",
+      "visualSceneType": "POWERTRAIN_SIGNAL_FLOW",
+      "learningObjective": "Während der realen Messfahrt im Auto spontan beschreiben, was sich unharmonisch anfühlt, und direkt den passenden Kalibrierparameter benennen.",
+      "germanInput": "Auf der Erprobungsrunde bremst Ihr Betreuer scharf vor der Kehre an; die Rückschaltung 4→3 im Doppelkupplungsgetriebe fühlt sich ruppig an.",
+      "audioRequirements": {
+        "deliveryStyle": "Spontanes Gespräch im fahrenden Erprobungsfahrzeug",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Ingenieursjargon",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Bernd (Fahrversuch)", "role": "Erfahrener Erprobungsfahrer", "personality": "Fühlt jede Millisekunde im Sitz", "variety": "Schwäbisch" },
+        { "name": "Lisa (TCU-Applikation)", "role": "Getriebeapplikateurin", "personality": "Schaut hinten aufs INCA/ETAS-Laptop", "variety": "Standarddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Bernd (Fahrversuch)", "line": "Hoi, habt ihr des grad g'merkt beim Anbremsen in den Dritten runter? Da haut's dir kurz richtig 'nen Schlag ins Kreuz!", "cue": "Subjektiver Fahreindruck auf Schwäbisch" },
+        { "speaker": "Lisa (TCU-Applikation)", "line": "Ich seh den Peak im Schleppmoment-Trace — du hast den Zwischengas-Stoß gestern bedatet, was würdest du für den nächsten Lauf anpassen?", "cue": "Sofortige Kalibrierfrage im rollenden Auto" }
+      ],
+      "transcript": "Bernd: Habt ihr des g'merkt beim Anbremsen in den Dritten runter? Da haut's dir kurz 'nen Schlag ins Kreuz! Lisa: Du hast den Zwischengas-Stoß bedatet — was würdest du für den nächsten Lauf anpassen?",
+      "connectedSpeechReductions": [
+        { "spoken": "haut's dir kurz 'nen Schlag ins Kreuz", "standard": "entsteht ein deutlicher Längsruck im Antriebsstrang", "note": "Typischer Erprobungsjargon für Schaltstoß" }
+      ],
+      "vocabulary": [
+        "die öffnende und schließende Kupplung sauber überschneiden",
+        "der Zwischengasstoß kommt eine Spur zu spät",
+        "Drehzahldifferenz vor dem Einkuppeln abbauen",
+        "im nächsten Durchlauf sanfter einblenden"
+      ],
+      "usefulExpressions": [
+        "Ja, den Ruck hat man deutlich gespürt — der Zwischengasstoß kam bei der hohen Verzögerung geschätzt fünfzig Millisekunden zu spät, dadurch war die Drehzahldifferenz beim Schließen noch zu groß.",
+        "Lass uns für die nächste Runde die Vorsteuerung beim Anbremsen etwas früher auslösen und den Kupplungsaufbau minimal flacher einblenden."
+      ],
+      "grammarPatterns": [
+        "Ursache-Wirkungs-Kurzform im Auto: [Symptom bestätigen] — [Ursache] kam zu spät, dadurch [physikalische Folge]. Lass uns [Parameter anpassen]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Welche Übersetzungsleistung vollziehen Sie hier zwischen Bernd (Fahrer) und Lisa (INCA-Laptop)?",
+          "options": [
+            "Sie bitten Bernd, langsamer zu fahren.",
+            "Sie übersetzen Bernds subjektiven Fahreindruck (‚Schlag ins Kreuz‘) unmittelbar in die physikalische Ursache (Rest-Drehzahldifferenz) und eine konkrete Kennfeld-Änderung.",
+            "Sie schalten das Getriebe auf Manuell um.",
+            "Sie brechen die Messfahrt ab."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Subjektiven Ruck in Drehzahldifferenz & Kupplungs-/Zwischengas-Timing übersetzen"]
+        }
+      ],
+      "speakingTask": "Bestätigen Sie Bernds Eindruck in einem natürlichen Satz und geben Sie Lisa sofort die konkrete Parameter-Anpassung für die nächste Runde durch.",
+      "interactionTask": "Nach dem Flash läuft die Schaltung butterweich; Bernd ruft: ‚Sauber, des isch ein Unterschied wie Tag und Nacht!‘ Reagieren Sie kurz kollegial.",
+      "expectedResponseCharacteristics": [
+        "Flüssige Verknüpfung von Fahrgefühl und Applikationssprache",
+        "Kein Zögern im Live-Fahrversuch"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Ja, man hat den Ruck gespürt. Das Zwischengas war etwas zu spät, wir geben es in der nächsten Runde früher.",
+        "verdict": "Sofort arbeitsfähig im Versuchsfahrzeug! Mit ‚Drehzahldifferenz abbauen‘ und ‚flacher einblenden‘ treffen Sie den Originalton aus Affalterbach/Weissach."
+      },
+      "acceptableAlternatives": [
+        { "register": "Authentischer Fahrversuchs-Dialog", "text": "Deutlich gespürt, ja! Bei dem steilen Bremsgradienten kam der Zwischengasstoß einen Tick zu spät, sodass die Kupplung noch gegen Differenzdrehzahl geschlossen hat — lass uns den Trigger früher setzen und das Moment weicher einblenden." },
+        { "register": "Knapp für den schnellen Re-Flash", "text": "Genau, da hat die Synchronisation beim Runterschalten nicht ganz gereicht. Zieh die Zwischengas-Anforderung bitte dreißig Millisekunden vor, dann fahren wir die Kehre direkt noch mal." }
+      ],
+      "errorClassifications": ["ACTIVE_RETRIEVAL", "VOCABULARY"],
+      "correctionGuidance": "Verben wie ‚einblenden‘, ‚ausblenden‘, ‚vorziehen‘ und ‚bedaten‘ sind im deutschen Applikationsalltag tausendmal natürlicher als Lehrbuchverben.",
+      "transferTask": "Beschreiben Sie nach demselben Muster ein kurzes Turboloch beim Herausbeschleunigen aus einer Haarnadelkurve.",
+      "delayedRetrievalTarget": "das Moment weicher einblenden / gegen Differenzdrehzahl schließen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 5d -> 13d"
+    },
+    {
+      "id": "yr_bvb_19",
+      "scenarioFamilyId": "fam_bvb_dfb_coaching",
+      "title": "F-Jugend Training im Platzregen: Übung in 20 Sekunden umbauen (Doppel-Register)",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Schnelles situatives Umsteuern auf dem Platz + kurze Abstimmung mit Haupttrainer",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Doppel-Register: Kinder-Ansprache (8 Jahre) + Co-Trainer-Abstimmung",
+      "difficulty": "B2+ -> C1",
+      "visualSceneType": "FUNINO_PITCH_SPLIT",
+      "learningObjective": "Wenn eine Passübung wegen Standzeiten im kalten Regen kippt, blitzschnell mit dem Co-Trainer umstellen und die Kinder in 2 klaren Sätzen aktivieren.",
+      "germanInput": "Dienstagabend beim SV 1845 Esslingen: Es schüttet plötzlich, vier Kinder stehen frierend in der Schlange an den Hütchen, während der Haupttrainer noch Bälle holt.",
+      "audioRequirements": {
+        "deliveryStyle": "Wind- und Platzdynamik, schnelle Abstimmung am Seitenrand",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch am Trainingsplatz",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Trainer Markus", "role": "Haupttrainer F-Jugend", "personality": "Dankbar für Eigeninitiative", "variety": "Schwäbisch-Standard" },
+        { "name": "Tim (8 Jahre)", "role": "F-Jugend-Spieler", "personality": "Friert, will kicken statt warten", "variety": "Süddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Tim (8 Jahre)", "line": "Trainer, mir isch voll kalt, wann bin ich endlich wieder dran?!", "cue": "Ehrliches Signal: Zu viel Standzeit!" },
+        { "speaker": "Trainer Markus", "line": "Recht hat er — bei dem Sauwetter frieren uns die Kids in der Passform ein. Stell du grad um, ich steck sofort die Hütchen um!", "cue": "Sofortige Führungsübergabe an Sie" }
+      ],
+      "transcript": "Tim: Trainer, mir isch voll kalt, wann bin ich wieder dran? Markus: Bei dem Sauwetter frieren uns die Kids in der Passform ein — stell du grad um!",
+      "connectedSpeechReductions": [
+        { "spoken": "stell du grad um", "standard": "organisiere du die Übung bitte spontan um", "note": "Kurzes Vertrauenssignal auf dem Platz" }
+      ],
+      "vocabulary": [
+        "Standzeiten komplett streichen",
+        "alle gleichzeitig in Bewegung bringen",
+        "zwei parallele Drei-gegen-Drei-Felder öffnen",
+        "auf Pfiff sofort neuer Ball ins Spiel"
+      ],
+      "usefulExpressions": [
+        "Zu Markus: ‚Lass uns die Warteschlangen komplett auflösen und direkt zwei parallele Drei-gegen-Drei-Felder mit Dauerbewegung starten.‘",
+        "Zu den Kids: ‚Alle herhören: Schlangen sind vorbei! Gelb gegen Blau auf Feld eins, Rot gegen Grün drüben — wer trifft, holt sich sofort den nächsten Ball bei mir! Los geht's!‘"
+      ],
+      "grammarPatterns": [
+        "Register-Switch in Echtzeit: [Analytischer Kernsatz an Trainer] -> [Aktivierender Kurzimpuls an Kinder]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "SITUATIONAL_UNDERSTANDING",
+          "question": "Worauf kommt es bei der Kinderansprache im strömenden Regen sprachlich an?",
+          "options": [
+            "Eine dreiminütige taktische Erklärung im Stehen abhalten.",
+            "Maximal 15 Sekunden Sprechzeit, glasklare Team-/Feldzuweisung und sofortiger Bewegungsimpuls.",
+            "Das Training kommentarlos abbrechen.",
+            "Komplexe Nominalisierungen verwenden."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Kurze Kommandos unter 15 Sekunden + sofortige Spielbewegung für alle"]
+        }
+      ],
+      "speakingTask": "Geben Sie erst Markus in 1 Satz den methodischen Plan (Standzeiten weg → paralleles 3v3) und rufen Sie dann in 2 kurzen Sätzen die Kinder ins Spiel.",
+      "interactionTask": "Ein Kind ruft: ‚Zählen Dribblings durchs Hütchentor doppelt?‘ Entscheiden Sie blitzschnell und motivierend!",
+      "expectedResponseCharacteristics": [
+        "Spürbarer Registerkontrast zwischen Co-Trainer-Satz und Kinder-Kommando",
+        "Energievolle, bildhafte Kürze für die F-Jugend"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Markus, wir machen lieber zwei kleine Spiele ohne Warten. Jungs, kein Warten mehr, drei gegen drei auf beide Felder, sofort starten!",
+        "verdict": "Sofort wirksam auf dem Platz! Mit ‚Standzeiten auflösen‘ (zu Markus) und ‚Auf mein Signal rollt sofort der nächste Ball!‘ (zu den Kids) sitzt der Doppel-Register-Switch perfekt."
+      },
+      "acceptableAlternatives": [
+        { "register": "Perfekter Doppel-Switch (Trainer + Kids)", "text": "Markus, lass uns die Standzeiten sofort rausnehmen und parallel Drei-gegen-Drei spielen. — Jungs, alle zu mir: Kein Anstehen mehr! Gelb gegen Blau hier, Rot gegen Grün drüben, und jedes mutige Dribbling durchs Tor zählt doppelt — Feuer frei!" },
+        { "register": "Knapp & energiegeladen", "text": "Markus, steck kurz das zweite Minifeld auf, damit alle gleichzeitig in Aktion sind. — Auf geht's Jungs, jeder schnappt sich seinen Partner, sofort Drei-gegen-Drei ohne Pause!" }
+      ],
+      "errorClassifications": ["REGISTER", "ACTIVE_RETRIEVAL"],
+      "correctionGuidance": "DFB-Ausbilder achten bei Lehrproben extrem auf ‚Netto-Bewegungszeit‘ und ‚Sprechökonomie‘: Kurz, positiv, handlungsauslösend!",
+      "transferTask": "Formulieren Sie eine 20-sekündige Trinkpausen-Frage, mit der die Kinder selbst entdecken, warum das breite Auffächern mehr Tore bringt.",
+      "delayedRetrievalTarget": "Standzeiten komplett rausnehmen / auf mein Signal kommt sofort der nächste Ball",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 1d -> 4d -> 11d"
+    },
+    {
+      "id": "yr_bvb_20",
+      "scenarioFamilyId": "fam_bvb_dfb_coaching",
+      "title": "DFB C-Lizenz Lehrprobe: Nachbesprechung mit dem Verbandsausbilder (WFV)",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Selbstkritische Reflexion einer Trainingseinheit im professionellen DFB-Vokabular",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Prüfungs-Reflexionsgespräch Württembergischer Fußballverband (WFV)",
+      "difficulty": "Goethe C1",
+      "visualSceneType": "FUNINO_PITCH_SPLIT",
+      "learningObjective": "Nach einer eigenen Lehrprobe Stärken und einen konkreten Optimierungspunkt (Feldgröße / Provokationsregel) souverän selbst benennen, bevor der Prüfer kritisiert.",
+      "germanInput": "Auf der Sportschule Ruit (nahe Esslingen) fragt der WFV-Ausbilder nach Ihrer 20-minütigen Lehrprobe: ‚Wie schätzen Sie Ihre Einheit im Rückblick selbst ein?‘",
+      "audioRequirements": {
+        "deliveryStyle": "Konstruktives, aber präzises Verbandsprüfer-Gespräch",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Standard (WFV Sportschule Ruit)",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Ausbilder Krauß (WFV)", "role": "DFB-/WFV-Lehrreferent", "personality": "Schätzt ehrliche Selbstreflexion und klare Methodik", "variety": "Schwäbisch-Standard" },
+        { "name": "Mitkandidatin Sarah", "role": "Trainerkollegin im Lehrgang", "personality": "Ergänzt Beobachtung zur Feldbreite", "variety": "Standarddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Ausbilder Krauß (WFV)", "line": "So, durchschnaufen! Ihr Schwerpunkt war ‚Flügelwechsel nach Ballgewinn‘ — nehmen Sie uns mal kurz mit: Was ist aufgegangen, und wo würden Sie beim zweiten Mal nachsteuern?", "cue": "Klassische Reflexionsfrage jeder Trainerlizenz-Prüfung" },
+        { "speaker": "Mitkandidatin Sarah", "line": "In den ersten fünf Minuten fand ich das Zentrum extrem eng, da kam fast kein Verlagerungspass durch.", "cue": "Konkreter Beobachtungspunkt aus der Gruppe" }
+      ],
+      "transcript": "Ausbilder Krauß: Ihr Schwerpunkt war Flügelwechsel nach Ballgewinn — was ist aufgegangen, und wo würden Sie nachsteuern? Sarah: In den ersten fünf Minuten war das Zentrum extrem eng.",
+      "connectedSpeechReductions": [
+        { "spoken": "nehmen Sie uns mal kurz mit", "standard": "erläutern Sie uns bitte Ihren Gedankengang", "note": "Moderne deutsche Moderations- & Coachingsprache" }
+      ],
+      "vocabulary": [
+        "der rote Faden vom Aufwärmen bis zur Spielform war stimmig",
+        "das Feld in der Breite zu eng bemessen haben",
+        "über eine Provokationsregel gezielt Anreize setzen",
+        "beim nächsten Durchgang früher gegensteuern"
+      ],
+      "usefulExpressions": [
+        "Insgesamt war die Intensität hoch und der rote Faden zum Schwerpunkt klar erkennbar — Sarahs Beobachtung teile ich aber komplett: Zu Beginn hatte ich das Feld fünf Meter zu schmal gesteckt.",
+        "Dadurch war der Gegnerdruck sofort zu hoch; beim nächsten Mal würde ich das Feld von Anfang an breiter öffnen, damit die Außenzonen als Anspielstation überhaupt einladen."
+      ],
+      "grammarPatterns": [
+        "Souveräne Selbstreflexion (Konjunktiv II Vergangenheit + Ausblick): Zu Beginn hatte ich [X] zu eng gewählt — im Rückblick würde ich [Y] früher anpassen, damit [Lerneffekt]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "INTENTION",
+          "question": "Was überzeugt Lizenz-Ausbilder beim WFV/DFB im Reflexionsgespräch am meisten?",
+          "options": [
+            "Alles als perfekt darzustellen und Fehler auf die Spieler zu schieben.",
+            "Sich komplett kleinzumachen.",
+            "Gelungenes kurz zu benennen, den Knackpunkt (Feldmaße / Provokationsregel) präzise zu diagnostizieren und sofort die methodische Stellschraube zu liefern.",
+            "Über Bundesliga-Schiedsrichter zu reden."
+          ],
+          "correctIndex": 2,
+          "acceptableInterpretations": ["Eigene Beobachtungsschärfe zeigen + konkrete methodische Stellschraube (Feldbreite/Regel) benennen"]
+        }
+      ],
+      "speakingTask": "Reflektieren Sie Ihre Einheit in 3 klaren Sätzen: Positiver roter Faden, ehrliche Analyse der anfangs zu geringen Feldbreite und konkrete Anpassung fürs nächste Mal.",
+      "interactionTask": "Ausbilder Krauß fragt zufrieden: ‚Und wie haben Sie Ihr eigenes Coaching-Verhalten in den Trinkpausen erlebt?‘ Antworten Sie reflektiert (offene Fragen statt Monolog).",
+      "expectedResponseCharacteristics": [
+        "Professionelles Methodik-Vokabular (roter Faden, Provokationsregel, Feldmaße, nachsteuern)",
+        "Sauberer Konjunktiv II (‚würde ich von Beginn an breiter stecken‘)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Die Motivation war gut, aber Sarah hat recht: Das Feld war am Anfang zu schmal. Nächstes Mal mache ich es direkt breiter für mehr Flügelwechsel.",
+        "verdict": "Ehrlich und methodisch klar! Mit ‚roter Faden‘, ‚über die Feldbreite steuern‘ und ‚Anreize setzen‘ bestehen Sie jedes WFV-Reflexionsgespräch mit Bravour."
+      },
+      "acceptableAlternatives": [
+        { "register": "Souverän auf der Sportschule Ruit (C1)", "text": "Von der Aktivierung und dem roten Faden her bin ich zufrieden, zumal wir im Schlussteil viele echte Verlagerungen gesehen haben. Sarah hat aber völlig recht: In den ersten fünf Minuten hatte ich das Feld zu schmal bemessen — beim nächsten Mal würde ich die Außenzonen sofort breiter stecken, damit sich der Flügelwechsel für die Spieler räumlich auch lohnt." },
+        { "register": "Prägnant & selbstbewusst", "text": "Die Spielidee kam bei den Jungs gut an, allerdings hat die enge Startgeometrie anfangs zu viele Ballverluste provoziert. Nachdem wir die Hütchen nach außen versetzt hatten, lief der Ball deutlich sauberer in den freien Halbraum." }
+      ],
+      "errorClassifications": ["GRAMMAR_UNDER_PRESSURE", "VOCABULARY"],
+      "correctionGuidance": "Das Verb ‚nachsteuern‘ (im laufenden Prozess gezielt korrigieren) funktioniert sowohl im Fußball-Coaching als auch in Mercedes-Projekten erstklassig!",
+      "transferTask": "Übertragen Sie dieselbe Reflexionsstruktur auf ein Vorstellungs- oder Feedbackgespräch nach Ihrem Praktikum.",
+      "delayedRetrievalTarget": "rechtzeitig über die Rahmenbedingungen nachsteuern / der rote Faden war stimmig",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 6d -> 16d"
+    },
+    {
+      "id": "yr_social_21",
+      "scenarioFamilyId": "fam_swabian_colleagues",
+      "title": "Spontane Einladung zum Grillen am Neckar: Zu-/Absage mit Charme & Mitbringsel-Etikette",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Natürliche soziale Wärme im Freundes- und Kollegenkreis zeigen",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Lockerer Feierabend-Plausch unter Kollegen/Freunden",
+      "difficulty": "B2+ -> C1",
+      "visualSceneType": "PARTICLE_TONE_DIAL",
+      "learningObjective": "Auf eine spontane Einladung natürlich, herzlich und idiomatisch reagieren (inklusive Zeitfenster oder Mitbringsel-Angebot), statt steif wie in einer E-Mail zu klingen.",
+      "germanInput": "Freitagnachmittag am Werkstor: Zwei Kollegen laden Sie spontan für Samstagabend zum Grillen in den Esslinger Weinbergen ein, Sie haben aber bis 18:30 Uhr noch ein Jugendturnier.",
+      "audioRequirements": {
+        "deliveryStyle": "Herzliches, schnelles Feierabend-Tempo",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Umgangssprache",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Lukas", "role": "Praktikanten-Kollege", "personality": "Offen, gesellig", "variety": "Süddeutsch" },
+        { "name": "Hannah", "role": "Werkstudentin Fahrwerk", "personality": "Organisiert den Abend", "variety": "Standarddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Lukas", "line": "Du, wir schmeißen morgen ab fünf oben auf'm Stückle in Esslingen den Grill an — hast Bock rumzukommen?", "cue": "Schwäbisches Wort 'Stückle' (= Gartengrundstück am Hang)" },
+        { "speaker": "Hannah", "line": "Komm voll gern vorbei! Sag einfach Bescheid, ob's bei dir zeitlich reinpasst und was du auf'n Rost legst.", "cue": "Offene, herzliche Einladung" }
+      ],
+      "transcript": "Lukas: Wir schmeißen morgen ab fünf oben auf'm Stückle in Esslingen den Grill an — hast Bock rumzukommen? Hannah: Sag einfach Bescheid, ob's zeitlich reinpasst!",
+      "connectedSpeechReductions": [
+        { "spoken": "oben auf'm Stückle", "standard": "oben auf dem Gartengrundstück / Weinberggrundstück", "note": "Kultwort in Stuttgart/Esslingen: 'das Stückle'" },
+        { "spoken": "hast Bock rumzukommen", "standard": "hast du Lust vorbeizukommen", "note": "Alltägliche Einladungsformel unter Gleichaltrigen" }
+      ],
+      "vocabulary": [
+        "voll gern dabei sein",
+        "etwas später nachkommen",
+        "nicht mit leeren Händen auftauchen",
+        "etwas für die Runde beisteuern"
+      ],
+      "usefulExpressions": [
+        "Mega gern, danke fürs Fragen! Ich steh bis halb sieben noch mit meiner F-Jugend beim Turnier auf dem Platz, würde aber direkt danach nachkommen — passt halb acht noch?",
+        "Was fehlt euch denn noch fürs Buffet — soll ich frisches Fladenbrot und einen ordentlichen Dip für die Runde mitbringen?"
+      ],
+      "grammarPatterns": [
+        "Soziale Zusage mit Zeitversatz: [Herzliche Freude] — ich habe bis [X] noch [Termin], würde aber super gern direkt danach nachkommen!"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was ist im Raum Stuttgart/Esslingen mit ‚oben auf'm Stückle‘ gemeint?",
+          "options": [
+            "Ein Konferenzraum im 5. Stock.",
+            "Ein privates Freizeit- oder Obstbaumgrundstück am Hang / in den Weinbergen, auf dem man im Sommer grillt.",
+            "Ein Parkhaus in der Innenstadt.",
+            "Ein Theaterstück."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Privates Gartengrundstück / Wiesengrundstück am Hang rund um Esslingen/Stuttgart"]
+        }
+      ],
+      "speakingTask": "Nehmen Sie die Einladung herzlich an, kündigen Sie an, dass Sie wegen des Jugendturniers gegen 19:30 Uhr nachkommen, und bieten Sie aktiv etwas fürs Buffet an.",
+      "interactionTask": "Lukas ruft: ‚Halb acht reicht locker, schreib einfach kurz in die Gruppe, wenn du unten am Weinberg stehst!‘ Reagieren Sie locker zum Abschied.",
+      "expectedResponseCharacteristics": [
+        "Authentisch-junges Alltagsregister statt steifer Höflichkeitsfloskeln",
+        "Natürliches Verb ‚nachkommen‘ + Mitbringsel-Frage"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Vielen Dank für die Einladung, ich komme sehr gerne um 19:30 Uhr nach meinem Fußballturnier und bringe Salat mit.",
+        "verdict": "Freundlich und klar — für Gleichaltrige fast einen Tick zu formell. Mit ‚Mega gern! Ich komm direkt nach dem Turnier nach‘ klingt es sofort nach echtem Freundeskreis."
+      },
+      "acceptableAlternatives": [
+        { "register": "Authentisch unter jungen Kollegen", "text": "Mega cool, da bin ich voll gern dabei! Ich hab bis halb sieben noch Turnier mit meinen Kids beim SV 1845, komm aber direkt danach hoch — soll ich noch frisches Brot und Hummus für alle mitbringen?" },
+        { "register": "Herzlich & unkompliziert", "text": "Klingt richtig gut, danke euch! Gegen halb acht schaff ich's locker nach dem Fußballplatz. Sagt kurz, was noch fehlt, damit ich nicht mit leeren Händen aufkreuze!" }
+      ],
+      "errorClassifications": ["REGISTER", "NATURALNESS"],
+      "correctionGuidance": "Im privaten C1 geht es nicht um komplizierte Grammatik, sondern um den richtigen Wärmegrad: ‚nachkommen‘, ‚für die Runde mitbringen‘ und ‚nicht mit leeren Händen aufkreuzen‘.",
+      "transferTask": "Lehnen Sie an einem anderen Wochenende eine Einladung wegen Prüfungsphase so herzlich ab, dass Sie beim nächsten Mal garantiert wieder gefragt werden (‚Diesmal bin ich leider raus, aber nächstes Wochenende geht die erste Runde auf mich!‘).",
+      "delayedRetrievalTarget": "etwas später nachkommen / für die Runde mitbringen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 1d -> 4d -> 12d"
+    },
+    {
+      "id": "yr_goethe_22",
+      "scenarioFamilyId": "fam_goethe_c1_oral_exam",
+      "title": "Spontane Meinungsverteidigung in hitziger Runde: Tempolimit & Ingenieursverantwortung",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Unterbrechung souverän abwehren, Nuancen setzen & Polemik versachlichen",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Lebhafte Gesellschaftsdebatte am Abendtisch & Goethe C1 Diskurs",
+      "difficulty": "Goethe C1",
+      "visualSceneType": "MULTI_SPEAKER_TABLE",
+      "learningObjective": "Wenn Ihnen jemand das Wort abschneidet oder Ihre Ingenieursarbeit pauschal angreift, ruhig das Rederecht sichern und differenziert argumentieren.",
+      "germanInput": "Auf einer Geburtstagsfeier in Stuttgart fällt Ihnen ein Gast ins Wort: ‚Wer heute noch an Sportmotoren arbeitet, ignoriert doch komplett den Klimawandel!‘",
+      "audioRequirements": {
+        "deliveryStyle": "Provokanter Einwurf mit Unterbrechung vor mehreren Zuhörern",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Philipp (Gast)", "role": "Diskussionsfreudiger Bekannter", "personality": "Zugespitzt, unterbricht schnell", "variety": "Standarddeutsch" },
+        { "name": "Gastgeberin Nina", "role": "Freundin", "personality": "Gespannt, wie Sie reagieren", "variety": "Süddeutsch-Standard" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Philipp (Gast)", "line": "Ach komm, lass mich kurz einhaken — mal ganz ehrlich: Wer heutzutage noch an V8-Hybriden oder Elfern schraubt, baut doch einfach Spielzeuge aus gestern!", "cue": "Polemische Unterbrechung am Tisch" },
+        { "speaker": "Gastgeberin Nina", "line": "Oha, steile These — jetzt lass ihn seinen Gedanken aber erst mal ausführen, Philipp!", "cue": "Bühne frei für ruhige C1-Souveränität" }
+      ],
+      "transcript": "Philipp: Wer heutzutage noch an V8-Hybriden oder Elfern schraubt, baut doch Spielzeuge aus gestern! Nina: Oha, steile These — lass ihn seinen Gedanken erst mal ausführen!",
+      "connectedSpeechReductions": [
+        { "spoken": "steile These", "standard": "sehr gewagte / zugespitzte Behauptung", "note": "Sehr beliebter moderner Diskursbegriff" }
+      ],
+      "vocabulary": [
+        "lass mich den Gedanken kurz zu Ende führen",
+        "eine Schwarz-Weiß-Rechnung aufmachen",
+        "als Technologieträger für die Großserie dienen",
+        "den Hebel über Flotteneffizienz und Wirkungsgrad ansetzen"
+      ],
+      "usefulExpressions": [
+        "Ich gehe gleich auf deinen Punkt ein — lass mich meinen Gedanken nur kurz zu Ende führen: Eine reine Schwarz-Weiß-Sicht wird der Technik da kaum gerecht.",
+        "Gerade Hochleistungs-Hybride waren schon immer Technologieträger für Leistungselektronik, Thermomanagement und Wirkungsgrad, die wenige Jahre später in der breiten Großserie Verbrauch sparen."
+      ],
+      "grammarPatterns": [
+        "Rederecht-Sicherung + Differenzierung: Lass mich den Punkt kurz zu Ende führen — eine pauschale [X]-Sicht übersieht nämlich, dass [Y]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "INTENTION",
+          "question": "Was bewirkt der Satz ‚Ich gehe gleich auf deinen Punkt ein — lass mich meinen Gedanken nur kurz zu Ende führen‘ in einer deutschen Diskussion?",
+          "options": [
+            "Er beleidigt das Gegenüber.",
+            "Er verteidigt Ihr Rederecht ruhig und respektvoll ohne Lautstärkeduell und verschafft Ihnen sofort die Aufmerksamkeit der ganzen Runde.",
+            "Er beendet das Gespräch sofort.",
+            "Er gibt dem Angreifer vollständig recht."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Ruhige Sicherung des Rederechts + Signal der Gesprächssouveränität"]
+        }
+      ],
+      "speakingTask": "Sichern Sie freundlich Ihr Rederecht, weisen Sie die Schwarz-Weiß-Verkürzung zurück und bringen Sie ein sachliches Argument (z. B. Technologieträger für Bordnetz/Rekuperation oder globale Bestandsflotte).",
+      "interactionTask": "Philipp lenkt halb ein: ‚Okay, bei Rekuperation geh ich mit — aber im Stadtverkehr braucht doch niemand fünfhundert PS.‘ Setzen Sie einen ruhigen, humorvoll-differenzierten Schlusspunkt.",
+      "expectedResponseCharacteristics": [
+        "Null Gereiztheit, souveräne Rhetorik",
+        "Idiome wie ‚Schwarz-Weiß-Rechnung‘ und ‚Technologieträger‘"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Bitte lass mich kurz fertig reden. Das ist zu einfach gedacht, weil aus Sportwagen oft wichtige Technik für normale Elektroautos kommt.",
+        "verdict": "Stark und ruhig gekontert! Mit ‚Schwarz-Weiß-Rechnung‘ und ‚als Technologieträger in die Großserie einfließen‘ führen Sie die Debatte auf muttersprachlichem Spitzenniveau."
+      },
+      "acceptableAlternatives": [
+        { "register": "Rhetorisch souverän & entspannt (C1+)", "text": "Auf den Einwand geh ich sofort ein — lass mich den Satz nur kurz zu Ende bringen: Mir ist diese Schwarz-Weiß-Rechnung zu simpel. Viele Innovationen bei 800-Volt-Technik, Kühlung und Rekuperation entstehen zuerst genau in solchen Technologieträgern, bevor sie Millionen Alltagsautos effizienter machen." },
+        { "register": "Schlagfertig & versöhnlich", "text": "Im Stuttgarter Berufsverkehr reichen natürlich auch vierzig PS, da widerspreche ich dir gar nicht! Aber aus Ingenieurssicht treiben genau diese Grenzbereichs-Projekte die Wirkungsgrad- und Batterietechnik voran, von der am Ende alle profitieren." }
+      ],
+      "errorClassifications": ["INTERACTION", "SENTENCE_FORMULATION"],
+      "correctionGuidance": "Wer bei Gegenwind ruhig lächelt, sein Rederecht mit ‚Lass mich den Gedanken kurz zu Ende führen‘ schützt und differenziert, wirkt in jeder deutschen Runde sofort überlegen.",
+      "transferTask": "Nutzen Sie dieselbe Unterbrechungs-Abwehr in einer hitzigen Projektbesprechung, wenn zwei Kollegen gleichzeitig dazwischenreden.",
+      "delayedRetrievalTarget": "den Gedanken kurz zu Ende führen / keine Schwarz-Weiß-Rechnung aufmachen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 3d -> 7d -> 18d"
+    }
+  ]
+}

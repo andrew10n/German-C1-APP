@@ -1,0 +1,644 @@
+{
+  "exercises": [
+    {
+      "id": "yr_phone_01",
+      "scenarioFamilyId": "fam_phone_zero_visual",
+      "title": "Telefonat ohne Mimik: Ausländerbehörde Esslingen wegen Verlängerung",
+      "skill": "NATURAL_LISTENING",
+      "subskill": "Reines Audio ohne Gestik verstehen, zügig mitschreiben & höflich vergewissern",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Halbformelles Telefonat mit Sachbearbeitung",
+      "difficulty": "C1.1",
+      "visualSceneType": "WAVEFORM_RADAR",
+      "learningObjective": "Am Telefon ohne visuelle Hilfen einen kurzfristigen Rückruf zu fehlenden Unterlagen sofort richtig einordnen und alle Details sicher gegenprüfen.",
+      "germanInput": "Während der Mittagspause klingelt Ihr Handy — eine Sachbearbeiterin der Ausländerbehörde Esslingen spricht schnell durch, dass für die Aufenthaltsverlängerung neben der Immatrikulation noch ein aktueller Praktikumsnachweis fehlt.",
+      "audioRequirements": {
+        "deliveryStyle": "Zügiges Telefonat mit leicht blechernem Bandpass-Gefühl, Rückfrage und Terminvorgabe",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Standard",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Frau Keller (Ausländerbehörde)", "role": "Sachbearbeiterin", "personality": "Effizient, unter Zeitdruck, freundlich-knapp", "variety": "Süddeutsch" },
+        { "name": "Kollege Lukas (Büro-Hintergrund)", "role": "Kollege", "personality": "Fragt kurz dazwischen", "variety": "Schwäbisch-Standard" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Frau Keller (Ausländerbehörde)", "line": "Ja, Keller hier, Ausländerbehörde Esslingen — gut, dass ich Sie erreiche! Bei Ihrem Antrag für nächsten Monat fehlt uns noch die aktuelle Immatrikulationsbescheinigung plus ein Nachweis über die Verlängerung des Pflichtpraktikums, sonst schiebt sich die Fiktionsbescheinigung um drei Wochen nach hinten.", "cue": "Hohes Tempo, drei Informationen in einem Atemzug" },
+        { "speaker": "Kollege Lukas (Büro-Hintergrund)", "line": "Du, brauchst schnell 'nen Stift?", "cue": "Störimpuls während Sie zuhören" },
+        { "speaker": "Frau Keller (Ausländerbehörde)", "line": "Reichen Sie mir das PDF am besten bis Donnerstag zwölf Uhr über das Postfach nach, das reicht mir dann gerade noch vor meiner Urlaubswoche — passt das?", "cue": "Klare Deadline mit Konsequenz" }
+      ],
+      "transcript": "Frau Keller: Gut, dass ich Sie erreiche! Bei Ihrem Antrag fehlt uns noch die aktuelle Immatrikulationsbescheinigung plus Nachweis über die Praktikumsverlängerung, sonst schiebt sich die Fiktionsbescheinigung um drei Wochen. Reichen Sie das PDF bis Donnerstag 12 Uhr übers Postfach nach — passt das?",
+      "connectedSpeechReductions": [
+        { "spoken": "brauchst schnell 'nen Stift?", "standard": "brauchst du schnell einen Stift?", "note": "Typische Tilgung im Vorbeigehen" },
+        { "spoken": "übers Postfach nach", "standard": "über das Online-Postfach nachreichen", "note": "Präpositionale Verschmelzung + trennbares Verb" }
+      ],
+      "vocabulary": [
+        "Unterlagen fristgerecht nachreichen",
+        "um eine kurze Bestätigung bitten",
+        "sonst verzögert sich die Bearbeitung unnötig",
+        "dass ich es richtig mitgeschrieben habe"
+      ],
+      "usefulExpressions": [
+        "Moment, ganz kurz, damit ich nichts überhöre — Sie brauchen also die aktuelle Immatrikulation und die Praktikumsbestätigung bis Donnerstag zwölf Uhr im Online-Postfach, richtig?",
+        "Vielen Dank für den kurzen Anruf! Ich lade beides heute Nachmittag hoch und schicke Ihnen eine kurze Rückmeldung."
+      ],
+      "grammarPatterns": [
+        "Rückversicherungs-Check am Telefon: Nur damit ich Sie richtig verstanden habe: [Kernpunkt 1] und [Kernpunkt 2] bis [Frist], richtig?"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was passiert, wenn die PDF-Dateien nicht rechtzeitig bis Donnerstag zwölf Uhr eingehen?",
+          "options": [
+            "Der Antrag wird endgültig abgelehnt.",
+            "Die Ausstellung der Fiktionsbescheinigung verzögert sich durch Frau Kellers Urlaubswoche um etwa drei Wochen.",
+            "Man muss persönlich nach Stuttgart fahren.",
+            "Nichts, es hat keinen Zeitdruck."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Verzögerung von 3 Wochen wegen Abwesenheit der Sachbearbeiterin"]
+        },
+        {
+          "type": "INTENTION",
+          "question": "Wie fragen Sie am Telefon souverän nach, falls Sie im Lärm ein Detail nicht ganz verstanden haben?",
+          "options": [
+            "‚Bitte sprechen Sie langsam, mein Deutsch ist nicht gut.‘",
+            "‚Entschuldigung, die Verbindung war eben kurz abgehackt — könnten Sie mir die Frist noch einmal kurz wiederholen?‘",
+            "‚Was haben Sie gesagt?!‘",
+            "Einfach ‚Ja, ja‘ sagen."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Souveräne akustische Nachfrage ohne Selbstabwertung"]
+        }
+      ],
+      "speakingTask": "Fassen Sie am Telefon die zwei benötigten Dokumente + die Frist zur Sicherheit noch einmal knapp in eigenen Worten zusammen.",
+      "interactionTask": "Frau Keller fragt zum Schluss: ‚Und noch eine Frage: Hat sich Ihre Wohnadresse in Esslingen seit September geändert?‘ Antworten Sie sofort natürlich und eindeutig.",
+      "expectedResponseCharacteristics": [
+        "Aktive Telefon-Bestätigung ohne ‚Ähm‘-Schleife",
+        "Präzise Wiedergabe von Frist und Kanal"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Okay, ich verstehe. Ich schicke die Bescheinigung von Uni und Mercedes bis Donnerstag 12 Uhr.",
+        "verdict": "Voll verständlich und verbindlich! Mit ‚Nur um sicherzugehen: Beides bis Donnerstag Mittag übers Postfach, richtig?‘ klingen Sie 100 % native."
+      },
+      "acceptableAlternatives": [
+        { "register": "Telefon-Routine C1 (Optimal)", "text": "Super, danke für die Info! Nur um sicherzugehen, dass ich alles notiert habe: aktuelle Immatrikulation plus Praktikumsnachweis bis Donnerstag zwölf Uhr über das Postfach — erledige ich heute Nachmittag direkt." },
+        { "register": "Akustisch nachfragend & souverän", "text": "Kurze Rückfrage, weil es hier im Flur gerade etwas laut war: Meinten Sie Donnerstag zwölf Uhr über das Serviceportal oder per E-Mail?" }
+      ],
+      "errorClassifications": ["LISTENING_RECOGNITION", "ACTIVE_RETRIEVAL"],
+      "correctionGuidance": "Bitten Sie am Telefon nie pauschal um Entschuldigung für Ihr Deutsch — nutzen Sie professionelle Gegen-Checks wie ‚Nur um sicherzugehen, dass…‘.",
+      "transferTask": "Führen Sie dasselbe Rückversicherungs-Muster bei einem Anruf Ihrer Kfz-Versicherung oder Werkstatt durch.",
+      "delayedRetrievalTarget": "Nur um sicherzugehen, dass ich es richtig notiert habe / fristgerecht nachreichen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 1d -> 4d -> 12d"
+    },
+    {
+      "id": "yr_phone_02",
+      "scenarioFamilyId": "fam_phone_zero_visual",
+      "title": "3-Sekunden-Umschreibung: Wenn im Gespräch genau das Fachwort fehlt",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Souveräne Umschreibung & Recovery statt Stocken oder englischem Notwort",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Kurze Abstimmung am Prüfstand / Telefon",
+      "difficulty": "C1.1",
+      "visualSceneType": "WAVEFORM_RADAR",
+      "learningObjective": "Eine plötzliche Wortlücke (z. B. ‚Drehmomentbegrenzung‘ oder ‚Dichtring‘) in unter 3 Sekunden elegant auf Deutsch umschreiben, ohne ins Englische zu kippen.",
+      "germanInput": "Ein Prüfstandsmechaniker fragt telefonisch nach, welches Teil oder welche Funktion beim Abkühlzyklus noch auffällig war — Ihnen fällt für eine Sekunde das exakte deutsche Kompositum nicht ein.",
+      "audioRequirements": {
+        "deliveryStyle": "Direkte Werkstattsituation am Telefon, schnelles Nachhaken",
+        "speakerCount": 2,
+        "regionalVariety": "Schwäbisch-Standard",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Hannes (Prüfstand 4)", "role": "Versuchstechniker", "personality": "Hands-on, will schnell weiterumbauen", "variety": "Schwäbisch-Standard" },
+        { "name": "Sarah (Logistik)", "role": "Teiledienst", "personality": "Steht neben der Box", "variety": "Standarddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Hannes (Prüfstand 4)", "line": "Du, wir hängen grad am Aufbau — sag mal fix, an welcher Stelle hat's vorhin bei euch im Kühlkreislauf getropft? War des oben an der Entlüftungsschraube oder weiter unten?", "cue": "Direkte Nachfrage, sofortige Antwort erwartet" },
+        { "speaker": "Sarah (Logistik)", "line": "Wenn du's mir gleich sagst, hol ich des Ersatzteil direkt aus'm Lager hoch.", "cue": "Zeitdruck durch Kollegen" }
+      ],
+      "transcript": "Hannes: Sag mal fix, an welcher Stelle hat's vorhin im Kühlkreislauf getropft? Oben an der Entlüftungsschraube oder weiter unten? Sarah: Wenn du's gleich sagst, hol ich das Ersatzteil direkt hoch.",
+      "connectedSpeechReductions": [
+        { "spoken": "hat's vorhin ... getropft", "standard": "hat es vorhin getropft", "note": "Schnelle Klitisierung am Verb" },
+        { "spoken": "direkt aus'm Lager", "standard": "direkt aus dem Lager", "note": "Präposition + Artikel im Sprechfluss" }
+      ],
+      "vocabulary": [
+        "Mir liegt das genaue Wort gerade auf der Zunge — ich meine das Teil, das...",
+        "etwas salopp formuliert, die Schnittstelle zwischen X und Y",
+        "auf Anhieb fallen mir die genauen Daten gerade nicht ein, aber...",
+        "um es anschaulich zu beschreiben"
+      ],
+      "usefulExpressions": [
+        "Mir fällt der genaue Begriff gerade nicht ein, aber ich meine das Bauteil direkt am Ausgang der Pumpe, das den Druck hält — weißt du, welches ich meine?",
+        "Ich umschreibe es kurz: Es ist nicht die Schraube oben, sondern der kleine Übergangsflansch gleich hinter dem Wärmetauscher."
+      ],
+      "grammarPatterns": [
+        "C1 Recovery-Brücke: [Souveräne Überleitung] + Relativsatz mit präziser Funktion (‚das Teil, das dafür sorgt, dass…‘)."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Warum gewinnen Sie mit ‚Mir liegt der genaue Begriff gerade auf der Zunge — ich meine das Teil, das…‘ enorm an Gesprächssouveränität?",
+          "options": [
+            "Weil man gar nichts mehr beschreiben muss.",
+            "Weil Sie den Redefluss auf Deutsch halten, die exakte Funktion beschreiben und dem Gesprächspartner erlauben, das Fachwort kooperativ zu ergänzen.",
+            "Weil man dadurch Zeit schindet, um nach dem englischen Wort zu suchen.",
+            "Weil Mechaniker keine Relativsätze verstehen."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Aktive deutsche Umschreibung hält Sprachfluss & Kompetenzeindruck stabil"]
+        }
+      ],
+      "speakingTask": "Umschreiben Sie ein Bauteil oder Problem (z. B. fehlendes Wort für ‚Ausgleichsbehälter‘ oder ‚Schwingungsdämpfer‘), ohne ein einziges englisches Wort einzubauen.",
+      "interactionTask": "Hannes antwortet: ‚Ah, du meinst den kleinen Dichtungsflansch vorm Thermostat?‘ Bestätigen Sie blitzschnell und bedanken Sie sich natürlich.",
+      "expectedResponseCharacteristics": [
+        "Keine lange Denkpause",
+        "Präzise räumlich-funktionale Umschreibung mit ‚direkt vor / das dafür sorgt, dass‘"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Äh sorry, das Wort weiß ich nicht, aber es ist das runde Plastikding neben der Pumpe, wo das Wasser durchgeht.",
+        "verdict": "Funktioniert im Notfall! Mit ‚Mir fällt gerade der Fachbegriff nicht ein — das Gehäuse direkt nach der Pumpe, über das der Rücklauf läuft‘ wirken Sie sofort wie ein erfahrener Ingenieur."
+      },
+      "acceptableAlternatives": [
+        { "register": "Ingenieur auf Augenhöhe (C1)", "text": "Der exakte Name liegt mir gerade auf der Zunge — ich meine das Verbindungselement direkt hinter dem Wärmetauscher, über das der Rücklauf sauber abgedichtet wird." },
+        { "register": "Schnell & kollegial", "text": "Nicht oben an der Schraube, sondern eins weiter unten — diese kleine Muffe direkt am Ausgang der Wasserpumpe, weißt schon." }
+      ],
+      "errorClassifications": ["ACTIVE_RETRIEVAL", "INTERACTION"],
+      "correctionGuidance": "Auch Muttersprachler suchen im Alltag ständig nach Wörtern (‚das Dings, na sag schnell…‘) — der Unterschied zu B2 ist, wie souverän man auf Deutsch umschreibt statt abzubrechen.",
+      "transferTask": "Umschreiben Sie beim Zahnarzt oder in der Apotheke auf Deutsch ein Symptom, wenn das genaue Nomen fehlt.",
+      "delayedRetrievalTarget": "Mir liegt der genaue Begriff auf der Zunge — ich meine das Element, das...",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 6d -> 16d"
+    },
+    {
+      "id": "yr_phone_03",
+      "scenarioFamilyId": "fam_phone_zero_visual",
+      "title": "Handwerker- & Hausverwaltungs-Anruf: Heizungsstörung am Freitagabend",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Problem klar schildern, falsche Beschwichtigung abblocken & Termin festzurren",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Telefonat mit Notdienst / Hausverwaltung in Esslingen",
+      "difficulty": "C1.1",
+      "visualSceneType": "RECEIPT_REGISTER_MORPH",
+      "learningObjective": "Hartnäckig, aber ruhig und sympathisch bleiben, wenn ein Telefondienst ein Problem zunächst auf ‚nächste Woche irgendwann‘ vertagen will.",
+      "germanInput": "Die Heizung und das Warmwasser fallen am Freitag bei drei Grad Außentemperatur aus. Der Mitarbeiter der Hausverwaltung will das Thema zuerst locker auf Dienstag schieben.",
+      "audioRequirements": {
+        "deliveryStyle": "Abwehrender Standard-Abwimmelton am Telefon vs. bestimmte Höflichkeit",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Alltag",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Herr Beck (Hausverwaltung)", "role": "Büroleiter", "personality": "Will vor dem Wochenende Feierabend machen", "variety": "Schwäbisch-Standard" },
+        { "name": "Techniker-Hotline", "role": "Notdienst-Stimme", "personality": "Sachlich, prüft Fehlercode", "variety": "Standarddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Herr Beck (Hausverwaltung)", "line": "Ja mei, vor Montag kriegen wir da regulär eh keinen Heizungsbauer mehr ran — drehen Sie halt den Thermostat bissle auf fünf und schauen wir Dienstag mal.", "cue": "Klassische Abwimmel-Reaktion" },
+        { "speaker": "Techniker-Hotline", "line": "Falls am Brenner 'ne Störleuchte blinkt, wär's eigentlich schon 'n Fall für den Bereitschaftsdienst.", "cue": "Wichtiger Hinweis auf Dringlichkeit" }
+      ],
+      "transcript": "Herr Beck: Vor Montag kriegen wir regulär keinen Heizungsbauer ran — drehen Sie halt auf fünf und schauen wir Dienstag. Hotline: Falls eine Störleuchte blinkt, wäre es schon ein Fall für den Bereitschaftsdienst.",
+      "connectedSpeechReductions": [
+        { "spoken": "wär's eigentlich schon 'n Fall", "standard": "wäre es eigentlich schon ein Fall", "note": "Weiche Zuspitzung mit 'eigentlich'" }
+      ],
+      "vocabulary": [
+        "Mir ist bewusst, dass Freitagabend ungünstig ist, allerdings...",
+        "Komplettausfall von Heizung und Warmwasser",
+        "auf den Bereitschaftsdienst zurückgreifen",
+        "ein konkretes Zeitfenster festmachen"
+      ],
+      "usefulExpressions": [
+        "Ich verstehe total, dass es kurz vor dem Wochenende schwierig ist — allerdings fällt hier nicht nur ein Zimmer aus, sondern die gesamte Anlage zeigt eine Störung und es sind drei Grad draußen.",
+        "Könnten Sie bitte direkt den Bereitschaftsdienst aktivieren, damit heute noch jemand draufschaut?"
+      ],
+      "grammarPatterns": [
+        "Freundliche Festigkeit: Ich sehe ein, dass [Hürde] — dennoch ist es uns bei drei Grad nicht zumutbar, bis Dienstag zu warten."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was bezweckt Herr Beck mit ‚Schauen wir Dienstag mal‘?",
+          "options": [
+            "Er hat für Dienstag schon fest gebucht.",
+            "Er versucht das Problem unverbindlich ins nächste Wochenende-Nachspiel zu vertagen, bis Sie nachhaken.",
+            "Er schickt sofort zwei Monteure.",
+            "Die Heizung repariert sich selbst."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Unverbindliches Abwiegeln — erfordert ruhiges, konkretes Gegensteuern"]
+        }
+      ],
+      "speakingTask": "Widersprechen Sie Herrn Beck höflich, nennen Sie das harte Faktum (Störungsleuchte + kein Warmwasser) und verlangen Sie einen Rückruf vom Bereitschaftsdienst.",
+      "interactionTask": "Herr Beck lenkt halb ein: ‚Okay, was genau steht denn am Display vom Kessel?‘ Antworten Sie präzise mit Reset-Versuch + Fehlerstatus.",
+      "expectedResponseCharacteristics": [
+        "Kein schroffer Ärger, aber null Nachgeben bei unzumutbarer Vertagung",
+        "Sichere Nutzung von ‚allerdings‘ / ‚nicht zumutbar‘"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Dienstag ist viel zu spät, es ist sehr kalt und gar kein warmes Wasser da. Bitte schicken Sie heute den Notdienst.",
+        "verdict": "Kommt sofort an! Mit ‚Ich sehe total, dass Freitagabend eng ist — allerdings ist bei Komplettausfall und drei Grad ein Warten bis Dienstag nicht drin‘ wirken Sie super souverän."
+      },
+      "acceptableAlternatives": [
+        { "register": "Bestimmt & lösungsorientiert (C1)", "text": "Dass es kurz vor Feierabend unglücklich liegt, verstehe ich absolut. Da aber sowohl Heizung als auch Warmwasser komplett ausgefallen sind und der Kessel auf Störung steht, reicht Warten bis Dienstag leider nicht — wen vom Bereitschaftsdienst dürfen wir anrufen?" },
+        { "register": "Direkt-kollegial", "text": "Wird leider nichts mit dem Thermostat, Herr Beck — die ganze Anlage ist auf Störung. Könnten Sie mir eben die Nummer vom Notdienst durchgeben, bevor Sie ins Wochenende gehen?" }
+      ],
+      "errorClassifications": ["SITUATIONAL_UNDERSTANDING", "REGISTER"],
+      "correctionGuidance": "Im deutschen Alltag löst die Kombination aus ‚Verständnis zeigen + sachliches K.-o.-Kriterium + konkrete nächste Handlung‘ fast jede Blockade.",
+      "transferTask": "Wenden Sie dieselbe Technik bei einer verspäteten Paket- oder Bahn-Erstattung an.",
+      "delayedRetrievalTarget": "allerdings ist bei Komplettausfall ... leider nicht drin / konkretes Zeitfenster",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 1d -> 5d -> 14d"
+    },
+    {
+      "id": "yr_phone_04",
+      "scenarioFamilyId": "fam_phone_zero_visual",
+      "title": "Arztpraxis-Rezeption & Krankenkasse: Akuttermin vs. Routinethema",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Anliegen präzise einordnen, Verständnis gewinnen & Wartezeit geschickt managen",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Telefonat mit MFA (Arztpraxis) in Esslingen",
+      "difficulty": "B2+",
+      "visualSceneType": "WAVEFORM_RADAR",
+      "learningObjective": "Beim ersten Anruf in einer deutschen Arztpraxis sofort klar zwischen Routine und akutem Bedarf unterscheiden, statt sich mit ‚in sechs Wochen‘ abspeisen zu lassen.",
+      "germanInput": "Sie haben seit zwei Tagen eine schmerzhafte Sportverletzung am Sprunggelenk vom Fußball und rufen bei einer orthopädischen Praxis in Esslingen an.",
+      "audioRequirements": {
+        "deliveryStyle": "Hektische Praxis-Anmeldung, typische Rückfrage nach Kasse und Beschwerdebeginn",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Frau Weber (Anmeldung)", "role": "MFA Orthopädie", "personality": "Abgehetzt, sortiert nach Dringlichkeit", "variety": "Schwäbisch-Standard" },
+        { "name": "Zweite MFA im Hintergrund", "role": "Kollegin", "personality": "Ruft Lücke um 11:20 rein", "variety": "Schwäbisch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Frau Weber (Anmeldung)", "line": "Praxis Dr. Moser, Weber am Apparat! Also regulär hammer vor Ende des Monats leider gar nix mehr frei — um was geht's denn bei Ihnen?", "cue": "Standard-Abwehr vor der Symptom-Schilderung" },
+        { "speaker": "Zweite MFA im Hintergrund", "line": "Du, der Herr Maier um elf Uhr zwanzig hat grad abgesagt, gell.", "cue": "Versteckte Chance — wer schnell & klar reagiert, bekommt den Slot" }
+      ],
+      "transcript": "Frau Weber: Praxis Dr. Moser! Regulär haben wir vor Monatsende nichts mehr frei — um was geht's denn? Kollegin: Der Herr Maier um 11:20 hat gerade abgesagt, gell.",
+      "connectedSpeechReductions": [
+        { "spoken": "hammer ... gar nix mehr", "standard": "haben wir ... gar nichts mehr", "note": "Sehr häufig in Praxen/Läden in BW" }
+      ],
+      "vocabulary": [
+        "beim Training umgeknickt sein",
+        "kaum noch richtig auftreten können",
+        "eine akute Abklärung brauchen",
+        "zeitlich komplett flexibel sein"
+      ],
+      "usefulExpressions": [
+        "Mir ist beim Training das Sprunggelenk dick angeschwollen und ich kann kaum auftreten — deshalb geht es mir heute um eine kurze Akutsprechstunde, ich wäre zeitlich auch sofort abrufbar.",
+        "Falls um elf Uhr zwanzig gerade etwas frei geworden ist, könnte ich in fünfzehn Minuten bei Ihnen sein!"
+      ],
+      "grammarPatterns": [
+        "Symptom + Konsequenz + Flexibilitäts-Signal: [Verletzung] und [Einschränkung], daher wäre ich für jeden kurzfristigen Ausfalltermin extrem dankbar."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Welcher Hinweis im Hintergrund eröffnet Ihnen sofort die Chance auf einen Termin noch heute?",
+          "options": [
+            "Die Praxis schließt gleich.",
+            "Ein Patient namens Herr Maier hat soeben seinen Termin um 11:20 Uhr abgesagt.",
+            "Man braucht eine neue Versichertenkarte.",
+            "Dr. Moser ist im Urlaub."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Ausfallslot um 11:20 Uhr blitzschnell aufgreifen"]
+        }
+      ],
+      "speakingTask": "Schildern Sie kurz Ihre akute Fußverletzung vom Training und bieten Sie sofort an, für den abgesagten Termin einzuspringen.",
+      "interactionTask": "Frau Weber sagt: ‚Gut, kommen Sie um elf zwanzig, aber bringen Sie ein bisschen Wartezeit mit und Ihre Versichertenkarte!‘ Bestätigen Sie knapp und natürlich.",
+      "expectedResponseCharacteristics": [
+        "Konkrete Beschreibung (angeschwollen, umgeknickt, nicht belastbar)",
+        "Sofortiges Zeitsignal (‚kann in 15 Minuten da sein‘)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Mein Fuß tut seit vorgestern sehr weh nach Fußball. Ich kann sofort um 11:20 kommen, wenn frei ist.",
+        "verdict": "Super verständlich! Mit ‚Ich bin beim Training umgeknickt und kann kaum auftreten — ich könnte den abgesagten Termin um 11:20 sofort übernehmen‘ sitzt jedes Wort."
+      },
+      "acceptableAlternatives": [
+        { "register": "Alltags-Deutsch präzise (C1)", "text": "Ich bin vorgestern beim Fußballtraining stark umgeknickt und kann den Fuß kaum belasten. Wenn bei Ihnen gerade um elf Uhr zwanzig etwas frei geworden ist, schaffe ich es locker bis dahin!" },
+        { "register": "Ruhig & freundlich", "text": "Es ist leider akut vom Sport: Das Gelenk ist angeschwollen und schmerzt beim Auftreten. Falls heute noch irgendwo ein Patient ausfällt, bin ich in zehn Minuten vor Ort." }
+      ],
+      "errorClassifications": ["ACTIVE_RETRIEVAL", "VOCABULARY"],
+      "correctionGuidance": "‚Umgeknickt‘ (twisted ankle) und ‚auf die Warteliste / für einen Ausfalltermin einspringen‘ sind Schlüsselwörter im deutschen Praxisalltag.",
+      "transferTask": "Rufen Sie auf dieselbe Art bei einem Bürgerbüro oder Reifenservice wegen eines spontanen Ausfalltermins an.",
+      "delayedRetrievalTarget": "beim Training umgeknickt sein / für einen Ausfalltermin einspringen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 1d -> 4d -> 11d"
+    },
+    {
+      "id": "yr_alltag_05",
+      "scenarioFamilyId": "fam_alltag_kasse",
+      "title": "Mehrpersonendiskussion in der Esslinger WG / Nachbarschaft: Ruhezeit & Besuch",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Zwischen zwei Positionen vermitteln & locker-respektvoll deeskalieren",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Flurgespräch mit älterem Nachbarn & Mitbewohner",
+      "difficulty": "C1.1",
+      "visualSceneType": "MULTI_SPEAKER_TABLE",
+      "learningObjective": "In einer gereizten Dreier-Situation zwischen Nachbar und Kumpel spontan moderieren, Subtext (‚Man will ja kein Spießer sein, aber…‘) erkennen und das Gesicht für beide wahren.",
+      "germanInput": "Samstagabend gegen elf klingelt Herr Huber von unten, weil ein paar Studienkollegen nach dem Champions-League-Abend noch laut im Wohnzimmer lachen.",
+      "audioRequirements": {
+        "deliveryStyle": "Übereinander Reden zweier gereizter Personen mit schnellem Themenwechsel",
+        "speakerCount": 2,
+        "regionalVariety": "Schwäbisch im Treppenhaus",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Herr Huber (Nachbar EG)", "role": "Langjähriger Hausbewohner", "personality": "Passiv-aggressiv höflich, pocht auf Hausordnung", "variety": "Schwäbisch" },
+        { "name": "Tobi (Studienkollege)", "role": "Gast", "personality": "Abwehrend, ‚Es ist doch Samstag!‘", "variety": "Umgangsdeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Herr Huber (Nachbar EG)", "line": "Ja schönen guten Abend auch — ich will ja net gleich den Spielverderber machen, gell, aber bei uns unten wackelt seit neun die Decke und morgen früh hammer Konfirmation in der Familie.", "cue": "Typische Verkleidung von Ärger in Höflichkeitsfloskel" },
+        { "speaker": "Tobi (Studienkollege)", "line": "Komm, Herr Huber, wir hören doch schon leise Musik, es ist gerade mal elf am Samstag!", "cue": "Gegenfeuer, droht zu eskalieren" }
+      ],
+      "transcript": "Herr Huber: Ich will ja net den Spielverderber machen, gell, aber bei uns wackelt die Decke und morgen früh haben wir Konfirmation. Tobi: Komm, es ist gerade mal elf am Samstag!",
+      "connectedSpeechReductions": [
+        { "spoken": "ich will ja net gleich ... gell", "standard": "ich möchte ja nicht gleich ... nicht wahr", "note": "Schwäbische Schutzformel vor Kritik" }
+      ],
+      "vocabulary": [
+        "auf den Kern eingehen statt gegeneinander hochzuschaukeln",
+        "ab sofort einen Gang herunterschalten",
+        "das Ganze unkompliziert entschärfen",
+        "auf gegenseitige Rücksichtnahme achten"
+      ],
+      "usefulExpressions": [
+        "Alles klar, Herr Huber — danke, dass Sie kurz selbst Bescheid geben statt lang rumzumachen. Wir schalten ab jetzt deutlich einen Gang runter und schließen die Balkontür.",
+        "Ihnen morgen eine richtig schöne Familienfeier, und falls doch noch was ist, klingeln Sie bitte einfach nochmal durch!"
+      ],
+      "grammarPatterns": [
+        "Deeskalations-Muster: [Danke fürs direkte Ansprechen] + [konkrete Sofortmaßnahme] + [guter Wunsch fürs Gegenüber]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Was signalisiert Herr Huber mit ‚Ich will ja net den Spielverderber machen, gell, aber…‘?",
+          "options": [
+            "Es stört ihn überhaupt nicht.",
+            "Er möchte als vernünftig wahrgenommen werden, erwartet aber faktisch ab sofort echte Nachtruhe — sonst droht Verhärtung.",
+            "Er möchte auf ein Bier dazukommen.",
+            "Er zieht nächste Woche aus."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Höflich verpackte klare Grenze — sofort ernst nehmen & Maßnahme zeigen"]
+        }
+      ],
+      "speakingTask": "Übernehmen Sie das Wort zwischen Tobi und Herrn Huber, zeigen Sie Verständnis und beenden Sie das Treppenhausgespräch mit einer warmen, klaren Zusage.",
+      "interactionTask": "Herr Huber wirkt sofort besänftigt und fügt an: ‚Na dann isch gut, man hört hier im Altbau halt jeden Stuhl — schönen Abend noch!‘ Reagieren Sie passend.",
+      "expectedResponseCharacteristics": [
+        "Deeskalierende Brücke ohne Rechthaberei",
+        "Natürliche Partikeln (‚schon klar‘, ‚kein Ding‘, ‚direkt‘)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Entschuldigung Herr Huber, wir machen jetzt das Fenster zu und reden leiser. Viel Spaß morgen bei der Feier.",
+        "verdict": "Sehr sympathisch! Mit ‚Danke, dass Sie direkt Bescheid sagen — wir fahren die Lautstärke sofort runter‘ wirken Sie auf Anhieb wie ein Traumnachbar."
+      },
+      "acceptableAlternatives": [
+        { "register": "Herzlich & nachbarschaftlich (Optimal)", "text": "Völlig verständlich, Herr Huber — danke Ihnen, dass Sie einfach kurz hochkommen! Wir machen hier ab sofort alles leiser und ziehen gleich die Balkontür zu. Ihnen morgen eine ganz schöne Konfirmationsfeier!" },
+        { "register": "Knapp & klar vor dem Kollegen", "text": "Alles gut, Herr Huber, nehmen wir direkt auf unsere Kappe — Box aus, Stimmen runter, versprochen!" }
+      ],
+      "errorClassifications": ["INTERPRETATION", "INTERACTION"],
+      "correctionGuidance": "In schwäbischen Mehrfamilienhäusern wirkt ‚Danke, dass Sie kurz direkt Bescheid sagen‘ Wunder, weil damit das direkte Gespräch belohnt wird.",
+      "transferTask": "Übertragen Sie das ‚Danke fürs Bescheidsagen + Sofortmaßnahme‘-Muster auf einen Kollegenhinweis im Großraumbüro.",
+      "delayedRetrievalTarget": "einen Gang herunterschalten / danke, dass Sie kurz selbst Bescheid geben",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 5d -> 14d"
+    },
+    {
+      "id": "yr_alltag_06",
+      "scenarioFamilyId": "fam_alltag_kasse",
+      "title": "Reklamation & Garantie-Diskussion im Elektronik- oder Autozubehörladen",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Rechtssicher, freundlich und hartnäckig auf Gewährleistung statt Kulanz-Ausrede bestehen",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Kundenservice-Schalter (Realer Konflikt ohne Eskalation)",
+      "difficulty": "C1.2",
+      "visualSceneType": "RECEIPT_REGISTER_MORPH",
+      "learningObjective": "Den feinen Unterschied zwischen freiwilliger Herstellergarantie und gesetzlicher Gewährleistung ruhig auf Deutsch durchsetzen, wenn ein Verkäufer abblockt.",
+      "germanInput": "Ein vor vier Monaten gekauftes Ladegerät bzw. Diagnose-Interface funktioniert plötzlich nicht mehr; der Service-Mitarbeiter will Sie direkt an den Hersteller im Ausland verweisen.",
+      "audioRequirements": {
+        "deliveryStyle": "Geschulter Abwimmel-Ton am Service-Tresen",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Service-Mitarbeiter", "role": "Reklamationstheke", "personality": "Versucht Fälle von der Theke wegzuschieben", "variety": "Standarddeutsch" },
+        { "name": "Nächster Kunde (Schlange)", "role": "Zuschauer", "personality": "Seufzt ungeduldig", "variety": "Süddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Service-Mitarbeiter", "line": "Also bei dem Modell haben wir hier im Haus nach drei Monaten leider nix mehr mit zu tun — schreiben Sie am besten dem Hersteller direkt, die schicken dann vielleicht 'n Ticket.", "cue": "Rechtlich irreführende Abwehr" },
+        { "speaker": "Nächster Kunde (Schlange)", "line": "Oje, des dauert bei denen doch immer ewig...", "cue": "Druck im Rücken durch wartende Schlange" }
+      ],
+      "transcript": "Service-Mitarbeiter: Nach drei Monaten haben wir damit hier im Haus nichts mehr zu tun — schreiben Sie direkt dem Hersteller. Kunde: Das dauert bei denen doch immer ewig...",
+      "connectedSpeechReductions": [
+        { "spoken": "haben wir ... nix mehr mit zu tun", "standard": "damit haben wir nichts mehr zu tun", "note": "Typische Da-Spaltung + Negationsverstärkung in der Alltagssprache" }
+      ],
+      "vocabulary": [
+        "im Rahmen der gesetzlichen Gewährleistung",
+        "Anspruch auf Nachbesserung oder Ersatz haben",
+        "Mein Vertragspartner sind ja Sie als Händler",
+        "eine kulante Direktauswechselung vorschlagen"
+      ],
+      "usefulExpressions": [
+        "Verzeihung, ich glaube, da verwechseln wir gerade freiwillige Garantie und gesetzliche Gewährleistung — nach vier Monaten sind Sie als Händler mein direkter Ansprechpartner für Ersatz oder Reparatur.",
+        "Wollen wir das schnell und unkompliziert über einen direkten Umtausch lösen, damit wir beide keine Wochen verlieren?"
+      ],
+      "grammarPatterns": [
+        "Rechts-Souveränität ohne Konfrontation: Ich meine das gar nicht böse, nur rechtlich liegt der Fall klar bei [Grundsatz]. Wie lösen wir das pragmatisch?"
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Wie entkräften Sie die Ausrede ‚Wenden Sie sich an den Hersteller‘ am wirkungsvollsten?",
+          "options": [
+            "Laut nach dem Geschäftsführer rufen.",
+            "Ruhig auf die gesetzliche Gewährleistung verweisen (Händler ist Vertragspartner) und sofort eine unkomplizierte Lösung (Umtausch/Gutschrift) anbieten.",
+            "Den Laden sofort verlassen.",
+            "Das defekte Gerät wegschmeißen."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Sachverweis Gewährleistung vs. Garantie + gesichtswahrender Lösungsvorschlag"]
+        }
+      ],
+      "speakingTask": "Widersprechen Sie dem Mitarbeiter ruhig, erklären Sie Ihre Position in 2 Sätzen und bieten Sie eine schnelle Einigung an.",
+      "interactionTask": "Der Mitarbeiter blättert kurz im System und sagt: ‚Na gut, wenn die Originalverpackung oder der Bon da ist, kann ich 'nen Direkttausch anlegen — haben Sie die Quittung noch?‘ Antworten Sie souverän.",
+      "expectedResponseCharacteristics": [
+        "Höflicher Korrektur-Einstieg (‚Ich glaube, da verwechseln wir gerade…‘)",
+        "Präzises Nomen ‚Gewährleistung‘"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Nein, ich habe das hier vor vier Monaten gekauft, Sie müssen das reklamieren oder ersetzen.",
+        "verdict": "Inhaltlich korrekt! Mit ‚Mein Vertragspartner im Rahmen der Gewährleistung sind Sie als Händler‘ sitzt die deutsche Reklamation so präzise wie vom Anwalt."
+      },
+      "acceptableAlternatives": [
+        { "register": "Ruhig, sachlich & juristisch sauber (C1)", "text": "Mir geht es gar nicht ums Streiten — nur liegt das Gerät mit vier Monaten noch voll in der gesetzlichen Gewährleistung, bei der Sie als Händler mein Vertragspartner sind. Könnten wir das einfach direkt über einen Umtausch oder eine Gutschrift abwickeln?" },
+        { "register": "Alltagsnah-direkt", "text": "Die Herstellergarantie ist freiwillig, klar, aber nach vier Monaten greift ja noch ganz normal die Händler-Gewährleistung. Schauen Sie doch bitte eben, ob wir's direkt tauschen können." }
+      ],
+      "errorClassifications": ["VOCABULARY", "REGISTER"],
+      "correctionGuidance": "Der Unterschied ‚Garantie (Hersteller, freiwillig) vs. Gewährleistung (Händler, 24 Monate gesetzlich)‘ ist in Deutschland ein echtes C1-Alltagsschlüsselwissen.",
+      "transferTask": "Übertragen Sie dieselbe ruhige Argumentation auf eine strittige Mietkaution-Abrechnung oder KFZ-Werkstattrechnung.",
+      "delayedRetrievalTarget": "im Rahmen der gesetzlichen Gewährleistung / Vertragspartner als Händler",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 6d -> 16d"
+    },
+    {
+      "id": "yr_swab_07",
+      "scenarioFamilyId": "fam_swabian_colleagues",
+      "title": "Schwäbischer Vereins- & Nachbarschaftscode: ‚Fei‘, ‚Schaffen‘, ‚Stückle‘ & Einladung richtig deuten",
+      "skill": "NATURAL_LISTENING",
+      "subskill": "Regionale Partikeln & typische Esslinger Alltagskultur sofort entschlüsseln",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Informell-regional (Raum Esslingen / Neckar)",
+      "difficulty": "C1.1",
+      "visualSceneType": "PARTICLE_TONE_DIAL",
+      "learningObjective": "Versteckte Herzlichkeit, echte Verbindlichkeit vs. unverbindlichen Smalltalk im schwäbischen Umfeld (‚schaffen‘, ‚Kehrwoche‘, ‚Stückle‘, ‚fei‘) sicher unterscheiden.",
+      "germanInput": "Nach einem F-Jugend-Turnier auf der Pliensauvorstadt lädt Sie ein Vereinskollege spontan ein, später noch ‚aufs Stückle‘ zum Grillen raufzukommen.",
+      "audioRequirements": {
+        "deliveryStyle": "Herzlicher, aber schneller Esslinger Ton mit echten Dialekteinschüben",
+        "speakerCount": 2,
+        "regionalVariety": "Esslinger Schwäbisch",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Dietmar (Jugendleiter)", "role": "Ur-Esslinger im Verein", "personality": "Bodenständig, direkt, herzlich", "variety": "Schwäbisch" },
+        { "name": "Petra (Elternteil)", "role": "Turnier-Orga", "personality": "Schmeißt zwischendurch einen Kommentar ein", "variety": "Schwäbisch-Standard" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Dietmar (Jugendleiter)", "line": "Du, schaffsch heut noch lang oder kommst nachher no mit rauf aufs Stückle? Aber fei net bloß auf 'n Sprung, gell — bring dei Zeug gleich mit!", "cue": "‚fei‘ = nachdrückliche Betonung, echt gemeinte Einladung" },
+        { "speaker": "Petra (Elternteil)", "line": "Und zieh dir was G'scheits drüber, dort oben pfeift's abends immer ganz schön.", "cue": "Herzliche Fürsorge im schwäbischen Ton" }
+      ],
+      "transcript": "Dietmar: Schaffst heute noch lang oder kommst nachher noch mit rauf aufs Stückle? Aber fei net bloß auf einen Sprung, gell — bring dein Zeug gleich mit! Petra: Und zieh dir was Gescheites drüber, dort oben pfeift's abends.",
+      "connectedSpeechReductions": [
+        { "spoken": "aufs Stückle", "standard": "auf den Schrebergarten / das Gartengrundstück am Weinberg", "note": "Esslinger Ur-Kulturwort — wer aufs ‚Stückle‘ eingeladen wird, gehört richtig dazu!" },
+        { "spoken": "fei net bloß auf 'n Sprung", "standard": "wirklich nicht nur für fünf Minuten", "note": "‚fei‘ verstärkt Warnung oder herzliche Aufforderung" }
+      ],
+      "vocabulary": [
+        "schaffen (im Süden: arbeiten / etwas erledigen)",
+        "das Stückle (Gartengrundstück am Neckarhang)",
+        "auf einen Sprung vorbeischauen",
+        "ich schau, was ich mitbringen kann"
+      ],
+      "usefulExpressions": [
+        "Sehr gern, Dietmar! Ich muss zwar vorher noch kurz heim und duschen, aber gegen halb sieben bin ich oben — soll ich noch was zu trinken oder fürs Grillen mitbringen?",
+        "Danke dir für den Tipp, Petra — eine leichte Jacke packe ich gleich ein!"
+      ],
+      "grammarPatterns": [
+        "Authentische Reaktion auf Süddeutsch: Verstehen der Regionalfärbung, aber selbst im natürlichen, warmen Standarddeutsch (nicht gekünstelt Schwäbisch!) antworten."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was meint Dietmar mit ‚Schaffsch heut noch lang oder kommst aufs Stückle, fei net bloß auf 'n Sprung‘?",
+          "options": [
+            "Ob man noch etwas basteln kann.",
+            "Ob Sie noch lange arbeiten müssen oder anschließend fest zum gemütlichen Beisammensein im Garten/Weinberg dazukommen — und zwar nicht nur kurz.",
+            "Dass man dort oben Sport machen muss.",
+            "Dass er nur allein hingehen will."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Arbeiten -> gemütlicher Gartenbesuch am Hang -> ernst gemeinte Einladung"]
+        }
+      ],
+      "speakingTask": "Nehmen Sie Dietmars Einladung begeistert an, klären Sie die Uhrzeit und fragen Sie direkt nach einem Mitbringsel (Getränke/Salat).",
+      "interactionTask": "Dietmar winkt ab: ‚Ach Quatsch, mir ham alles — bloß gute Laune und deinen Hunger mitbringen!‘ Verabschieden Sie sich locker bis nachher.",
+      "expectedResponseCharacteristics": [
+        "Kein künstliches Nachäffen des Dialekts, sondern warmes Umgangsdeutsch",
+        "Mitbringsel-Anstand (‚Soll ich noch was mitbringen?‘)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Ja gerne, ich komme nachher nach Hause und dann komme ich. Soll ich etwas mitbringen?",
+        "verdict": "Nett und verständlich! Mit ‚Sehr gern — ich spring nur schnell unter die Dusche und bin gegen sieben oben‘ fließen Ihre Sätze total natürlich."
+      },
+      "acceptableAlternatives": [
+        { "register": "Locker-herzlich in Esslingen (C1)", "text": "Mega gern, Dietmar! Ich husch nachher nur kurz heim, zieh mir was Warmes über und stoße dann zu euch rauf — sag ehrlich, was fehlt euch noch für den Grill?" },
+        { "register": "Kurz & freundlich", "text": "Klingt top! Ich bin heute mit der Arbeit schon durch, mach mich kurz frisch und komme dann auf jeden Fall länger vorbei." }
+      ],
+      "errorClassifications": ["CONNECTED_SPEECH_DECODING", "NATURALNESS"],
+      "correctionGuidance": "Bei Schwäbisch gilt: 100 % verstehen müssen (schaffen, fei, gell, Stückle, G'scheit), aber selbst lockeres Hochdeutsch sprechen — dann wirken Sie maximal authentisch.",
+      "transferTask": "Reagieren Sie genauso spontan auf die Frage eines Kollegen bei Mercedes-Benz: ‚Gehen wir nach der Schicht noch kurz auf 'n Feierabendbier runter?‘",
+      "delayedRetrievalTarget": "aufs Stückle kommen / auf einen Sprung / sich kurz frisch machen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 6d -> 15d"
+    },
+    {
+      "id": "yr_swab_08",
+      "scenarioFamilyId": "fam_swabian_colleagues",
+      "title": "Ironie, Understatement & ‚Schaffe‘-Humor in der schwäbischen Kantine",
+      "skill": "NATURAL_LISTENING",
+      "subskill": "Trockenen Humor, Untertreibung (‚Net g'schumpfe isch g'lobt g'nug‘) & schlagfertiges Mitlachen beherrschen",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Kantinen-Tischgespräch mit erfahrenen Kollegen",
+      "difficulty": "C1.2",
+      "visualSceneType": "PARTICLE_TONE_DIAL",
+      "learningObjective": "Wenn schwäbische Ingenieure loben (‚Kann ma net meckern‘) oder frotzeln, die echte Wertschätzung erkennen und schlagfertig-sympathisch kontern.",
+      "germanInput": "Nach einer extrem gut gelaufenen Prüfstandsvorbereitung sitzen Sie mit zwei älteren Kollegen in der Werkskantine und hören ein typisch untertreibendes ‚Kompliment‘.",
+      "audioRequirements": {
+        "deliveryStyle": "Entspanntes Kantinen-Frotzeln mit trockenem Humor",
+        "speakerCount": 2,
+        "regionalVariety": "Schwäbisch-Mittelstand / Daimler-Kultur",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Wolfgang (Versuchsbau)", "role": "30 Jahre Betriebserfahrung", "personality": "Trockener Humor, herzliches Grinsen unter ernstem Gesicht", "variety": "Schwäbisch" },
+        { "name": "Katrin (Applikation)", "role": "Teamkollegin", "personality": "Übersetzt Ihnen lachend den Subtext", "variety": "Süddeutsch-Standard" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Wolfgang (Versuchsbau)", "line": "Also ganz ehrlich: Für dass du da gestern erst eingestiegen bisch, lief die Kiste heut früh überraschend rund — kann ma jetzt echt net meckern.", "cue": "‚Kann ma net meckern‘ = Höchstes schwäbisches Lob!" },
+        { "speaker": "Katrin (Applikation)", "line": "Übersetzung ins Standarddeutsche: Wolfgang fand deinen Aufbau Weltklasse, er darf's bloß vor Mittag net zugeben!", "cue": "Kantine bricht in kurzes Lachen aus — perfekter Moment für lockeren Konter" }
+      ],
+      "transcript": "Wolfgang: Für dass du erst gestern eingestiegen bist, lief die Kiste heute überraschend rund — kann man echt nicht meckern. Katrin: Übersetzung: Wolfgang fand deinen Aufbau Weltklasse!",
+      "connectedSpeechReductions": [
+        { "spoken": "kann ma jetzt echt net meckern", "standard": "das war wirklich sehr gut (Understatement)", "note": "Bekanntestes süddeutsches Lob-Muster" }
+      ],
+      "vocabulary": [
+        "das nehme ich als schwäbischen Ritterschlag",
+        "aus deinem Mund zählt das doppelt",
+        "Spaß beiseite — ohne eure Vorarbeit wäre das nie gegangen",
+        "schauen wir, dass es heute Nachmittag genauso geschmeidig bleibt"
+      ],
+      "usefulExpressions": [
+        "Ha, danke Wolfgang — ‚nicht gemeckert‘ nehme ich hier in Baden-Württemberg ja fast schon als schwäbischen Ritterschlag!",
+        "Im Ernst, ohne deine schnelle Hilfe bei den Sensorkabeln gestern wäre die Messung heut früh niemals so sauber durchgelaufen."
+      ],
+      "grammarPatterns": [
+        "Humorvolles Parieren + Team-Credit: [Augenzwinkerndes Aufgreifen des Understatements] + ‚Spaß beiseite, ohne euch…‘."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "IMPLICIT_MEANING",
+          "question": "Wie sollten Sie Wolfgangs Satz ‚kann ma echt net meckern‘ emotional einordnen?",
+          "options": [
+            "Als verdeckte Kritik an kleinen Fehlern.",
+            "Als echtes, hohes Lob eines erfahrenen Kollegen, verpackt in trockenes schwäbisches Understatement.",
+            "Als Zeichen von Desinteresse.",
+            "Als Beschwerde über die Kantine."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["‚Net g'meckert‘ = hohes Lob im Südwesten; augenzwinkernd annehmen statt unsicher werden"]
+        }
+      ],
+      "speakingTask": "Kontern Sie Wolfgangs Understatement mit einem charmanten Spruch und geben Sie dem Team direkt Anerkennung zurück.",
+      "interactionTask": "Wolfgang grinst und fragt: ‚Und wann lädst uns mal auf 'n echtes arabisches Essen oder gute Kässpätzle ein?‘ Reagieren Sie locker und schlagfertig!",
+      "expectedResponseCharacteristics": [
+        "Selbstironie & Lässigkeit ohne steife Förmlichkeit",
+        "Sichere idiomatische Wendung (‚Ritterschlag‘, ‚zählt doppelt‘)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Haha danke Wolfgang, ich freue mich sehr, dass es gut lief. Danke auch für deine Hilfe gestern.",
+        "verdict": "Super nett und sympathisch! Mit ‚‚Nicht gemeckert‘ nehme ich hier glatt als Ritterschlag!‘ werden Sie zum absoluten Liebling am Kantinentisch."
+      },
+      "acceptableAlternatives": [
+        { "register": "Schlagfertig & kollegial (C1+)", "text": "Das nehm ich aus deinem Mund direkt als schwäbischen Ritterschlag, Wolfgang! Aber im Ernst: Dass die Messreihe direkt stand, lag auch an eurer Vorarbeit gestern Abend." },
+        { "register": "Locker-fröhlich", "text": "Haha, ‚kann man nicht meckern‘ — das rahm ich mir ein! Aber danke dir, war echt ein cooler erster Lauf heute." }
+      ],
+      "errorClassifications": ["INTERPRETATION", "NATURALNESS"],
+      "correctionGuidance": "Humor und Understatement verstehen ist eine der letzten echten Hürden zu C1 — wer in BW ‚Nicht gemeckert ist gelobt genug‘ kennt, knackt jedes Kantinen-Eis.",
+      "transferTask": "Machen Sie denselben charmanten Gegenspruch, wenn ein Fußballtrainer-Kollege nach einem tollen Turnier trocken sagt: ‚War ganz ordentlich heute.‘",
+      "delayedRetrievalTarget": "als schwäbischen Ritterschlag nehmen / kann man nicht meckern",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 3d -> 8d -> 20d"
+    }
+  ]
+}

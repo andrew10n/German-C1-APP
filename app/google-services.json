@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "185267512315",
+    "project_id": "gen-lang-client-0851433166",
+    "storage_bucket": "gen-lang-client-0851433166.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185267512315:android:a0dba3679c08b423c7215e",
+        "android_client_info": {
+          "package_name": "com.aistudio.germanc1.vxmqpl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_h9RdsQLAoUuW_gRGYgJaKxPEDz_JOJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,879 @@
+{
+  "exercises": [
+    {
+      "id": "yr_amg_09",
+      "scenarioFamilyId": "fam_amg_911_dynamics",
+      "title": "AMG / 911 T-Hybrid Applikations-Review: E-Turbo Ansprechverhalten vs. Bauteilschutz",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "Messdaten-gestützte Argumentation & diplomatisches Gegenhalten vor Projektleitung",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Antriebs-Abstimmungsrunde (Affalterbach / Untertürkheim)",
+      "difficulty": "C1.2",
+      "visualSceneType": "POWERTRAIN_SIGNAL_FLOW",
+      "learningObjective": "Einen technischen Zielkonflikt zwischen spontanem Lastaufbau (Tip-in) und Inverter-Derating präzise einordnen und eine fundierte Kompromisskennlinie verteidigen.",
+      "germanInput": "In der Freitags-Abstimmung fordert das Produktmanagement aggressiveren Drehmomentaufbau aus dem Stand; Ihre Messfahrt zeigt jedoch ab dem dritten Launch thermisches Derating.",
+      "audioRequirements": {
+        "deliveryStyle": "Präzises, schnelles Entwicklungs-Meeting mit kritischen Zwischenfragen",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch-Ingenieursstandard",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Herr Vogt (Produktmanagement)", "role": "Baureihen-Verantwortlicher", "personality": "Performance-getrieben, ungeduldig", "variety": "Standarddeutsch" },
+        { "name": "Dr. Kramer (Applikationsleiter)", "role": "Ihr Betreuer", "personality": "Faktenbasiert, übergibt das Wort direkt an Sie", "variety": "Süddeutsch-Standard" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Herr Vogt (Produktmanagement)", "line": "Beim direkten Vergleich mit dem Elfer T-Hybrid fehlt mir im Sport-Plus-Modus beim Tip-in aus zweitausend Touren noch der letzte Biss — warum geben wir die volle E-Lader-Leistung nicht sofort frei?", "cue": "Forderung ohne Blick auf Thermik" },
+        { "speaker": "Dr. Kramer (Applikationsleiter)", "line": "Genau das haben wir gestern auf der Messstrecke durchgefahren — erläutern Sie Herrn Vogt doch bitte kurz, was ab dem dritten Volllast-Abruf im Zwischenkreis passiert.", "cue": "Direkte Übergabe an Sie vor versammelter Runde" }
+      ],
+      "transcript": "Herr Vogt: Beim Tip-in aus 2000 Touren fehlt mir im Sport-Plus-Modus noch der letzte Biss — warum geben wir die E-Lader-Leistung nicht sofort frei? Dr. Kramer: Erläutern Sie doch kurz, was ab dem dritten Volllast-Abruf im Zwischenkreis passiert.",
+      "connectedSpeechReductions": [
+        { "spoken": "beim Tip-in aus zweitausend Touren", "standard": "beim Lastschlag aus 2000 Umdrehungen pro Minute", "note": "Authentischer OEM-Prüfstandsjargon" }
+      ],
+      "vocabulary": [
+        "in die thermische Abregelung (Derating) laufen",
+        "Reproduzierbarkeit über mehrere Beschleunigungszyklen sicherstellen",
+        "auf Kosten der Dauerhaltbarkeit gehen",
+        "einen gestuften Drehmomentgradienten applizieren"
+      ],
+      "usefulExpressions": [
+        "Den Wunsch nach schärferem Ansprechverhalten kann ich gut nachvollziehen — allerdings zeigen unsere gestrigen Messschriebe, dass der Inverter sonst schon beim dritten Abruf in die thermische Abregelung läuft.",
+        "Unser Vorschlag wäre daher eine gestufte Vorsteuerung: maximaler Boost für die ersten anderthalb Sekunden, aber saubere Rücknahme vor der Bauteilschutzgrenze."
+      ],
+      "grammarPatterns": [
+        "Konzessive Ingenieurs-Brücke: [Ziel des Gegenübers anerkennen] — allerdings belegen die Messdaten, dass [physikalische Grenze]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "INTENTION",
+          "question": "Worauf kommt es bei Ihrer Antwort gegenüber Herrn Vogt kommunikativ am meisten an?",
+          "options": [
+            "Seinen Wunsch als fachlich falsch abzukanzeln.",
+            "Sein Performance-Ziel ernst zu nehmen, das thermische Risiko ab Zyklus 3 mit Messfakten zu belegen und sofort einen applikativen Lösungsvorschlag vorzulegen.",
+            "Nur auf Englisch mit Rohdaten-Tabellen zu antworten.",
+            "Das Thema auf nächsten Monat zu vertagen."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Kundenerlebnis bestätigen + Derating-Fakten nennen + Kompromisskennlinie vorschlagen"]
+        }
+      ],
+      "speakingTask": "Erklären Sie in 3 klaren Sätzen den Zielkonflikt aus Ihren Messdaten und schlagen Sie eine reproduzierbare Applikationslösung vor.",
+      "interactionTask": "Herr Vogt hakt nach: ‚Wie viel Zehntel kostet uns dieser Kompromiss von 80 auf 120 km/h?‘ Antworten Sie souverän mit Größenordnung und Kundennutzen (konstante Leistung statt Einbruch).",
+      "expectedResponseCharacteristics": [
+        "Saubere Kausalkette (dadurch, dass / infolge)",
+        "Diplomatische Souveränität ohne Defensivton"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Wir können nicht vollen Boost geben, weil nach dreimal Beschleunigen wird der Inverter zu heiß und regelt runter.",
+        "verdict": "Technisch 100 % treffsicher! Mit konzessiver Rahmung + ‚Reproduzierbarkeit sicherstellen‘ überzeugen Sie auch auf Management-Ebene sofort."
+      },
+      "acceptableAlternatives": [
+        { "register": "Souverän im Abteilungs-Review (C1)", "text": "Den Anspruch an den spontanen Biss im Sport-Plus-Modus teile ich absolut. Unsere gestrigen Messfahrten zeigen jedoch, dass wir bei unbegrenzter Freigabe bereits ab dem dritten Durchzug in die thermische Abregelung laufen — mit einer gestuften Rampe verlieren wir keine Zehntelsekunde, halten die Performance aber dauerhaft reproduzierbar." },
+        { "register": "Prägnant & datenfokussiert", "text": "Beim Einzelabruf funktioniert die volle Freigabe zwar, führt aber im dritten Zyklus unweigerlich zum Derating im Zwischenkreis. Deshalb empfehlen wir einen leicht gefilterten Gradienten, der dem Fahrer konstant denselben Schub liefert." }
+      ],
+      "errorClassifications": ["SENTENCE_FORMULATION", "REGISTER"],
+      "correctionGuidance": "Im deutschen Entwicklungs-Review gewinnt immer die Trias: 1. Ziel bestätigen, 2. Messbefund sachlich nennen, 3. reproduzierbaren Lösungspfad anbieten.",
+      "transferTask": "Übertragen Sie dieselbe Argumentationskette auf ein TCU-Schaltqualitäts-Thema (Rückschaltung Doppelkupplung unter Teillast).",
+      "delayedRetrievalTarget": "in die thermische Abregelung laufen / Reproduzierbarkeit über mehrere Zyklen sicherstellen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 5d -> 14d"
+    },
+    {
+      "id": "yr_amg_10",
+      "scenarioFamilyId": "fam_amg_911_dynamics",
+      "title": "8D-Ursachenanalyse & NVH-Heulen am Getriebeprüfstand: Unsicherheit seriös ausdrücken",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "Hypothesen von gesicherten Befunden mit Konjunktiv & Modaladverbien abgrenzen",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Taskforce-Runde Befundung & Qualitätsmanagement (FMEA / 8D)",
+      "difficulty": "C1.2",
+      "visualSceneType": "POWERTRAIN_SIGNAL_FLOW",
+      "learningObjective": "Bei noch laufender Ursachenforschung präzise zwischen belegter Messung und vorläufiger Arbeitshypothese trennen, ohne sich voreilig festnageln zu lassen.",
+      "germanInput": "Bei 3.800 U/min tritt im Schubbetrieb ein tonales Getriebeheulen (NVH) auf; der Qualitätsleiter will sofort eine endgültige Root-Cause-Aussage für den 8D-Bericht.",
+      "audioRequirements": {
+        "deliveryStyle": "Angespannte Taskforce-Atmosphäre mit präzisem Nachbohren",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Frau Schuster (Qualität / 8D)", "role": "QM-Leiterin", "personality": "Will eindeutige Festlegung für Kundenbericht", "variety": "Standarddeutsch" },
+        { "name": "Stefan (Akustik / NVH)", "role": "Versuchsingenieur", "personality": "Vorsichtig, schaut zu Ihnen rüber", "variety": "Süddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Frau Schuster (Qualität / 8D)", "line": "Wir müssen bis sechzehn Uhr den D4-Punkt im 8D-Report befüllen — können wir jetzt schwarz auf weiß reinschreiben, dass die Verzahnung der zweiten Stirnradstufe außerhalb der Toleranz liegt?", "cue": "Druck zu voreiliger Festlegung" },
+        { "speaker": "Stefan (Akustik / NVH)", "line": "Naja, die Ordnungsanalyse zeigt zwar genau die Zahneingriffsfrequenz, aber vermessen ist der Radsatz ja noch gar nicht — wie würdest du das formulieren?", "cue": "Ball liegt bei Ihnen für sauberes C1-Hedging" }
+      ],
+      "transcript": "Frau Schuster: Können wir im 8D-Report schwarz auf weiß reinschreiben, dass die Verzahnung außerhalb der Toleranz liegt? Stefan: Die Ordnungsanalyse zeigt die Zahneingriffsfrequenz, aber vermessen ist der Radsatz noch nicht.",
+      "connectedSpeechReductions": [
+        { "spoken": "schwarz auf weiß reinschreiben", "standard": "verbindlich schriftlich festhalten", "note": "Idiom für endgültige Festlegung" }
+      ],
+      "vocabulary": [
+        "nach derzeitigem Kenntnisstand deutet vieles darauf hin, dass",
+        "als wahrscheinlichste Arbeitshypothese führen",
+        "durch eine geometrische Befundung absichern",
+        "vorschnelle Festlegungen vermeiden"
+      ],
+      "usefulExpressions": [
+        "Für eine endgültige Festlegung ist es noch einen Tick zu früh: Die Ordnungsanalyse deutet zwar stark auf die Stirnradstufe hin, aber ausschließen können wir einen Lager- oder Gehäuseeinfluss erst nach der Vermessung morgen.",
+        "Im D4-Bericht sollten wir das heute als führende Arbeitshypothese formulieren, die morgen früh messtechnisch verifiziert wird."
+      ],
+      "grammarPatterns": [
+        "Epistemische Präzision (C1): Nach aktuellem Messstand spricht vieles für [X]; abschließend bestätigen lässt sich dies jedoch erst nach [Y]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "INTENTION",
+          "question": "Warum wäre ein simples ‚Ja, schreiben Sie Verzahnungstoleranz rein‘ hier ingenieurtechnisch gefährlich?",
+          "options": [
+            "Weil 8D-Reports keine technischen Begriffe enthalten dürfen.",
+            "Weil die akustische Ordnung nur den Anregungsort nahelegt, die geometrische Toleranzabweichung aber noch nicht vermessen ist — eine falsche D4-Festlegung führt zu teuren Fehlmaßnahmen.",
+            "Weil das Geräusch unterhalb der Hörschwelle liegt.",
+            "Weil NVH nur für Elektromotoren gilt."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Unterschied zwischen akustischem Indiz und geometrisch bewiesener Grundursache wahren"]
+        }
+      ],
+      "speakingTask": "Formulieren Sie für Frau Schuster eine druckreife mündliche Formulierung, die den Messbefund klar benennt, aber sauber als zu verifizierende Arbeitshypothese abgrenzt.",
+      "interactionTask": "Frau Schuster akzeptiert das und fragt, welche Sofortmaßnahme (D3 Containment) bis morgen gilt.",
+      "expectedResponseCharacteristics": [
+        "Exakte Trennung Indiz vs. Nachweis",
+        "Souveränes C1-Hedging (‚nach derzeitigem Stand‘, ‚deutet darauf hin‘, ‚absichern‘)"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Es ist noch nicht 100 Prozent sicher, dass es Toleranz ist. Wir schreiben besser Verdacht auf Stirnrad und prüfen morgen genau.",
+        "verdict": "Fachlich goldrichtig! Mit ‚als führende Arbeitshypothese aufnehmen und morgen geometrisch absichern‘ liefern Sie direkt den fertigen Satz für den 8D-Bericht."
+      },
+      "acceptableAlternatives": [
+        { "register": "8D-taugliches Ingenieurs-C1", "text": "Schwarz auf weiß als gesicherte Ursache sollten wir das heute noch nicht festschreiben. Nach aktuellem Stand der Ordnungsanalyse liegt der Fokus klar auf dem Zahneingriff der zweiten Stufe — ich würde das im D4 als führende Arbeitshypothese aufführen, die wir morgen früh über die Koordinatenmessmaschine absichern." },
+        { "register": "Kompakt in der Taskforce", "text": "Akustisch deutet alles auf die zweite Stirnradstufe hin, der geometrische Nachweis steht aber noch aus. Lassen Sie uns das als priorisierte Prüferspur dokumentieren und die betroffene Charge vorsorglich sperren." }
+      ],
+      "errorClassifications": ["GRAMMAR_UNDER_PRESSURE", "VOCABULARY"],
+      "correctionGuidance": "Epistemische Abstufung (‚deutet stark darauf hin‘ vs. ‚lässt sich erst nach X abschließend bestätigen‘) gehört zu den wertvollsten C1-Kompetenzen im deutschen Ingenieurwesen.",
+      "transferTask": "Nutzen Sie dieselbe Abstufung bei einer unklaren Fehlermeldung im CAN-Bus-Trace gegenüber Ihrem Betreuer.",
+      "delayedRetrievalTarget": "nach derzeitigem Kenntnisstand / als führende Arbeitshypothese absichern",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 6d -> 15d"
+    },
+    {
+      "id": "yr_amg_11",
+      "scenarioFamilyId": "fam_amg_911_dynamics",
+      "title": "Funktionale Sicherheit (ISO 26262): Momentenüberwachung im Hybrid-Antriebsstrang erklären",
+      "skill": "ENGINEERING_COMMUNICATION",
+      "subskill": "Komplexe 3-Ebenen-Überwachungsarchitektur klar strukturiert erläutern",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Technisches Fachgespräch / Vorstellungs- & Übernahmegespräch",
+      "difficulty": "Goethe C1",
+      "visualSceneType": "POWERTRAIN_SIGNAL_FLOW",
+      "learningObjective": "Sicherheitskritische Zusammenhänge (ungewollte Beschleunigung / ASIL) ohne Schachtelsatz-Chaos glasklar auf Deutsch präsentieren.",
+      "germanInput": "Ein Abteilungsleiter fragt Sie spontan nach Ihrer Erfahrung mit Momentenüberwachung (Torque Monitoring) bei Hybridfahrzeugen.",
+      "audioRequirements": {
+        "deliveryStyle": "Ruhiges, prüfendes Abteilungsleiter-Gespräch auf Augenhöhe",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Herr Dr. Seifert", "role": "Abteilungsleiter Antriebssteuerung", "personality": "Analytisch, schätzt Struktur und Präzision", "variety": "Standarddeutsch" },
+        { "name": "Frau Nguyen", "role": "FuSi-Verantwortliche", "personality": "Prüft Detailtiefe", "variety": "Standarddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Herr Dr. Seifert", "line": "Sie haben ja schon in Dubai am Hybrid-Energiemanagement gearbeitet — wie stellen Sie denn in zwei Sätzen sicher, dass eine fehlerhafte Momentenanforderung niemals zu einem ungewollten Fahrzeugruck führt?", "cue": " Präzisionsfrage unter Zeitvorgabe ('in zwei Sätzen')" },
+        { "speaker": "Frau Nguyen", "line": "Insbesondere dann, wenn Verbrenner und E-Maschine gleichzeitig im Übergangsbereich eingreifen.", "cue": "Zusatzschärfung auf Hybrid-Koordination" }
+      ],
+      "transcript": "Dr. Seifert: Wie stellen Sie in zwei Sätzen sicher, dass eine fehlerhafte Momentenanforderung niemals zu einem ungewollten Fahrzeugruck führt? Frau Nguyen: Insbesondere wenn Verbrenner und E-Maschine gleichzeitig im Übergangsbereich eingreifen.",
+      "connectedSpeechReductions": [
+        { "spoken": "Sie haben ja schon...", "standard": "Sie verfügen bekanntermaßen bereits über...", "note": "Anerkennendes 'ja' baut Gesprächsbrücke auf" }
+      ],
+      "vocabulary": [
+        "unabhängig voneinander plausibilisieren",
+        "das Summenmoment am Rad überwachen",
+        "bei Überschreitung der Toleranzschwelle in den sicheren Zustand überführen",
+        "Funktionsebene und Überwachungsebene strikt trennen"
+      ],
+      "usefulExpressions": [
+        "Im Kern trennen wir strikt zwischen der Funktionsberechnung in Ebene 1 und einer unabhängigen Momentenüberwachung in Ebene 2, die das tatsächliche Summenmoment aus Verbrenner und E-Maschine gegen den Fahrerwunsch plausibilisiert.",
+        "Sobald die Abweichung das zulässige Toleranzfenster verlässt, greift die Sicherheitsreaktion ein und führt den Antrieb kontrolliert in einen sicheren Zustand zurück."
+      ],
+      "grammarPatterns": [
+        "Zweistufiger Erklärrahmen: Im Kern beruht das Konzept darauf, dass [Prinzip 1] — sobald [Fehlerfall], [Sicherheitsreaktion]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Welche sprachliche Struktur überzeugt in deutschen Ingenieurs-Interviews auf Abteilungsleiterebene am stärksten?",
+          "options": [
+            "Lose Aufzählung englischer Akronyme ohne deutsche Verben.",
+            "Eine zweistufige Strukturformel (‚Im Kern trennen wir… / Sobald eine Abweichung auftritt, greift…‘) mit präzisen deutschen Verben wie ‚plausibilisieren‘ und ‚überführen‘.",
+            "Lange Entschuldigungen über das eigene Sprachniveau.",
+            "Reine Lehrbuchdefinitionen auswendig aufsagen."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Klare Zweistufen-Architektur mit 'plausibilisieren' und 'in den sicheren Zustand überführen'"]
+        }
+      ],
+      "speakingTask": "Beantworten Sie die Frage von Dr. Seifert und Frau Nguyen in 2–3 souveränen, mündlich gut sprechbaren C1-Sätzen.",
+      "interactionTask": "Dr. Seifert fragt nach: ‚Und wie verhindern Sie Fehlauslösungen bei hochdynamischen Schaltvorgängen?‘ Antworten Sie mit Entprellzeit / dynamischem Toleranzband.",
+      "expectedResponseCharacteristics": [
+        "Exakte FuSi-Verben (plausibilisieren, überwachen, in den sicheren Zustand überführen)",
+        "Klare Satzklammer ohne Verheddern"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Wir prüfen in einer zweiten Ebene, ob Summe von Motor und Elektromotor zum Gaspedal passt. Wenn Abweichung zu groß ist, schaltet das System sicher ab.",
+        "verdict": "Klar und logisch aufgebaut! Mit ‚Summenmoment gegen den Fahrerwunsch plausibilisieren‘ und ‚Entprellzeit‘ stechen Sie im Übernahmegespräch heraus."
+      },
+      "acceptableAlternatives": [
+        { "register": "Überzeugend im Fachgespräch (Optimal)", "text": "Im Kern plausibilisieren wir auf einer unabhängigen zweiten Überwachungsebene permanent, ob das kombinierte Ist-Moment aus Verbrenner und E-Maschine zum Fahrerwunsch passt. Überschreitet die Differenz länger als die definierte Entprellzeit den Schwellwert, begrenzen wir das Moment sofort und überführen das System in den sicheren Zustand." },
+        { "register": "Kompakt & anschaulich", "text": "Entscheidend ist, dass wir nicht nur die Einzelaggregate betrachten, sondern das Summenmoment am Ausgang unabhängig gegenrechnen — weicht der Übergang zwischen E-Maschine und Verbrenner unplausibel ab, greift verzögerungsfrei die Momentenbegrenzung." }
+      ],
+      "errorClassifications": ["VOCABULARY", "SENTENCE_FORMULATION"],
+      "correctionGuidance": "Das Verb ‚plausibilisieren‘ ist im deutschen Automotive-Umfeld unverzichtbar und ersetzt umständliche Umschreibungen sofort.",
+      "transferTask": "Erklären Sie dasselbe Prinzip in einfacher Alltagssprache einem neugierigen Freund beim Kaffee in Esslingen.",
+      "delayedRetrievalTarget": "gegen den Fahrerwunsch plausibilisieren / in den sicheren Zustand überführen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 3d -> 7d -> 18d"
+    },
+    {
+      "id": "yr_bvb_12",
+      "scenarioFamilyId": "fam_bvb_dfb_coaching",
+      "title": "Seitenlinien-Diplomatie beim SV 1845 Esslingen: Überehrgeizigen Vater souverän einbremsen",
+      "skill": "SITUATIONAL_PRAGMATICS",
+      "subskill": "Freundlich, aber autoritär Grenzen am Spielfeldrand ziehen (Kinderfußball-Kodex)",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Elterngespräch am Platzrand während F-Jugend-Spieltag",
+      "difficulty": "C1.1",
+      "visualSceneType": "FUNINO_PITCH_SPLIT",
+      "learningObjective": "Einen Vater, der seinen 8-jährigen Sohn permanent von außen fernsteuert (‚Schieß doch!!‘), wertschätzend, aber unmissverständlich stoppen.",
+      "germanInput": "Beim Funino-Festival in Esslingen ruft ein Vater im Sekundentakt taktische Kommandos rein, sodass der Junge völlig verunsichert zum Rand schaut.",
+      "audioRequirements": {
+        "deliveryStyle": "Emotionales Platzumfeld mit lautem Zwischenruf und defensiver Elternreaktion",
+        "speakerCount": 2,
+        "regionalVariety": "Süddeutsch am Sportplatz",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Herr Brenner (Spielervater)", "role": "Engagierter, aber übersteuernder Vater", "personality": "Meint es gut, merkt nicht, wie er das Kind blockiert", "variety": "Schwäbisch-Standard" },
+        { "name": "Haupttrainer Markus", "role": "Trainerkollege SV 1845", "personality": "Gibt Ihnen kurz Rückendeckung", "variety": "Schwäbisch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Herr Brenner (Spielervater)", "line": "Lukas, jetzt spiel doch endlich ab, siehsch doch, dass links alles offen isch! Mann, der träumt heut wieder...", "cue": "Übersteuernder Zuruf von der Seitenlinie" },
+        { "speaker": "Haupttrainer Markus", "line": "Du, geh mal kurz rüber zum Herrn Brenner, sonst schaut der kleine Lukas nur noch raus statt aufs Feld.", "cue": "Auftrag an Sie als Co-Trainer" },
+        { "speaker": "Herr Brenner (Spielervater)", "line": "Ach Trainer, ich feuer ihn doch bloß bissle an, irgendwer muss ihm ja sage, wo d'r freie Mann steht!", "cue": "Rechtfertigung mit 'doch bloß'" }
+      ],
+      "transcript": "Herr Brenner: Lukas, spiel doch endlich ab! Markus: Geh mal kurz rüber, sonst schaut Lukas nur noch raus. Herr Brenner: Ich feuer ihn doch bloß bissle an, irgendwer muss ihm ja sage, wo d'r freie Mann steht!",
+      "connectedSpeechReductions": [
+        { "spoken": "ich feuer ihn doch bloß bissle an", "standard": "ich feuere ihn doch nur ein bisschen an", "note": "Typische Verharmlosung mit 'doch bloß'" }
+      ],
+      "vocabulary": [
+        "eigene Entscheidungen auf dem Platz treffen lernen",
+        "Anfeuern und Jubeln jederzeit gern, aber keine Kommandos",
+        "den Kopf oben behalten statt zur Seitenlinie zu schauen",
+        "am selben Strang ziehen"
+      ],
+      "usefulExpressions": [
+        "Ich weiß total, dass Sie mitfiebern, Herr Brenner — nur wenn wir von draußen jede Aktion vorsagen, schaut Lukas vor jedem Pass erst zu Ihnen raus statt selbst das Spiel zu lesen.",
+        "Lassen Sie uns das so aufteilen: Sie übernehmen den Applaus für mutige Aktionen, und das Coaching lassen wir auf dem Feld — abgemacht?"
+      ],
+      "grammarPatterns": [
+        "Wertschätzungs-Klammer + Rollenverteilung: Ich sehe total, dass [gute Absicht] — nur führt das dazu, dass [Effekt aufs Kind]. Lassen Sie uns [klare Regel]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "INTENTION",
+          "question": "Wie lösen Sie diesen Klassiker im deutschen Jugendfußball nach DFB-Leitlinie am wirkungsvollsten?",
+          "options": [
+            "Den Vater vor allen anderen Eltern laut anschreien.",
+            "Das Mitfiebern positiv aufgreifen, den konkreten Lerneffekt für das Kind erklären (Entscheidungsfreiheit statt Fernsteuerung) und dem Vater eine positive Rolle (Applaus statt Zuruf) geben.",
+            "Das Kind sofort auswechseln.",
+            "Gar nichts sagen und hoffen, dass es aufhört."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Mitfiebern würdigen, Fernsteuerungs-Effekt erklären, klare Rolle 'Jubeln statt Steuern' verabreden"]
+        }
+      ],
+      "speakingTask": "Ziehen Sie gegenüber Herrn Brenner herzlich, aber unmissverständlich die Grenze zwischen Anfeuern und Hineinrufen.",
+      "interactionTask": "Nach dem Spiel bedankt sich Herr Brenner halb verlegen, weil Lukas ohne Zurufe plötzlich ein Dribbling mutig selbst gelöst hat. Bestärken Sie diesen Moment kurz!",
+      "expectedResponseCharacteristics": [
+        "Ruhige Trainer-Autorität ohne Bloßstellung",
+        "Klares Bild: ‚selbst entscheiden statt rauszuschauen‘"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Bitte rufen Sie nicht immer Pass oder Schuss rein, Herr Brenner. Lukas wird nervös und soll selbst lernen zu entscheiden. Jubeln ist natürlich super.",
+        "verdict": "Absolut klar und respektvoll! Mit der Rollenformel ‚Sie übernehmen den Applaus, wir die Impulse‘ nehmen Sie jeden Vater sofort ins Boot."
+      },
+      "acceptableAlternatives": [
+        { "register": "Souveräner Jugendtrainer am Platz (Optimal)", "text": "Ich merke total, wie sehr Sie mitfiebern, Herr Brenner! Nur wenn von außen jedes Abspiel vorgesagt wird, nimmt Lukas den Kopf gar nicht mehr fürs Feld hoch. Tun Sie ihm heute einen Gefallen: Klatschen Sie bei jeder mutigen Aktion, aber lassen Sie ihn die Lösung selbst finden — abgemacht?" },
+        { "register": "Kurz & klar im laufenden Spiel", "text": "Herr Brenner, kurzes Wort unter uns: Anfeuern jederzeit gern, aber bitte keine Passkommandos reinrufen — Lukas soll hier lernen, die Situation selbst zu lösen." }
+      ],
+      "errorClassifications": ["REGISTER", "INTERACTION"],
+      "correctionGuidance": "Elternarbeit am Spielfeldrand ist eine echte C1-Pragmatikprüfung: Wer Absicht würdigt und Verhalten klar begrenzt, gewinnt dauerhaft Autorität im Verein.",
+      "transferTask": "Erklären Sie denselben Grundsatz beim Elternabend vor Saisonbeginn in 3 kompakten Sätzen.",
+      "delayedRetrievalTarget": "Anfeuern jederzeit gern, aber keine Kommandos von außen / eigene Lösungen finden lassen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 1d -> 4d -> 11d"
+    },
+    {
+      "id": "yr_bvb_13",
+      "scenarioFamilyId": "fam_bvb_dfb_coaching",
+      "title": "BVB-Taktikanalyse im Vereinsheim: Hohe Kette, Halbraum-Zugriff & Umschaltmoment",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Authentische Fußball-Analysesprache auf Rasenfunk-/DFB-Niveau fließend abrufen",
+      "context": "FOOTBALL_COACHING",
+      "subRegister": "Fachsimpelei unter Trainern nach dem Samstagabend-Topspiel",
+      "difficulty": "C1.2",
+      "visualSceneType": "FUNINO_PITCH_SPLIT",
+      "learningObjective": "Über Pressinghöhe, Staffelung im Sechserraum und Restverteidigung präzise, lebendig und ohne Wortsuche diskutieren.",
+      "germanInput": "Nach dem Abendspiel von Borussia Dortmund sitzen Sie mit zwei C-/B-Lizenz-Trainern zusammen und streiten darüber, warum Dortmund nach Ballverlusten im Aufbau so verwundbar war.",
+      "audioRequirements": {
+        "deliveryStyle": "Leidenschaftliche, schnelle Trainerrunde mit Fachbegriffen und Gegenargumenten",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch / Süddeutsch gemischt",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Jan (B-Lizenz-Trainer)", "role": "Jugendkoordinator", "personality": "Taktik-Nerd, liebt Strukturfragen", "variety": "Standarddeutsch" },
+        { "name": "Sven (Herrentrainer)", "role": "Pragmatiker", "personality": "Schiebt alles auf individuelle Zweikämpfe", "variety": "Schwäbisch-Standard" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Sven (Herrentrainer)", "line": "Ach komm, Jan, des lag heut doch net an der Taktiktafel — wenn die Innenverteidiger an der Mittellinie zwei Zweikämpfe verlieren, klingelt's halt hinten!", "cue": "Vereinfachende Stammtisch-These" },
+        { "speaker": "Jan (B-Lizenz-Trainer)", "line": "Nee, zu einfach! Die kamen doch überhaupt erst in diese Eins-gegen-Eins-Duelle, weil beide Achter gleichzeitig hochgeschoben haben und im Sechserraum null Absicherung da war — wie hast du's gesehen?", "cue": "Steilvorlage für Ihre differenzierte Taktikeinschätzung" }
+      ],
+      "transcript": "Sven: Wenn die Innenverteidiger an der Mittellinie zwei Zweikämpfe verlieren, klingelt's halt hinten! Jan: Die kamen erst in diese Duelle, weil beide Achter hochgeschoben haben und im Sechserraum null Absicherung da war — wie hast du's gesehen?",
+      "connectedSpeechReductions": [
+        { "spoken": "klingelt's halt hinten", "standard": "fällt eben ein Gegentor", "note": "Lebendiges Fußball-Idiom" }
+      ],
+      "vocabulary": [
+        "die Restverteidigung vernachlässigen",
+        "keinen Zugriff ins Gegenpressing bekommen",
+        "mit einem einzigen vertikalen Schnittstellenpass überspielt werden",
+        "die Abstände zwischen den Ketten kompakt halten"
+      ],
+      "usefulExpressions": [
+        "Ich bin da eher bei Jan: Das Problem fängt schon vor dem Zweikampf an — wenn beide Außenverteidiger hochstehen und der Sechserraum verwaist ist, kommst du nach Ballverlust gar nicht mehr ins Gegenpressing.",
+        "Sven hat aber insofern einen Punkt, als du in solchen offenen Übergangsmomenten das Tempo lieber verzögern musst, statt blind herauszustechen."
+      ],
+      "grammarPatterns": [
+        "Synthese zweier Positionen (C1-Diskurs): Ich bin strukturell eher bei [A], weil ... — [B] hat allerdings insofern einen Punkt, als ..."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "COMPREHENSION",
+          "question": "Was unterscheidet Jans taktische Diagnose von Svens Aussage?",
+          "options": [
+            "Jan gibt dem Torwart die alleinige Schuld.",
+            "Jan blickt auf die strukturelle Ursache vor dem Ballverlust (fehlende Staffelung / Restverteidigung im Zentrum), statt nur das letzte verlorene Duell isoliert zu betrachten.",
+            "Beide fordern eine Fünferkette am eigenen Strafraum.",
+            "Jan lehnt Pressing grundsätzlich ab."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Systemische Vorbedingung (fehlende Restverteidigung & Gegenpressing-Distanz) statt isolierter Einzelkritik"]
+        }
+      ],
+      "speakingTask": "Verbinden Sie beide Sichtweisen auf souveränem C1-Trainerniveau: Erklären Sie die fehlende Restverteidigung im Zentrum UND das Verhalten der letzten Kette beim Rückwärtsverteidigen.",
+      "interactionTask": "Jan fragt: ‚Welche kleine Spielform würdest du daraus für ältere Jugendspieler ableiten?‘ Antworten Sie knapp mit Umschalt-Spielform + Zonenregel.",
+      "expectedResponseCharacteristics": [
+        "Treffsichere DFB-Begriffe (Restverteidigung, Gegenpressing-Distanz, Tempo verzögern vs. herausstechen)",
+        "Elegante Verknüpfung ‚insofern einen Punkt haben, als…‘"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Beide haben bisschen recht: Die Staffelung im Mittelfeld war zu offen, und danach ist der Verteidiger zu früh rausgerückt.",
+        "verdict": "Taktisch stark beobachtet! Mit ‚ins Gegenpressing kommen‘, ‚Restverteidigung‘ und ‚herausstechen vs. verzögern‘ sprechen Sie wie im DFB-Stützpunkt."
+      },
+      "acceptableAlternatives": [
+        { "register": "Authentische Trainerrunde (Rasenfunk-Niveau)", "text": "Für mich hängt beides direkt zusammen: Weil durch die extrem hochgeschobenen Achter die Restverteidigung im Zentrum gefehlt hat, kam der BVB nach dem Ballverlust überhaupt nicht ins Gegenpressing. Und Sven hat insofern recht, als der Innenverteidiger auf halber Höhe dann lieber verzögern muss, statt auf gut Glück herauszustechen." },
+        { "register": "Prägnant-analytisch", "text": "Die Ursache lag klar in den zu großen Abständen vor dem Ballverlust: Ohne Absicherung im Halbraum reicht dem Gegner ein sauberer erster Kontakt, und deine letzte Kette verteidigt plötzlich im Vollsprint Richtung eigenes Tor." }
+      ],
+      "errorClassifications": ["VOCABULARY", "NATURALNESS"],
+      "correctionGuidance": " das Gegensatzpaar ‚aus der Kette herausstechen‘ vs. ‚das Tempo verzögern‘ ist authentisches Profi-Trainerdeutsch und hebt Ihre Analyse sofort auf C1+.",
+      "transferTask": "Übertragen Sie den Gedanken ‚Abstände klein halten nach Ballverlust‘ in einen 8-Wörter-Coaching-Ruf für Ihre F-Jugend (‚Ball weg? Sofort gemeinsam eng machen!‘).",
+      "delayedRetrievalTarget": "die Restverteidigung absichern / das Tempo verzögern statt blind herauszustechen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 6d -> 15d"
+    },
+    {
+      "id": "yr_goethe_14",
+      "scenarioFamilyId": "fam_goethe_c1_oral_exam",
+      "title": "Goethe-Zertifikat C1 Sprechen Teil 1: 3-Minuten-Vortrag & kritische Prüfer-Nachfrage",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Strukturierter Kurzvortrag (Automatisisiertes Fahren & Haftung) + spontane Verteidigung",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Offizielles Prüfungsregister Goethe-Zertifikat C1 (Modul Sprechen Teil 1)",
+      "difficulty": "Goethe C1",
+      "visualSceneType": "MULTI_SPEAKER_TABLE",
+      "learningObjective": "Ein gesellschaftlich-technisches Thema klar gliedern, Vor- und Nachteile abwägen und eine unerwartete Rückfrage der Prüfenden ohne Stocken parieren.",
+      "germanInput": "Im Goethe-Zertifikat C1 haben Sie soeben Ihren Vortrag über Level-3-Autopiloten beendet; nun haken Prüferin und Mitkandidat kritisch nach.",
+      "audioRequirements": {
+        "deliveryStyle": "Klare, formelle Prüfungssituation mit pointierter Rückfrage",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch (Prüfungskommission)",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Prüferin Dr. Weber", "role": "Goethe-C1-Prüferin", "personality": "Freundlich, prüft spontane Argumentationstiefe", "variety": "Standarddeutsch" },
+        { "name": "Mitkandidat Lukas", "role": "Prüfungspartner", "personality": "Stellt kritische Anschlussfrage", "variety": "Standarddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Prüferin Dr. Weber", "line": "Vielen Dank für Ihren strukturierten Beitrag. Sie haben betont, dass Assistenzsysteme die Verkehrssicherheit erhöhen — birgt die Teilautomatisierung aber nicht gerade die Gefahr, dass Fahrer unaufmerksam werden und im Ernstfall zu spät übernehmen?", "cue": "Klassische kritische Einwandfrage in Sprechen Teil 1" },
+        { "speaker": "Mitkandidat Lukas", "line": "Und wer sollte Ihrer Ansicht nach haften, wenn genau in dieser Übergabesekunde ein Unfall passiert?", "cue": "Konkrete Zuspitzung auf Haftungsfrage" }
+      ],
+      "transcript": "Dr. Weber: Birgt die Teilautomatisierung nicht die Gefahr, dass Fahrer unaufmerksam werden und im Ernstfall zu spät übernehmen? Lukas: Und wer sollte haften, wenn genau in dieser Übergabesekunde ein Unfall passiert?",
+      "connectedSpeechReductions": [
+        { "spoken": "Ihrer Ansicht nach", "standard": "nach Ihrer Einschätzung", "note": "Typischer Prüfungsmarker für begründete Stellungnahme" }
+      ],
+      "vocabulary": [
+        "einen berechtigten Einwand aufgreifen",
+        "die Übergabeaufforderung mit ausreichendem Zeitpuffer gestalten",
+        "die Haftung eindeutig beim Hersteller verorten, solange...",
+        "in falscher Sicherheit wiegen"
+      ],
+      "usefulExpressions": [
+        "Sie sprechen damit genau die zentrale Schwachstelle im Übergangsbereich an: Solange ein System nur unterstützend arbeitet, darf es den Fahrer keinesfalls in falscher Sicherheit wiegen.",
+        "Bei echten Level-3-Systemen ist die Rechtslage in Deutschland hingegen klar geregelt: Solange das System aktiv die Fahraufgabe übernimmt und keine rechtzeitige Übergabeaufforderung erfolgt ist, liegt die Verantwortung beim Hersteller."
+      ],
+      "grammarPatterns": [
+        "Souveräne Prüfer-Antwort: Sie sprechen damit einen zentralen Punkt an: Zwar [Gefahr anerkennen], entscheidend ist jedoch die Unterscheidung zwischen [Level 2] und [Level 3]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "INTENTION",
+          "question": "Was bewerten Goethe-C1-Prüfende in der anschließenden Fragerunde zu Sprechen Teil 1 besonders hoch?",
+          "options": [
+            "Auswendig gelernte Textblöcke zu wiederholen, die gar nicht zur Frage passen.",
+            "Den Einwand direkt aufzugreifen, begrifflich präzise zu differenzieren (z. B. Assistenz vs. hochautomatisierter Betrieb) und kohärent Stellung zu beziehen.",
+            "Nur mit ‚Ja, da haben Sie recht‘ zu antworten.",
+            "Möglichst viele seltene Fremdwörter ohne Satzstruktur aneinanderzureihen."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Direkter Bezug auf den Einwand + präzise Differenzierung + klare Schlussfolgerung"]
+        }
+      ],
+      "speakingTask": "Beantworten Sie beide Rückfragen zusammenhängend in 3–4 gut gegliederten Sätzen: Greifen Sie das Risiko ‚in falscher Sicherheit wiegen‘ auf und klären Sie die Haftungslogik zwischen Level 2 und Level 3.",
+      "interactionTask": "Die Prüferin fragt abschließend nach Ihrer persönlichen Prognose für die nächsten 10 Jahre auf deutschen Autobahnen.",
+      "expectedResponseCharacteristics": [
+        "Prüfungssichere Redemittel (‚Sie sprechen einen entscheidenden Punkt an‘, ‚in falscher Sicherheit wiegen‘)",
+        "Klare kausale und konzessive Verknüpfung"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Das ist ein wichtiges Risiko bei Level 2, weil Fahrer zu viel vertrauen. Aber bei echtem Level 3 haftet der Hersteller, bis das Auto rechtzeitig zurückgibt.",
+        "verdict": "Fachlich überragend! Mit C1-Kohäsionsmitteln (‚Sie sprechen genau die kritische Schnittstelle an…‘) holen Sie im Modul Sprechen Höchstpunktzahl."
+      },
+      "acceptableAlternatives": [
+        { "register": "Goethe-C1 Bestleistung (Mündlicher Diskurs)", "text": "Sie sprechen damit genau die kritische Schnittstelle an: Bei reinen Level-2-Assistenten besteht tatsächlich das Risiko, dass sich Fahrende in falscher Sicherheit wiegen. Bei zugelassenen Level-3-Systemen hingegen übernimmt das Fahrzeug in definierten Bereichen die volle Verantwortung — passiert vor Ablauf einer rechtzeitigen Übergabefrist ein Unfall, haftet folglich der Hersteller und nicht die Person am Steuer." },
+        { "register": "Kompakt & strukturiert", "text": "Dieser Einwand trifft den Kern der Debatte. Deshalb müssen wir strikt zwischen Assistenz und echter Teilautomatisierung trennen: Erst wenn das System ein ausreichendes Übergabefenster garantiert und bis dahin die Herstellerhaftung greift, entsteht ein echter Sicherheitsgewinn." }
+      ],
+      "errorClassifications": ["SENTENCE_FORMULATION", "REGISTER"],
+      "correctionGuidance": "Ihr echter Ingenieurs-Hintergrund ist im Goethe C1 ein riesiger Trumpf — nutzen Sie konkrete Systemunterscheidungen, verpackt in saubere deutsche Konnektoren!",
+      "transferTask": "Halten Sie einen 90-sekündigen Mini-Impuls nach demselben Muster zum Thema ‚Digitalisierung und Videoanalyse im Breiten- und Jugendfußball‘.",
+      "delayedRetrievalTarget": "in falscher Sicherheit wiegen / einen berechtigten Einwand aufgreifen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 6d -> 16d"
+    },
+    {
+      "id": "yr_goethe_15",
+      "scenarioFamilyId": "fam_goethe_c1_oral_exam",
+      "title": "Goethe-Zertifikat C1 Sprechen Teil 2: Kontroverse Verhandlung zu Präsenzpflicht vs. Mobiles Arbeiten",
+      "skill": "SPONTANEOUS_SPEAKING",
+      "subskill": "Widersprechen, Kompromisskorridor öffnen & zu einer gemeinsamen Einigung führen",
+      "context": "AUTOMOTIVE_ENGINEERING",
+      "subRegister": "Prüfungsverhandlung Goethe C1 Teil 2 & Betriebliche Projektkultur",
+      "difficulty": "Goethe C1",
+      "visualSceneType": "PARTICLE_TONE_DIAL",
+      "learningObjective": "Mit einem Diskussionspartner, der eine starre Gegenposition vertritt, höflich streiten, Argumente gewichten und aktiv einen tragfähigen Kompromiss formulieren.",
+      "germanInput": "In Sprechen Teil 2 sollen Sie mit Ihrer Gesprächspartnerin eine neue Abteilungsregelung aushandeln: Sie plädiert für 100 % Homeoffice-Freiheit, während Sie die Bedeutung von Prüfstands- und Teampräsenz kennen.",
+      "audioRequirements": {
+        "deliveryStyle": "Engagierter Dialog auf Augenhöhe mit Unterbrechungsimpuls",
+        "speakerCount": 2,
+        "regionalVariety": "Standarddeutsch",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Kandidatin Elena", "role": "Verhandlungspartnerin", "personality": "Argumentationsstark, pocht auf maximale Flexibilität", "variety": "Standarddeutsch" },
+        { "name": "Prüfer (Moderation)", "role": "Beobachter", "personality": "Erinnert kurz an das Einigungsziel", "variety": "Standarddeutsch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Kandidatin Elena", "line": "Ehrlich gesagt halte ich feste Bürotage für völlig überholt — wer konzentriert Code schreibt oder Auswertungen fährt, verliert durch das tägliche Pendeln im Stuttgarter Stau doch nur wertvolle Lebenszeit!", "cue": "Starke Einstiegsthese der Partnerin" },
+        { "speaker": "Prüfer (Moderation)", "line": "Denken Sie daran, dass Sie sich am Ende auf ein gemeinsames Modell für ein gemischtes Entwicklungsteam einigen sollen.", "cue": "Prüfungsauftrag: Kompromiss schmieden!" }
+      ],
+      "transcript": "Elena: Feste Bürotage sind überholt — wer Auswertungen fährt, verliert im Stuttgarter Stau nur Lebenszeit! Prüfer: Denken Sie daran, sich am Ende auf ein gemeinsames Modell zu einigen.",
+      "connectedSpeechReductions": [
+        { "spoken": "verliert ... doch nur", "standard": "verliert bekanntermaßen lediglich", "note": "Appellierendes 'doch' sucht Zustimmung" }
+      ],
+      "vocabulary": [
+        "in diesem Punkt greift mir das zu kurz",
+        "den informellen Wissenstransfer nicht unterschätzen",
+        "auf einen gemeinsamen Nenner kommen",
+        "an Aufgabenprofile statt an starre Wochentage koppeln"
+      ],
+      "usefulExpressions": [
+        "Beim Pendelargument gebe ich dir völlig recht — für gemischte Hardware- und Entwicklungsteams greift reines mobiles Arbeiten aber zu kurz, weil gerade neue Kolleginnen und Kollegen vom kurzen Zuruf am Prüfstand leben.",
+        "Wie wäre es als Kompromiss, wenn wir keine starre Drei-Tage-Quote vorschreiben, sondern feste Team-Ankertage mit voller Flexibilität für reine Analysephasen verbinden?"
+      ],
+      "grammarPatterns": [
+        "Verhandlungs-Dreischritt: [Teilzustimmung] -> [Differenzierung mit 'greift zu kurz'] -> [Konkreter Einigungsvorschlag 'Wie wäre es, wenn...']."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "INTENTION",
+          "question": "Welcher Fehler kostet in Goethe C1 Sprechen Teil 2 häufig wertvolle Interaktionspunkte?",
+          "options": [
+            "Auf das Argument der Partnerin einzugehen.",
+            "Entweder sofort konfliktscheu allem zuzustimmen ODER zwei getrennte Monologe nebeneinander her zu halten, ohne aktiv einen Kompromiss auszuhandeln.",
+            "Konkrete Praxisbeispiele zu nennen.",
+            "Vorschläge als Frage zu formulieren."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Weder sofortiges Einknicken noch isolierter Monolog — echter Aushandlungsdialog ist Pflicht"]
+        }
+      ],
+      "speakingTask": "Gehen Sie direkt auf Elenas Stau-Argument ein, halten Sie das Argument des informellen Wissenstransfers / Einarbeitung dagegen und schlagen Sie ein konkretes Hybrid-Modell als Einigung vor.",
+      "interactionTask": "Elena lenkt ein, will aber klären, wie man verhindert, dass an Bürotagen trotzdem alle nur in Videocalls sitzen.",
+      "expectedResponseCharacteristics": [
+        "Natürliche Gesprächsverknüpfung (‚Da bin ich bei dir, allerdings…‘)",
+        "Aktives Einigungsangebot am Ende Ihres Redebeitrags"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Beim Stau stimme ich zu, aber für Hardware und neue Leute braucht man Kontakt vor Ort. Lass uns zwei feste Teamtage machen und den Rest flexibel.",
+        "verdict": "Stark verhandelt! Mit ‚greift zu kurz‘, ‚informeller Wissenstransfer‘ und ‚auf einen gemeinsamen Nenner kommen‘ glänzen Sie sprachlich wie inhaltlich."
+      },
+      "acceptableAlternatives": [
+        { "register": "Prüfungssouveräne Verhandlung (Goethe C1)", "text": "Was die verlorene Pendelzeit angeht, bin ich sofort bei dir — für reine Auswertungsarbeit ist Homeoffice ideal. Bei Entwicklungs- und Prüfstandsteams greift eine reine Remote-Lösung aber zu kurz, weil der schnelle Erfahrungsaustausch zwischendurch sonst wegbricht. Könnten wir uns als gemeinsamen Nenner auf einen festen Team-Ankertag pro Woche plus aufgabenbezogene Präsenz einigen?" },
+        { "register": "Konstruktiv & lösungsorientiert", "text": "Deinen Punkt zur konzentrierten Einzelarbeit teile ich durchaus; gleichzeitig leidet bei null Präsenz gerade die Einarbeitung jüngerer Teammitglieder erheblich. Lass uns doch statt starrer Pflichtquoten vereinbaren, dass Abstimmungs- und Hardwarephasen gebündelt vor Ort stattfinden und Analyseblöcke flexibel zu Hause." }
+      ],
+      "errorClassifications": ["INTERACTION", "NATURALNESS"],
+      "correctionGuidance": "Die Wendung ‚In diesem Punkt greift mir das etwas zu kurz‘ ist eine der elegantesten C1-Formulierungen auf Deutsch, um respektvoll, aber intellektuell klar zu widersprechen.",
+      "transferTask": "Verhandeln Sie nach demselben Muster im Verein die Aufteilung knapper Hallenzeiten im Winter zwischen F-Jugend und C-Jugend.",
+      "delayedRetrievalTarget": "in diesem Punkt zu kurz greifen / auf einen gemeinsamen Nenner kommen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 5d -> 14d"
+    },
+    {
+      "id": "yr_alltag_16",
+      "scenarioFamilyId": "fam_alltag_kasse",
+      "title": "Wohnungsübergabe / Nebenkostenabrechnung in Esslingen: Sachlich Belegeinsicht verlangen",
+      "skill": "COLLOCATIONS_PARTICLES",
+      "subskill": "Formell-höfliche Reklamation ohne Eskalation im Mietverhältnis",
+      "context": "EVERYDAY_UMGANGSSPRACHE",
+      "subRegister": "Gespräch mit privatem Vermieter in Baden-Württemberg",
+      "difficulty": "C1.2",
+      "visualSceneType": "RECEIPT_REGISTER_MORPH",
+      "learningObjective": "Eine unplausibel hohe Nachzahlung höflich hinterfragen und Einsicht in die Originalbelege bzw. den Verteilerschlüssel erbitten.",
+      "germanInput": "Ihr Vermieter übergibt Ihnen im Hausflur persönlich die Betriebskostenabrechnung mit 680 € Nachzahlung und meint, das liege pauschal an den Energiepreisen.",
+      "audioRequirements": {
+        "deliveryStyle": "Bürgerlich-freundlicher, aber bestimmter Vermieterton",
+        "speakerCount": 2,
+        "regionalVariety": "Schwäbisch-Standard",
+        "ttsDisclosure": "Gemini 3.1 Studio Multi-Speaker Neural Audio",
+        "nativeAudioAsset": ""
+      },
+      "speakers": [
+        { "name": "Herr Rieger (Vermieter)", "role": "Eigentümer", "personality": "Korrekt, etwas empfindlich bei direktem Misstrauen", "variety": "Schwäbisch-Standard" },
+        { "name": "Frau Rieger", "role": "Miteigentümerin", "personality": "Hat die Tabelle abgetippt", "variety": "Schwäbisch" }
+      ],
+      "transcriptTurns": [
+        { "speaker": "Herr Rieger (Vermieter)", "line": "So, ich bring Ihne die Abrechnung fürs letzte Jahr gleich persönlich vorbei — isch leider 'n ordentlicher Batzen Nachzahlung geworde, aber Sie wisset ja selber, wie Heizung und Hausmeister aufgeschlage hän.", "cue": "Pauschale Begründung bei persönlicher Übergabe" },
+        { "speaker": "Frau Rieger", "line": "Wir hän's wie immer nach Quadratmeter und Zählerstand umgelegt, überweiset Se's einfach bis Monatsende, gell.", "cue": "Schnelle Zahlungsaufforderung" }
+      ],
+      "transcript": "Herr Rieger: Isch leider 'n ordentlicher Batzen Nachzahlung geworde wegen Heizung und Hausmeister. Frau Rieger: Überweiset Se's einfach bis Monatsende, gell.",
+      "connectedSpeechReductions": [
+        { "spoken": "'n ordentlicher Batzen", "standard": "ein erheblicher Betrag", "note": "Häufige süddeutsche/umgangssprachliche Mengenangabe" }
+      ],
+      "vocabulary": [
+        "die Abrechnung in Ruhe nachvollziehen",
+        "einen Blick in die zugrunde liegenden Belege werfen",
+        "den Umlageschlüssel abgleichen",
+        "keineswegs böse Absicht unterstellen"
+      ],
+      "usefulExpressions": [
+        "Vielen Dank fürs Vorbeibringen, Herr Rieger! Da der Sprung bei den Hausmeisterkosten auf den ersten Blick recht deutlich ausfällt, würde ich die Posten am Wochenende gern in Ruhe durchgehen.",
+        "Könnten Sie mir zu den beiden größten Positionen kurz Kopien der Rechnungen zukommen lassen, damit ich das für meine Unterlagen sauber nachvollziehen kann?"
+      ],
+      "grammarPatterns": [
+        "Gesichtswahrende Prüfung: Damit ich die Entwicklung für meine Unterlagen sauber nachvollziehen kann, würde ich gern [Belege einsehen]."
+      ],
+      "comprehensionTasks": [
+        {
+          "type": "INTENTION",
+          "question": "Warum ist die Formulierung ‚für meine Unterlagen sauber nachvollziehen‘ gegenüber privaten Vermietern so viel klüger als ‚Ihre Rechnung stimmt nicht‘?",
+          "options": [
+            "Weil man damit sofort bezahlt, ohne zu prüfen.",
+            "Sie wahrt das Gesicht des Vermieters (kein Betrugsvorwurf), sichert Ihnen aber gleichzeitig Prüfzeit und Belegeinsicht ohne Überrumpelung an der Wohnungstür.",
+            "Weil private Vermieter keine Rechnungen zeigen müssen.",
+            "Weil man Nebenkosten nur mündlich abrechnet."
+          ],
+          "correctIndex": 1,
+          "acceptableInterpretations": ["Kein Gesichtsverlust fürs Mietverhältnis, aber klare Wahrung von Prüfzeit und Belegrecht"]
+        }
+      ],
+      "speakingTask": "Nehmen Sie das Schreiben freundlich entgegen, lassen Sie sich nicht auf eine sofortige Zusage festnageln und bitten Sie sachlich um Kopien der Hauptbelege.",
+      "interactionTask": "Herr Rieger schaut kurz irritiert: ‚Meinet Se etwa, wir hän uns verrechnet?‘ Entschärfen Sie diesen Moment sofort souverän!",
+      "expectedResponseCharacteristics": [
+        "Null Konfrontation, maximale Sachlichkeit",
+        "Wendungen wie ‚in Ruhe durchgehen‘ und ‚sauber nachvollziehen‘"
+      ],
+      "understandableBaseline": {
+        "userPhrase": "Danke für den Brief. Ich schaue es mir am Wochenende genau an. Können Sie mir bitte noch die Rechnungen vom Hausmeister zeigen?",
+        "verdict": "Sachlich und ruhig gelöst! Mit ‚Ich unterstelle überhaupt nichts, ich möchte den Sprung nur für meine Unterlagen nachvollziehen‘ nehmen Sie jede Spannung sofort heraus."
+      },
+      "acceptableAlternatives": [
+        { "register": "Diplomatische Meisterklasse im Mietalltag", "text": "Danke fürs persönliche Vorbeibringen, Familie Rieger! Ich schaue mir die Aufstellung am Wochenende in Ruhe an. Ach was, ich unterstelle Ihnen doch keinerlei Absicht — bei der Summe möchte ich den Sprung beim Hausmeisterposten anhand der Einzelbelege einfach kurz sauber nachvollziehen." },
+        { "register": "Freundlich-verbindlich", "text": "Vielen Dank! Bevor ich die Überweisung fertig mache, würde ich die Positionen gern mit dem Vorjahr abgleichen — könnten Sie mir die Heiz- und Hausmeisterbelege kurz abfotografieren oder kopieren?" }
+      ],
+      "errorClassifications": ["REGISTER", "SITUATIONAL_UNDERSTANDING"],
+      "correctionGuidance": "An der Haustür gilt auf C1-Niveau immer: Freundlich entgegennehmen, Zeitfenster öffnen (‚in Ruhe durchgehen‘) und Belegwunsch neutral begründen.",
+      "transferTask": "Nutzen Sie dieselbe diplomatische Formulierung bei einer unklaren Handwerker-Endabrechnung.",
+      "delayedRetrievalTarget": "anhand der Belege sauber nachvollziehen / in Ruhe mit dem Vorjahr abgleichen",
+      "reviewSchedule": "FSRS-4.5 · Intervallstart 2d -> 5d -> 14d"
+    }
+  ],
+  "extraMediaMissions": [
+    {
+      "id": "mm_ams_911_gt3_09",
+      "title": "Hochdrehzahl-Sauger vs. Biturbo: Aerodynamik & Fahrwerks-Spreizung",
+      "sourceName": "auto motor und sport · Moove & Fast Lap Analyse",
+      "sourceType": "PODCAST_LIVE_STREAM",
+      "podcastFeedId": "ams_moove",
+      "externalUrl": "https://www.youtube.com/results?search_query=auto+motor+und+sport+Porsche+911+AMG+GT+Vergleich+Bloch",
+      "contextTrack": "ENGINEERING",
+      "mappedPillar": "SATZGEFUEGE",
+      "difficulty": "C1.2",
+      "goetheExamPartTag": "Goethe C1 Hören Teil 3 · Technischer Expertenvergleich",
+      "listeningMissionDe": "Hören Sie in den aktuellen Mobilitäts-/Test-Podcast hinein und öffnen Sie optional den Vergleich Porsche 911 vs. Mercedes-AMG GT. Achten Sie auf vergleichende Proportionalsätze (‚Je …, desto …‘ / ‚Während …, punktet … mit‘).",
+      "keyCollocationsToCatch": [
+        "die Spreizung zwischen Alltagskomfort und Rundstrecke",
+        "Rückmeldung in der Lenkung vermitteln",
+        "Traktion aus engen Kehren aufbauen",
+        "am Grenzbereich gutmütig bleiben"
+      ],
+      "spokenFeaturesNoteDe": "Emotionale, bildreiche Fahrdynamik-Adjektive treffen auf präzise Fahrwerksbegriffe (Zug-/Druckstufe, Hinterachslenkung, Abtrieb).",
+      "checkQuestionDe": "Wie stellt man auf C1-Niveau zwei unterschiedliche Fahrzeugkonzepte (Heckmotor-Traktion beim 911 vs. Frontmittelmotor-Drehmoment beim AMG) in einem einzigen klaren Satz gegenüber?",
+      "checkOptions": [
+        "‚Der Porsche hat Motor hinten und der AMG vorne, beide fahren schnell.‘",
+        "‚Während der Elfer dank der hohen Hinterachslast beim Herausbeschleunigen enorme Traktion aufbaut, besticht der AMG vor allem durch sein souveränes Drehmomentplateau aus dem Drehzahlkeller.‘",
+        "‚Trotz der Traktion ist der Motor hinten eingebaut worden.‘",
+        "‚Weil beide Autos schnell sind, ist kein Unterschied vorhanden.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "Adversative Gegenüberstellung mit ‚Während [Konzept A] dank [Ursache] …, besticht [Konzept B] durch …‘ ist erstklassiges gesprochenes wie geschriebenes C1.",
+      "activeReactionPromptDe": "Vergleichen Sie in 2–3 Sätzen mit ‚Während …‘ Ihre Faszination für Porsche 911 und Mercedes-AMG aus Ingenieurssicht.",
+      "sampleSovereignReactionDe": "Während mich am Porsche 911 fasziniert, wie konsequent über Jahrzehnte ein eigentlich eigenwilliges Heckmotorkonzept fahrdynamisch perfektioniert wurde, besticht AMG für mich durch diese brachiale Drehmomentsouveränität und Akustik."
+    },
+    {
+      "id": "mm_rasenfunk_jugend_10",
+      "title": "Nachwuchsförderung in Deutschland: Reform im Kinderfußball & DFB-Ausbildung",
+      "sourceName": "Rasenfunk · Tribünengespräch & DFB-Campus",
+      "sourceType": "PODCAST_LIVE_STREAM",
+      "podcastFeedId": "rasenfunk",
+      "externalUrl": "https://www.youtube.com/results?search_query=Rasenfunk+Nachwuchs+Kinderfussball+Reform+DFB",
+      "contextTrack": "COACHING",
+      "mappedPillar": "RHETORIK",
+      "difficulty": "Goethe C1",
+      "goetheExamPartTag": "Goethe C1 Hören Teil 1 & Schreiben Teil 1 (Debatte)",
+      "listeningMissionDe": "Verfolgen Sie die Diskussion über kleine Spielformen (Funino) vs. klassisches 7-gegen-7 mit Tabellen in der F- und E-Jugend — ein reales Streitthema in jedem deutschen Verein.",
+      "keyCollocationsToCatch": [
+        "Ballaktionen pro Kopf vervielfachen",
+        "Ergebnisdenken im Kindesalter zurückstellen",
+        "individuelles Eins-gegen-Eins fördern",
+        "Vorbehalte an der Basis abbauen"
+      ],
+      "spokenFeaturesNoteDe": "Kontroverse Argumentation zwischen Reformbefürwortern und Traditionalisten — ideal für Goethe C1 Pro-Contra-Strukturen.",
+      "checkQuestionDe": "Mit welchem Argument entkräften DFB-Ausbilder den typischen Stammtisch-Vorwurf, ohne Tabellen gehe Kindern der Wettbewerbsgeist verloren?",
+      "checkOptions": [
+        "‚Kinder wollen im Training überhaupt keine Tore schießen.‘",
+        "‚Auf vier Minitoren im Drei-gegen-Drei erleben die Kinder in jedem Durchgang unmittelbaren Wettkampf um Sieg und Aufstieg aufs Nachbarfeld — nur eben mit dreimal so vielen Ballkontakten für alle.‘",
+        "‚Tore werden erst ab der C-Jugend gezählt.‘",
+        "‚Wettbewerb ist im Sport grundsätzlich schädlich.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "Starke C1-Überzeugungsarbeit übernimmt den Wert des Gegners (Wettkampfgeist!) und zeigt, dass das neue Format genau diesen Wert noch besser einlöst.",
+      "activeReactionPromptDe": "Überzeugen Sie in 2–3 Sätzen einen skeptischen Vereinskollegen beim SV 1845 Esslingen vom Mehrwert kleiner Spielformen in der F-Jugend.",
+      "sampleSovereignReactionDe": "Mir geht es genauso wie dir darum, dass die Kids brennen und Tore schießen wollen. Gerade im Drei-gegen-Drei versteckt sich aber niemand mehr hinten, sondern jedes einzelne Kind hat im Minutentakt echte Abschluss- und Eins-gegen-Eins-Aktionen."
+    },
+    {
+      "id": "mm_swr_stuttgart_11",
+      "title": "Wirtschaftsraum Stuttgart / Mittlerer Neckar: Transformation im Maschinen- & Autobau",
+      "sourceName": "SWR Kultur · Das Wissen & SWR Doku Südwesten",
+      "sourceType": "PODCAST_LIVE_STREAM",
+      "podcastFeedId": "swr_wissen",
+      "externalUrl": "https://www.youtube.com/results?search_query=SWR+Doku+Automobilindustrie+Stuttgart+Esslingen+Zulieferer",
+      "contextTrack": "ENGINEERING",
+      "mappedPillar": "NOMEN_VERB",
+      "difficulty": "C1.2",
+      "goetheExamPartTag": "Goethe C1 Lesen Teil 2 & Hören Teil 4 · Wirtschaftsreportage",
+      "listeningMissionDe": "Hören Sie den aktuellen SWR-Hintergrundbeitrag oder die Reportage zum Wandel rund um Stuttgart, Esslingen und Sindelfingen. Achten Sie auf wirtschaftliche Funktionsverbgefüge.",
+      "keyCollocationsToCatch": [
+        "unter Anpassungsdruck geraten",
+        "Weichen für die Zukunft stellen",
+        "Wertschöpfung im Land halten",
+        "Know-how auf neue Geschäftsfelder übertragen"
+      ],
+      "spokenFeaturesNoteDe": "Authentischer Mix aus Wirtschaftsredaktion, Betriebsräten und Entwicklungsleitern aus dem Neckartal.",
+      "checkQuestionDe": "Was bedeutet die feste C1-Verbindung ‚frühzeitig die Weichen stellen‘ im Kontext der süddeutschen Zuliefer- und Automobilindustrie?",
+      "checkOptions": [
+        "Den Werksbahnanschluss abbauen.",
+        "Rechtzeitig grundlegende strategische Entscheidungen treffen, die die künftige Entwicklungsrichtung bestimmen.",
+        "Mitarbeiter kurzfristig in den Urlaub schicken.",
+        "Preise ohne Rücksprache halbieren."
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "‚Die Weichen stellen für (+ Akk.)‘ gehört zu den häufigsten C1-Metaphern in deutschen Medien, Reden und Goethe-Prüfungstexten.",
+      "activeReactionPromptDe": "Formulieren Sie 2 Sätze darüber, wie Ihre Kombination aus klassischem Powertrain-Wissen und Hybrid-/Systemverständnis in genau diese Transformation passt.",
+      "sampleSovereignReactionDe": "Gerade weil im Raum Stuttgart viele Unternehmen vor der Aufgabe stehen, bestehendes Antriebs-Know-how mit Elektrifizierung zu verzahnen, hilft mir mein Hintergrund aus Mechanik und Energiemanagement enorm. Man versteht beide Welten, statt sie gegeneinander auszuspielen."
+    },
+    {
+      "id": "mm_dlf_arbeit_12",
+      "title": "Fachkräftemangel, Bürokratie & Internationale Ingenieure in Deutschland",
+      "sourceName": "Deutschlandfunk · Der Tag & Aspekte neu C1 (Kap. Arbeitswelt)",
+      "sourceType": "PODCAST_LIVE_STREAM",
+      "podcastFeedId": "dlf_der_tag",
+      "externalUrl": "https://www.deutschlandfunk.de/der-tag-100.html",
+      "contextTrack": "SOCIAL",
+      "mappedPillar": "KONJUNKTIV",
+      "difficulty": "Goethe C1",
+      "goetheExamPartTag": "Goethe C1 Schreiben Teil 1 & Hören Teil 4",
+      "listeningMissionDe": "Hören Sie eine aktuelle Folge von ‚DLF Der Tag‘. Achten Sie darauf, wie Moderatorinnen Thesen aus Politik und Wirtschaft im Konjunktiv I zusammenfassen und kritisch spiegeln.",
+      "keyCollocationsToCatch": [
+        "Hürden abbauen",
+        "Handlungsbedarf bestehen",
+        "Diskrepanz zwischen Anspruch und Wirklichkeit",
+        "einen Beitrag leisten zu"
+      ],
+      "spokenFeaturesNoteDe": "Vorbildliche Satzmelodie für formelle Diskussionen, Behördengespräche und schriftliche Stellungnahmen.",
+      "checkQuestionDe": "Welche Formulierung drückt auf C1-Niveau sachlich eine Lücke zwischen politischen Versprechen und gelebtem Behördenalltag aus?",
+      "checkOptions": [
+        "‚Alles ist komplett kaputt und niemand arbeitet.‘",
+        "‚In der Praxis klafft zwischen politischem Anspruch und administrativer Umsetzung vielerorts noch eine spürbare Lücke.‘",
+        "‚Zwischen Anspruch und Praxis macht es ein großes Loch.‘",
+        "‚Wegen den Ämtern geht gar nichts vorwärts.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "‚Zwischen X und Y klafft eine spürbare Lücke‘ ist idiomatisches Spitzen-C1 für Essays, Diskussionen und Vorträge.",
+      "activeReactionPromptDe": "Formulieren Sie 2 sachlich-pointierte Sätze über Ihre eigene Erfahrung als internationaler Masterstudent & Ingenieur im deutschen Alltag.",
+      "sampleSovereignReactionDe": "Fachlich findet man in den Entwicklungsabteilungen und im Verein erstaunlich schnell Anschluss, sobald man Eigeninitiative zeigt. Im Behördenalltag klafft zwischen dem Wunsch nach internationalen Fachkräften und den digitalen Prozessen allerdings manchmal noch eine spürbare Lücke."
+    },
+    {
+      "id": "mm_book_sicher_13",
+      "title": "Sicher! C1 & Mit Erfolg zum Goethe-Zertifikat C1: Linke & Rechte Satzklammer knacken",
+      "sourceName": "Sicher! C1 (Hueber) · Mit Erfolg zum Goethe-Zertifikat C1 (Klett) + Tagesschau",
+      "sourceType": "BOOK_DEEP_DIVE",
+      "podcastFeedId": "tagesschau_100s",
+      "externalUrl": "https://www.goethe.de/ins/de/de/prf/prf/gzc1/ueb.html",
+      "contextTrack": "GENERAL",
+      "mappedPillar": "SATZGEFUEGE",
+      "difficulty": "Goethe C1",
+      "goetheExamPartTag": "Goethe C1 Lesen Teil 2 & Teil 3 · Komplexe Attribute",
+      "listeningMissionDe": "Hören Sie zuerst die 100-Sekunden-Nachrichten auf erweiterte Partizipialattribute hin und lösen Sie dann die C1-Entpackungsaufgabe im Stil von ‚Sicher! C1‘.",
+      "keyCollocationsToCatch": [
+        "die seit Langem kontrovers diskutierte Vorlage",
+        "ein nicht zu unterschätzender Faktor",
+        "unter Berücksichtigung sämtlicher Rahmenbedingungen",
+        "in absehbarer Zeit"
+      ],
+      "spokenFeaturesNoteDe": "Gerundivum (‚ein nicht zu unterschätzender Faktor‘ = muss beachtet werden) in Nachrichten und Fachtexten sofort als Einheit erfassen.",
+      "checkQuestionDe": "Was bedeutet das Gerundivum in ‚ein im Fahrversuch nicht zu vernachlässigender Störeinfluss‘?",
+      "checkOptions": [
+        "Ein Störeinfluss, der bereits vollständig behoben wurde.",
+        "Ein Störeinfluss, der im Fahrversuch keinesfalls ignoriert werden darf / berücksichtigt werden muss.",
+        "Ein Störeinfluss, der niemals auftreten kann.",
+        "Ein Störeinfluss, der vernachlässigt wurde."
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "‚zu + Partizip I‘ (Gerundivum) drückt immer eine Notwendigkeit oder Möglichkeit im Passiv aus (= darf nicht vernachlässigt werden).",
+      "activeReactionPromptDe": "Verwandeln Sie den Relativsatz ‚eine Maßnahme, die kurzfristig umgesetzt werden kann‘ mündlich oder schriftlich in ein kompaktes Gerundivum im Satz.",
+      "sampleSovereignReactionDe": "Die angepasste Lüfteransteuerung ist eine kurzfristig umzusetzende Maßnahme, mit der wir das Temperaturfenster sofort entlasten."
+    },
+    {
+      "id": "mm_jp_werkstatt_14",
+      "title": "Echte Werkstatt-Umgangssprache: Ladedruck, Abgasanlage & Prüfstandslauf",
+      "sourceName": "YouTube · JP Performance / Halle77 + AMS Moove Stream",
+      "sourceType": "YOUTUBE_DOCUMENTARY",
+      "podcastFeedId": "ams_moove",
+      "externalUrl": "https://www.youtube.com/results?search_query=JP+Performance+Pr%C3%BCfstand+Porsche+911+AMG+Messung",
+      "contextTrack": "ENGINEERING",
+      "mappedPillar": "MODALPARTIKELN",
+      "difficulty": "C1.1",
+      "goetheExamPartTag": "Authentisches Alltags- & Werkstatt-Hören (Schnellsprech-Dekodierung)",
+      "listeningMissionDe": "Trainieren Sie das Gegenteil von Lehrbuch-Audio: Schnelle, ungeskriptete deutsche Schrauber- und Prüfstandssprache voller Füllwörter, Ellipsen und Modalpartikeln.",
+      "keyCollocationsToCatch": [
+        "obenrum geht ihm die Puste aus",
+        "sauber durchziehen übers ganze Drehzahlband",
+        "da stimmt irgendwas in der Ansteuerung noch nicht",
+        "lass uns mal kurz auf die Kurve schauen"
+      ],
+      "spokenFeaturesNoteDe": "Maximale Sprechgeschwindigkeit, verschluckte Endsilben (‚guck'mer ma auf'n Schrieb‘) und lebendige Bildsprache.",
+      "checkQuestionDe": "Was meint ein Prüfstandstechniker umgangssprachlich mit ‚Untenrum spricht er giftig an, aber ab fünfeinhalb geht ihm obenrum bissle die Puste aus‘?",
+      "checkOptions": [
+        "Die Klimaanlage fällt bei hoher Geschwindigkeit aus.",
+        "Bei niedrigen Drehzahlen baut der Motor sehr spontan Moment auf, verliert aber im oberen Drehzahlbereich ab 5.500 U/min spürbar an Drehfreude bzw. Leistung.",
+        "Der Kraftstofftank ist leer.",
+        "Der Reifen verliert Luft."
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "Genau diese zweigleisige Kompetenz brauchen Sie bei Mercedes & am Prüfstand: mit Mechanikern ‚untenrum / obenrum / Puste ausgehen‘ verstehen und im Bericht ‚Drehmomenteinbruch im oberen Nennleistungsbereich‘ schreiben.",
+      "activeReactionPromptDe": "Übersetzen Sie das Werkstatt-Zitat oben in 1 lockeren Satz für den Prüfstandstechniker UND 1 formellen Satz für das Versuchsprotokoll.",
+      "sampleSovereignReactionDe": "Am Prüfstand: ‚Stimmt, untenrum hängt er richtig gut am Gas, wir müssen nur schauen, warum er ab fünfeinhalb so zumacht.‘ — Im Protokoll: ‚Während das Ansprechverhalten im unteren Drehzahlbereich überzeugt, zeigt sich ab 5.500 U/min ein deutlicher Füllungs- und Leistungsabfall.‘"
+    },
+    {
+      "id": "mm_swr_handwerk_15",
+      "title": "Süddeutsche Präzisionskultur & Dialektfärbung: SWR Handwerkskunst",
+      "sourceName": "SWR Handwerkskunst (Baden-Württemberg) & SWR Wissen",
+      "sourceType": "YOUTUBE_DOCUMENTARY",
+      "podcastFeedId": "swr_wissen",
+      "externalUrl": "https://www.youtube.com/results?search_query=SWR+Handwerkskunst+Porsche+Restaurierung+Motorenbau",
+      "contextTrack": "SOCIAL",
+      "mappedPillar": "MODALPARTIKELN",
+      "difficulty": "B2+ -> C1",
+      "goetheExamPartTag": "Regionales Hörverstehen Südwestdeutschland",
+      "listeningMissionDe": "Hören Sie echten Meisterinnen und Meistern aus Baden-Württemberg bei der Arbeit zu (z. B. Klassiker-Motorenbau / Feinmechanik). Gewöhnen Sie Ihr Ohr an ruhiges, authentisches Süddeutsch.",
+      "keyCollocationsToCatch": [
+        "des muss saugend passen",
+        "auf den Hundertstelmillimeter genau",
+        "da darfst du nichts übers Knie brechen",
+        "Hand und Fuß haben"
+      ],
+      "spokenFeaturesNoteDe": "Weiches ‚sch‘ (‚isch‘, ‚musscht‘), Apokopen und bodenständige Idiome (‚nichts übers Knie brechen‘ = nichts überstürzen).",
+      "checkQuestionDe": "Was bedeutet das im Südwesten wie im Hochdeutschen sehr beliebte Idiom ‚Da dürfen wir jetzt nichts übers Knie brechen‘?",
+      "checkOptions": [
+        "Man soll körperlich vorsichtig heben.",
+        "Man sollte eine wichtige Arbeit oder Entscheidung unter Zeitdruck nicht unüberlegt überstürzen, weil sonst Folgefehler entstehen.",
+        "Man soll das Projekt sofort abbrechen.",
+        "Man braucht ein Spezialwerkzeug."
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "‚Nichts übers Knie brechen‘ ist in deutschen Werkstätten, Büros und Vereinen allgegenwärtig, wenn jemand vor Aktionismus warnt.",
+      "activeReactionPromptDe": "Verwenden Sie ‚nichts übers Knie brechen‘ und ‚Hand und Fuß haben‘ in einem natürlichen 2-Satz-Statement zu einem technischen oder sportlichen Vorhaben.",
+      "sampleSovereignReactionDe": "Bei der Freigabe des neuen Datenstands sollten wir heute Abend nichts übers Knie brechen. Lieber fahren wir morgen früh noch einen sauberen Kaltstart-Zyklus, damit unsere Empfehlung wirklich Hand und Fuß hat."
+    },
+    {
+      "id": "mm_goethe_schreiben2_16",
+      "title": "Goethe C1 Schreiben Teil 2 & Alltags-Korrespondenz: Registerwechsel präzise treffen",
+      "sourceName": "Mit Erfolg zum Goethe-Zertifikat C1 · Modul Schreiben & DLF",
+      "sourceType": "BOOK_DEEP_DIVE",
+      "podcastFeedId": "dlf_der_tag",
+      "externalUrl": "https://www.goethe.de/ins/de/de/prf/prf/gzc1/ueb.html",
+      "contextTrack": "GENERAL",
+      "mappedPillar": "KONJUNKTIV",
+      "difficulty": "Goethe C1",
+      "goetheExamPartTag": "Goethe C1 Schreiben Teil 2 · Adressatenbezogene Korrespondenz",
+      "listeningMissionDe": "Im neuen modularen Goethe-Zertifikat C1 verlangt Schreiben Teil 2 ein präzises formelles oder halbformelles Schreiben (z. B. an Abteilungsleitung, Stadtverwaltung oder Vereinsvorstand) mit klarem Register.",
+      "keyCollocationsToCatch": [
+        "ich wende mich mit einem konkreten Anliegen an Sie",
+        "in Anbetracht der angespannten Situation",
+        "für Ihr Entgegenkommen danke ich Ihnen im Voraus",
+        "als praktikable Übergangslösung schlage ich vor"
+      ],
+      "spokenFeaturesNoteDe": "Bewusster Kontrast zwischen gesprochener Vorabstimmung (‚Können wir das so regeln?‘) und druckreifem C1-Schriftregister.",
+      "checkQuestionDe": "Welche Formulierung passt im formellen Schreiben (Goethe C1 Schreiben Teil 2) an das Sportamt Esslingen bez. Flutlichtzeiten am besten?",
+      "checkOptions": [
+        "‚Hallo Leute vom Amt, macht bitte das Licht abends 30 Minuten länger an!‘",
+        "‚Angesichts der stark gewachsenen Kinderzahl im Jahrgang wäre es für unseren Trainingsbetrieb eine erhebliche Entlastung, wenn die Flutlichtschaltung dienstags um 30 Minuten verlängert werden könnte.‘",
+        "‚Weil viele Kinder da sind, müssen Sie jetzt sofort länger Licht geben.‘",
+        "‚Könnt ihr mal gucken wegen dem Licht am Platz, wäre echt nett, ciao.‘"
+      ],
+      "correctOptionIndex": 1,
+      "checkExplanationDe": "Genitiv-Präposition (‚Angesichts…‘) + höflicher Konjunktiv II (‚wäre es eine erhebliche Entlastung, wenn … könnte‘) erfüllt alle Goethe-C1-Bewertungskriterien maximal.",
+      "activeReactionPromptDe": "Schreiben/sprechen Sie 2 formelle Sätze an Ihre Studiengangsleitung an der Hochschule Esslingen (Bitte um Anerkennung einer Prüfungs-/Praxisleistung).",
+      "sampleSovereignReactionDe": "Angesichts der inhaltlichen Überschneidung meiner aktuellen Entwicklungsarbeit im Bereich Antriebssteuerung mit dem Wahlpflichtmodul möchte ich höflich anfragen, inwieweit eine Teilanrechnung möglich wäre. Die entsprechenden Nachweise lasse ich Ihnen selbstverständlich gern zukommen."
+    }
+  ]
+}
